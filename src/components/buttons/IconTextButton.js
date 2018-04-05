@@ -13,7 +13,7 @@ class IconTextButton extends Component {
    return (
      <div>
 
-     <i class="far fa-thumbs-up-lg"></i>
+     <i className="far fa-thumbs-up-lg"></i>
      <button style={[styles.base]}onClick={this.handleClick}>
        +{this.props.incrementValue}Like
      </button>
