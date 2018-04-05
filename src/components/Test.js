@@ -1,37 +1,24 @@
+/**
+  Include the components you want to test in the render function
+*/
 import React, { Component } from 'react';
 import Radium from 'radium';
-import IconTextButton from './buttons/IconTextButton.js';
-const Result = props => {
-  return (
-    <div>
-      {props.counter}
-    </div>
-  );
-};
+import ButtonsTest from './tests/ButtonsTest.js';
+
 class Test extends Component {
-
-  state = { counter: 0 };
-
-  incrementCounter = incrementValue => {
-    this.setState(prevstate => ({
-      counter: prevstate.counter + incrementValue
-    }));
-  };
-
-    render() {
-        return (
-            <div style={styles.base}>
-
-               <IconTextButton className="rounded-btn" incrementValue={1} onClickFunction={this.incrementCounter} />
-
-            </div>);
-    }
+  render() {
+    return (
+      <div style={styles.base}>
+        <ButtonsTest/>
+      </div>
+    );
+  }
 }
 
 const styles = {
-    base: {
-        fontFamily: 'Source Sans Pro, sans-serif',
-    }
+  base: {
+    fontFamily: 'Source Sans Pro, sans-serif'
+  }
 }
 
 export default Radium(Test);
