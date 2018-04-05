@@ -32,6 +32,9 @@ More details:
 * `src/api` is where we'll be using **Axios** to make api calls.
 * `src/resources` is where we'll be putting any svg/png images + fonts + constants.
 
+## Styling
+We will be using a library called **Radium** for styling
+
 ## Available Scripts
 
 In the project directory, you can run:
