@@ -6,7 +6,6 @@ class Test extends Component {
     render() {
         return (
             <div style={styles.base}>
-
             </div>);
     }
 }
