@@ -21,7 +21,9 @@ class Test extends Component {
     render() {
         return (
             <div style={styles.base}>
+
                <IconTextButton className="rounded-btn" incrementValue={1} onClickFunction={this.incrementCounter} />
+
             </div>);
     }
 }
