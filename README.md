@@ -26,7 +26,9 @@ More details:
 * `public/index.html` is the page template;
 * `src/index.js` is the JavaScript entry point where it renders the <App> component.
 * `src/components` is where we'll be implementing all our components.
-* `src/components/main-content` is where we'll be implementing our main containers.
+* `src/components/App.js` is our main starting point.
+* `src/components/Test.js` is the playground for individually testing the component being implemented.
+* `src/components/main-content` is where we'll be implementing our main containers, which will be dealing with the backend and pass the fetched data to our components.
 * `src/api` is where we'll be using **Axios** to make api calls.
 * `src/resources` is where we'll be putting any svg/png images + fonts + constants.
 
