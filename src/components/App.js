@@ -2,12 +2,23 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
+
+  isLoggedIn() {
+
+  }
+
   render() {
     return (
-      <div className="App">
-      </div>
-    );
+      <div style={styles.base}>
+
+      </div>);
   }
 }
 
-export default App;
+const styles = {
+  base: {
+    fontFamily: 'Source Sans Pro, sans-serif',
+  }
+}
+
+export default Radium(App);
