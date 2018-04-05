@@ -10,8 +10,8 @@ import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render(
     <Router>
         <Switch>
-            <Route path="/" component={App} exact />
-            <Route path="/test" component={Test} />
+            <Route path="/test" component={Test} exact />
+            <Route path="/" component={App} />
         </Switch>
     </Router>,
     document.getElementById('root'));
