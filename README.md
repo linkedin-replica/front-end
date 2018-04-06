@@ -17,6 +17,8 @@ linkedin-replica/
   src/
     components/
     api/
+    main/
+    tests/
     resources/
     index.js
 ```
@@ -24,40 +26,39 @@ linkedin-replica/
 More details:
 
 * `public/index.html` is the page template;
-* `src/index.js` is the JavaScript entry point where it renders the <App> component.
-* `src/components` is where we'll be implementing all our components.
-* `src/components/App.js` is our main starting point.
-* `src/components/Test.js` is the playground for individually testing the component being implemented.
-* `src/components/main-content` is where we'll be implementing our main containers, which will be dealing with the backend and pass the fetched data to our components.
-* `src/api` is where we'll be using **Axios** to make api calls.
-* `src/resources` is where we'll be putting any svg/png images + fonts + constants.
+* `src/index.js` is the JavaScript entry point where it renders the <App> or <Test> components.
+* `src/components` is where we'll be implementing all our reusable views, just taking in data as props and renders it.
+* `src/components/wrappers` is where our component wrappers will be implemented, like the grid, list and the main white wrapper.
+* `src/main/` is where our main components dealing with the backend will be implemented.
+* `src/main/App.js` is our main starting point, routing to a specified container.
+* `src/tests/` is the playground for testing each related components implemented.
+* `src/tests/Test.js` is our main testing point, routing to a specified test component.
+* `src/api/api.js` is where we'll be using **Axios** to make api calls, passing the authentication header from the local storage automatically with each request sent.
+* `src/resources` is where we'll be putting any icons + fonts + constant styles shared between the different components.
 
 ## Styling
-We will be using a library called **Radium** for styling
+We will be using a library called **Radium** for extending our styling and using
+pseudo css classes like ":hover", also allows us to use multiples styles for the same element, for instance a component with different sizes (sm, md, lg) styled as what's passed in the props.
+For more info check [radium repository](https://github.com/FormidableLabs/radium)
 
-## Available Scripts
+## Routing
+We will be using a library called **React Router** for routing
+For more info check [react-router basic components](https://reacttraining.com/react-router/web/guides/basic-components)
 
-In the project directory, you can run:
+## To Run
+### `npm install`
+After cloning the repo don't forget to install :")
 
 ### `npm start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
+## Mindmap
+Our app structure:
+https://coggle.it/diagram/WmU7aHic2QABqqfr/t/app/4f69c5a4836ca7b783d9b67c42060998d74051525011d469e72d0ddd37766ed8
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](#running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](#deployment) for more information.
+## Guides
+* [Starter videos (watch till 14)](https://drive.google.com/drive/folders/15YIJW1BgDmqJgwZ3R645bv0KZq2SfG3K?usp=sharing)
+* [React Quick Guide](https://reactjs.org/docs/hello-world.html)
