@@ -9,14 +9,14 @@ import PropTypes from 'prop-types'
 class TabButton extends Component {
   render() {
     // Directly get the passed parameters from the props
-    const { type, onClick, isActive } = this.props;
+    const { name, type, onClick, isActive } = this.props;
     return (
       <button
         style={[styles.base, isActive ? styles.active : styles.notActive]}
         onClick={onClick}>
-        <i style={styles.icon} className={icons[type].icon}></i>
+        <i style={styles.icon} className={icons[type]}></i>
         <div>
-          {icons[type].name}
+          {name}
         </div>
       </button>
     );
@@ -25,9 +25,10 @@ class TabButton extends Component {
 
 // Define the passed input types for this component
 TabButton.propTypes = {
-  type: PropTypes.oneOf(['like', 'share', 'comment', 'write', 'image', 'video']).isRequired,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['home', 'connections', 'jobs', 'notifications', 'chat', 'profile']).isRequired,
   onClick: PropTypes.func.isRequired,
-  isActive: PropTypes.bool.isRequired
+  isActive: PropTypes.bool
 };
 
 const styles = {
@@ -35,6 +36,7 @@ const styles = {
     border: "none",
     background: "none",
     padding: paddings.button,
+    fontWeight: 'bold',
     color: colors.lightGray,
     cursor: 'pointer',
     ":hover": {
@@ -42,10 +44,9 @@ const styles = {
     }
   },
   icon: {
-    marginRight: '5px'
   },
   active: {
-    borderBottom: `${borders.buttonWidth} solid ${colors.white}`
+    borderBottom: `${borders.button.width} solid ${colors.white}`
   },
   notActive: {
     border: "none"

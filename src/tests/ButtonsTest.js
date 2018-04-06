@@ -35,38 +35,47 @@ class ButtonsTest extends Component {
 
         <section>
           <h2>Icon + Text</h2>
-          <IconTextButton type="like" onClick={this.incrementCounter} />
-          <IconTextButton type="comment" onClick={this.incrementCounter} />
-          <IconTextButton type="share" onClick={this.incrementCounter} />
+          <IconTextButton name="Like" type="like" onClick={this.incrementCounter} />
+          <IconTextButton name="Comment" type="comment" onClick={this.incrementCounter} />
+          <IconTextButton name="Share" type="share" onClick={this.incrementCounter} />
         </section>
 
         <section>
           <h2>Icon + Text + Border</h2>
-          <IconTextButton type="write" onClick={this.incrementCounter} hasBorder={true} />
-          <IconTextButton type="image" onClick={this.incrementCounter} hasBorder={true} />
-          <IconTextButton type="video" onClick={this.incrementCounter} hasBorder={true} />
+          <IconTextButton name="Write an article" type="write" onClick={this.incrementCounter} hasBorder />
+          <IconTextButton name="Image" type="image" onClick={this.incrementCounter} hasBorder />
+          <IconTextButton name="Video" type="video" onClick={this.incrementCounter} hasBorder />
         </section>
 
         <section>
           <h2>Text + Border</h2>
-          <BorderedButton type="Sign in" color="white" onClick={this.incrementCounter} />
-          <BorderedButton type="Connect" color="blue" onClick={this.incrementCounter} />
+          <BorderedButton name="Sign in" color="white" onClick={this.incrementCounter} />
+          <BorderedButton name="Connect" color="blue" onClick={this.incrementCounter} />
         </section>
 
         <section>
           <h2>Tab</h2>
-          <TabButton type="write" isActive={true} onClick={this.incrementCounter} />
-          <TabButton type="share" isActive={false} onClick={this.incrementCounter} />
+          <TabButton name="Home" type="home" onClick={this.incrementCounter} />
+          <TabButton name="Connections" type="connections" onClick={this.incrementCounter} />
+          <TabButton name="Jobs" type="jobs" onClick={this.incrementCounter} />
+          <TabButton name="Notifications" type="notifications" onClick={this.incrementCounter} />
+          <TabButton name="Chat" type="chat" onClick={this.incrementCounter} />
+          <TabButton name="Profile" type="profile" onClick={this.incrementCounter} />
+        </section>
+
+        <section>
+          <h2>Active Tab</h2>
+          <TabButton name="Home" type="home" isActive onClick={this.incrementCounter} />
         </section>
 
         <section>
           <h2>GrayText Only</h2>
-          <GrayTextButton type="Ignore" onClick={this.incrementCounter} />
+          <GrayTextButton name="Ignore" onClick={this.incrementCounter} />
         </section>
 
         <section>
           <h2>Blue Button</h2>
-          <BlueButton type="Post" onClick={this.incrementCounter} />
+          <BlueButton name="Post" onClick={this.incrementCounter} />
         </section>
 
         <section>

@@ -9,14 +9,14 @@ import PropTypes from 'prop-types'
 class IconTextButton extends Component {
   render() {
     // Directly get the passed parameters from the props
-    const { type, onClick, hasBorder } = this.props;
+    const { name, type, onClick, hasBorder } = this.props;
     return (
       <button
         style={[styles.base, hasBorder ? styles.bordered : styles.borderless]}
         onClick={onClick}>
-        <i style={styles.icon} className={icons[type].icon}></i>
+        <i style={styles.icon} className={icons[type]}></i>
         <span>
-          {icons[type].name}
+          {name}
         </span>
       </button>
     );
@@ -25,6 +25,7 @@ class IconTextButton extends Component {
 
 // Define the passed input types for this component
 IconTextButton.propTypes = {
+  name: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['like', 'share', 'comment', 'write', 'image', 'video']).isRequired,
   onClick: PropTypes.func.isRequired,
   hasBorder: PropTypes.bool,
@@ -35,6 +36,7 @@ const styles = {
     background: "none",
     padding: paddings.button,
     color: colors.mediumGray,
+    fontWeight: 'bold',
     cursor: 'pointer',
     ":hover": {
       background: colors.lightGray,
@@ -48,10 +50,10 @@ const styles = {
     border: "none"
   },
   bordered: {
-    border: `${borders.buttonWidth} solid ${colors.mediumGray}`,
-    borderRadius: '50px',
+    border: `${borders.button.width} solid ${colors.mediumGray}`,
+    borderRadius: borders.button.radius.rounded,
     ":hover": {
-      border: `${borders.buttonWidth} solid ${colors.darkBlue}`,
+      border: `${borders.button.width} solid ${colors.darkBlue}`,
     }
   }
 }
