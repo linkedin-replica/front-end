@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
-import {colors, paddings, borders} from '../../resources/constants.js'
+import { colors, paddings } from '../../resources/constants.js'
 import PropTypes from 'prop-types'
+
 class GrayTextButton extends Component {
   render() {
-    const {type,color,onClick} = this.props;
+    const { type, onClick } = this.props;
     return (
       <button
         style={styles.base}
@@ -20,22 +21,22 @@ GrayTextButton.propTypes = {
   type: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
 };
-const styles={
-  base:{
-    background:"none",
-    border:"none",
-    padding:paddings.button,
+const styles = {
+  base: {
+    background: "none",
+    border: "none",
+    padding: paddings.button,
     borderRadius: '2px',
-    color:colors.mediumGray,
-    cursor:'pointer',
+    color: colors.mediumGray,
+    cursor: 'pointer',
     ":hover": {
-      background:colors.lightGray,
+      background: colors.lightGray,
       color: colors.black
     }
   }
 
 }
 
-GrayTextButton=Radium(GrayTextButton);
+GrayTextButton = Radium(GrayTextButton);
 
 export default GrayTextButton;

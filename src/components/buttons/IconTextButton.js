@@ -3,16 +3,16 @@ A button with an icon, could have a rounded border or not
 */
 import React, { Component } from 'react';
 import Radium from 'radium';
-import {colors, icons, paddings, borders} from '../../resources/constants.js'
+import { colors, icons, paddings, borders } from '../../resources/constants.js'
 import PropTypes from 'prop-types'
 
 class IconTextButton extends Component {
   render() {
     // Directly get the passed parameters from the props
-    const {type,onClick,hasBorder} = this.props;
+    const { type, onClick, hasBorder } = this.props;
     return (
       <button
-        style={[styles.base, hasBorder? styles.bordered:styles.borderless]}
+        style={[styles.base, hasBorder ? styles.bordered : styles.borderless]}
         onClick={onClick}>
         <i style={styles.icon} className={icons[type].icon}></i>
         <span>
@@ -30,24 +30,24 @@ IconTextButton.propTypes = {
   hasBorder: PropTypes.bool,
 };
 
-const styles={
+const styles = {
   base: {
-    background:"none",
+    background: "none",
     padding: paddings.button,
-    color:colors.mediumGray,
-    cursor:'pointer',
+    color: colors.mediumGray,
+    cursor: 'pointer',
     ":hover": {
-      background:colors.lightGray,
-      color:colors.darkBlue
+      background: colors.lightGray,
+      color: colors.darkBlue
     }
   },
-  icon:{
+  icon: {
     marginRight: '5px'
   },
-  borderless:{
+  borderless: {
     border: "none"
   },
-  bordered:{
+  bordered: {
     border: `${borders.buttonWidth} solid ${colors.mediumGray}`,
     borderRadius: '50px',
     ":hover": {

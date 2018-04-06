@@ -3,16 +3,16 @@ A button with an icon, could have a rounded border or not
 */
 import React, { Component } from 'react';
 import Radium from 'radium';
-import {colors, icons, paddings, borders} from '../../resources/constants.js'
+import { colors, icons, paddings, borders } from '../../resources/constants.js'
 import PropTypes from 'prop-types'
 
 class TabButton extends Component {
   render() {
     // Directly get the passed parameters from the props
-    const {type,onClick,isActive} = this.props;
+    const { type, onClick, isActive } = this.props;
     return (
       <button
-        style={[styles.base,isActive? styles.active:styles.notActive]}
+        style={[styles.base, isActive ? styles.active : styles.notActive]}
         onClick={onClick}>
         <i style={styles.icon} className={icons[type].icon}></i>
         <div>
@@ -27,28 +27,28 @@ class TabButton extends Component {
 TabButton.propTypes = {
   type: PropTypes.oneOf(['like', 'share', 'comment', 'write', 'image', 'video']).isRequired,
   onClick: PropTypes.func.isRequired,
-  isActive:PropTypes.bool.isRequired
+  isActive: PropTypes.bool.isRequired
 };
 
-const styles={
+const styles = {
   base: {
-    border:"none",
-    background:"none",
+    border: "none",
+    background: "none",
     padding: paddings.button,
-    color:colors.lightGray,
-    cursor:'pointer',
+    color: colors.lightGray,
+    cursor: 'pointer',
     ":hover": {
       color: colors.white
     }
-},
-  icon:{
+  },
+  icon: {
     marginRight: '5px'
   },
-  active : {
-       borderBottom:`${borders.buttonWidth} solid ${colors.white}`
-    },
-    notActive :{
-      border:"none"
+  active: {
+    borderBottom: `${borders.buttonWidth} solid ${colors.white}`
+  },
+  notActive: {
+    border: "none"
   }
 
 
