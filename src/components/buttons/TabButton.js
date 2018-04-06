@@ -9,13 +9,13 @@ import ResponsiveButtonWrapper from './ResponsiveButtonWrapper';
 
 class TabButton extends Component {
   render() {
-    // select the needed parameters from the props
-    const { name, type, isActive } = this.props;
+    //  Directly get the needed props
+    const { name, type, isActive, ...rest } = this.props;
     return (
       <ResponsiveButtonWrapper
         style={[styles.base, isActive ? styles.active : styles.notActive]}
-        // Passes on all the props to apply the size and onClick functions on the button
-        {...this.props}>
+        // Passes on the rest of the props to apply the size and onClick functions on the button
+        {...rest}>
         <i style={styles.icon} className={icons[type]}></i>
         <span style={styles.name}>
           {name}

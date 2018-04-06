@@ -6,12 +6,13 @@ import ResponsiveButtonWrapper from './ResponsiveButtonWrapper';
 
 class GrayTextButton extends Component {
   render() {
-    const { name } = this.props;
+    // Directly get the needed props
+    const { name, ...rest } = this.props;
     return (
       <ResponsiveButtonWrapper
         style={styles.base}
-        // Passes on all the props to apply the size and onClick functions on the button
-        {...this.props}>
+        // Passes on the rest of the props to apply the size and onClick functions on the button
+        {...rest}>
         <span>
           {name}
         </span>
