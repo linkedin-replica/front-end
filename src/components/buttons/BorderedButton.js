@@ -25,7 +25,8 @@ const styles={
   base:{
     background:"none",
     padding:paddings.button,
-    borderRadius: '2px'
+    borderRadius: '2px',
+      cursor:'pointer'
   },
   whiteBorder:{
     border: `${borders.buttonWidth} solid ${colors.white}`,

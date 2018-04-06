@@ -1,6 +1,7 @@
 // color pallete
 export const colors = {
   darkBlue: '#0077B5',
+  mediumBlue: '#0077A0',
   black: '#000000',
   white: '#FFFFFF',
   darkGray: '#313335',

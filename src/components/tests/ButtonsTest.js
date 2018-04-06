@@ -6,7 +6,8 @@ import Radium from 'radium';
 import IconTextButton from '../buttons/IconTextButton.js';
 import BorderedButton from '../buttons/BorderedButton.js';
 import TabButton from '../buttons/TabButton.js';
-import GrayTextButton from '../buttons/GrayTextButton.js'
+import GrayTextButton from '../buttons/GrayTextButton.js';
+import BlueButton from '../buttons/BlueButton.js';
 const Result = props => {
   return (
     <div>
@@ -47,7 +48,9 @@ class ButtonsTest extends Component {
         <TabButton type="share" isActive={false} onClick={this.incrementCounter} />
         <h2>GrayText Only</h2>
         <GrayTextButton type="Ignore" onClick={this.incrementCounter} />
-        
+
+        <h2>Blue Button</h2>
+        <BlueButton type="Post" onClick={this.incrementCounter} />
         <h2>Sample onClick function result</h2>
         <Result counter={this.state.counter} />
       </div>
