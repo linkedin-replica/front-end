@@ -21,4 +21,5 @@ const styles = {
   }
 }
 
-export default Radium(App);
+App = Radium(App);
+export default App;
