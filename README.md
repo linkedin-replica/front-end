@@ -54,7 +54,6 @@ After cloning the repo don't forget to install :")
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-
 ## Mindmap
 Our app structure:
 https://coggle.it/diagram/WmU7aHic2QABqqfr/t/app/4f69c5a4836ca7b783d9b67c42060998d74051525011d469e72d0ddd37766ed8
