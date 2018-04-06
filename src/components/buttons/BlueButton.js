@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 import { colors, borders } from '../../resources/constants.js'
 import ResponsiveButtonWrapper from './ResponsiveButtonWrapper';
 
-class BorderedButton extends Component {
+class BlueButton extends Component {
   render() {
-    const { name, color } = this.props;
+    const { name } = this.props;
     return (
       <ResponsiveButtonWrapper
-        style={[styles.base, color === 'white' ? styles.whiteBorder : styles.blueBorder]}
+        style={styles.base}
         // Passes on all the props to apply the size and onClick functions on the button
         {...this.props}>
         <span>
@@ -19,36 +19,26 @@ class BorderedButton extends Component {
     );
   }
 }
-BorderedButton.propTypes = {
+
+BlueButton.propTypes = {
   name: PropTypes.string.isRequired,
-  color: PropTypes.oneOf(['white', 'blue']),
   size: PropTypes.oneOf(["sm", "md", "lg"]),
   onClick: PropTypes.func.isRequired,
 };
 
 const styles = {
   base: {
+    background: colors.darkBlue,
+    border: "none",
     fontWeight: 'bold',
     borderRadius: borders.button.radius.normal,
-  },
-  whiteBorder: {
-    border: `${borders.button.width.normal} solid ${colors.white}`,
     color: colors.white,
     ":hover": {
-      background: colors.white,
-      color: colors.black
-    }
-  },
-  blueBorder: {
-    border: `${borders.button.width.normal} solid ${colors.darkBlue}`,
-    color: colors.darkBlue,
-    ":hover": {
-      background: colors.darkBlue,
-      color: colors.white
+      background: colors.mediumBlue
     }
   }
 }
 
-BorderedButton = Radium(BorderedButton);
+BlueButton = Radium(BlueButton);
 
-export default BorderedButton;
+export default BlueButton;

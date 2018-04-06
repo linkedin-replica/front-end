@@ -7,17 +7,17 @@ import PropTypes from 'prop-types'
 import { colors, icons, borders } from '../../resources/constants.js'
 import ResponsiveButtonWrapper from './ResponsiveButtonWrapper';
 
-class IconTextButton extends Component {
+class TabButton extends Component {
   render() {
-    // Directly get the passed parameters from the props
-    const { name, type, hasBorder } = this.props;
+    // select the needed parameters from the props
+    const { name, type, isActive } = this.props;
     return (
       <ResponsiveButtonWrapper
-        style={[styles.base, hasBorder ? styles.bordered : styles.borderless]}
+        style={[styles.base, isActive ? styles.active : styles.notActive]}
         // Passes on all the props to apply the size and onClick functions on the button
         {...this.props}>
         <i style={styles.icon} className={icons[type]}></i>
-        <span>
+        <span style={styles.name}>
           {name}
         </span>
       </ResponsiveButtonWrapper>
@@ -26,38 +26,39 @@ class IconTextButton extends Component {
 }
 
 // Define the passed input types for this component
-IconTextButton.propTypes = {
+TabButton.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['like', 'share', 'comment', 'write', 'image', 'video']).isRequired,
-  hasBorder: PropTypes.bool,
+  type: PropTypes.oneOf(['home', 'connections', 'jobs', 'notifications', 'chat', 'profile', 'articles']).isRequired,
+  isActive: PropTypes.bool,
   size: PropTypes.oneOf(["sm", "md", "lg"]),
   onClick: PropTypes.func.isRequired,
 };
 
 const styles = {
   base: {
-    fontWeight: 'bold',
-    color: colors.mediumGray,
+    border: "none",
+    color: colors.lightGray,
     ":hover": {
-      background: colors.lightGray,
-      color: colors.darkBlue
+      color: colors.white
     }
   },
   icon: {
-    marginRight: '5px'
+    fontSize: '1.5em'
   },
-  borderless: {
+  name: {
+    display: 'block',
+    fontSize: '0.8em',
+    marginTop: '5px',
+  },
+  active: {
+    color: colors.white,
+    borderBottom: `${borders.button.width.active} solid ${colors.white}`
+  },
+  notActive: {
     border: "none"
-  },
-  bordered: {
-    border: `${borders.button.width.normal} solid ${colors.mediumGray}`,
-    borderRadius: borders.button.radius.rounded,
-    ":hover": {
-      border: `${borders.button.width.normal} solid ${colors.darkBlue}`,
-    }
   }
 }
 
-IconTextButton = Radium(IconTextButton);
+TabButton = Radium(TabButton);
 
-export default IconTextButton;
+export default TabButton;
