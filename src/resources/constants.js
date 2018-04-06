@@ -30,7 +30,10 @@ export const paddings = {
 
 export const borders = {
   button: {
-    width: '1px',
+    width: {
+      normal: '1px',
+      active: '2px'
+    },
     radius: {
       normal: '2px',
       rounded: '50px'

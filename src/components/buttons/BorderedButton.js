@@ -1,37 +1,38 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
-import { colors, paddings, borders } from '../../resources/constants.js'
 import PropTypes from 'prop-types'
+import { colors, paddings, borders } from '../../resources/constants.js'
+import ResponsiveButtonWrapper from './ResponsiveButtonWrapper';
+
 class BorderedButton extends Component {
   render() {
-    const { name, color, onClick } = this.props;
+    const { name, color } = this.props;
     return (
-      <button
+      <ResponsiveButtonWrapper
         style={[styles.base, color === 'white' ? styles.whiteBorder : styles.blueBorder]}
-        onClick={onClick}>
+        // Passes on all the props to apply the size and onClick functions on the button
+        {...this.props}>
         <span>
           {name}
         </span>
-      </button>
+      </ResponsiveButtonWrapper>
     );
   }
 }
 BorderedButton.propTypes = {
   name: PropTypes.string.isRequired,
+  color: PropTypes.oneOf(['white', 'blue']),
+  size: PropTypes.oneOf(["sm", "md", "lg"]),
   onClick: PropTypes.func.isRequired,
-  color: PropTypes.oneOf(['white', 'blue'])
 };
 
 const styles = {
   base: {
-    background: "none",
-    padding: paddings.button,
     fontWeight: 'bold',
     borderRadius: borders.button.radius.normal,
-    cursor: 'pointer'
   },
   whiteBorder: {
-    border: `${borders.button.width} solid ${colors.white}`,
+    border: `${borders.button.width.normal} solid ${colors.white}`,
     color: colors.white,
     ":hover": {
       background: colors.white,
@@ -39,7 +40,7 @@ const styles = {
     }
   },
   blueBorder: {
-    border: `${borders.button.width} solid ${colors.darkBlue}`,
+    border: `${borders.button.width.normal} solid ${colors.darkBlue}`,
     color: colors.darkBlue,
     ":hover": {
       background: colors.darkBlue,

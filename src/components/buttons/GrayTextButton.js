@@ -1,35 +1,37 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
-import { colors, paddings, borders } from '../../resources/constants.js'
 import PropTypes from 'prop-types'
+import { colors, paddings, borders } from '../../resources/constants.js'
+import ResponsiveButtonWrapper from './ResponsiveButtonWrapper';
 
 class GrayTextButton extends Component {
   render() {
-    const { name, onClick } = this.props;
+    const { name } = this.props;
     return (
-      <button
+      <ResponsiveButtonWrapper
         style={styles.base}
-        onClick={onClick}>
+        // Passes on all the props to apply the size and onClick functions on the button
+        {...this.props}>
         <span>
           {name}
         </span>
-      </button>
+      </ResponsiveButtonWrapper>
     );
   }
 }
+
 GrayTextButton.propTypes = {
   name: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  size: PropTypes.oneOf(["sm", "md", "lg"]),
+  onClick: PropTypes.func.isRequired,
 };
+
 const styles = {
   base: {
-    background: "none",
     border: "none",
-    padding: paddings.button,
     fontWeight: 'bold',
     borderRadius: borders.button.radius.normal,
     color: colors.mediumGray,
-    cursor: 'pointer',
     ":hover": {
       background: colors.lightGray,
       color: colors.black
