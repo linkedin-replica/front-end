@@ -65,6 +65,7 @@ class ButtonsTest extends Component {
             <TabButton name="Connections" type="connections" onClick={this.incrementCounter} />
             <TabButton name="Jobs" type="jobs" onClick={this.incrementCounter} />
             <TabButton name="Notifications" type="notifications" onClick={this.incrementCounter} />
+            <TabButton name="Articles" type="articles" onClick={this.incrementCounter} />
             <TabButton name="Chat" type="chat" onClick={this.incrementCounter} />
             <TabButton name="Profile" type="profile" onClick={this.incrementCounter} />
           </div>

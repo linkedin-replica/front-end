@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import PropTypes from 'prop-types'
-import { colors, paddings, borders } from '../../resources/constants.js'
+import { colors, borders } from '../../resources/constants.js'
 import ResponsiveButtonWrapper from './ResponsiveButtonWrapper';
 
 class BorderedButton extends Component {

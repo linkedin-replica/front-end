@@ -4,13 +4,13 @@ A button with an icon, could have a rounded border or not
 import React, { Component } from 'react';
 import Radium from 'radium';
 import PropTypes from 'prop-types'
-import { colors, icons, paddings, borders } from '../../resources/constants.js'
+import { colors, icons, borders } from '../../resources/constants.js'
 import ResponsiveButtonWrapper from './ResponsiveButtonWrapper';
 
 class IconTextButton extends Component {
   render() {
     // Directly get the passed parameters from the props
-    const { name, type, onClick, hasBorder } = this.props;
+    const { name, type, hasBorder } = this.props;
     return (
       <ResponsiveButtonWrapper
         style={[styles.base, hasBorder ? styles.bordered : styles.borderless]}

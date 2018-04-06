@@ -4,7 +4,7 @@ A button with an icon, could have a rounded border or not
 import React, { Component } from 'react';
 import Radium from 'radium';
 import PropTypes from 'prop-types'
-import { colors, icons, paddings, borders } from '../../resources/constants.js'
+import { colors, icons, borders } from '../../resources/constants.js'
 import ResponsiveButtonWrapper from './ResponsiveButtonWrapper';
 
 class TabButton extends Component {
@@ -28,7 +28,7 @@ class TabButton extends Component {
 // Define the passed input types for this component
 TabButton.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['home', 'connections', 'jobs', 'notifications', 'chat', 'profile']).isRequired,
+  type: PropTypes.oneOf(['home', 'connections', 'jobs', 'notifications', 'chat', 'profile', 'articles']).isRequired,
   isActive: PropTypes.bool,
   size: PropTypes.oneOf(["sm", "md", "lg"]),
   onClick: PropTypes.func.isRequired,
@@ -48,7 +48,7 @@ const styles = {
   name: {
     display: 'block',
     fontSize: '0.8em',
-    margin: '5px auto',
+    marginTop: '5px',
   },
   active: {
     color: colors.white,
