@@ -34,6 +34,7 @@ More details:
 * `src/tests/` is the playground for testing each related components implemented.
 * `src/tests/Test.js` is our main testing point, routing to a specified test component.
 * `src/api/api.js` is where we'll be using **Axios** to make api calls, passing the authentication header from the local storage automatically with each request sent.
+* `src/samples/SampleComponent.js` is a sample component which we will be all using when creating a new component.  
 * `src/resources` is where we'll be putting any icons + fonts + constant styles shared between the different components.
 
 ## Styling
