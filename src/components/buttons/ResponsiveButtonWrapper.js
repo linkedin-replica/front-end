@@ -37,7 +37,7 @@ const styles = {
         cursor: 'pointer',
         outline: '0',
         ':active': {
-            opacity: '0.5'
+            opacity: '0.8'
         }
     },
     sm: {
