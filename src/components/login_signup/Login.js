@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
-import { colors } from '../../resources/constants';
 import BorderedButton from '../buttons/BorderedButton';
-import WhiteWrapper from '../wrappers/WhiteWrapper';
 
 class Login extends Component{
   constructor(){

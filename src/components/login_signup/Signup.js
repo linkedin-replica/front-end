@@ -1,82 +1,71 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
-import { colors } from '../../resources/constants';
-import BorderedButton from '../buttons/BorderedButton';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import BlueButton from '../buttons/BlueButton';
+import PropTypes from 'prop-types'
 
 class Signup extends Component{
-  constructor(){
-    super()
-    this.state = {
-      firstName:'',
-      lastName:'',
-      email:'',
-      password:''
-    }
-  }
-  handleSubmit = (event) =>{
-    event.preventDefault()
-  }
-  print = () => {
-    console.log(this.state)
-  }
-
   render(){
+    const {handleChange, handleSubmit} = this.props
     return (
       <WhiteWrapper style={styles.whiteWrapper}>
         <form onSubmit={this.handleSubmit}>
         <div>
-          <label for="firstName">First name</label>
+          <label htmlFor="firstName">First name</label>
         </div>
         <div>
           <input
             id="firstName"
             className='form-inline'
             type='text'
-            onChange={event => this.setState({firstName : event.target.value})}
+            onChange={handleChange('firstName')}
           />
         </div>
         <div>
-          <label for="lastName">Last name</label>
+          <label htmlFor="lastName">Last name</label>
         </div>
         <div>
           <input
             id="lastName"
             className='form-inline'
             type='text'
-            onChange={event => this.setState({lastName : event.target.value})}
+            onChange={handleChange('lastName')}
           />
         </div>
         <div>
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
         </div>
         <div>
           <input
             id="email"
             className='form-inline'
             type='text'
-            onChange={event => this.setState({email : event.target.value})}
+            onChange={handleChange('email')}
           />
         </div>
         <div>
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
         </div>
         <div>
           <input
             id="password"
             className="form-inline"
             type="password"
-            onChange={event => this.setState({password : event.target.value})}
+            onChange={handleChange('password')}
           />
         </div>
         <div style={styles.label}>
-          <BlueButton name="Join now" size="lg" color="blue"></BlueButton>
+          <BlueButton name="Join now" size="lg" color="blue" onClick={handleSubmit}></BlueButton>
         </div>
         </form>
       </WhiteWrapper>
     )
   }
+}
+
+Signup.PropTypes = {
+  handleChange: PropTypes.func,
+  handleSubmit: PropTypes.func
 }
 
 const styles = {
