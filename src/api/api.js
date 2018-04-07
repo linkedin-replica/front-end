@@ -89,5 +89,26 @@ export default {
   },
   getUserProfile: (userId) => {
     return axiosInstance.get(`users/${userId}`)
+  },
+  deleteComment: (comment) => {
+    return axiosInstance.delete(`comments`,comment)
+  },
+  deleteCV: (cvURL) => {
+    return axiosInstance.delete(`cv`,cvURL)
+  },
+  deleteJob: (jobId) => {
+    return axiosInstance.delete(`jobs`,jobId)
+  },
+  deleteJob: (jobId) => {
+    return axiosInstance.delete(`jobs`,jobId)
+  },
+  deleteLike: (like) => {
+    return axiosInstance.delete(`comment/likes`,like)
+  },
+  deleteReply: (reply) => {
+    return axiosInstance.delete(`comment/replies`,reply)
+  },
+  unfriend: (userId) => {
+    return axiosInstance.delete(`unfriend`,userId)
   }
 }
