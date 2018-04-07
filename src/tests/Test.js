@@ -6,6 +6,7 @@ import Radium from 'radium';
 import ButtonsTest from './ButtonsTest';
 import WrappersTest from './WrappersTest';
 import { Route } from 'react-router-dom'
+import TabBarTest from './TabBarTest';
 
 class Test extends Component {
   render() {
@@ -16,6 +17,8 @@ class Test extends Component {
         <Route path={`${match.url}/buttons`} component={ButtonsTest} />
 
         <Route path={`${match.url}/wrappers`} component={WrappersTest} />
+
+        <Route path={`${match.url}/tabBar`} component={TabBarTest} />
 
         {/* 
         Add a new route to test your component in this way
