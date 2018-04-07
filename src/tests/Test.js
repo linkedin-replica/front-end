@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import ButtonsTest from './ButtonsTest';
+import WrappersTest from './WrappersTest';
 import { Route } from 'react-router-dom'
 
 class Test extends Component {
@@ -14,10 +15,13 @@ class Test extends Component {
         {/* route for /test/buttons */}
         <Route path={`${match.url}/buttons`} component={ButtonsTest} />
 
+        <Route path={`${match.url}/wrappers`} component={WrappersTest} />
+
         {/* 
         Add a new route to test your component in this way
         <Route path={`${match.url}/define route name here`} component={imported component to test} /> */
         }
+
       </div>
     );
   }
