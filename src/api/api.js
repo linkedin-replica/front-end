@@ -84,6 +84,18 @@ export default {
   search: (name,location) => {
     return axiosInstance.get(`search/${name}/${location}`)
   },
+  searchUser: (user) => {
+    return axiosInstance.get(`search/user/${user}`)
+  },
+  searchCompany: (company) => {
+    return axiosInstance.get(`search/company/${company}`)
+  },
+  searchPost: (post) => {
+    return axiosInstance.get(`search/post/${post}`)
+  },
+  searchJob: (job) => {
+    return axiosInstance.get(`search/job/${job}`)
+  },
   getTrendingArticles: (userId) => {
     return axiosInstance.get(`trendingArticles/${userId}`)
   },
