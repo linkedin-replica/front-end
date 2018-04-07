@@ -10,10 +10,10 @@ class Login extends Component{
     const {handleChange, handleSubmit} = this.props
     return (
       <div styles={styles.darkContainer}>
-        <form style={styles.base}>
+        <form style={styles.base} onSubmit={handleSubmit}>
             <input
               className='form-inline'
-              type='text'
+              type='email'
               placeholder='Email'
               onChange={handleChange('email')}
             />
@@ -24,7 +24,7 @@ class Login extends Component{
               placeholder='Password'
               onChange={handleChange('password')}
             />
-            <BorderedButton name='Sign in' color='white' onClick={handleSubmit}> </BorderedButton>
+            <BorderedButton name='Sign in' color='white'> </BorderedButton>
             <a style={styles.forgotPassword} href='url'>Forgot password?</a>
         </form>
       </div>

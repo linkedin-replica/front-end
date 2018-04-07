@@ -55,7 +55,7 @@ class Signup extends Component{
           />
         </div>
         <div style={styles.label}>
-          <BlueButton name="Join now" size="lg" color="blue" onClick={handleSubmit}></BlueButton>
+          <BlueButton name="Join now" size="lg" color="blue"></BlueButton>
         </div>
         </form>
       </WhiteWrapper>
