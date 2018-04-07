@@ -3,7 +3,7 @@
 */
 import React, { Component } from 'react';
 import Radium from 'radium'
-import DetailsHeader from '../components/details/DetailsHeader.js';
+import ProfileSectionItem from '../components/profile/ProfileSectionItem.js';
 
 class ProfileTest extends Component {
 
@@ -14,7 +14,7 @@ class ProfileTest extends Component {
               <h1>Profile Testing</h1>
             </header>
             <section>
-              <DetailsHeader />
+              <ProfileSectionItem title="Intern" company="TedxGUC" id= "1"/>
             </section>
           </div >
         );
