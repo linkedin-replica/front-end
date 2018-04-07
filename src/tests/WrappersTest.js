@@ -16,8 +16,28 @@ class WrappersTest extends Component {
                     <h1>Wrappers Testing</h1>
                 </header>
                 <section>
-                    <h2>White Wrapper</h2>
-                    <WhiteWrapper style={styles.whiteWrapper}>
+                    <h2>White Wrapper (sm, md, lg)</h2>
+                    <WhiteWrapper style={styles.whiteWrapper} size="sm">
+                        {
+                            [1, 2, 3].map(number => {
+                                return (
+                                    <div>
+                                        <BorderedButton name={`Button${number}`} color="blue" />
+                                    </div>)
+                            })
+                        }
+                    </WhiteWrapper>
+                    <WhiteWrapper style={styles.whiteWrapper} size="md">
+                        {
+                            [1, 2, 3, 4].map(number => {
+                                return (
+                                    <div>
+                                        <BorderedButton name={`Button${number}`} color="blue" />
+                                    </div>)
+                            })
+                        }
+                    </WhiteWrapper>
+                    <WhiteWrapper style={styles.whiteWrapper} size="lg">
                         {
                             [1, 2, 3, 4, 5].map(number => {
                                 return (
@@ -39,7 +59,8 @@ const styles = {
         padding: '10px',
     },
     whiteWrapper: {
-        margin: '0 auto',
+        margin: '10px auto',
+        padding: '10px',
         textAlign: 'center'
     }
 }

@@ -52,13 +52,13 @@ const styles = {
         boxShadow: '0 0 0 1px rgba(0,0,0,.1), 0 2px 3px rgba(0,0,0,.2)'
     },
     sm: {
-
+        width: '216px'
     },
     md: {
         width: '550px'
     },
     lg: {
-
+        width: '780px'
     }
 }
 
