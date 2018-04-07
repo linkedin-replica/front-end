@@ -9,8 +9,7 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { colors } from '../../resources/constants';
-
+import { colors } from '../../resources/constants'
 
 class AvatarImage extends Component {
     render() {
