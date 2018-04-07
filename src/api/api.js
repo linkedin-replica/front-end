@@ -110,5 +110,29 @@ export default {
   },
   unfriend: (userId) => {
     return axiosInstance.delete(`unfriend`,userId)
-  }
+  },
+  editArticle: (article) => {
+    return axiosInstance.put(`articles`,article)
+  },
+  editComment: (comment) => {
+    return axiosInstance.put(`comments`,comment)
+  },
+  editCompanyProfile: (company) => {
+    return axiosInstance.put(`company/edit`,company)
+  },
+  editJob: (job) => {
+    return axiosInstance.put(`jobs`,job)
+  },
+  editJobAsCompany: (job) => {
+    return axiosInstance.put(`company/jobs/edit`,job)
+  },
+  editPost: (post) => {
+    return axiosInstance.put(`post`,post)
+  },
+  editUserProfile: (profile) => {
+    return axiosInstance.put(`edit-profile`,profile)
+  },
+  editReply: (reply) => {
+    return axiosInstance.put(`comment/replies`,reply)
+  },
 }
