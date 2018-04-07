@@ -26,6 +26,8 @@ class ResponsiveButtonWrapper extends Component {
 
 // Define the passed input types for this component
 ResponsiveButtonWrapper.propTypes = {
+    children: PropTypes.node, // Content
+    style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"]),
     onClick: PropTypes.func.isRequired,
 };

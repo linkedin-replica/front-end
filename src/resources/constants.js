@@ -6,7 +6,8 @@ export const colors = {
   white: '#FFFFFF',
   darkGray: '#313335',
   mediumGray: '#86888A',
-  lightGray: '#CACCCE'
+  lightGray: '#CACCCE',
+  whiteGray: '#F5F5F5'
 }
 
 export const icons = {
@@ -39,5 +40,8 @@ export const borders = {
       normal: '2px',
       rounded: '50px'
     }
+  },
+  wrapper: {
+    radius: '2px',
   }
 }
