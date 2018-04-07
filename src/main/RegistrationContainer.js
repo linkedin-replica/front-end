@@ -17,7 +17,7 @@ class RegistrationContainer extends Component{
 
   handleSubmit = (event) =>{
     event.preventDefault()
-    // this.print()
+    alert("first name: " + this.state.email +"\nlast name: " + this.state.lastName + "\nemail: " + this.state.email + "\npassword: " + this.state.password)
     //TODO API call
   }
 
