@@ -30,6 +30,9 @@ export default {
   addCV: (cvURL) => {
     return axiosInstance.post('cv', cvURL)
   },
+  addSkill: (skill) => {
+    return axiosInstance.post('userAddSkill', skill)
+  },
   addFriend: (userId) => {
     return axiosInstance.post('add-friend', userId)
   },
@@ -121,7 +124,10 @@ export default {
     return axiosInstance.delete(`comment/replies`,reply)
   },
   unfriend: (userId) => {
-    return axiosInstance.delete(`unfriend`,userId)
+    return axiosInstance.delete(`friend`,userId)
+  },
+  unblock: (userId) => {
+    return axiosInstance.delete(`block`,userId)
   },
   editArticle: (article) => {
     return axiosInstance.put(`articles`,article)
