@@ -3,52 +3,55 @@ import Radium from 'radium';
 import { colors } from '../../resources/constants';
 import BorderedButton from '../buttons/BorderedButton';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
+import PropTypes from 'prop-types'
 
 class Login extends Component{
-  constructor(){
-    super()
-    this.state = {
-      email:'',
-      password:''
-    }
-  }
-
-  print = () => {
-    console.log(this.state)
-  }
-
   render(){
+    const {handleChange, handleSubmit} = this.props
     return (
-      <div style={styles.base}>
-          <input
-            className='form-inline'
-            type='text'
-            placeholder='Email'
-            onChange={event => this.setState({email: event.target.value})}
-          />
-          <input
-            style={styles.Password}
-            className='form-inline'
-            type='password'
-            placeholder='Password'
-            onChange={event => this.setState({password: event.target.value})}
-          />
-          <BorderedButton name='Sign in' color='white' onClick={this.print}> </BorderedButton>
-          <a style={styles.ForgotPassword} href='url'>Forgot password?</a>
+      <div styles={styles.darkContainer}>
+        <form style={styles.base}>
+            <input
+              className='form-inline'
+              type='text'
+              placeholder='Email'
+              onChange={handleChange('email')}
+            />
+            <input
+              style={styles.password}
+              className='form-inline'
+              type='password'
+              placeholder='Password'
+              onChange={handleChange('password')}
+            />
+            <BorderedButton name='Sign in' color='white' onClick={handleSubmit}> </BorderedButton>
+            <a style={styles.forgotPassword} href='url'>Forgot password?</a>
+        </form>
       </div>
     )
   }
 }
 
+Login.PropTypes = {
+  handleChange: PropTypes.func,
+  handleSubmit: PropTypes.func
+}
+
 const styles = {
     base: {
-        padding: '10px'
+        padding: '10px',
+        paddingRight: '20px',
+        backgroundColor: colors.darkGray,
+        textAlign: 'right'
     },
-    Password:{
-        marginLeft: '30px'
+    password:{
+        marginLeft: '20px',
+        marginRight: '20px'
     },
-    ForgotPassword: {
-        fontSize: '0.9em'
+    forgotPassword: {
+        paddingLeft: '20px',
+        fontSize: '0.8em',
+        color: 'white'
     }
 }
 
