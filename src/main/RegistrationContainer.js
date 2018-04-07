@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Radium from 'radium';
 import Signup from '../components/login_signup/Signup'
+import api from '../api/api'
 
 class RegistrationContainer extends Component{
   state = {
@@ -9,6 +10,7 @@ class RegistrationContainer extends Component{
     email:'',
     password:''
   }
+
   handleChange = (key) => (event) => {
     this.setState({
       [key] : event.target.value
@@ -18,7 +20,13 @@ class RegistrationContainer extends Component{
   handleSubmit = (event) =>{
     event.preventDefault()
     alert("first name: " + this.state.email +"\nlast name: " + this.state.lastName + "\nemail: " + this.state.email + "\npassword: " + this.state.password)
-    //TODO API call
+    api.register(this.state)
+    .then(res => {
+      
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   print = () => {
