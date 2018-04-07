@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import ButtonsTest from './ButtonsTest';
 import WrappersTest from './WrappersTest';
+import LoginTest from './LoginTest';
 import { Route } from 'react-router-dom'
 
 class Test extends Component {
@@ -17,7 +18,8 @@ class Test extends Component {
 
         <Route path={`${match.url}/wrappers`} component={WrappersTest} />
 
-        {/* 
+        <Route path={`${match.url}/login`} component={LoginTest} />
+        {/*
         Add a new route to test your component in this way
         <Route path={`${match.url}/define route name here`} component={imported component to test} /> */
         }
