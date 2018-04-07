@@ -6,6 +6,7 @@ import Radium from 'radium';
 import { colors } from '../resources/constants';
 import WhiteWrapper from '../components/wrappers/WhiteWrapper';
 import BorderedButton from '../components/buttons/BorderedButton';
+import ListAdapter from '../components/wrappers/ListAdapter';
 
 class WrappersTest extends Component {
 
@@ -18,40 +19,40 @@ class WrappersTest extends Component {
                 <section>
                     <h2>White Wrapper (sm, md, lg)</h2>
                     <WhiteWrapper style={styles.whiteWrapper} size="sm">
-                        {
-                            [1, 2, 3].map(number => {
-                                return (
-                                    <div>
-                                        <BorderedButton name={`Button${number}`} color="blue" />
-                                    </div>)
-                            })
-                        }
+                        Small
                     </WhiteWrapper>
                     <WhiteWrapper style={styles.whiteWrapper} size="md">
-                        {
-                            [1, 2, 3, 4].map(number => {
-                                return (
-                                    <div>
-                                        <BorderedButton name={`Button${number}`} color="blue" />
-                                    </div>)
-                            })
-                        }
+                        Medium
                     </WhiteWrapper>
                     <WhiteWrapper style={styles.whiteWrapper} size="lg">
-                        {
-                            [1, 2, 3, 4, 5].map(number => {
-                                return (
-                                    <div>
-                                        <BorderedButton name={`Button${number}`} color="blue" />
-                                    </div>)
-                            })
-                        }
+                        Large
                     </WhiteWrapper>
+                </section>
+
+                <section>
+                    <h2>List Adapter</h2>
+                    <ListAdapter data={mockData} listItemView={BorderedButton} />
+                    <h2>List Adapter (Vertical Split)</h2>
+                    <ListAdapter data={mockData2} listItemView={WhiteWrapper} verticalSplit />
                 </section>
             </div >
         );
     }
 }
+
+const mockData = [
+    { name: 'Button 1' },
+    { name: 'Button 2' },
+    { name: 'Button 3' },
+    { name: 'Button 4' },
+]
+
+const mockData2 = [
+    { children: 'Post 1' },
+    { children: 'Post 2' },
+    { children: 'Post 3' },
+    { children: 'Post 4' },
+]
 
 const styles = {
     base: {
