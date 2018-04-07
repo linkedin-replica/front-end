@@ -25,12 +25,11 @@ class ListAdapter extends Component {
           } = this.props;
 
         return (
-            <ul
-                style={[
-                    styles.base,
-                    style,
-                    size ? styles[size] : styles['md']
-                ]}>
+            <ul style={[
+                styles.base,
+                style,
+                size ? styles[size] : styles['md']
+            ]}>
                 {
                     data.map((item, index) => (
                         <li key={`${listItemView.displayName}${index}`}
@@ -48,8 +47,8 @@ class ListAdapter extends Component {
  * Define here what does this component take as props
  */
 ListAdapter.propTypes = {
-    data: PropTypes.array,
-    listItemView: PropTypes.node,
+    data: PropTypes.array.isRequired,
+    listItemView: PropTypes.node.isRequired,
     style: PropTypes.object, // Content style
     size: PropTypes.oneOf(["sm", "md", "lg"]),
     verticalSplit: PropTypes.bool
