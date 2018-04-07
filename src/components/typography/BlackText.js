@@ -1,9 +1,9 @@
 /**
-    The gray text used in all headers in different sizes,
+    The black text used in all headers in different sizes,
     sm: Small
     md: Medium
     lg: Large
-    By default it's set to sm
+    By default it's set to md
 */
 import React, { Component } from 'react';
 import Radium from 'radium';
@@ -11,12 +11,12 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { colors } from '../../resources/constants';
 
-class GrayText extends Component {
+class BlackText extends Component {
     render() {
         // Directly get the passed parameters from the props
         const { text, type, id, style, size } = this.props;
         return (
-            <p style={[styles.base, style, size ? styles[size] : styles['sm']]}>
+            <p style={[styles.base, style, size ? styles[size] : styles['md']]}>
                 {text}
             </p>
         );
@@ -24,7 +24,7 @@ class GrayText extends Component {
 }
 
 // Define the passed input types for this component
-GrayText.propTypes = {
+BlackText.propTypes = {
     text: PropTypes.string.isRequired,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"]),
@@ -32,7 +32,7 @@ GrayText.propTypes = {
 
 const styles = {
     base: {
-        color: colors.darkGray,
+        color: colors.black,
     },
     sm: {
         fontSize: '0.8em'
@@ -45,5 +45,5 @@ const styles = {
     }
 }
 
-GrayText = Radium(GrayText);
-export default GrayText;
+BlackText = Radium(BlackText);
+export default BlackText;
