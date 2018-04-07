@@ -134,5 +134,5 @@ export default {
   },
   editReply: (reply) => {
     return axiosInstance.put(`comment/replies`,reply)
-  },
+  }
 }
