@@ -9,54 +9,42 @@ class Signup extends Component{
     const {handleChange, handleSubmit} = this.props
     return (
       <WhiteWrapper style={styles.whiteWrapper}>
-        <form onSubmit={this.handleSubmit}>
-        <div>
+        <form>
           <label htmlFor="firstName">First name</label>
-        </div>
-        <div>
           <input
             id="firstName"
             className='form-inline'
             type='text'
+            style={styles.input}
             onChange={handleChange('firstName')}
           />
-        </div>
-        <div>
           <label htmlFor="lastName">Last name</label>
-        </div>
-        <div>
           <input
             id="lastName"
             className='form-inline'
             type='text'
+            style={styles.input}
             onChange={handleChange('lastName')}
           />
-        </div>
-        <div>
           <label htmlFor="email">Email</label>
-        </div>
-        <div>
           <input
             id="email"
             className='form-inline'
             type='text'
+            style={styles.input}
             onChange={handleChange('email')}
           />
-        </div>
-        <div>
           <label htmlFor="password">Password</label>
-        </div>
-        <div>
           <input
             id="password"
             className="form-inline"
             type="password"
+            style={styles.input}
             onChange={handleChange('password')}
           />
-        </div>
-        <div style={styles.label}>
-          <BlueButton name="Join now" size="lg" color="blue" onClick={handleSubmit}></BlueButton>
-        </div>
+          <div style={styles.button}>
+            <BlueButton name="Join now" size="lg" color="blue" onClick={handleSubmit}></BlueButton>
+          </div>
         </form>
       </WhiteWrapper>
     )
@@ -74,11 +62,17 @@ const styles = {
     },
     whiteWrapper: {
         margin: '10px auto',
-        padding: '30px',
-        textAlign: 'left'
+        padding: '20px',
+        textAlign: 'left',
+        fontSize: '1.5em'
     },
-    label: {
+    button: {
+      textAlign: 'center',
       paddingTop: '10px'
+    },
+    input: {
+      width: '100%',
+      height: '30px',
     }
 }
 

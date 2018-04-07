@@ -17,6 +17,7 @@ class RegistrationContainer extends Component{
 
   handleSubmit = (event) =>{
     event.preventDefault()
+    // this.print()
     //TODO API call
   }
 
