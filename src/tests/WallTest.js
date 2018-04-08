@@ -5,7 +5,7 @@ import ListAdapter from '../components/wrappers/ListAdapter';
 import DetailsHeader from '../components/details/DetailsHeader';
 import Posts from '../components/wall/Posts';
 
-class WrappersTest extends Component {
+class WallTest extends Component {
 
     render() {
         return (
@@ -38,14 +38,10 @@ const mockData2 = [
 const styles = {
     base: {
         background: colors.whiteGray,
-        padding: '10px',
-    },
-    whiteWrapper: {
-        margin: '10px auto',
-        padding: '10px',
-        textAlign: 'center'
+        padding: '10px'
+       
     }
 }
 
-WrappersTest = Radium(WrappersTest);
-export default WrappersTest;
+WallTest = Radium(WallTest);
+export default WallTest;

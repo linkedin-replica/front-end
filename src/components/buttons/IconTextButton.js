@@ -31,7 +31,7 @@ IconTextButton.propTypes = {
   type: PropTypes.oneOf(['like', 'share', 'comment', 'write', 'image', 'video']).isRequired,
   hasBorder: PropTypes.bool,
   size: PropTypes.oneOf(["sm", "md", "lg"]),
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 const styles = {
