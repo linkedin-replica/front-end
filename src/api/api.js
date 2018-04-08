@@ -10,7 +10,7 @@ const axiosInstance = axios.create({
 })
 
 axiosInstance.interceptors.request.us(config => {
-  config.headers['access-token'] = localStorage.getItem('jwt-token') || ''
+  config.headers['access-token'] = localStorage.getItem('access-token') || ''
   return config
 })
 
@@ -22,10 +22,10 @@ export default {
     return axiosInstance.post('auth/login', user)
   },
   saveLoginToken: (newToken) => {
-    localStorage.setItem('jwt-token', newToken)
+    localStorage.setItem('access-token', newToken)
   },
   acceptFriendRequest: (userId) => {
-    return axiosInstance.post('accept-friend-request', userId)
+    return axiosInstance.post('acceptFriendRequest', userId)
   },
   addCV: (cvURL) => {
     return axiosInstance.post('cv', cvURL)
@@ -78,15 +78,13 @@ export default {
   getFriendRecommendations: (userId) => {
     return axiosInstance.get(`friendRecommendation/${userId}`)
   },
-  getNotifications: (userId) => {
-    return axiosInstance.get(`notifications/${userId}`)
+  getAllNotifications: (userId) => {
+    return axiosInstance.get(`notifications/all/${userId}`)
   },
   getPost: (postId) => {
     return axiosInstance.get(`posts/${postId}`)
   },
-  search: (name,location) => {
-    return axiosInstance.get(`search/${name}/${location}`)
-  },
+
   searchUser: (user) => {
     return axiosInstance.get(`search/user/${user}`)
   },
@@ -106,51 +104,51 @@ export default {
     return axiosInstance.get(`users/${userId}`)
   },
   deleteComment: (comment) => {
-    return axiosInstance.delete(`comments`,comment)
+    return axiosInstance.delete(`comments`, comment)
   },
   deleteCV: (cvURL) => {
-    return axiosInstance.delete(`cv`,cvURL)
+    return axiosInstance.delete(`cv`, cvURL)
   },
   deleteJob: (jobId) => {
-    return axiosInstance.delete(`jobs`,jobId)
+    return axiosInstance.delete(`jobs`, jobId)
   },
   deleteJob: (jobId) => {
-    return axiosInstance.delete(`jobs`,jobId)
+    return axiosInstance.delete(`jobs`, jobId)
   },
   deleteLike: (like) => {
-    return axiosInstance.delete(`comment/likes`,like)
+    return axiosInstance.delete(`comment/likes`, like)
   },
   deleteReply: (reply) => {
-    return axiosInstance.delete(`comment/replies`,reply)
+    return axiosInstance.delete(`comment/replies`, reply)
   },
   unfriend: (userId) => {
-    return axiosInstance.delete(`friend`,userId)
+    return axiosInstance.delete(`friend`, userId)
   },
   unblock: (userId) => {
-    return axiosInstance.delete(`block`,userId)
+    return axiosInstance.delete(`block`, userId)
   },
   editArticle: (article) => {
-    return axiosInstance.put(`articles`,article)
+    return axiosInstance.put(`articles`, article)
   },
   editComment: (comment) => {
-    return axiosInstance.put(`comments`,comment)
+    return axiosInstance.put(`comments`, comment)
   },
   editCompanyProfile: (company) => {
-    return axiosInstance.put(`company/edit`,company)
+    return axiosInstance.put(`company/edit`, company)
   },
   editJob: (job) => {
-    return axiosInstance.put(`jobs`,job)
+    return axiosInstance.put(`jobs`, job)
   },
   editJobAsCompany: (job) => {
-    return axiosInstance.put(`company/jobs/edit`,job)
+    return axiosInstance.put(`company/jobs/edit`, job)
   },
   editPost: (post) => {
-    return axiosInstance.put(`post`,post)
+    return axiosInstance.put(`post`, post)
   },
   editUserProfile: (profile) => {
-    return axiosInstance.put(`edit-profile`,profile)
+    return axiosInstance.put(`edit-profile`, profile)
   },
   editReply: (reply) => {
-    return axiosInstance.put(`comment/replies`,reply)
+    return axiosInstance.put(`comment/replies`, reply)
   }
 }
