@@ -16,16 +16,16 @@ import AvatarImage from '../images/AvatarImage';
 
 class DetailsHeader extends Component {
     render() {
-        const { style, size } = this.props;
+        const { style, size, src, rounded, header, subHeader, type, id } = this.props;
         return(
         <div style={[style, styles.base]}>
             <span style={styles.imgDiv}>
-                <AvatarImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A" 
-                rounded="false" />
+                <AvatarImage src={src}
+                rounded={rounded} />
             </span>
             <span style={styles.textDiv}>
-                <BoldLink text="Mahmoud" type="profile" id="1"/>
-                <GrayText text="Mahmoud ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A" style={styles.text}/>
+                <BoldLink text={header} type={type} id={id}/>
+                <GrayText text={subHeader} style={styles.text}/>
             </span>
         </div>
     )};    
@@ -33,7 +33,13 @@ class DetailsHeader extends Component {
 
 DetailsHeader.propTypes = {
     style: PropTypes.object, // Content defined styles
-    size: PropTypes.oneOf(["sm", "md", "lg"])
+    size: PropTypes.oneOf(["sm", "md", "lg"]),
+    src: PropTypes.string,
+    rounded: PropTypes.bool,
+    header: PropTypes.string,
+    subHeader: PropTypes.string,
+    type: PropTypes.string,
+    id: PropTypes.string
 };
 
 const styles = {

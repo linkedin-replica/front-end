@@ -45,8 +45,8 @@ const styles = {
         width: '2%'
     },
     md: {
-        height: '4%',
-        width: '4%'
+        height: '7%',
+        width: '7%'
     },
     lg: {
         height: '8%',

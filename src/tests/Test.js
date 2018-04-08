@@ -7,6 +7,7 @@ import ButtonsTest from './ButtonsTest';
 import WrappersTest from './WrappersTest';
 import TypographyTest from './TypographyTest';
 import ProfileTest from './ProfileTest';
+import WallTest from './WallTest';
 import { Route } from 'react-router-dom'
 
 class Test extends Component {
@@ -22,6 +23,8 @@ class Test extends Component {
         <Route path={`${match.url}/typography`} component={TypographyTest} />
 
         <Route path={`${match.url}/profile`} component={ProfileTest} />
+
+        <Route path={`${match.url}/wall`} component={WallTest} />
 
         {/* 
         Add a new route to test your component in this way
