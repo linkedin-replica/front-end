@@ -27,7 +27,8 @@ export const icons = {
 }
 
 export const paddings = {
-  button: '5px 10px'
+  button: '5px 10px',
+  wrapper: '15px'
 }
 
 export const borders = {
