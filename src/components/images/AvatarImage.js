@@ -18,7 +18,7 @@ class AvatarImage extends Component {
         return (
             <span style={style}>
                 <Link to={`/${type}/${id}`}>
-                    <img src={src} style={[rounded ? styles.img : styles.imgSqaured,
+                    <img src={src} style={[rounded ? styles.imgSqaured : styles.img,
                     size ? styles[size] : styles['md']]}/>
                 </Link >
             </span>
@@ -39,9 +39,11 @@ AvatarImage.propTypes = {
 
 const styles = {
     img: {
+        paddingTop: '1%',
         borderRadius: '50%'
     },
     imgSqaured: {
+        paddingTop: '1%',
         borderRadius: '0%'
     },
     sm: {
