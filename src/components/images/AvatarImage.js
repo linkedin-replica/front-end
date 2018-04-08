@@ -15,10 +15,10 @@ import { colors } from '../../resources/constants';
 class AvatarImage extends Component {
     render() {
         // Directly get the passed parameters from the props
-        const { src, rounded, style, size } = this.props;
+        const { imgSrc, rounded, style, size } = this.props;
         return (
             <span style={style}>
-                <img src={src} style={[rounded ? styles.img : styles.imgSqaured,
+                <img src={imgSrc} style={[rounded ? styles.img : styles.imgSqaured,
                 size ? styles[size] : styles['md']]} />
             </span>
         );
@@ -27,7 +27,7 @@ class AvatarImage extends Component {
 
 // Define the passed input types for this component
 AvatarImage.propTypes = {
-    src: PropTypes.string.isRequired,
+    imgSrc: PropTypes.string,
     rounded: PropTypes.bool,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"]),
