@@ -18,8 +18,8 @@ class AvatarImage extends Component {
         return (
             <span style={style}>
                 <Link to={`/${type}/${id}`}>
-                    <img src={src} style={[rounded ? styles.imgSqaured : styles.img,
-                    size ? styles[size] : styles['md']]}/>
+                    <img src={src}  onerror= "this.src='http://api.sportrocket.net/wp-content/themes/sr-theme/assets/images/blank-user-l.jpg'"
+                    style={[rounded ? styles.imgSqaured : styles.img, size ? styles[size] : styles['md']]}/>
                 </Link >
             </span>
         );
@@ -28,7 +28,7 @@ class AvatarImage extends Component {
 
 // Define the passed input types for this component
 AvatarImage.propTypes = {
-    src: PropTypes.string.isRequired,
+    src: PropTypes.string,
     rounded: PropTypes.bool,
     type: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
