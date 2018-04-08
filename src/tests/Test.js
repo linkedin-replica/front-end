@@ -39,7 +39,6 @@ class Test extends Component {
 
 const styles = {
   base: {
-    fontFamily: 'Source Sans Pro, sans-serif'
   }
 }
 
