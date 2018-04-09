@@ -24,6 +24,16 @@ class CompanyTest extends Component {
         </section>
 
         <section>
+          <h2>Company Basic Info</h2>
+          <CompanyBasicInfo img='http://www.mamboproductora.com.ar/wp-content/uploads/2017/04/descarga.png'
+            companyName='Microsoft'
+            industryType='Computer Software'
+            companyLocation='Redmond, WA'
+            id='1'/>
+        </section>
+
+
+        <section>
           <h2>Job Applicant Card</h2>
           <JobApplicant img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A"
               rounded
@@ -41,11 +51,6 @@ class CompanyTest extends Component {
         <section>
           <h2>Create Company</h2>
           <CreateCompanyContainer></CreateCompanyContainer>
-        </section>
-
-        <section>
-          <h2>Company Basic Info</h2>
-          <CompanyBasicInfo />
         </section>
 
       </div >
