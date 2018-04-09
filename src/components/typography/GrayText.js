@@ -16,9 +16,9 @@ class BoldLink extends Component {
         // Directly get the passed parameters from the props
         const { text, type, id, style, size } = this.props;
         return (
-            <span style={[styles.base, style, size ? styles[size] : styles['sm']]}>
-                <p>{text}</p>
-            </span>
+            <p style={[styles.base, style, size ? styles[size] : styles['sm']]}>
+                {text}
+            </p>
         );
     }
 }
