@@ -17,10 +17,10 @@ class ListOfApplicants extends Component {
 }
 
 const mockData = [
-    { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", rounded: true, header:"Yara Yehia", subHeader:"A Computer Science Student at the German University in Cairo", type:"profile", id:"1" },
-    { img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", rounded: true, header: "Hisham Zahran", subHeader:"A Computer Science Student at the German University in Cairo", type:"profile", id:"2" },
-    { img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", rounded: true, header: "Esraa Salah", subHeader:"A Computer Science Student at the German University in Cairo", type:"profile", id:"3" },
-    { img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", rounded: true, header: "Rana Saeed", subHeader:"A Computer Science Student at the German University in Cairo", type:"profile", id:"4" }
+    { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", rounded: true, header:"Yara Yehia", subHeader:"A Computer Science Student at the German University in Cairo", type:"wall", id:"1" },
+    { img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", rounded: true, header: "Hisham Zahran", subHeader:"A Computer Science Student at the German University in Cairo", type:"wall", id:"2" },
+    { img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", rounded: true, header: "Esraa Salah", subHeader:"A Computer Science Student at the German University in Cairo", type:"wall", id:"3" },
+    { img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", rounded: true, header: "Rana Saeed", subHeader:"A Computer Science Student at the German University in Cairo", type:"wall", id:"4" }
 ]
 
 

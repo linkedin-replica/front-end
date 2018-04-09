@@ -37,7 +37,7 @@ AvatarImage.propTypes = {
     type: PropTypes.string,
     id: PropTypes.string,
     style: PropTypes.object, // Content defined styles
-    size: PropTypes.oneOf(["sm", "md", "lg"]),
+    size: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
 };
 
 
@@ -62,6 +62,10 @@ const styles = {
     lg: {
         height: '8%',
         width: '8%'
+    },
+    xl: {
+      height: '16%',
+      width: '16%'
     }
 }
 
