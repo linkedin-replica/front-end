@@ -16,8 +16,12 @@ class DetailsHeaderTest extends Component {
                 </header>
                 <section>
                     <h2>Details Header</h2>
-                    <DetailsHeader imgSrc="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A" rounded
-                        boldText="My name" type="profile" id="1" grayText="My job"/>
+                    <DetailsHeader img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A"
+                        rounded
+                        header="Hisham Zahran"
+                        subHeader="Wenta 3amel eh a5barak tmam el7amdulelah ?ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssslkdlskdlkslkdls"
+                        type="profile"
+                        id="1" />
                 </section>
             </div >
         );
