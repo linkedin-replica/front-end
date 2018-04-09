@@ -16,44 +16,54 @@ import AvatarImage from '../images/AvatarImage';
 
 class DetailsHeader extends Component {
     render() {
-        const { imgSrc, rounded, boldText, type, id, grayText, style, size } = this.props;
-        return(
-        <div style={style}>
-            <span style={styles.imgDiv}>
-                <AvatarImage imgSrc={imgSrc} rounded={rounded} />
-            </span>
-            <span style={styles.textDiv}>
-                <BoldLink text={boldText} type={type} id={id}/>
-                <GrayText text={grayText} style={styles.text}/>
-            </span>
-        </div>
-    )};    
+        const { img, rounded, header, subHeader, type, id, style, size, } = this.props;
+        return (
+            <div style={[style, styles.base]}>
+                <AvatarImage src={img}
+                    rounded={rounded}
+                    style={styles.img}
+                    size={size}
+                    type={type}
+                    id={id}
+                />
+                <div style={styles.textDiv}>
+                    <BoldLink text={header}
+                        type={type}
+                        id={id}
+                        size={size} />
+                    <GrayText text={subHeader}
+                        style={styles.text}
+                        size={size} />
+                </div>
+            </div>
+        )
+    };
 }
 
 DetailsHeader.propTypes = {
-    imgSrc: PropTypes.string,
+    img: PropTypes.string.isRequired,
+    header: PropTypes.string.isRequired,
+    subHeader: PropTypes.string.isRequired,
     rounded: PropTypes.bool,
-    boldText: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    grayText: PropTypes.string,
+    type: PropTypes.string,
+    id: PropTypes.string,
     style: PropTypes.object, // Content defined styles
-    size: PropTypes.oneOf(["sm", "md", "lg"])
+    size: PropTypes.oneOf(["sm", "md", "lg"]),
 };
 
 const styles = {
-    imgDiv: {
-        paddingRight:'2%',
-        verticalAlign:'top'
+    base: {
+
     },
     textDiv: {
         display: 'inline-block',
-        verticalAlign:'top'
+        verticalAlign: 'top',
+        paddingLeft: '1%'
     },
     text: {
-        margin:'0px',
-        maxWidth:'300px',
-        overflow:'hidden',
+        margin: '0px',
+        maxWidth: '60%',
+        overflow: 'hidden',
         textOverflow: 'ellipsis'
     },
     sm: {
