@@ -8,6 +8,7 @@ import WrappersTest from './WrappersTest';
 import CompanyTest from './CompanyTest';
 import TypographyTest from './TypographyTest';
 import DetailsHeaderTest from './DetailsHeaderTest';
+import AdjacentGreyBorderTest from './AdjacentGreyBorderTest';
 import { Route } from 'react-router-dom'
 
 class Test extends Component {
@@ -25,6 +26,8 @@ class Test extends Component {
         <Route path={`${match.url}/typography`} component={TypographyTest} />
 
         <Route path={`${match.url}/details`} component={DetailsHeaderTest} />
+
+        <Route path={`${match.url}/respond`} component={AdjacentGreyBorderTest} />
       </div>
     );
   }
