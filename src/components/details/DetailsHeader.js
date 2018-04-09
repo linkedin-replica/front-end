@@ -19,6 +19,7 @@ class DetailsHeader extends Component {
         const { img, rounded, header, subHeader, type, id, style, size, } = this.props;
         return (
             <div style={[style, styles.base]}>
+              <span>
                 <AvatarImage src={img}
                     rounded={rounded}
                     style={styles.img}
@@ -26,6 +27,8 @@ class DetailsHeader extends Component {
                     type={type}
                     id={id}
                 />
+              </span>
+
                 <div style={styles.textDiv}>
                     <BoldLink text={header}
                         type={type}

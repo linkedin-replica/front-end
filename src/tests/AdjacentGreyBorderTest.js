@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
-import GreyBlue from '../components/respond/AdjacentGreyBorder';
+import GreyBlue from '../components/buttons/AdjacentGreyBorder';
 import { colors } from '../resources/constants';
 
 

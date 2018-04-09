@@ -1,10 +1,3 @@
-/**
-    The details header used in all headers in different sizes,
-    sm: Small
-    md: Medium
-    lg: Large
-    By default it's set to sm
-*/
 import React, { Component } from 'react';
 import Radium from 'radium';
 import PropTypes from 'prop-types'
@@ -17,10 +10,10 @@ class AdjacentGreyBorder extends Component {
     render() {
         const { greyText, blueText, size } = this.props;
         return (
-            <div  style={styles.base}>
-              <GrayTextButton name={greyText} size={size} type="Button"/>
-              <BorderedButton name={blueText} color="blue" size={size} />
-            </div>
+          <div  style={[styles.base, styles.btnDiv]}>
+            <GrayTextButton name={greyText} size={size} type="Button"/>
+            <BorderedButton name={blueText} color="blue" size={size} />
+          </div>
         )
     };
 }
@@ -36,10 +29,7 @@ const styles = {
 
     },
     btnDiv: {
-        display: 'inline-block',
-        verticalAlign: 'top',
-        paddingLeft: '1%',
-        width: '50%'
+        paddingTop: '5px'
     }
 }
 

@@ -9,6 +9,7 @@ import CompanyTest from './CompanyTest';
 import TypographyTest from './TypographyTest';
 import DetailsHeaderTest from './DetailsHeaderTest';
 import AdjacentGreyBorderTest from './AdjacentGreyBorderTest';
+import JobApplicantTest from './JobApplicantTest';
 import { Route } from 'react-router-dom'
 
 class Test extends Component {
@@ -28,6 +29,9 @@ class Test extends Component {
         <Route path={`${match.url}/details`} component={DetailsHeaderTest} />
 
         <Route path={`${match.url}/respond`} component={AdjacentGreyBorderTest} />
+
+        <Route path={`${match.url}/applicant`} component={JobApplicantTest} />
+
       </div>
     );
   }
