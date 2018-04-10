@@ -32,8 +32,8 @@ const mockExperienceSection = [
  ]
 
  const mockEducationSection = [
-  { title: 'Computer Science Engineering', company: 'German University in Cairo', id: '2', duration: '4 years'},
-  { title: 'Computer Science Engineering', company: 'German University in Cairo', id: '2', duration: '4 years'},
+  { title: 'Computer Science Engineering', company: 'German University in Cairo', id: '2', duration: '4 years',description:''},
+  { title: 'Computer Science Engineering', company: 'German University in Cairo', id: '2', duration: '4 years',description:''},
  ]
 
 ProfileTest = Radium(ProfileTest);

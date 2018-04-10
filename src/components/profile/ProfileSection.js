@@ -24,7 +24,7 @@ class ProfileSection extends Component {
 
 ProfileSection.propTypes = {
     sectionTitle: PropTypes.string.isRequired, 
-    data: PropTypes.object.isRequired, 
+    data: PropTypes.array.isRequired, 
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"])
 };
@@ -33,7 +33,7 @@ const styles = {
     base: {
        display: 'inline-block',
        paddingLeft: '2em',
-       paddingRight: '19.5em',
+       paddingRight: '20em',
        fontWeight: 'normal'
     },
     whiteWrapper: {

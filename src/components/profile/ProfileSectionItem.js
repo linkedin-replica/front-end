@@ -22,24 +22,18 @@ class ProfileSectionItem extends Component {
         return(
         <div style={[style, styles.base]}>
             <Link to={`/company/${id}`}>
-                <div >
-                    <span style={styles.imgDiv}>
-                        <AvatarImage src={imgSrc} type="company" id={id} size="md"/>
-                    </span>
+                    <AvatarImage src={imgSrc} type="company" id={id} size="lg" style={styles.imgDiv}/>
                     <span style={styles.textDiv}>
                         <BlackText text={title} size="md" style={[styles.text, styles.title]}/>
                         <BlackText text={company} size="md" style={styles.text}/>
                         <GrayText text={duration} size="sm" style={styles.text}/>
                         <GrayText text={description} size="sm" style={styles.description}/>
                     </span>
-                </div>
             </Link>
             <div style={styles.btnDiv}>
                 <IconButton type="edit" onClick={this.incrementCounter} />
             </div>
-        </div>
-
-        
+        </div>        
     )};    
 }
 
@@ -58,11 +52,13 @@ const styles = {
     base: {
         display: 'inline-block',
         marginLeft:'20px',
-        paddingBottom: '1em',
+        width:'100%'
     },
     imgDiv: {
-        paddingRight:'2%',
-        float: 'left',
+        display: 'inline-block',
+        paddingRight: '2%',
+        paddingTop: '2%',
+        float: 'left'
     },
     textDiv: {
         display: 'inline-block',
@@ -71,17 +67,16 @@ const styles = {
     },
     btnDiv: {
         display: 'inline-block',
-        float: 'left',
-        ":hover": {
-             visibility: 'visible',
-          }
+        float: 'right',
+        // ":hover": {
+        //      visibility: 'visible',
+        //   }
     },
     title: {
        fontWeight:'bold'
     },
     text: {
         margin:'5px',
-        maxWidth:'300px'
     },
     description: {
         margin:'5px',
