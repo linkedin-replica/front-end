@@ -13,25 +13,33 @@ import { colors } from '../../resources/constants';
 import GrayText from '../typography/GrayText';
 import BlackText from '../typography/BlackText';
 import AvatarImage from '../images/AvatarImage';
+import WhiteWrapper from '../wrappers/WhiteWrapper';
+import IconButton from '../buttons/IconButton';
 
 class ProfileSectionItem extends Component {
     render() {
         const { title, company, id, duration, description, imgSrc, style, size } = this.props;
         return(
-        <Link to={`/company/${id}`}>
-            <div style={[style, styles.base]}>
-                <span style={styles.imgDiv}>
-                    <AvatarImage src={imgSrc} 
-                    rounded="false" type="company" id={id} size="md"/>
-                </span>
-                <span style={styles.textDiv}>
-                    <BlackText text={title} size="md" style={[styles.text, styles.title]}/>
-                    <BlackText text={company} size="md" style={styles.text}/>
-                    <GrayText text={duration} size="sm" style={styles.text}/>
-                    <GrayText text={description} size="sm" style={styles.description}/>
-                </span>
+        <div style={[style, styles.base]}>
+            <Link to={`/company/${id}`}>
+                <div >
+                    <span style={styles.imgDiv}>
+                        <AvatarImage src={imgSrc} type="company" id={id} size="md"/>
+                    </span>
+                    <span style={styles.textDiv}>
+                        <BlackText text={title} size="md" style={[styles.text, styles.title]}/>
+                        <BlackText text={company} size="md" style={styles.text}/>
+                        <GrayText text={duration} size="sm" style={styles.text}/>
+                        <GrayText text={description} size="sm" style={styles.description}/>
+                    </span>
+                </div>
+            </Link>
+            <div style={styles.btnDiv}>
+                <IconButton type="edit" onClick={this.incrementCounter} />
             </div>
-        </Link>
+        </div>
+
+        
     )};    
 }
 
@@ -48,15 +56,25 @@ ProfileSectionItem.propTypes = {
 
 const styles = {
     base: {
-        marginLeft:'20px'
+        display: 'inline-block',
+        marginLeft:'20px',
+        paddingBottom: '1em',
     },
     imgDiv: {
         paddingRight:'2%',
-        verticalAlign:'top'
+        float: 'left',
     },
     textDiv: {
         display: 'inline-block',
-        verticalAlign:'top'
+        verticalAlign:'top',
+        float: 'left',
+    },
+    btnDiv: {
+        display: 'inline-block',
+        float: 'left',
+        ":hover": {
+             visibility: 'visible',
+          }
     },
     title: {
        fontWeight:'bold'

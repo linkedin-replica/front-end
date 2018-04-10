@@ -1,5 +1,5 @@
 /**
-An icon only button, could have a rounded border or not
+An icon only button, could have a rounded border or not, 
 */
 import React, { Component } from 'react';
 import Radium from 'radium';

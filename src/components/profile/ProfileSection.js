@@ -5,16 +5,21 @@ import { Link } from 'react-router-dom'
 import { colors } from '../../resources/constants';
 import ProfileSectionItem from '../profile/ProfileSectionItem';
 import ListAdapter from '../wrappers/ListAdapter';
+import WhiteWrapper from '../wrappers/WhiteWrapper';
+import IconButton from '../buttons/IconButton';
 
 class ProfileSection extends Component {
     render() {
         const { sectionTitle, data, style, size } = this.props;
         return(
-        <div style={style}>
-            <h3 style={[styles.base, size ? styles[size] : styles['lg']]}> {sectionTitle} </h3>
-            <ListAdapter data = {data} listItemView={ProfileSectionItem} verticalSplit />
-        </div>
-    )};    
+            <WhiteWrapper style={styles.whiteWrapper} size="lg">
+                <div style={style}>
+                    <h3 style={[styles.base, size ? styles[size] : styles['lg']]}> {sectionTitle} </h3>
+                    <IconButton type="add" onClick={this.incrementCounter} />
+                    <ListAdapter data = {data} listItemView={ProfileSectionItem} verticalSplit />
+                </div>
+            </WhiteWrapper>
+        )};    
 }
 
 ProfileSection.propTypes = {
@@ -26,8 +31,14 @@ ProfileSection.propTypes = {
 
 const styles = {
     base: {
-       paddingLeft: '4%',
+       display: 'inline-block',
+       paddingLeft: '2em',
+       paddingRight: '19.5em',
        fontWeight: 'normal'
+    },
+    whiteWrapper: {
+        margin: '10px auto',
+        paddingTop: '0.5em'
     },
     sm: {
         fontSize: '0.5em'
