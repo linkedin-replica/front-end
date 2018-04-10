@@ -6,26 +6,32 @@ import DetailsHeader from '../details/DetailsHeader';
 import IconTextButton from '../buttons/IconTextButton';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import PostContent from './PostContent';
+import WriteAComment from './WriteAComment';
 
-class Posts extends Component {
 
+class Post extends Component {
+    
     render() {
+        var state = false
         const { postContent, ...rest } = this.props;
+        console.log(state)
         return (
             <WhiteWrapper style={styles.base}>
                 <DetailsHeader {...rest} />
                 <PostContent postContent={postContent} />
-                <div style={styles.buttons}>
-                    <IconTextButton name="Like" type="like" />
-                    <IconTextButton name="Comment" type="comment" />
-                    <IconTextButton name="Share" type="share" />
+                <div style={styles.buttons} >
+                    <IconTextButton name="Like" type="like" state = {this.state.valueOf}  />
+                    <IconTextButton name="Comment" type="comment" state = {this.state.valueOf}/>
+                    <IconTextButton name="Share" type="share" state = {this.state.valueOf} />
                 </div>
+                <WriteAComment {...rest}  state = {this.state.valueOf} />
+                    
             </WhiteWrapper>
         )
     };
 }
 
-Posts.propTypes = {
+Post.propTypes = {
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"]),
     src: PropTypes.string,
@@ -34,7 +40,8 @@ Posts.propTypes = {
     subHeader: PropTypes.string,
     postContent: PropTypes.string,
     type: PropTypes.string,
-    id: PropTypes.string
+    id: PropTypes.string,
+    state: PropTypes.bool
 };
 
 const styles = {
@@ -46,5 +53,5 @@ const styles = {
     }
 }
 
-Posts = Radium(Posts);
-export default Posts;
+Post = Radium(Post);
+export default Post;

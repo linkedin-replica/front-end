@@ -3,7 +3,7 @@ import Radium from 'radium';
 import { colors } from '../resources/constants';
 import ListAdapter from '../components/wrappers/ListAdapter';
 import DetailsHeader from '../components/details/DetailsHeader';
-import Posts from '../components/wall/Post';
+import Post from '../components/wall/Post';
 
 class WallTest extends Component {
 
@@ -14,7 +14,7 @@ class WallTest extends Component {
                     <h1>Wall Testing</h1>
                 </header>
                 <section>
-                    <ListAdapter data={mockData} listItemView={Posts} verticalSplit />
+                    <ListAdapter data={mockData} listItemView={Post} verticalSplit />
                 </section>
             </div >
         );

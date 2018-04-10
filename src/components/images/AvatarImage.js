@@ -16,7 +16,7 @@ class AvatarImage extends Component {
         // Directly get the passed parameters from the props
         const { src, rounded, style, size } = this.props;
         return (
-            <span style={style}>
+            <span style={styles.base}>
                 <img src={src} style={[rounded ? styles.img : styles.imgSqaured,
                 size ? styles[size] : styles['md']]} />
             </span>
@@ -34,6 +34,9 @@ AvatarImage.propTypes = {
 
 
 const styles = {
+    base:{
+       
+    },
     img: {
         borderRadius: '50%'
     },
@@ -41,8 +44,8 @@ const styles = {
         borderRadius: '0%'
     },
     sm: {
-        height: '2%',
-        width: '2%'
+        height: '6%',
+        width: '6%'
     },
     md: {
         height: '7%',

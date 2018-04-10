@@ -26,6 +26,7 @@ class Test extends Component {
 
         <Route path={`${match.url}/wall`} component={WallTest} />
 
+
         {/* 
         Add a new route to test your component in this way
         <Route path={`${match.url}/define route name here`} component={imported component to test} /> */
