@@ -18,8 +18,12 @@ class AvatarImage extends Component {
         return (
             <span style={style}>
                 <Link to={`/${type}/${id}`}>
-                    <img src={src}  onerror= "this.src='http://api.sportrocket.net/wp-content/themes/sr-theme/assets/images/blank-user-l.jpg'"
-                    style={[rounded ? styles.imgSqaured : styles.img, size ? styles[size] : styles['md']]}/>
+                    <img src={src}  
+                    onerror= "this.src='http://api.sportrocket.net/wp-content/themes/sr-theme/assets/images/blank-user-l.jpg'"
+                    style={[
+                        rounded ? styles.imgRounded : styles.imgSquared,
+                        size ? styles[size] : styles['md']
+                    ]}/>
                 </Link >
             </span>
         );
@@ -38,12 +42,13 @@ AvatarImage.propTypes = {
 
 
 const styles = {
-    img: {
-        paddingTop: '1%',
+    base: {
+
+    },
+    imgRounded: {
         borderRadius: '50%'
     },
-    imgSqaured: {
-        paddingTop: '1%',
+    imgSquared: {
         borderRadius: '0%'
     },
     sm: {

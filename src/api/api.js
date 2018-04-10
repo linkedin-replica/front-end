@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
     }
 })
 
-axiosInstance.interceptors.request.us(config => {
+axiosInstance.interceptors.request.use(config => {
     config.headers['access-token'] = localStorage.getItem('jwt-token') || ''
     return config
 })

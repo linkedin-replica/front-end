@@ -7,6 +7,7 @@ import ButtonsTest from './ButtonsTest';
 import WrappersTest from './WrappersTest';
 import TypographyTest from './TypographyTest';
 import ProfileTest from './ProfileTest';
+import DetailsHeaderTest from './DetailsHeaderTest';
 import { Route } from 'react-router-dom'
 
 class Test extends Component {
@@ -23,6 +24,8 @@ class Test extends Component {
 
         <Route path={`${match.url}/profile`} component={ProfileTest} />
 
+        <Route path={`${match.url}/details`} component={DetailsHeaderTest} />
+
         {/* 
         Add a new route to test your component in this way
         <Route path={`${match.url}/define route name here`} component={imported component to test} /> */
@@ -36,7 +39,6 @@ class Test extends Component {
 
 const styles = {
   base: {
-    fontFamily: 'Source Sans Pro, sans-serif'
   }
 }
 

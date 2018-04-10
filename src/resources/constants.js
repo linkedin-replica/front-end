@@ -23,7 +23,9 @@ export const icons = {
   jobs: "fa fa-briefcase",
   chat: "fa fa-comments",
   profile: 'fa fa-user-circle',
-  articles: 'fa fa-book'
+  articles: 'fa fa-book',
+  edit: 'fa fa-edit',
+  add: 'fa fa-plus'
 }
 
 export const paddings = {
