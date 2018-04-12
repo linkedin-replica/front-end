@@ -11,7 +11,7 @@ class InputForm extends Component {
         return (
         <span style = {styles.base}>    
         <form >
-        <input style = {styles.text} type="text" name="fname" autocomplete="off" placeholder=" Add a comment..."/>
+        <input style = {styles.text} type="text" name="fname" autoComplete="off" placeholder=" Add a comment..."/>
         </form>
         </span>
         )

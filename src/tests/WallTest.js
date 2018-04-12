@@ -28,13 +28,6 @@ const mockData = [
     { src: "https://media.licdn.com/dms/image/C5603AQFICcTq_2n1ng/profile-displayphoto-shrink_800_800/0?e=1528318800&v=beta&t=NOzomRL6liP1kKyikNpEE1x-xAz3hBjqJD2jRj1GoJE", header: "Nada Ahmed", subHeader: "Software Engineer", postContent: "Donec nec consectetur dui, non tincidunt orci. Fusce in convallis nulla. Nam imperdiet diam vel nulla maximus, ut facilisis sapien ornare. Maecenas imperdiet vehicula massa ut viverra. Vivamus sollicitudin placerat tempus. Pellentesque diam nunc, imperdiet et justo vel, sollicitudin malesuada magna. Aliquam justo ligula, accumsan sed feugiat ut, imperdiet eget magna. Fusce suscipit mauris et mauris molestie pharetra sed vitae nunc. Donec lobortis lacinia pellentesque.", rounded: true, type: "wall", id: "2" },
 ]
 
-const mockData2 = [
-    { children: 'Post 1' },
-    { children: 'Post 2' },
-    { children: 'Post 3' },
-    { children: 'Post 4' },
-]
-
 const styles = {
     base: {
         background: colors.whiteGray,

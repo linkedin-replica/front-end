@@ -9,10 +9,9 @@ import AvatarImage from '../images/AvatarImage';
 class WriteAComment extends Component {
 
     render() {
-        const {src, rounded, state} = this.props
-        console.log(src)
+        const {src, rounded, visibility} = this.props
         return (
-            <div style={[styles.base, state ? styles.clicked: styles.base]} >
+            <div style={[styles.base, visibility ? styles.clicked: styles.base]} >
             <span style={styles.imgDiv}>
                 <AvatarImage src={src} rounded={rounded} size = 'sm' />
             </span>
@@ -27,15 +26,15 @@ class WriteAComment extends Component {
 
 WriteAComment.propTypes = {
     src: PropTypes.string,
-    state: PropTypes.bool
+    visibility: PropTypes.bool
 };
 
 const styles = {
     base: {
-        display:'block'
+        display:'none'
     },
     clicked: {
-        display:'hidden'
+        display:'block'
     },
     imgDiv: {
        

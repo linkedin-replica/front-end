@@ -10,21 +10,33 @@ import WriteAComment from './WriteAComment';
 
 
 class Post extends Component {
+    constructor(props){
+        super(props)
+        this.stateHandler = this.stateHandler.bind(this);
+        this.state = {
+            visibility : false
+        };
+    }
+
+    stateHandler = () => {
+        this.setState({
+            visibility: !this.state.visibility
+        });
+        
+    }
     
     render() {
-        var state = false
         const { postContent, ...rest } = this.props;
-        console.log(state)
         return (
             <WhiteWrapper style={styles.base}>
                 <DetailsHeader {...rest} />
                 <PostContent postContent={postContent} />
                 <div style={styles.buttons} >
-                    <IconTextButton name="Like" type="like" state = {this.state.valueOf}  />
-                    <IconTextButton name="Comment" type="comment" state = {this.state.valueOf}/>
-                    <IconTextButton name="Share" type="share" state = {this.state.valueOf} />
+                    <IconTextButton name="Like" type="like" action = {this.stateHandler}  />
+                    <IconTextButton name="Comment" type="comment" action = {this.stateHandler} />
+                    <IconTextButton name="Share" type="share" action = {this.stateHandler} />
                 </div>
-                <WriteAComment {...rest}  state = {this.state.valueOf} />
+                <WriteAComment {...rest} visibility = {this.state.visibility} />
                     
             </WhiteWrapper>
         )
@@ -41,7 +53,7 @@ Post.propTypes = {
     postContent: PropTypes.string,
     type: PropTypes.string,
     id: PropTypes.string,
-    state: PropTypes.bool
+    action: PropTypes.func
 };
 
 const styles = {
