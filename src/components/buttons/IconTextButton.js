@@ -14,7 +14,7 @@ class IconTextButton extends Component {
   render() {
     // Directly get the needed props
     
-    const { name, type, hasBorder, action, ...rest } = this.props;
+    const { name, type, hasBorder, onClick, ...rest } = this.props;
     return (
       <ResponsiveButtonWrapper
         style={[styles.base, hasBorder ? styles.bordered : styles.borderless]}
@@ -22,7 +22,7 @@ class IconTextButton extends Component {
         
         // Passes on the rest of the props to apply the size and onClick functions on the button
         {...rest} 
-        onClick = {action}>
+        onClick = {onClick}>
         <i style={styles.icon} className={icons[type]}></i>
         <span>
           {name}
@@ -38,8 +38,7 @@ IconTextButton.propTypes = {
   type: PropTypes.oneOf(['like', 'share', 'comment', 'write', 'image', 'video']).isRequired,
   hasBorder: PropTypes.bool,
   size: PropTypes.oneOf(["sm", "md", "lg"]),
-  onClick: PropTypes.func,
-  action: PropTypes.func
+  onClick: PropTypes.func.isRequired
 };
 
 const styles = {

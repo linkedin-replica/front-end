@@ -32,9 +32,9 @@ class Post extends Component {
                 <DetailsHeader {...rest} />
                 <PostContent postContent={postContent} />
                 <div style={styles.buttons} >
-                    <IconTextButton name="Like" type="like" action = {this.stateHandler}  />
-                    <IconTextButton name="Comment" type="comment" action = {this.stateHandler} />
-                    <IconTextButton name="Share" type="share" action = {this.stateHandler} />
+                    <IconTextButton name="Like" type="like" onClick = {this.stateHandler}  />
+                    <IconTextButton name="Comment" type="comment" onClick = {this.stateHandler} />
+                    <IconTextButton name="Share" type="share" onClick = {this.stateHandler} />
                 </div>
                 <WriteAComment {...rest} visibility = {this.state.visibility} />
                     

@@ -15,11 +15,11 @@ class ResponsiveButtonWrapper extends Component {
     
     render() {
         // Directly get the passed parameters from the props
-        const { size, children, style, onClick,  } = this.props;
+        const { size, children, style, onClick } = this.props;
         return (
             <button
                 style={[styles.base, style, size ? styles[size] : styles['md']]}
-                onClick={onClick}>
+                onClick = {onClick}>
                 {children}
             </button>
         );
@@ -31,7 +31,7 @@ ResponsiveButtonWrapper.propTypes = {
     children: PropTypes.node, // Content
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"]),
-    onClick: PropTypes.func,
+    onClick: PropTypes.func.isRequired,
 };
 
 const styles = {
