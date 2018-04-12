@@ -15,30 +15,40 @@ import { colors } from '../../resources/constants';
 class AvatarImage extends Component {
     render() {
         // Directly get the passed parameters from the props
-        const { imgSrc, rounded, style, size } = this.props;
+        const { src, rounded, type, id, style, size } = this.props;
         return (
-            <span style={style}>
-                <img src={imgSrc} style={[rounded ? styles.img : styles.imgSqaured,
-                size ? styles[size] : styles['md']]} />
-            </span>
+            <Link to={`/${type}/${id}`}>
+                <img src={src}
+                    style={[
+                        styles.base,
+                        style,
+                        rounded ? styles.imgRounded : styles.imgSquared,
+                        size ? styles[size] : styles['md']
+                    ]} />
+            </Link>
         );
     }
 }
 
 // Define the passed input types for this component
 AvatarImage.propTypes = {
-    imgSrc: PropTypes.string,
+    src: PropTypes.string.isRequired,
     rounded: PropTypes.bool,
+    type: PropTypes.string,
+    id: PropTypes.string,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"]),
 };
 
 
 const styles = {
-    img: {
+    base: {
+
+    },
+    imgRounded: {
         borderRadius: '50%'
     },
-    imgSqaured: {
+    imgSquared: {
         borderRadius: '0%'
     },
     sm: {
