@@ -6,7 +6,6 @@ import { colors } from '../../resources/constants';
 import ProfileSection from '../profile/ProfileSection';
 import ListAdapter from '../wrappers/ListAdapter';
 
-
 class Profile extends Component {
     render() {
         const { data, style, size } = this.props;

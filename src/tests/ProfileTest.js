@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import Radium from 'radium'
 import ProfileSection from '../components/profile/ProfileSection.js';
+import ProfileHeader from '../components/details/ProfileHeader';
 
 class ProfileTest extends Component {
 
@@ -14,6 +15,16 @@ class ProfileTest extends Component {
               <h1>Profile Testing</h1>
             </header>
             <section>
+            {/* < ProfileHeader img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A"
+                        rounded
+                        header="Hisham Zahran"
+                        subHeader="Wenta 3amel eh a5barak tmam el7amdulelah ?ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssslkdlskdlkslkdls"
+                        type="profile"
+                        size="lg"
+                        id="1"
+                        style={[styles.header]}/> */}
+            </section>
+            <section>
               <ProfileSection sectionTitle="Experience" data={mockExperienceSection} />
             </section>
             <section>
@@ -22,6 +33,12 @@ class ProfileTest extends Component {
           </div >
         );
     }
+}
+
+const styles = {
+  header: {
+      
+  },
 }
 
 const mockExperienceSection = [
