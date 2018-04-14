@@ -17,11 +17,13 @@ import AvatarImage from '../images/AvatarImage';
 class DetailsHeader extends Component {
     render() {
         const { style, size, src, rounded, header, subHeader, type, id } = this.props;
+        console.log(size)
         return(
         <div style={[style, styles.base]}>
-            <span style={styles.imgDiv}>
-                <AvatarImage src={src}
-                rounded={rounded} />
+            <span style={[styles.imgDiv]}>
+                <AvatarImage src={src} size={size}
+                rounded={rounded} 
+                />
             </span>
             <span style={styles.textDiv}>
                 <BoldLink text={header} type={type} id={id}/>

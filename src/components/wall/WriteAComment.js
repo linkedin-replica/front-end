@@ -11,12 +11,12 @@ class WriteAComment extends Component {
     render() {
         const {src, rounded, visibility} = this.props
         return (
-            <div style={[styles.base, visibility ? styles.clicked: styles.base]} >
+            <div>
             <span style={styles.imgDiv}>
                 <AvatarImage src={src} rounded={rounded} size = 'sm' />
             </span>
             <span style={styles.commentDiv}>
-                 <InputForm />
+                 <InputForm placeholder="Write a comment" commentBool={true} />
             </span>
         </div>
            
@@ -26,16 +26,11 @@ class WriteAComment extends Component {
 
 WriteAComment.propTypes = {
     src: PropTypes.string,
-    visibility: PropTypes.bool
+    rounded: PropTypes.bool
 };
 
 const styles = {
-    base: {
-        display:'none'
-    },
-    clicked: {
-        display:'block'
-    },
+  
     imgDiv: {
        
     },

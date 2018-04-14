@@ -6,39 +6,63 @@ import DetailsHeader from '../details/DetailsHeader';
 import IconTextButton from '../buttons/IconTextButton';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import PostContent from './PostContent';
-import WriteAComment from './WriteAComment';
+import CommentSection from './CommentSection';
 
 
 class Post extends Component {
     constructor(props){
         super(props)
-        this.stateHandler = this.stateHandler.bind(this);
+        this.likeButtonHandler = this.likeButtonHandler.bind(this);
+        this.commentButtonHandler = this.commentButtonHandler.bind(this);
+        this.shareButtonHandler = this.shareButtonHandler.bind(this);
         this.state = {
-            visibility : false
+            likeCounter: 0,
+            visibility : false,
+            shareCounter: 0
+
         };
     }
 
-    stateHandler = () => {
+    likeButtonHandler = () => {
+        this.setState({
+            likeCounter: this.state.likeCounter+=1
+        });
+        console.log("like counter: ", this.state.likeCounter)
+        
+    }
+
+
+    commentButtonHandler = () => {
         this.setState({
             visibility: !this.state.visibility
         });
         
+    } 
+
+    shareButtonHandler = () => {
+        this.setState({
+            shareCounter: this.state.shareCounter+=1
+        });
+        console.log("share counter: ", this.state.shareCounter)
+        
     }
-    
     render() {
         const { postContent, ...rest } = this.props;
         return (
+            <div style={styles.test}>
             <WhiteWrapper style={styles.base}>
                 <DetailsHeader {...rest} />
                 <PostContent postContent={postContent} />
                 <div style={styles.buttons} >
-                    <IconTextButton name="Like" type="like" onClick = {this.stateHandler}  />
-                    <IconTextButton name="Comment" type="comment" onClick = {this.stateHandler} />
-                    <IconTextButton name="Share" type="share" onClick = {this.stateHandler} />
+                    <IconTextButton name="Like" type="like" onClick = {this.likeButtonHandler}  />
+                    <IconTextButton name="Comment" type="comment" onClick = {this.commentButtonHandler} />
+                    <IconTextButton name="Share" type="share" onClick = {this.shareButtonHandler} />
                 </div>
-                <WriteAComment {...rest} visibility = {this.state.visibility} />
-                    
+                <div>
+                <CommentSection {...rest} visibility = {this.state.visibility} />
+                 </div>   
             </WhiteWrapper>
+            </div>
         )
     };
 }
@@ -57,6 +81,9 @@ Post.propTypes = {
 };
 
 const styles = {
+    test:{
+        align:'justify'
+    },
     base: {
         padding: paddings.wrapper,
     },
