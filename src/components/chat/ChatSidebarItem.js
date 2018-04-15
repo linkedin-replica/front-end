@@ -12,14 +12,18 @@ class ChatSidebarItem extends Component {
         // Directly get the passed parameters from the props
         const { img, name, miniText } = this.props;
         return (
-            <DetailsHeader imgSrc={img} boldText={name} grayText={miniText} style={styles.base} rounded />
+            <DetailsHeader img={img}
+                rounded
+                header={name}
+                subHeader={miniText}
+                style={styles.base} />
         );
     }
 }
 
 // Define the passed input types for this component
 ChatSidebarItem.propTypes = {
-    img: PropTypes.instanceOf(Image),
+    img: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     miniText: PropTypes.string
 };
