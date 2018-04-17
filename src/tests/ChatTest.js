@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { colors } from '../resources/constants';
 import Chat from '../components/chat/Chat';
+import ChatContainer from '../main/ChatContainer';
 
 class ChatTest extends Component {
 
@@ -16,7 +17,7 @@ class ChatTest extends Component {
                 </header>
                 <section>
                     <h2>Chat</h2>
-                    <Chat chats={mockChatsData} />
+                    <ChatContainer mockData={mockChatsData} />
                 </section>
             </div >
         );

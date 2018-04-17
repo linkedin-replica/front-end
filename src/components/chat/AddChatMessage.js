@@ -12,8 +12,8 @@ class AddChatMessage extends Component {
         // Directly get the passed parameters from the props
         const { } = this.props;
         return (
-            <WhiteWrapper style={styles.base}>
-            </WhiteWrapper>
+            <div style={styles.base}>
+            </div>
         );
     }
 }
@@ -25,7 +25,6 @@ AddChatMessage.propTypes = {
 
 const styles = {
     base: {
-        height: '100vh'
     }
 }
 

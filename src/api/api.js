@@ -23,5 +23,8 @@ export default {
     },
     saveLoginToken: (newToken) => {
         localStorage.setItem('jwt-token', newToken)
+    },
+    initChat: (receiverId) => {
+        return axiosInstance.post('chat/register', { params: { receiverId } })
     }
 }

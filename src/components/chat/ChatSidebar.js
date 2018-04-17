@@ -12,10 +12,14 @@ import ChatSidebarItem from './ChatSidebarItem';
 class ChatSidebar extends Component {
     render() {
         // Directly get the passed parameters from the props
-        const { chats } = this.props;
+        const { chats, handleSelectChat, style } = this.props;
+
+        chats.map(chat => {
+            return { ...chat, handleSelectChat }
+        })
         return (
-            <WhiteWrapper size="sm">
-                <ListAdapter data={chats} listItemView={ChatSidebarItem} />
+            <WhiteWrapper size="sm" style={[styles.base, style]}>
+                <ListAdapter data={chats} listItemView={ChatSidebarItem} size="sm" />
             </WhiteWrapper>
         );
     }
@@ -23,11 +27,16 @@ class ChatSidebar extends Component {
 
 // Define the passed input types for this component
 ChatSidebar.propTypes = {
-    chats: PropTypes.array.isRequired
+    chats: PropTypes.array.isRequired,
+    handleSelectChat: PropTypes.func.isRequired,
+    style: PropTypes.object
 };
 
 const styles = {
     base: {
+        height: '100%',
+        overflowY: 'auto',
+        overflowX: 'hidden',
     }
 }
 

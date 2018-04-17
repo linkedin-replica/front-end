@@ -10,13 +10,14 @@ import DetailsHeader from '../details/DetailsHeader';
 class ChatSidebarItem extends Component {
     render() {
         // Directly get the passed parameters from the props
-        const { img, name, miniText } = this.props;
+        const { img, name, miniText, handleSelectChat } = this.props;
         return (
-            <DetailsHeader img={img}
-                rounded
-                header={name}
-                subHeader={miniText}
-                style={styles.base} />
+            <div style={styles.base} >
+                <DetailsHeader img={img}
+                    rounded
+                    header={name}
+                    subHeader={miniText} />
+            </div>
         );
     }
 }
@@ -25,7 +26,8 @@ class ChatSidebarItem extends Component {
 ChatSidebarItem.propTypes = {
     img: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    miniText: PropTypes.string
+    miniText: PropTypes.string,
+    handleSelectChat: PropTypes.func.isRequired
 };
 
 const styles = {
