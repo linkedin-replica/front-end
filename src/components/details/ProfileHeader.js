@@ -19,8 +19,8 @@ class ProfileHeader extends Component {
     render() {
         const { src, rounded, header, subHeader, type, id, style, size } = this.props;
         return (
-            <WhiteWrapper style={styles.whiteWrapper} size="lg">
-                <div style={[style, styles.base]}>
+            <div style={[style, styles.base]}>
+                <WhiteWrapper style={styles.whiteWrapper} size="lg">
                     <div style={styles.imgDiv}>
                         <AvatarImage src={src}
                             rounded={rounded}
@@ -38,8 +38,8 @@ class ProfileHeader extends Component {
                             style={styles.text}
                             size={size} />
                     </div>
-                </div>
-            </WhiteWrapper>
+                </WhiteWrapper>
+            </div>
         )
     };
 }
@@ -57,11 +57,11 @@ ProfileHeader.propTypes = {
 
 const styles = {
     base: {
-       
+        marginBottom: '12em',  
     },
     whiteWrapper: {
         margin: '10px auto',
-        paddingTop: '4em',
+        paddingTop: '6em',
         paddingBottom: '2em',   
         backgroundImage: 'url(http://www.thepartnermarketinggroup.com/wp-content/uploads/2018/01/LinkedInDefaultBanner.png)',
         backgroundRepeat: 'no-repeat',
@@ -70,19 +70,20 @@ const styles = {
     },
     imgDiv: {
         textAlign: 'center',
-        paddingBottom: '1em',
+        marginBottom: '0.8em',
     },
     img: {
         border: '3px solid white',
         borderRadius: '500px',
     },
     textDiv: {
-        display: 'inline-block',
         verticalAlign: 'top',
+        textAlign: 'center',
+        width: 'inherit',
     },
     text: {
         margin: '0px',
-        maxWidth: '58%',
+        maxWidth: 'inherit',
         wordWrap: 'break-word',
         textAlign: 'center',
     },
