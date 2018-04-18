@@ -12,13 +12,21 @@ class Chat extends Component {
         // Directly get the passed parameters from the props
         const { chats,
             chatDetails,
+            inputMessageVal,
             handleSendMessage,
-            handleSelectChat } = this.props;
+            handleSelectChat,
+            handleChange } = this.props;
 
         return (
             <section style={styles.base}>
-                <ChatSidebar chats={chats} handleSelectChat={handleSelectChat} style={styles.sidebar} />
-                <ChatDetails data={chatDetails} handleSendMessage={handleSendMessage} style={styles.details} />
+                <ChatSidebar chats={chats}
+                    handleSelectChat={handleSelectChat}
+                    style={styles.sidebar} />
+                <ChatDetails data={chatDetails}
+                    inputMessageVal={inputMessageVal}
+                    handleSendMessage={handleSendMessage}
+                    handleChange={handleChange}
+                    style={styles.details} />
             </section>
         );
     }
@@ -28,8 +36,10 @@ class Chat extends Component {
 Chat.propTypes = {
     chats: PropTypes.array.isRequired,
     chatDetails: PropTypes.array.isRequired,
+    inputMessageVal: PropTypes.string.isRequired,
     handleSendMessage: PropTypes.func.isRequired,
     handleSelectChat: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired
 };
 
 const styles = {

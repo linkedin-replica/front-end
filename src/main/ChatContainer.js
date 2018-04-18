@@ -11,7 +11,8 @@ class ChatContainer extends Component {
         receiverId: '',
         token: '',
         history: [],
-        socket: null
+        socket: null,
+        inputMessage: ''
     }
 
     constructor(props) {
@@ -26,14 +27,14 @@ class ChatContainer extends Component {
     }
 
     handleSelect = (receiverId) => {
-        let token = "eyJhbGciOiJIUzUxMiJ9.eyJzZW5kZXJJZCI6IjIiLCJyZWNlaXZlcklkIjoiMSIsImlzcyI6ImxpbmtlZGluLmNoYXQiLCJleHAiOjE1MjMxNDk2NDQsImlhdCI6MTUyMzExMzY0NCwianRpIjoiMiJ9.yyt8px_gjTy2aPoK1Dvp4CUKpct27kzWuPBScN2DC4AWqKFktOrHbd_B20nO4Ij0ViEhxdfgTlgm1aZkxF7P5w"
+        let token = "eyJhbGciOiJIUzUxMiJ9.eyJzZW5kZXJJZCI6IjIiLCJyZWNlaXZlcklkIjoiMSIsImlzcyI6ImxpbmtlZGluLmNoYXQiLCJleHAiOjE1MjQwMTYzNTAsImlhdCI6MTUyMzk4MDM1MH0.4XM6zV-mr6HOfQJrB_cMJnpSl9wZHR3B7zv2JeSnxJmX8Antvqjv19qz9bBjTT2dHb8N4MvgMDMCCeNvKzUk8A"
 
         this.setState({
             receiverId,
             token,
         })
 
-        this.createSocket('localhost', '9093', token)
+        this.createSocket('localhost', '9091', token)
         // api.initChat(receiverId)
         //     .then(res => {
         //         const { ip, port, token, history } = res.results;
@@ -76,23 +77,46 @@ class ChatContainer extends Component {
         })
     }
 
-    handleSendMessage = (message) => {
+    handleSendMessage = (event) => {
+        const { socket, inputMessage, token } = this.state
+        event.preventDefault();
+        if (event.key != 'Enter')
+            return;
+
+        console.log(inputMessage)
+        if (inputMessage === '')
+            return;
+
         let messageObj = {
-            threadToken: this.state.token,
-            message: message
+            threadToken: token,
+            message: inputMessage
         }
         // Send the message throught the socket
-        if (this.state.socket)
-            this.state.socket.emit('chatevent', messageObj);
+        if (socket) {
+            socket.emit('chatevent', messageObj);
+            this.setState(prevState => ({
+                history: [...prevState.history, { message: inputMessage }],
+                inputMessage: ''
+            }))
+        }
+
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            inputMessage: event.target.value
+        })
     }
 
     render() {
-        const { chats, history } = this.state;
+        const { chats, history, inputMessage } = this.state;
         return (
             <Chat chats={chats}
                 chatDetails={history}
+                inputMessageVal={inputMessage}
                 handleSelectChat={this.handleSelect}
-                handleSendMessage={this.handleSendMessage} />
+                handleSendMessage={this.handleSendMessage}
+                handleChange={this.handleChange} />
         );
     }
 }
