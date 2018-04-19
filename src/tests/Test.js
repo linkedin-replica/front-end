@@ -8,7 +8,7 @@ import WrappersTest from './WrappersTest';
 import CompanyTest from './CompanyTest';
 import TypographyTest from './TypographyTest';
 import DetailsHeaderTest from './DetailsHeaderTest';
-import { Route } from 'react-router-dom'
+import { Route } from 'react-router-dom';
 
 class Test extends Component {
   render() {

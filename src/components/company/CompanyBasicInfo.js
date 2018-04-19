@@ -70,7 +70,6 @@ const styles = {
       position: 'absolute',
       right: 0,
       bottom: 0,
-      width: '30%',
       paddingBottom: '25px'
     },
     textDiv: {

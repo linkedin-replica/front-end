@@ -6,10 +6,9 @@ import GreyAndBorder from '../components/buttons/AdjacentGreyBorder';
 import ListOfApplicants from '../components/company/ListOfApplicants';
 import CreateCompanyContainer from '../main/CreateCompanyContainer';
 import CompanyBasicInfo from '../components/company/CompanyBasicInfo';
-
+import PostAJob from '../components/company/PostAJob';
 
 class CompanyTest extends Component {
-
 
   render() {
     return (
@@ -49,8 +48,13 @@ class CompanyTest extends Component {
         </section>
 
         <section>
-          <h2>Create Company</h2>
-          <CreateCompanyContainer></CreateCompanyContainer>
+          <h2>Create Company Form</h2>
+          <CreateCompanyContainer/>
+        </section>
+
+        <section>
+          <h2>Post A Job Form</h2>
+          <PostAJob/>
         </section>
 
       </div >
