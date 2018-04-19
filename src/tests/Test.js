@@ -20,6 +20,7 @@ import { Route } from 'react-router-dom'
 import ChatTest from './ChatTest';
 import RecommendedArticleTest from './RecommendedArticleTest'
 import RecommendedArticlesTest from './RecommendedArticlesTest'
+import JobCardTest from './JobCardTest'
 
 class Test extends Component {
   render() {
@@ -47,14 +48,11 @@ class Test extends Component {
 
         <Route path={`${match.url}/connections`} component={ConnectionsTest} />
 
+        <Route path={`${match.url}/JobCard`} component={JobCardTest} />
         {/* 
         Add a new route to test your component in this way
         <Route path={`${match.url}/define route name here`} component={imported component to test} /> */
         }
-
-
-
-
       </div>
     );
   }
