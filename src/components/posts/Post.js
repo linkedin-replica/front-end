@@ -17,35 +17,13 @@ class Post extends Component {
         this.shareButtonHandler = this.shareButtonHandler.bind(this);
         this.state = {
             likeCounter: 0,
+            isLiked:false,
             visibility : false,
             shareCounter: 0
 
         };
     }
 
-    likeButtonHandler = () => {
-        this.setState({
-            likeCounter: this.state.likeCounter+=1
-        });
-        console.log("like counter: ", this.state.likeCounter)
-        
-    }
-
-
-    commentButtonHandler = () => {
-        this.setState({
-            visibility: !this.state.visibility
-        });
-        
-    } 
-
-    shareButtonHandler = () => {
-        this.setState({
-            shareCounter: this.state.shareCounter+=1
-        });
-        console.log("share counter: ", this.state.shareCounter)
-        
-    }
     render() {
         const { postContent, ...rest } = this.props;
         return (
@@ -54,9 +32,8 @@ class Post extends Component {
                 <DetailsHeader {...rest} />
                 <PostContent postContent={postContent} />
                 <div style={styles.buttons} >
-                    <IconTextButton name="Like" type="like" onClick = {this.likeButtonHandler}  />
+                    <IconTextButton name="Like" type="like" onClick = {this.likeButtonHandler}  style={this.state.isLiked? styles.likedButton:''}/>
                     <IconTextButton name="Comment" type="comment" onClick = {this.commentButtonHandler} />
-                    <IconTextButton name="Share" type="share" onClick = {this.shareButtonHandler} />
                 </div>
                 <div>
                 <CommentSection {...rest} visibility = {this.state.visibility} />
@@ -89,6 +66,9 @@ const styles = {
     },
     buttons: {
         paddingTop: '5px'
+    },
+    likedButton: {
+        color: colors.darkBlue
     }
 }
 

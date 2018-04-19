@@ -32,6 +32,11 @@ class Comment extends Component {
             <div style={styles.base}>
                 <DetailsHeader {...rest} size={'sm'} />
                 <PostContent postContent={commentContent} style={styles.content}/>
+                <div style={styles.buttons} >
+                    {/* <IconTextButton name="Like" type="like" onClick = {this.likeButtonHandler}  style={this.state.isLiked? styles.likedButton:''}/>
+                    <IconTextButton name="Reply" type="comment" onClick = {this.replyButtonHandler} /> */}
+                    {/* <IconTextButton name="Share" type="share" onClick = {this.shareButtonHandler} /> */}
+                </div>
             </div>
         )
     };

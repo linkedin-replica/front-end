@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Radium from "radium";
 import PropTypes from "prop-types";
 import { colors, paddings } from "../../resources/constants";
-import InputForm from "./InputForm";
+import InputForm from "../posts/InputForm";
 import AvatarImage from "../images/AvatarImage";
 import IconTextButton from "../buttons/IconTextButton";
 import DetailsHeader from "../details/DetailsHeader";
@@ -11,36 +11,14 @@ import WhiteWrapper from "../wrappers/WhiteWrapper";
 class WallHeader extends Component {
   constructor(props) {
     super(props);
-    this.articleButtonHandler = this.articleButtonHandler.bind(this);
-    this.imageButtonHandler = this.imageButtonHandler.bind(this);
-    this.videoButtonHandler = this.videoButtonHandler.bind(this);
     this.state = {
-      articleButton: false,
       imageButton: false,
       videoButton: false
     };
   }
 
-  articleButtonHandler = () => {
-    this.setState({
-      articleButton: !this.state.articleButton
-    });
-    console.log("article button: ", this.state.articleButton);
-  };
 
-  imageButtonHandler = () => {
-    this.setState({
-      imageButton: !this.state.imageButton
-    });
-    console.log("image button: ", this.state.imageButton);
-  };
 
-  videoButtonHandler = () => {
-    this.setState({
-      videoButton: !this.state.videoButton
-    });
-    console.log("video button: ", this.state.videoButton);
-  };
   render() {
     const { id, src, rounded, header, subHeader, type } = this.props;
     return (

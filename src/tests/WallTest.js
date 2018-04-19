@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import { colors } from '../resources/constants';
-import ListAdapter from '../components/wrappers/ListAdapter';
-import DetailsHeader from '../components/details/DetailsHeader';
-import Post from '../components/wall/Post';
-import WallHeader from '../components/wall/WallHeader';
+import Wall from '../components/wall/Wall'
 
 class WallTest extends Component {
 
     render() {
         return (
-            <div style={styles.base}>
-                <WallHeader id ={mockData.user.id} src = {mockData.user.src} rounded = {mockData.user.rounded} header = {mockData.user.header} subHeader = {mockData.user.subHeader} type={mockData.user.type}  />
-                <section>
-                        <ListAdapter data = {mockData.posts} listItemView={Post} verticalSplit />
-                </section>
+            <div >
+                <Wall data = {mockData}/>
             </div >
         );
     }
@@ -76,21 +70,6 @@ const mockData = {
         {src:'https://media.licdn.com/dms/image/C4D03AQFDn3Jyqg1RAQ/profile-displayphoto-shrink_800_800/0?e=1528826400&v=beta&t=r9TdbtxSKWl6pDRe-8t7cA00j-hrGoTP0c7_dExruSQ', rounded:true, header:'Slim Abdennadher', subHeader:'Vice President for Academic Affairs at The German University in Cairo', commentContent:'7abibi ! el wall beta3ak dah yeganen...', type:'wall'},
     ] },
     ]
-}
-
-const styles = {
-    base: {
-        background: colors.whiteGray,   
-        display: 'block',
-        width:'40%',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        padding: '10px'
-
-    },
-    header: {
-        textAlign:'center'
-    }
 }
 
 WallTest = Radium(WallTest);
