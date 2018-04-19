@@ -3,10 +3,9 @@
 */
 import React, { Component } from 'react';
 import Radium from 'radium'
+import ProfileHeader from '../components/details/ProfileHeader';
 import ProfileExperience from '../components/profile/ProfileExperience';
 import ProfileEducation from '../components/profile/ProfileEducation';
-import ProfileHeader from '../components/details/ProfileHeader';
-import ProfileSkill from '../components/profile/ProfileSkill';
 import ProfileSkillsSection from '../components/profile/ProfileSkillsSection';
 import WhiteWrapper from '../components/wrappers/WhiteWrapper';
 import GridView from '../components/wrappers/GridView';
@@ -40,9 +39,6 @@ class ProfileTest extends Component {
             <section>
               <ProfileSkillsSection sectionTitle="Skills" data={mockSkills} />  
             </section>
-            <section>
-              <ProfileSkill skill="Skills" data={mockSkills} />  
-            </section>
           </div >
         );
     }
@@ -72,13 +68,22 @@ const mockEducationSection = [
   { schoolName: 'German University in Cairo', startDate: '2014', endDate: '2017',field:'Computer Science', degree: 'Bachelors Degree'},
 ]
 
+// const mockSkills = [
+//   { skill: 'Java' },
+//   { skill: 'CSS' },
+//   { skill: 'HTML' },
+//   { skill: 'Time Management' },
+//   { skill: 'Research' },
+//   { skill: 'Cooking' }
+// ]
+
 const mockSkills = [
-  { skill: 'Java' },
-  { skill: 'Java' },
-  { skill: 'Java' },
-  { skill: 'Java' },
-  { skill: 'Java' },
-  { skill: 'Java' }
+  { children: 'Java' },
+  { children: 'CSS' },
+  { children: 'HTML' },
+  { children: 'Time Management' },
+  { children: 'Research' },
+  { children: 'Cooking' },
 ]
 
 ProfileTest = Radium(ProfileTest);

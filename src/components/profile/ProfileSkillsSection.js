@@ -3,7 +3,6 @@ import Radium from 'radium';
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { colors } from '../../resources/constants';
-import ProfileSkill from '../profile/ProfileSkill';
 import ListAdapter from '../wrappers/ListAdapter';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import GridView from '../wrappers/GridView';
@@ -14,8 +13,11 @@ class ProfileSkillsSection extends Component {
         const { sectionTitle, data, style, size } = this.props;
         return(
             <WhiteWrapper style={styles.whiteWrapper} size="lg">
-                <h3 style={[styles.base, size ? styles[size] : styles['lg']]}> {sectionTitle} </h3>
-                <GridView data={data} gridItemView={ProfileSkill} horizontalSplit verticalSplit size="md" />
+                <div style={style}>
+                    <h3 style={[styles.base, size ? styles[size] : styles['lg']]}> {sectionTitle} </h3>
+                    <IconButton type="add" onClick={this.incrementCounter} />
+                    <GridView data={data} gridItemView={WhiteWrapper} horizontalSplit verticalSplit size="lg" />
+                </div>
             </WhiteWrapper>
         )};    
 }
@@ -36,7 +38,7 @@ const styles = {
     },
     whiteWrapper: {
         margin: '10px auto',
-        paddingTop: '0.5em'
+        paddingTop: '0.5em',
     },
     sm: {
         fontSize: '0.5em'
