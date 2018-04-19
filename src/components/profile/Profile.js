@@ -7,17 +7,18 @@ import ProfileHeader from '../details/ProfileHeader';
 import ProfileExperience from '../profile/ProfileExperience';
 import ProfileEducation  from '../profile/ProfileEducation';
 import ProfileSkillsSection from '../profile/ProfileSkillsSection';
+import ProfileFriendList from '../components/profile/ProfileFriendList';
 import ListAdapter from '../wrappers/ListAdapter';
 import GridView from '../wrappers/GridView';
 
 class Profile extends Component {
     render() {
-        const { userId, firstName, lastName, headline, personalInfo, positions, educations, skills, imageUrl,style, size } = this.props;
+        const { userId, imageUrl, firstName, lastName, headline, personalInfo, positions, educations, skills, friendsList, style, size } = this.props;
         return(
         <div style={style}>   
             <section>   
-               <ProfileHeader src="https://media.licdn.com/dms/image/C4D03AQGz63bPFy5l-w/profile-displayphoto-shrink_200_200/0?e=1528815600&v=beta&t=EvJQfWQHVOLN5ye6KKwiQnP7AszhkHzgUDGw5Hs5OA0"
-                          src={imageUrl}
+               <ProfileHeader 
+                          imageUrl={imageUrl}
                           rounded
                           firstName={firstName}
                           lastName={lastName}
@@ -35,6 +36,9 @@ class Profile extends Component {
             </section>
             <section>
                 <ProfileSkillsSection sectionTitle="Skills" data={skills} />
+            </section>
+            <section>
+              <ProfileFriendList sectionTitle="Connections" data={friendsList} />  
             </section>
         </div>
     )};    

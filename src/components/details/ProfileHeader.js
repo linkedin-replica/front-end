@@ -72,6 +72,7 @@ const styles = {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'top', 
         height: '7em',
+        width: '90%',
     },
     imgDiv: {
         textAlign: 'center',
@@ -82,6 +83,7 @@ const styles = {
         borderRadius: '500px',
     },
     textDiv: {
+        marginLeft: '3em',
         verticalAlign: 'top',
         textAlign: 'center',
         width: 'inherit',
