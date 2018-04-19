@@ -25,7 +25,8 @@ export const icons = {
   profile: 'fa fa-user-circle',
   articles: 'fa fa-book',
   edit: 'fa fa-edit',
-  add: 'fa fa-plus'
+  add: 'fa fa-plus',
+  skill: 'fa fa-wrench'
 }
 
 export const paddings = {

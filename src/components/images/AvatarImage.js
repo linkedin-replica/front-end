@@ -16,16 +16,15 @@ class AvatarImage extends Component {
         // Directly get the passed parameters from the props
         const { src, rounded, type, id, style, size } = this.props;
         return (
-            // <span >
-                <Link to={`/${type}/${id}`}>
-                    <img src={src}  
-                   // onerror= "this.src='http://api.sportrocket.net/wp-content/themes/sr-theme/assets/images/blank-user-l.jpg'"
-                    style={[style, 
+            <Link to={`/${type}/${id}`}>
+                <img src={src}
+                    // ref={img => this.img = img}
+                    // onError={() => this.img.src = 'http://api.sportrocket.net/wp-content/themes/sr-theme/assets/images/blank-user-l.jpg'}
+                    style={[style,
                         rounded ? styles.imgRounded : styles.imgSquared,
-                        size ? styles[size] : styles['md'],{style}
-                    ]}/>
-                </Link >
-            // {/* </span> */}
+                        size ? styles[size] : styles['md'], { style }
+                    ]} />
+            </Link >
         );
     }
 }
