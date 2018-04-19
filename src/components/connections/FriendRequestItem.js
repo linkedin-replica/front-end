@@ -8,8 +8,9 @@ import PropTypes from 'prop-types'
 // import { object from constants } from '../../resources/constants.js'
 import AvatarImage from '../images/AvatarImage';
 import BoldLink from '../typography/BoldLink';
-import GrayText from '../typography/GrayText';
 import DetailsHeader from '../details/DetailsHeader';
+import WhiteWrapper from '../wrappers/WhiteWrapper';
+import GreyAndBorder from '../buttons/AdjacentGreyBorder';
 
 class FriendRequestItem extends Component {
 
@@ -25,24 +26,26 @@ class FriendRequestItem extends Component {
             ...rest } = this.props;
 
         return (
-            <div
-                style={[
-                    styles.base,
-                ]}>
+            <WhiteWrapper style={styles.whiteWrapper} size="lg">
                 <DetailsHeader img={img}
                     rounded
                     header={name}
                     subHeader={description}
                     type="profile"
-                    id="1" />
-            </div>
+                    id="1"
+                    size = "md" />
+                <div style={styles.btnDiv}>
+                <GreyAndBorder 
+                    greyText="Ignore" 
+                    blueText="Accept" 
+                    size="md">
+                </GreyAndBorder>
+                </div>
+            </WhiteWrapper>
         );
     }
 }
 
-/**
- * Define here what does this component take as props
- */
 FriendRequestItem.propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
@@ -52,10 +55,6 @@ FriendRequestItem.propTypes = {
     handleIgnore: PropTypes.func,
 };
 
-/**
- * Write here the CSS required for the component, instead of '-' it will be in camelCase
- * e.g. background-color will be backgroundColor
- */
 const styles = {
     base: {
 
@@ -63,9 +62,21 @@ const styles = {
     text: {
 
     },
+    whiteWrapper: {
+        padding: '20px',
+        textAlign: 'left',
+        fontSize: '1.5em',
+        position:'relative'
+    },
+    btnDiv: {
+      position: 'absolute',
+      right: 0,
+      bottom: 0,
+      width: '30%',
+      paddingBottom: '25px'
+    },
 }
 
-// Wrap it with Radium
-FriendRequestItem = Radium(FriendRequestItem);
 
+FriendRequestItem = Radium(FriendRequestItem);
 export default FriendRequestItem;
