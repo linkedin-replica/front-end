@@ -1,4 +1,3 @@
-import io from 'socket.io-client';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import api from '../api/api';
@@ -15,9 +14,6 @@ class ProfileContainer extends Component {
         const { mockData } = this.props;
         if (mockData)
             this.state.chats = mockData
-
-        this.state.experienceSection = mockExperienceSection
-        this.state.educationSection = mockEducationSection
     }
    
     componentDidMount() {
@@ -59,16 +55,9 @@ class ProfileContainer extends Component {
     }
 
     render() {
-        const {data} = this.state;
+        const { userId, imageUrl, firstName, lastName, headline, personalInfo, positions, educations, skills, friendsList } = this.props
         return (
-            <Profile     
-                {...data}
-                // chatDetails={history}
-                // inputMessageVal={inputMessage}
-                // handleSelectChat={this.handleSelect}
-                // handleSendMessage={this.handleSendMessage}
-                // handleChange={this.handleChange} 
-                />
+            <Profile  props = {this.props}/>
         );
     }
 }
