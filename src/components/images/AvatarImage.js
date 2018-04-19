@@ -52,16 +52,17 @@ const styles = {
         borderRadius: '0%'
     },
     sm: {
-        height: '2%',
-        width: '2%'
+        height: '1.5em',
+        width: '1.5em'
     },
     md: {
-        height: '4%',
-        width: '4%'
+
+        height: '2em',
+        width: '2em'
     },
     lg: {
-        height: '8%',
-        width: '8%'
+        height: '5em',
+        width: '5em'
     }
 }
 

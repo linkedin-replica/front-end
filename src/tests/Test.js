@@ -9,6 +9,9 @@ import TypographyTest from './TypographyTest';
 import DetailsHeaderTest from './DetailsHeaderTest';
 import ConnectionsTest from './ConnectionsTest';
 import { Route } from 'react-router-dom'
+import ChatTest from './ChatTest';
+import RecommendedArticleTest from './RecommendedArticleTest'
+import RecommendedArticlesTest from './RecommendedArticlesTest'
 
 class Test extends Component {
   render() {
@@ -24,9 +27,16 @@ class Test extends Component {
 
         <Route path={`${match.url}/details`} component={DetailsHeaderTest} />
 
+
         <Route path={`${match.url}/connections`} component={ConnectionsTest} />
 
-        {/* 
+        
+        <Route path={`${match.url}/chat`} component={ChatTest} />
+
+        <Route path={`${match.url}/recommendedArticle`} component={RecommendedArticleTest} />
+
+        <Route path={`${match.url}/recommendedArticles`} component={RecommendedArticlesTest} />
+        {/*s
         Add a new route to test your component in this way
         <Route path={`${match.url}/define route name here`} component={imported component to test} /> */
         }
