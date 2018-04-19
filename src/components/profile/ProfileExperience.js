@@ -3,12 +3,12 @@ import Radium from 'radium';
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { colors } from '../../resources/constants';
-import ProfileSectionItem from '../profile/ProfileSectionItem';
+import ProfileExperienceItem from '../profile/ProfileExperienceItem';
 import ListAdapter from '../wrappers/ListAdapter';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import IconButton from '../buttons/IconButton';
 
-class ProfileSection extends Component {
+class ProfileExperience extends Component {
     render() {
         const { sectionTitle, data, style, size } = this.props;
         return(
@@ -16,13 +16,13 @@ class ProfileSection extends Component {
                 <div style={style}>
                     <h3 style={[styles.base, size ? styles[size] : styles['lg']]}> {sectionTitle} </h3>
                     <IconButton type="add" onClick={this.incrementCounter} />
-                    <ListAdapter data = {data} listItemView={ProfileSectionItem} verticalSplit />
+                    <ListAdapter data = {data} listItemView={ProfileExperienceItem} verticalSplit />
                 </div>
             </WhiteWrapper>
         )};    
 }
 
-ProfileSection.propTypes = {
+ProfileExperience.propTypes = {
     sectionTitle: PropTypes.string.isRequired, 
     data: PropTypes.array.isRequired, 
     style: PropTypes.object, // Content defined styles
@@ -51,5 +51,5 @@ const styles = {
     }
 }
 
-ProfileSection = Radium(ProfileSection);
-export default ProfileSection;
+ProfileExperience = Radium(ProfileExperience);
+export default ProfileExperience;

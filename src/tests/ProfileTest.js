@@ -3,9 +3,13 @@
 */
 import React, { Component } from 'react';
 import Radium from 'radium'
-import ProfileSection from '../components/profile/ProfileSection.js';
+import ProfileExperience from '../components/profile/ProfileExperience';
+import ProfileEducation from '../components/profile/ProfileEducation';
 import ProfileHeader from '../components/details/ProfileHeader';
 import ProfileSkill from '../components/profile/ProfileSkill';
+import ProfileSkillsSection from '../components/profile/ProfileSkillsSection';
+import WhiteWrapper from '../components/wrappers/WhiteWrapper';
+import GridView from '../components/wrappers/GridView';
 import { colors } from '../resources/constants';
 
 class ProfileTest extends Component {
@@ -28,14 +32,16 @@ class ProfileTest extends Component {
                           id="1" />
             </section>
             <section>
-              <ProfileSection sectionTitle="Experience" data={mockExperienceSection} />
+              <ProfileExperience sectionTitle="Experience" data={mockExperienceSection} />
             </section>
             <section>
-              <ProfileSection sectionTitle="Education" data={mockEducationSection} />
+            <ProfileEducation sectionTitle="Education" data={mockEducationSection} />
             </section>
             <section>
-              Skill:
-              <ProfileSkill skill="Java"/>
+              <ProfileSkillsSection sectionTitle="Skills" data={mockSkills} />  
+            </section>
+            <section>
+              <ProfileSkill skill="Skills" data={mockSkills} />  
             </section>
           </div >
         );
@@ -55,15 +61,24 @@ const mockPersonalInfo = { location: mockLocation, name: 'Potato'}
 const mockLocation = { country: 'Egypt', address: 'Cairo', code: '12345'}
 
 const mockExperienceSection = [
-  { title: 'Mobile Development Intern', company: 'TedxGUC', companyId: '1', startDate: '2014', endDate: '2017',description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'},
-  { title: 'Mobile Development Intern', company: 'TedxGUC', companyId: '1', startDate: '2014', endDate: '2017', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'},
-  { title: 'Mobile Development Intern', company: 'TedxGUC', companyId: '1', startDate: '2014', endDate: '2017', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'},
-  { title: 'Mobile Development Intern', company: 'TedxGUC', companyId: '1', startDate: '2014', endDate: '2017', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'}
+  { title: 'Mobile Development Intern', companyName: 'TedxGUC', companyId: '1', startDate: '2014', endDate: '2017',summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'},
+  { title: 'Mobile Development Intern', companyName: 'TedxGUC', companyId: '1', startDate: '2014', endDate: '2017',summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'},
+  { title: 'Mobile Development Intern', companyName: 'TedxGUC', companyId: '1', startDate: '2014', endDate: '2017',summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'},
+  { title: 'Mobile Development Intern', companyName: 'TedxGUC', companyId: '1', startDate: '2014', endDate: '2017',summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'}
 ]
 
 const mockEducationSection = [
-  { title: 'Computer Science Engineering', company: 'German University in Cairo', companyId: '2', startDate: '2014', endDate: '2017',description:'', imgSrc: 'https://media.licdn.com/dms/image/C4D0BAQEPcpt4gRL1hA/company-logo_400_400/0?e=2122830000&v=beta&t=QHdiLNCnh_wJBk0NYio4xsLFU9n1GAYGIOA1L-kai6s'},
-  { title: 'Computer Science Engineering', company: 'German University in Cairo', companyId: '2', startDate: '2014', endDate: '2017',description:'', imgSrc: 'https://media.licdn.com/dms/image/C4D0BAQEPcpt4gRL1hA/company-logo_400_400/0?e=2122830000&v=beta&t=QHdiLNCnh_wJBk0NYio4xsLFU9n1GAYGIOA1L-kai6s'},
+  { schoolName: 'German University in Cairo', startDate: '2014', endDate: '2017',field:'Computer Science', degree: 'Bachelors Degree'},
+  { schoolName: 'German University in Cairo', startDate: '2014', endDate: '2017',field:'Computer Science', degree: 'Bachelors Degree'},
+]
+
+const mockSkills = [
+  { skill: 'Java' },
+  { skill: 'Java' },
+  { skill: 'Java' },
+  { skill: 'Java' },
+  { skill: 'Java' },
+  { skill: 'Java' }
 ]
 
 ProfileTest = Radium(ProfileTest);

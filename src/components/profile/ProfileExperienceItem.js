@@ -1,5 +1,5 @@
 /**
-    The ProfileSectionItem header used in all headers in different sizes,
+    The ProfileExperienceItem header used in all headers in different sizes,
     sm: Small
     md: Medium
     lg: Large
@@ -16,18 +16,18 @@ import AvatarImage from '../images/AvatarImage';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import IconButton from '../buttons/IconButton';
 
-class ProfileSectionItem extends Component {
+class ProfileExperienceItem extends Component {
     render() {
-        const { title, company, companyId, startDate, endDate, description, imgSrc, style, size } = this.props;
+        const { title, companyName, companyId, startDate, endDate, summary, imgSrc, style, size } = this.props;
         return(
         <div style={[style, styles.base]}>
             <Link to={`/company/${companyId}`}>
                     <AvatarImage src={imgSrc} type="company" id={companyId} size="lg" style={styles.imgDiv}/>
                     <span style={styles.textDiv}>
                         <BlackText text={title} size="md" style={[styles.text, styles.title]}/>
-                        <BlackText text={company} size="md" style={styles.text}/>
+                        <BlackText text={companyName} size="md" style={styles.text}/>
                         <GrayText text={startDate + " - " + endDate} size="sm" style={styles.text}/>
-                        <GrayText text={description} size="sm" style={styles.description}/>
+                        <GrayText text={summary} size="sm" style={styles.description}/>
                     </span>
             </Link>
             <div style={styles.btnDiv}>
@@ -37,14 +37,13 @@ class ProfileSectionItem extends Component {
     )};    
 }
 
-ProfileSectionItem.propTypes = {
+ProfileExperienceItem.propTypes = {
     title: PropTypes.string.isRequired, 
-    company: PropTypes.string.isRequired, 
+    companyName: PropTypes.string.isRequired, 
     companyId: PropTypes.string.isRequired, 
     startDate: PropTypes.string.isRequired, 
     endDate: PropTypes.string.isRequired,  
-    duration: PropTypes.string, 
-    description: PropTypes.string, 
+    summary: PropTypes.string, 
     imgSrc: PropTypes.string, 
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"])
@@ -96,5 +95,5 @@ const styles = {
     }
 }
 
-ProfileSectionItem = Radium(ProfileSectionItem);
-export default ProfileSectionItem;
+ProfileExperienceItem = Radium(ProfileExperienceItem);
+export default ProfileExperienceItem;

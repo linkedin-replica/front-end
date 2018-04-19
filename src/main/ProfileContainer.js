@@ -7,29 +7,11 @@ import Profile from '../components/profile/Profile';
 class ProfileContainer extends Component {
 
     state = {
-        data: {},
-        // educationSection: [],
-        // receiverId: '',
-        // token: '',
-        // history: [],
-        // inputMessage: ''
+        data: {}
     }
 
     constructor(props) {
         super(props)
-
-        const mockExperienceSection = [
-            { title: 'Mobile Development Intern', company: 'TedxGUC', companyId: '1', startDate: '2014', endDate: '2017',description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'},
-            { title: 'Mobile Development Intern', company: 'TedxGUC', companyId: '1', startDate: '2014', endDate: '2017', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'},
-            { title: 'Mobile Development Intern', company: 'TedxGUC', companyId: '1', startDate: '2014', endDate: '2017', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'},
-            { title: 'Mobile Development Intern', company: 'TedxGUC', companyId: '1', startDate: '2014', endDate: '2017', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'}
-        ]
-          
-        const mockEducationSection = [
-            { title: 'Computer Science Engineering', company: 'German University in Cairo', companyId: '2', startDate: '2014', endDate: '2017',description:'', imgSrc: 'https://media.licdn.com/dms/image/C4D0BAQEPcpt4gRL1hA/company-logo_400_400/0?e=2122830000&v=beta&t=QHdiLNCnh_wJBk0NYio4xsLFU9n1GAYGIOA1L-kai6s'},
-            { title: 'Computer Science Engineering', company: 'German University in Cairo', companyId: '2', startDate: '2014', endDate: '2017',description:'', imgSrc: 'https://media.licdn.com/dms/image/C4D0BAQEPcpt4gRL1hA/company-logo_400_400/0?e=2122830000&v=beta&t=QHdiLNCnh_wJBk0NYio4xsLFU9n1GAYGIOA1L-kai6s'},
-        ]
-          
         const { mockData } = this.props;
         if (mockData)
             this.state.chats = mockData
@@ -40,49 +22,6 @@ class ProfileContainer extends Component {
    
     componentDidMount() {
 
-    }
-
-    handleSelect = (receiverId) => {
-        let token = "eyJhbGciOiJIUzUxMiJ9.eyJzZW5kZXJJZCI6IjIiLCJyZWNlaXZlcklkIjoiMSIsImlzcyI6ImxpbmtlZGluLmNoYXQiLCJleHAiOjE1MjQxNjUxMTUsImlhdCI6MTUyNDEyOTExNX0.8gnEnLNFXsYoksGl3rFOSDE-lUD7P00Sbq1BVKsNoUOjW73PrZ6_0KoeZ7n35ivMrusddGSWEkPsBJEEEd0unw"
-
-        this.setState({
-            receiverId,
-            token,
-        })
-
-        this.createSocket('localhost', '9092', token)
-        // api.initChat(receiverId)
-        //     .then(res => {
-        //         const { ip, port, token, history } = res.results;
-        //         this.setState({ token, history })
-        //         this.createSocket(ip, port, token)
-        //     })
-    }
-
-    createSocket = (ip, port, token) => {
-        const BASE_URL = `http://${ip}:${port}`
-
-        this.socket = io(BASE_URL, {
-            query: "threadToken=" + token
-        })
-
-        // Connection established
-        this.socket.on('connect', function () {
-            alert('Connected to server')
-        })
-
-        // Receive messages
-        this.socket.on('chatevent', (message) => {
-            this.setState(prevState => ({
-                history: [...prevState.history, message]
-            }))
-        })
-
-        // Disconnected from server
-        this.socket.on('disconnect', function () {
-            alert('Disconnected')
-            this.socket = null;
-        })
     }
 
     handleSendMessage = (event) => {
@@ -120,7 +59,7 @@ class ProfileContainer extends Component {
     }
 
     render() {
-        const { chats, history, inputMessage } = this.state;
+        const {data} = this.state;
         return (
             <Profile     
                 {...data}

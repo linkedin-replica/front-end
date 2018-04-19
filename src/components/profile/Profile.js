@@ -3,10 +3,13 @@ import Radium from 'radium';
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { colors } from '../../resources/constants';
-import ProfileSection from '../profile/ProfileSection';
+import ProfileExperience from '../profile/ProfileExperience';
+import ProfileEducation  from '../profile/ProfileEducation';
 import ProfileHeader from '../details/ProfileHeader';
 import ProfileSkill from '../profile/ProfileSkill';
 import ListAdapter from '../wrappers/ListAdapter';
+import GridView from '../wrappers/GridView';
+
 
 class Profile extends Component {
     render() {
@@ -26,12 +29,15 @@ class Profile extends Component {
                           id={userId} />
             </section>
             <section>
-              <ProfileSection sectionTitle="Experience" data={positions} />
+              <ProfileExperience sectionTitle="Experience" data={positions} />
             </section>
             <section>
-              <ProfileSection sectionTitle="Education" data={educations} />
+              <ProfileEducation sectionTitle="Education" data={educations} />
             </section>
             <section>
+                <WhiteWrapper style={styles.gridWrapper}>
+                    <GridView data={mockData2} gridItemView={WhiteWrapper} horizontalSplit verticalSplit size="md" />
+                </WhiteWrapper>
               <ProfileSkill skill="Java"/>
             </section>
         </div>
