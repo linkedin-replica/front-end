@@ -5,22 +5,15 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import ButtonsTest from './ButtonsTest';
 import WrappersTest from './WrappersTest';
-<<<<<<< HEAD
 import CompanyTest from './CompanyTest';
 import TypographyTest from './TypographyTest';
 import ProfileTest from './ProfileTest';
-<<<<<<< HEAD
 import DetailsHeaderTest from './DetailsHeaderTest';
-<<<<<<< HEAD
-=======
 import WallTest from './WallTest';
->>>>>>> d1cf22ccab04a3b8f7d8ef53d842aa4ca17cd3fa
-=======
 import ConnectionsTest from './ConnectionsTest';
->>>>>>> f6eb149a73836a20a2c20f3e9006959ed724db04
-=======
 import LoginContainerTest from './LoginContainerTest';
->>>>>>> 6fcee472ba0e54b983e73bde6cc93e0e9bfaa3b6
+import LoginTest from './LoginTest';
+import RegistrationContainerTest from './RegistrationContainerTest';
 import { Route } from 'react-router-dom'
 import ChatTest from './ChatTest';
 import RecommendedArticleTest from './RecommendedArticleTest'
@@ -58,6 +51,10 @@ class Test extends Component {
         <Route path={`${match.url}/JobCard`} component={JobCardTest} />
         <Route path={`${match.url}/applicant`} component={CompanyTest} />
         <Route path={`${match.url}/login`} component={LoginContainerTest} />
+
+        <Route path={`${match.url}/login`} component={LoginTest} />
+
+        <Route path={`${match.url}/signup`} component={RegistrationContainerTest} />
         {/* 
         Add a new route to test your component in this way
         <Route path={`${match.url}/define route name here`} component={imported component to test} /> */
