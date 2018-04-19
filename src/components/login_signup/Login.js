@@ -3,6 +3,7 @@ import Radium from 'radium';
 import BorderedButton from '../buttons/BorderedButton';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import PropTypes from 'prop-types'
+import { colors } from '../../resources/constants';
 
 class Login extends Component {
   render() {

@@ -1,25 +1,26 @@
 import io from 'socket.io-client';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import api from '../api/api';
 import Wall from '../components/wall/Wall';
+import Post from './Post';
+import api from '../../api/api';
 
-class WallContainer extends Component {
+class PostContainer extends Component {
 
     state = {
         likeCounter: 0,
-        isLiked:false,
-        visibility : false,
-       
+        isLiked: false,
+        visibility: false,
+
     }
 
     likeButtonHandler = () => {
         this.setState({
-            likeCounter: this.state.likeCounter+= (this.state.isLiked? -1:1),
+            likeCounter: this.state.likeCounter += (this.state.isLiked ? -1 : 1),
             isLiked: !this.state.isLiked
         });
         console.log("like counter: ", this.state.likeCounter)
-        
+
     }
 
 
@@ -27,8 +28,8 @@ class WallContainer extends Component {
         this.setState({
             visibility: !this.state.visibility
         });
-        
-    } 
+
+    }
 
     constructor(props) {
         super(props)
@@ -36,9 +37,8 @@ class WallContainer extends Component {
         const { mockData } = this.props;
         if (mockData)
             this.state.posts = mockData
-
     }
-    
+
     componentDidMount() {
 
     }
@@ -46,23 +46,23 @@ class WallContainer extends Component {
     render() {
         const { posts, comments } = this.state;
         return (
-            <Post 
-             />
+            <Post />
+
         );
     }
 }
 
 PostContainer.propTypes = {
-    text: propTypes.string,
-    images: propTypes.string,
-    videos: propTypes.string,
-    commentsCount: propTypes.string,
-    timestamp: propTypes.number,
-    likers: propTypes.object,
-    liked: propTypes.bool,
-    authorName: propTypes.string,
-    authorProfilePictureUrl: propTypes.string,
-    headline: propTypes.string
+    text: PropTypes.string,
+    images: PropTypes.string,
+    videos: PropTypes.string,
+    commentsCount: PropTypes.string,
+    timestamp: PropTypes.number,
+    likers: PropTypes.object,
+    liked: PropTypes.bool,
+    authorName: PropTypes.string,
+    authorProfilePictureUrl: PropTypes.string,
+    headline: PropTypes.string
 
 
 };
