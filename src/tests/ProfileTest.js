@@ -66,7 +66,6 @@ const styles = {
   right: {
     width: '30%',
     float: 'right',
-    // paddingTop: '20em',
   }
 }
 
