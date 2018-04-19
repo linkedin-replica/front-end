@@ -5,6 +5,7 @@ import AvatarImage from '../images/AvatarImage';
 import BoldLink from '../typography/BoldLink';
 import DetailsHeader from '../details/DetailsHeader';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
+import BorderedButton from '../buttons/BorderedButton';
 import GreyAndBorder from '../buttons/AdjacentGreyBorder';
 import GrayText from '../typography/GrayText';
 
@@ -31,18 +32,21 @@ class FriendRecommendationItem extends Component {
                     id={id}
                 />
             </section>
-            <section align = "center">
+            <section>
                 <BoldLink 
                     text = {name}
                     type="profile"
                     id={id}
+                    style={styles.text} 
                     size = "md"
                 />
                 <GrayText 
                     text = {description}
                     size = "md"
+                    style={styles.text} 
                 />
             </section>
+            <BorderedButton name="Connect" color="blue" size="md" />
             </WhiteWrapper>
         );
     }
@@ -60,14 +64,18 @@ const styles = {
 
     },
     text: {
-
+        margin: '0px',
+        maxWidth: '60%',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
     },
     whiteWrapper: {
         margin: '10px auto',
         padding: '20px',
         textAlign: 'left',
         fontSize: '1.5em',
-        position:'relative'
+        position:'relative',
+        align: 'center'
     },
     btnDiv: {
       position: 'absolute',
