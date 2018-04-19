@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import ButtonsTest from './ButtonsTest';
 import WrappersTest from './WrappersTest';
+import CompanyTest from './CompanyTest';
 import TypographyTest from './TypographyTest';
 import ProfileTest from './ProfileTest';
 <<<<<<< HEAD
@@ -32,6 +33,8 @@ class Test extends Component {
 
         <Route path={`${match.url}/wrappers`} component={WrappersTest} />
 
+        <Route path={`${match.url}/company`} component={CompanyTest} />
+
         <Route path={`${match.url}/typography`} component={TypographyTest} />
 
         <Route path={`${match.url}/profile`} component={ProfileTest} />
@@ -49,6 +52,7 @@ class Test extends Component {
         <Route path={`${match.url}/connections`} component={ConnectionsTest} />
 
         <Route path={`${match.url}/JobCard`} component={JobCardTest} />
+        <Route path={`${match.url}/applicant`} component={CompanyTest} />
         {/* 
         Add a new route to test your component in this way
         <Route path={`${match.url}/define route name here`} component={imported component to test} /> */

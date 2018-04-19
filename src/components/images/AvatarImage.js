@@ -36,27 +36,18 @@ AvatarImage.propTypes = {
     type: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     style: PropTypes.object, // Content defined styles
-    size: PropTypes.oneOf(["sm", "md", "lg"]),
+    size: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
 };
 
 
 const styles = {
-<<<<<<< HEAD
     imgRounded: {
         borderRadius: '50%',
-=======
-    base:{
-
-    },
-    img: {
-        borderRadius: '50%'
->>>>>>> d1cf22ccab04a3b8f7d8ef53d842aa4ca17cd3fa
     },
     imgSquared: {
         borderRadius: '0%',
     },
     sm: {
-<<<<<<< HEAD
         height: '1.5em',
         width: '1.5em'
     },
@@ -64,18 +55,14 @@ const styles = {
 
         height: '2em',
         width: '2em'
-=======
-        height: '6%',
-        width: '6%'
-    },
-    md: {
-        height: '7%',
-        width: '7%'
->>>>>>> d1cf22ccab04a3b8f7d8ef53d842aa4ca17cd3fa
     },
     lg: {
         height: '5em',
         width: '5em'
+    },
+    xl: {
+        height: '8em',
+        width: '8em'
     }
 }
 
