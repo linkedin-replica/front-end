@@ -16,10 +16,13 @@ class ProfileTest extends Component {
               <h1>Profile Testing</h1>
             </header>
             <section>
-              <ProfileHeader src="https://media.licdn.com/dms/image/C4D03AQGz63bPFy5l-w/profile-displayphoto-shrink_200_200/0?e=1528815600&v=beta&t=EvJQfWQHVOLN5ye6KKwiQnP7AszhkHzgUDGw5Hs5OA0"
+              <ProfileHeader imageUrl="https://media.licdn.com/dms/image/C4D03AQGz63bPFy5l-w/profile-displayphoto-shrink_200_200/0?e=1528815600&v=beta&t=EvJQfWQHVOLN5ye6KKwiQnP7AszhkHzgUDGw5Hs5OA0"
                           rounded
-                          header="Rana Saeed"
-                          subHeader="Student at The German University in Cairo"
+                          firstName="Rana"
+                          lastName="Saeed"
+                          headline="Student at The German University in Cairo"
+                          location = {mockLocation}
+                          country="Egypt"
                           type="profile"
                           size="lg"
                           id="1" />
@@ -48,17 +51,20 @@ const styles = {
   }
 }
 
-const mockExperienceSection = [
-  { title: 'Mobile Development Intern', company: 'TedxGUC', id: '1', duration: '2 months', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'},
-  { title: 'Mobile Development Intern', company: 'TedxGUC', id: '1', duration: '2 months', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'},
-  { title: 'Mobile Development Intern', company: 'TedxGUC', id: '1', duration: '2 months', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'},
-  { title: 'Mobile Development Intern', company: 'TedxGUC', id: '1', duration: '2 months', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'}
- ]
+const mockPersonalInfo = { location: mockLocation, name: 'Potato'}
+const mockLocation = { country: 'Egypt', address: 'Cairo', code: '12345'}
 
- const mockEducationSection = [
-  { title: 'Computer Science Engineering', company: 'German University in Cairo', id: '2', duration: '4 years',description:'', imgSrc: 'https://media.licdn.com/dms/image/C4D0BAQEPcpt4gRL1hA/company-logo_400_400/0?e=2122830000&v=beta&t=QHdiLNCnh_wJBk0NYio4xsLFU9n1GAYGIOA1L-kai6s'},
-  { title: 'Computer Science Engineering', company: 'German University in Cairo', id: '2', duration: '4 years',description:'', imgSrc: 'https://media.licdn.com/dms/image/C4D0BAQEPcpt4gRL1hA/company-logo_400_400/0?e=2122830000&v=beta&t=QHdiLNCnh_wJBk0NYio4xsLFU9n1GAYGIOA1L-kai6s'},
- ]
+const mockExperienceSection = [
+  { title: 'Mobile Development Intern', company: 'TedxGUC', companyId: '1', startDate: '2014', endDate: '2017',description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'},
+  { title: 'Mobile Development Intern', company: 'TedxGUC', companyId: '1', startDate: '2014', endDate: '2017', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'},
+  { title: 'Mobile Development Intern', company: 'TedxGUC', companyId: '1', startDate: '2014', endDate: '2017', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'},
+  { title: 'Mobile Development Intern', company: 'TedxGUC', companyId: '1', startDate: '2014', endDate: '2017', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A'}
+]
+
+const mockEducationSection = [
+  { title: 'Computer Science Engineering', company: 'German University in Cairo', companyId: '2', startDate: '2014', endDate: '2017',description:'', imgSrc: 'https://media.licdn.com/dms/image/C4D0BAQEPcpt4gRL1hA/company-logo_400_400/0?e=2122830000&v=beta&t=QHdiLNCnh_wJBk0NYio4xsLFU9n1GAYGIOA1L-kai6s'},
+  { title: 'Computer Science Engineering', company: 'German University in Cairo', companyId: '2', startDate: '2014', endDate: '2017',description:'', imgSrc: 'https://media.licdn.com/dms/image/C4D0BAQEPcpt4gRL1hA/company-logo_400_400/0?e=2122830000&v=beta&t=QHdiLNCnh_wJBk0NYio4xsLFU9n1GAYGIOA1L-kai6s'},
+]
 
 ProfileTest = Radium(ProfileTest);
 export default ProfileTest;

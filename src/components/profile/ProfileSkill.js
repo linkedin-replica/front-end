@@ -42,7 +42,7 @@ const styles = {
     textDiv: {
         textAlign: 'center',  
         fontSize: '18px',
-        paddingLeft: '25%',
+        paddingLeft: '20%',
     }
 }
 

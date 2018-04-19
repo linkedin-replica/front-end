@@ -17,24 +17,27 @@ import WhiteWrapper from '../wrappers/WhiteWrapper';
 
 class ProfileHeader extends Component {
     render() {
-        const { src, rounded, header, subHeader, type, id, style, size } = this.props;
+        const { imageUrl, rounded, firstName, lastName, headline, location, type, userId, style, size } = this.props;
         return (
             <div style={[style, styles.base]}>
                 <WhiteWrapper style={styles.whiteWrapper} size="lg">
                     <div style={styles.imgDiv}>
-                        <AvatarImage src={src}
+                        <AvatarImage src={imageUrl}
                             rounded={rounded}
                             style={styles.img}
                             size={size}
                             type={type}
-                            id={id}
+                            id={userId}
                         />
                     </div>
                     <div style={styles.textDiv}>
-                        <BlackText text={header}
+                        <BlackText text={firstName + " " + lastName}
                             style={styles.text}
                             size={size} />
-                        <GrayText text={subHeader}
+                        <GrayText text={headline}
+                            style={styles.text}
+                            size={size} />
+                        <GrayText text={location.country}
                             style={styles.text}
                             size={size} />
                     </div>
@@ -45,12 +48,14 @@ class ProfileHeader extends Component {
 }
 
 ProfileHeader.propTypes = {
-    src: PropTypes.string.isRequired,
-    header: PropTypes.string.isRequired,
-    subHeader: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    headline: PropTypes.string.isRequired,
+    location: PropTypes.object.isRequired,
     rounded: PropTypes.bool,
     type: PropTypes.string,
-    id: PropTypes.string,
+    userId: PropTypes.string.isRequired,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"]),
 };
@@ -66,7 +71,7 @@ const styles = {
         backgroundImage: 'url(http://www.thepartnermarketinggroup.com/wp-content/uploads/2018/01/LinkedInDefaultBanner.png)',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'top', 
-        height: '7em'   
+        height: '7em',
     },
     imgDiv: {
         textAlign: 'center',
