@@ -9,10 +9,10 @@ import { colors, borders } from '../../resources/constants';
 class ChatMessage extends Component {
     render() {
         // Directly get the passed parameters from the props
-        const { message, position } = this.props;
+        const { message, isSender } = this.props;
         console.log(message)
         return (
-            <div style={[styles.base, styles['right']]}>
+            <div style={[styles.base, styles[isSender ? 'right' : 'left']]}>
                 <div className="single-message" style={[styles.message]}>
                     {message}
                 </div>
@@ -23,7 +23,8 @@ class ChatMessage extends Component {
 
 // Define the passed input types for this component
 ChatMessage.propTypes = {
-    message: PropTypes.object
+    message: PropTypes.object.isRequired,
+    isSender: PropTypes.bool.isRequired
 };
 
 const styles = {

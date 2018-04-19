@@ -27,20 +27,16 @@ class ChatContainer extends Component {
     }
 
     handleSelect = (receiverId) => {
-        let token = "eyJhbGciOiJIUzUxMiJ9.eyJzZW5kZXJJZCI6IjIiLCJyZWNlaXZlcklkIjoiMSIsImlzcyI6ImxpbmtlZGluLmNoYXQiLCJleHAiOjE1MjQxNjUxMTUsImlhdCI6MTUyNDEyOTExNX0.8gnEnLNFXsYoksGl3rFOSDE-lUD7P00Sbq1BVKsNoUOjW73PrZ6_0KoeZ7n35ivMrusddGSWEkPsBJEEEd0unw"
-
         this.setState({
             receiverId,
-            token,
         })
 
-        this.createSocket('localhost', '9092', token)
-        // api.initChat(receiverId)
-        //     .then(res => {
-        //         const { ip, port, token, history } = res.results;
-        //         this.setState({ token, history })
-        //         this.createSocket(ip, port, token)
-        //     })
+        api.initChat(receiverId)
+            .then(res => {
+                const { ip, port, sessionToken, history } = res.results;
+                this.setState({ token: sessionToken, history })
+                this.createSocket(ip, port, sessionToken)
+            })
     }
 
     createSocket = (ip, port, token) => {
@@ -51,8 +47,8 @@ class ChatContainer extends Component {
         })
 
         // Connection established
-        this.socket.on('connect', function () {
-            alert('Connected to server')
+        this.socket.on('connect', () => {
+            console.log('Connected')
         })
 
         // Receive messages
@@ -63,8 +59,7 @@ class ChatContainer extends Component {
         })
 
         // Disconnected from server
-        this.socket.on('disconnect', function () {
-            alert('Disconnected')
+        this.socket.on('disconnect', () => {
             this.socket = null;
         })
     }
@@ -104,10 +99,13 @@ class ChatContainer extends Component {
     }
 
     render() {
+        const { userId } = this.props
         const { chats, history, inputMessage } = this.state;
+
+        const chatDetails = history.map(message => ({ ...message, isSender: message.senderId === userId }))
         return (
             <Chat chats={chats}
-                chatDetails={history}
+                chatDetails={chatDetails}
                 inputMessageVal={inputMessage}
                 handleSelectChat={this.handleSelect}
                 handleSendMessage={this.handleSendMessage}
@@ -117,7 +115,7 @@ class ChatContainer extends Component {
 }
 
 ChatContainer.propTypes = {
-
+    userId: PropTypes.string.isRequired
 };
 
 export default ChatContainer;

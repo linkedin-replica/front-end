@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://localhost:8000/api/'
+const BASE_URL = 'http://localhost:8081/api/'
 
 const axiosInstance = axios.create({
     baseURL: BASE_URL,
@@ -10,7 +10,8 @@ const axiosInstance = axios.create({
 })
 
 axiosInstance.interceptors.request.use(config => {
-    config.headers['access-token'] = localStorage.getItem('jwt-token') || ''
+    config.headers['access-token'] = localStorage.getItem('access-token') || ''
+    console.log(config.headers['access-token'])
     return config
 })
 
@@ -22,9 +23,9 @@ export default {
         return axiosInstance.post('auth/login', user)
     },
     saveLoginToken: (newToken) => {
-        localStorage.setItem('jwt-token', newToken)
+        localStorage.setItem('access-token', newToken)
     },
     initChat: (receiverId) => {
-        return axiosInstance.post('chat/register', { params: { receiverId } })
+        return axiosInstance.get('chat/register', { params: { receiverId } })
     }
 }
