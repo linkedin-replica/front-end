@@ -23,11 +23,6 @@ class ModalTest extends Component {
 
         <Modal show={this.state.isOpen}
           onClose={this.toggleModal}
-          ljvfjshdfjksdjfjsdjfsdcndznc
-          xvbdfjkvnjdfgvjfndlgkjn
-
-          cvsdhfjklvjsdlkfk
-          mvxjdnvkdf
           btnText="Submit Form">
         </Modal>
       </div>
