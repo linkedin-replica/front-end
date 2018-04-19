@@ -7,9 +7,10 @@ import ButtonsTest from './ButtonsTest';
 import WrappersTest from './WrappersTest';
 import TypographyTest from './TypographyTest';
 import DetailsHeaderTest from './DetailsHeaderTest';
-import { Route } from 'react-router-dom'
-import RecommendedArticleTest from './RecommendedArticleTest'
-import RecommendedArticlesTest from './RecommendedArticlesTest'
+import { Route } from 'react-router-dom';
+import RecommendedArticleTest from './RecommendedArticleTest';
+import RecommendedArticlesTest from './RecommendedArticlesTest';
+import ModalTest from './ModalTest';
 
 class Test extends Component {
   render() {
@@ -26,6 +27,8 @@ class Test extends Component {
         <Route path={`${match.url}/details`} component={DetailsHeaderTest} />
 
         <Route path={`${match.url}/recommendedArticle`} component={RecommendedArticleTest} />
+
+        <Route path={`${match.url}/modal`} component={ModalTest} />
 
     <Route path={`${match.url}/recommendedArticles`} component={RecommendedArticlesTest} />
         {/*
