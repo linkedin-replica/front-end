@@ -30,6 +30,7 @@ class ProfileTest extends Component {
                             id="1" />
               </section>
             </div>
+            
             <div style = {styles.left}>
               <section>
                 <ProfileExperience sectionTitle="Experience" data={mockExperienceSection} />
@@ -52,9 +53,6 @@ class ProfileTest extends Component {
 }
 
 const styles = {
-  header: {
-      
-  },
   header: {
     width: '100%',
     float: 'left',
