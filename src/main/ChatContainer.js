@@ -11,7 +11,6 @@ class ChatContainer extends Component {
         receiverId: '',
         token: '',
         history: [],
-        socket: null,
         inputMessage: ''
     }
 
@@ -21,20 +20,21 @@ class ChatContainer extends Component {
         const { mockData } = this.props;
         if (mockData)
             this.state.chats = mockData
+
     }
     componentDidMount() {
 
     }
 
     handleSelect = (receiverId) => {
-        let token = "eyJhbGciOiJIUzUxMiJ9.eyJzZW5kZXJJZCI6IjIiLCJyZWNlaXZlcklkIjoiMSIsImlzcyI6ImxpbmtlZGluLmNoYXQiLCJleHAiOjE1MjQwMTYzNTAsImlhdCI6MTUyMzk4MDM1MH0.4XM6zV-mr6HOfQJrB_cMJnpSl9wZHR3B7zv2JeSnxJmX8Antvqjv19qz9bBjTT2dHb8N4MvgMDMCCeNvKzUk8A"
+        let token = "eyJhbGciOiJIUzUxMiJ9.eyJzZW5kZXJJZCI6IjIiLCJyZWNlaXZlcklkIjoiMSIsImlzcyI6ImxpbmtlZGluLmNoYXQiLCJleHAiOjE1MjQxNjUxMTUsImlhdCI6MTUyNDEyOTExNX0.8gnEnLNFXsYoksGl3rFOSDE-lUD7P00Sbq1BVKsNoUOjW73PrZ6_0KoeZ7n35ivMrusddGSWEkPsBJEEEd0unw"
 
         this.setState({
             receiverId,
             token,
         })
 
-        this.createSocket('localhost', '9091', token)
+        this.createSocket('localhost', '9092', token)
         // api.initChat(receiverId)
         //     .then(res => {
         //         const { ip, port, token, history } = res.results;
@@ -46,66 +46,61 @@ class ChatContainer extends Component {
     createSocket = (ip, port, token) => {
         const BASE_URL = `http://${ip}:${port}`
 
-        let socket = io(BASE_URL, {
+        this.socket = io(BASE_URL, {
             query: "threadToken=" + token
         })
 
-        io.connect();
-
         // Connection established
-        socket.on('connect', function () {
+        this.socket.on('connect', function () {
             alert('Connected to server')
         })
 
         // Receive messages
-        socket.on('chatevent', function (message) {
+        this.socket.on('chatevent', (message) => {
             this.setState(prevState => ({
                 history: [...prevState.history, message]
             }))
         })
 
         // Disconnected from server
-        socket.on('disconnect', function () {
+        this.socket.on('disconnect', function () {
             alert('Disconnected')
-            this.setState({
-                socket: null
-            })
-        })
-
-        this.setState({
-            socket: socket
+            this.socket = null;
         })
     }
 
     handleSendMessage = (event) => {
-        const { socket, inputMessage, token } = this.state
-        event.preventDefault();
-        if (event.key != 'Enter')
-            return;
+        // Enter was pressed without shift key
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            const { inputMessage, token } = this.state
 
-        console.log(inputMessage)
-        if (inputMessage === '')
-            return;
+            if (inputMessage.length == 0)
+                return
 
-        let messageObj = {
-            threadToken: token,
-            message: inputMessage
+            let messageObj = {
+                threadToken: token,
+                message: inputMessage
+            }
+            // Send the message throught the socket
+            if (this.socket) {
+                this.socket.emit('chatevent', messageObj);
+                this.setState({
+                    inputMessage: ''
+                })
+            }
         }
-        // Send the message throught the socket
-        if (socket) {
-            socket.emit('chatevent', messageObj);
-            this.setState(prevState => ({
-                history: [...prevState.history, { message: inputMessage }],
-                inputMessage: ''
-            }))
-        }
-
     }
 
     handleChange = (event) => {
-        this.setState({
-            inputMessage: event.target.value
-        })
+        // Enter was pressed without shift key
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+        } else {
+            this.setState({
+                inputMessage: event.target.value
+            })
+        }
     }
 
     render() {
