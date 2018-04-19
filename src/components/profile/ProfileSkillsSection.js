@@ -16,6 +16,7 @@ class ProfileSkillsSection extends Component {
                 <div style={style}>
                     <h3 style={[styles.base, size ? styles[size] : styles['lg']]}> {sectionTitle} </h3>
                     <IconButton type="add" onClick={this.incrementCounter} />
+                    <IconButton type="edit" onClick={this.incrementCounter} />
                     <GridView data={data} gridItemView={WhiteWrapper} horizontalSplit verticalSplit size="lg" />
                 </div>
             </WhiteWrapper>
