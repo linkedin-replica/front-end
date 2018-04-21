@@ -36,17 +36,17 @@ class FriendRecommendationItem extends Component {
                 <BoldLink 
                     text = {name}
                     type="profile"
-                    id={id}
-                    style={styles.text} 
+                    id={id} 
                     size = "md"
+                    
                 />
                 <GrayText 
                     text = {description}
-                    size = "md"
-                    style={styles.text} 
+                    size = "md" 
                 />
+                <BorderedButton name="Connect" color="blue" size="md" />
             </section>
-            <BorderedButton name="Connect" color="blue" size="md" />
+            
             </WhiteWrapper>
         );
     }
@@ -70,9 +70,9 @@ const styles = {
         textOverflow: 'ellipsis'
     },
     whiteWrapper: {
-        margin: '10px auto',
+        margin: '0px',
         padding: '20px',
-        textAlign: 'left',
+        textAlign: 'center',
         fontSize: '1.5em',
         position:'relative',
         align: 'center'

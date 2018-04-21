@@ -37,7 +37,9 @@ class Connections extends Component {
  * Define here what does this component take as props
  */
 Connections.propTypes = {
-
+    friendRequestsData = PropTypes.array.isRequired,
+    friendRecommendationsData = PropTypes.array.isRequired,
+    friendsData = PropTypes.array.isRequired
 };
 
 /**
