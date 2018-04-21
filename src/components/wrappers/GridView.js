@@ -1,6 +1,6 @@
 /**
  * A grid adapter which is responsible for rendering all types of lists in a grid view
- * takes input data and a single view, then renders a grid containing 
+ * takes input data and a single view, then renders a grid containing
  * this view rendered for each data item
  * It can also be split horizontally and vertically to have some spacing
  *  */
