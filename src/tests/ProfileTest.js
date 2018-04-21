@@ -78,8 +78,8 @@ const mockExperienceSection = [
 ]
 
 const mockEducationSection = [
-  { schoolName: 'German University in Cairo', startDate: '2014', endDate: '2017',field:'Computer Science', degree: 'Bachelors Degree'},
-  { schoolName: 'German University in Cairo', startDate: '2014', endDate: '2017',field:'Computer Science', degree: 'Bachelors Degree'},
+  { schoolName: 'German University in Cairo', startDate: '2014', endDate: '2017',fieldOfStudy:'Computer Science', degree: 'Bachelors Degree'},
+  { schoolName: 'German University in Cairo', startDate: '2014', endDate: '2017',fieldOfStudy:'Computer Science', degree: 'Bachelors Degree'},
 ]
 
 const mockConnections = [
