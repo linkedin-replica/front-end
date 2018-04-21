@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
   }
 })
 
-axiosInstance.interceptors.request.us(config => {
+axiosInstance.interceptors.request.use(config => {
   config.headers['access-token'] = localStorage.getItem('access-token') || ''
   return config
 })
@@ -36,27 +36,27 @@ export default {
 
   // Connections
   acceptFriendRequest: (userId) => {
-    return axiosInstance.post('connections/acceptFriendRequest', userId)
+    return axiosInstance.post('connections/acceptFriendRequest', { userId })
   },
   addFriend: (userId) => {
-    return axiosInstance.post('connections/addFriend', userId)
+    return axiosInstance.post('connections/addFriend', { userId })
   },
   unfriend: (userId) => {
-    return axiosInstance.delete(`connections/unfriend`, userId)
+    return axiosInstance.delete(`connections/unfriend`, { userId })
   },
   blockUser: (userId) => {
-    return axiosInstance.post('connections/block', userId)
+    return axiosInstance.post('connections/block', { userId })
   },
   unBlockUser: (userId) => {
-    return axiosInstance.post('connections/unblock', userId)
+    return axiosInstance.post('connections/unblock', { userId })
   },
 
   // Edit Info
   getUserProfile: (userId) => {
     return axiosInstance.get(`editinfo/userGet/${userId}`)
   },
-  updateUserProfile: (updateProfile) => {
-    return axiosInstance.put(`editinfo/userUpdate`, updateProfile)
+  updateUserProfile: (updatedProfile) => {
+    return axiosInstance.put(`editinfo/userUpdate`, updatedProfile)
   },
   addCV: (cvURL) => {
     return axiosInstance.post('editinfo/userCvAdd', cvURL)
@@ -87,16 +87,16 @@ export default {
     return axiosInstance.post('jobs/postJobCompany', job)
   },
   getJobListing: (jobId) => {
-    return axiosInstance.get(`jobs/jobListing${companyId}`)
+    return axiosInstance.get(`jobs/jobListing/${jobId}`)
   },
   getAppliedJobs: (companyId) => {
-    return axiosInstance.get(`jobs/viewAppliedJobs${companyId}`)
+    return axiosInstance.get(`jobs/viewAppliedJobs/${companyId}`)
   },
   respondToApplicant: (job) => {
     return axiosInstance.put('jobs/respondToApplicant', job)
   },
   deleteJob: (jobId) => {
-    return axiosInstance.delete('jobs/deleteJobCompany', jobId)
+    return axiosInstance.delete('jobs/deleteJobCompany', { jobId })
   },
 
   // Articles
@@ -123,64 +123,54 @@ export default {
     return axiosInstance.get(`recommendations/jobs`)
   },
 
-  // Profile
-  addBookmarkPost: (post) => {
-    return axiosInstance.post('wall/addBookmark', post)
+  // Wall
+  bookmarkPost: (postId) => {
+    return axiosInstance.post('wall/addBookmark', { postId })
   },
-  getBookmarks: () => {
-    return axiosInstance.get(`wall/bookmarks/`)
+  getBookmarkedPosts: () => {
+    return axiosInstance.get(`wall/getBookmarks`)
   },
-
-  addPost: (post) => {
-    return axiosInstance.post('post', post)
+  deleteBookmarkedPost: (postId) => {
+    return axiosInstance.post('wall/deleteBookmark', { postId })
+  },
+  getPosts: () => {
+    return axiosInstance.get(`wall/posts`)
+  },
+  addPost: (authorId, type, text, headLine, img, video) => {
+    return axiosInstance.post('wall/addPost', { authorId, type, text, headLine, images: [img], videos: [video], isArticle: false })
+  },
+  editPost: (postId, authorId, type, text, headLine, likesCount, img, video, commentsCount, isArticle) => {
+    return axiosInstance.put(`wall/editPost`, { postId, authorId, type, text, headLine, likesCount, images: [img], videos: [video], commentsCount, isArticle: true })
+  },
+  deletePost: (postId) => {
+    return axiosInstance.delete(`wall/deletePost`, { postId })
   },
   addPostComment: (postComment) => {
-    return axiosInstance.post('comment', postComment)
+    return axiosInstance.post('wall/addComment', postComment)
   },
-  addPostLike: (postLike) => {
-    return axiosInstance.post('like', postLike)
+  deleteComment: (commentId) => {
+    return axiosInstance.delete(`wall/deleteComment`, { commentId })
   },
-  addReply: (reply) => {
-    return axiosInstance.post('reply', reply)
+  likePost: (postLike) => {
+    return axiosInstance.post('wall/addLike', postLike)
   },
-  reportUser: (userId) => {
-    return axiosInstance.post('report-user', userId)
+  deleteLike: (likeId) => {
+    return axiosInstance.delete(`wall/deleteLike`, { likeId })
   },
-  getArticle: (articleId) => {
-    return axiosInstance.get(`articles/${article}`)
-  },
-  getPost: (postId) => {
-    return axiosInstance.get(`posts/${postId}`)
-  },
-  deleteComment: (comment) => {
-    return axiosInstance.delete(`comments`, comment)
-  },
-  deleteLike: (like) => {
-    return axiosInstance.delete(`comment/likes`, like)
-  },
-  deleteReply: (reply) => {
-    return axiosInstance.delete(`comment/replies`, reply)
-  },
-  editArticle: (article) => {
-    return axiosInstance.put(`articles`, article)
-  },
-  editComment: (comment) => {
-    return axiosInstance.put(`comments`, comment)
-  },
-  editJob: (job) => {
-    return axiosInstance.put(`jobs`, job)
-  },
-  editJobAsCompany: (job) => {
-    return axiosInstance.put(`company/jobs/edit`, job)
-  },
-  editPost: (post) => {
-    return axiosInstance.put(`post`, post)
-  },
-  editUserProfile: (profile) => {
-    return axiosInstance.put(`edit-profile`, profile)
+  replyPost: (reply) => {
+    return axiosInstance.post('wall/addReply', reply)
   },
   editReply: (reply) => {
-    return axiosInstance.put(`comment/replies`, reply)
+    return axiosInstance.put(`wall/editReply`, reply)
+  },
+  deleteReply: (replyId) => {
+    return axiosInstance.delete(`wall/deleteReply`, { replyId })
+  },
+  editArticle: (article) => {
+    return axiosInstance.put(`wall/editArticle`, article)
+  },
+  editComment: (comment) => {
+    return axiosInstance.put(`wall/editComment`, comment)
   },
 
   // Search
