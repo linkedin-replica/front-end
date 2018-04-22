@@ -1,7 +1,6 @@
 import io from 'socket.io-client';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import Wall from '../components/wall/Wall';
 import Post from './Post';
 import api from '../../api/api';
 
@@ -11,7 +10,6 @@ class PostContainer extends Component {
         likeCounter: 0,
         isLiked: false,
         visibility: false,
-
     }
 
     likeButtonHandler = () => {
