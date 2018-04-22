@@ -4,6 +4,7 @@ import BorderedButton from '../buttons/BorderedButton';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import PropTypes from 'prop-types'
 import { colors } from '../../resources/constants';
+import UnlabeledInput from '../forms/UnlabeledInput';
 
 class Login extends Component {
   render() {
@@ -11,17 +12,19 @@ class Login extends Component {
     return (
       <div styles={styles.darkContainer}>
         <form style={styles.base} onSubmit={handleSubmit}>
-          <input
+          <UnlabeledInput
             className='form-inline'
             type='email'
             placeholder='Email'
+            size="sm"
             onChange={handleChange('email')}
           />
-          <input
-            style={styles.password}
+          <UnlabeledInput
             className='form-inline'
             type='password'
             placeholder='Password'
+            size="sm"
+            style={styles.password}
             onChange={handleChange('password')}
           />
           <BorderedButton name='Sign in' color='white'> </BorderedButton>
@@ -41,7 +44,6 @@ const styles = {
   base: {
     padding: '10px',
     paddingRight: '20px',
-    backgroundColor: colors.darkGray,
     textAlign: 'right'
   },
   password: {

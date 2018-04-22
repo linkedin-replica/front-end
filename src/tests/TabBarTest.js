@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import { colors } from '../resources/constants';
 import TabBar from '../components/wrappers/TabBar';
+import Header from '../components/wrappers/Header';
 
 
 class TabBarTest extends Component {
@@ -16,7 +17,14 @@ class TabBarTest extends Component {
                     <h1>TabBar Testing</h1>
                 </header>
                 <section style={styles.darkContainer}>
-                    <TabBar/>
+                    <TabBar />
+                </section>
+                <section>
+                    <h1>Header</h1>
+                    <h2>Login</h2>
+                    <Header isLoggedIn={false} />
+                    <h2>LoggedIn</h2>
+                    <Header isLoggedIn={true} />
                 </section>
             </div >
         );
