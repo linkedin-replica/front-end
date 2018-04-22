@@ -24,8 +24,8 @@ class WhiteWrapper extends Component {
             <div
                 style={[
                     styles.base,
+                    size ? styles[size] : styles['md'],
                     style,
-                    size ? styles[size] : styles['md']
                 ]}>
                 {children}
             </div>
