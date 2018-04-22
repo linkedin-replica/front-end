@@ -28,6 +28,9 @@ export default {
   saveLoginToken: (newToken) => {
     localStorage.setItem('access-token', newToken)
   },
+  getLoggedInUserDetails: () => {
+    return axiosInstance.get('editinfo/loggedInUserInfo')
+  },
 
   // Chat
   initChat: (receiverId) => {
