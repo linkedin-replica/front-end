@@ -18,7 +18,9 @@ class App extends Component {
     // If user is logged in, get his info
     if (loggedInToken) {
       api.getLoggedInUserDetails()
-        .then(res => { })
+        .then(res => {
+          loggedInUser: res.results
+        })
     } else {
       <Redirect to="/login" />
     }

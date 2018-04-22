@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import WallContainer from './WallContainer';
 import ConnectionsContainer from './ConnectionsContainer';
 import JobsContainer from './JobsContainer';
@@ -9,14 +9,15 @@ import ArticlesContainer from './ArticlesContainer';
 import ChatContainer from './ChatContainer';
 import ProfileContainer from './ProfileContainer';
 import SearchResultsContainer from './SearchResultsContainer';
+import RegistrationContainer from './RegistrationContainer';
 
 class MainContainer extends Component {
-
 
     render() {
         const { match } = this.props
         return (
             <div className="main-container" style={styles.base}>
+                <Route path='/login' component={RegistrationContainer} />
                 <Route path='/home' component={WallContainer} />
                 <Route path='/connections' component={ConnectionsContainer} />
                 <Route path='/jobs' component={JobsContainer} />
@@ -35,4 +36,5 @@ const styles = {
 }
 
 MainContainer = Radium(MainContainer);
+MainContainer = withRouter(MainContainer);
 export default MainContainer;
