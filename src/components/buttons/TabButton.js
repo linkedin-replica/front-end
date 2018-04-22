@@ -43,12 +43,13 @@ const styles = {
     }
   },
   icon: {
+    marginTop: '2px',
     fontSize: '1.5em'
   },
   name: {
     display: 'block',
-    fontSize: '0.8em',
-    marginTop: '5px',
+    fontSize: '0.9em',
+    marginTop: '6px',
   },
   active: {
     color: colors.white,

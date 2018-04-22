@@ -21,6 +21,7 @@ import RecommendedArticleTest from './RecommendedArticleTest'
 import RecommendedArticlesTest from './RecommendedArticlesTest'
 import JobCardTest from './JobCardTest'
 import ModalTest from './ModalTest';
+import TabBarTest from './TabBarTest';
 
 class Test extends Component {
   render() {
@@ -53,13 +54,10 @@ class Test extends Component {
         <Route path={`${match.url}/JobCard`} component={JobCardTest} />
         <Route path={`${match.url}/applicant`} component={CompanyTest} />
         <Route path={`${match.url}/login`} component={LoginContainerTest} />
-        {/* <Route path={`${match.url}/login`} component={LoginTest} /> */}
         <Route path={`${match.url}/signup`} component={RegistrationContainerTest} />
         <Route path={`${match.url}/modal`} component={ModalTest} />
-        {/* 
-
-       
-    <Route path={`${match.url}/recommendedArticles`} component={RecommendedArticlesTest} />
+        <Route path={`${match.url}/tabBar`} component={TabBarTest} />
+        <Route path={`${match.url}/recommendedArticles`} component={RecommendedArticlesTest} />
         {/*
 
         Add a new route to test your component in this way
