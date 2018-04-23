@@ -25,7 +25,7 @@ class CompanyBasicInfo extends Component {
           <WhiteWrapper style={styles.whiteWrapper} size="lg">
               <AvatarImage src={img}
                 size='xl'
-                styel={styles.img}
+                style={styles.img}
                 id={id}
               />
               <div style={styles.textDiv}>
@@ -68,7 +68,7 @@ const styles = {
     },
     btnDiv: {
       position: 'absolute',
-      right: 0,
+      right: '2%',
       bottom: 0,
       paddingBottom: '25px'
     },

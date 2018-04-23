@@ -6,9 +6,16 @@ class PostAJobContainer extends Component{
   state = {
     companyName:'',
     companyUrl:'',
-    verify:''
-
+    verify:'',
+    isOpen: false
   }
+
+  toggleModal = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+
   handleChange = (key) => (event) => {
     this.setState({
       [key] : event.target.value
@@ -25,7 +32,11 @@ class PostAJobContainer extends Component{
   }
 
   render(){
-    return <PostAJob handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+    return <PostAJob
+               handleChange={this.handleChange}
+               handleSubmit={this.handleSubmit}
+               toggleModal={this.toggleModel}
+               isOpen={this.state.isOpen}/>
   }
 }
 

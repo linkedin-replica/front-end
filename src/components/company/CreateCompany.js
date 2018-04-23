@@ -4,14 +4,12 @@ import Radium from 'radium';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import BlueButton from '../buttons/BlueButton';
 import GrayTextButton from '../buttons/GrayTextButton';
-
 import PropTypes from 'prop-types'
 
 class CreateCompany extends Component{
   render(){
     const {handleChange, handleSubmit, history} = this.props
     return (
-
       <WhiteWrapper style={styles.whiteWrapper} size="lg">
         <form onSubmit={handleSubmit}>
 

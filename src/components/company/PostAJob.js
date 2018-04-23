@@ -1,22 +1,44 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router'
 import Radium from 'radium';
-import WhiteWrapper from '../wrappers/WhiteWrapper';
 import BlueButton from '../buttons/BlueButton';
 import GrayTextButton from '../buttons/GrayTextButton';
-
+import Modal from '../wrappers/Modal';
 import PropTypes from 'prop-types'
 
 class PostAJob extends Component{
   render(){
-    const {handleChange, handleSubmit, history} = this.props
+    const {handleChange, handleSubmit, history, toggleModal, isOpen} = this.props
     return (
-
-      <WhiteWrapper style={styles.whiteWrapper} size="lg">
+      <div>
+      <Modal show={true}
+        onClose={toggleModal}
+        btnText="Submit Form">
         <form onSubmit={handleSubmit}>
+          <div>
+            <h2  style={[styles.text]}>
+              Reach the quality candidates you can’t find anywhere else.
+            </h2>
+
+            <div>
+              <label style={[styles.label]}> Company Name </label>
+              <input type="text" name="companyName" style={styles.input} onChange={handleChange('companyName')}/>
+            </div>
+
+            <div>
+              <label style={[styles.label]}> Job Title </label>
+              <input type="text" name="jobTitle" style={styles.input} onChange={handleChange('jobTitle')}/>
+            </div>
+          </div>
+
+
+          <div>
+            <label style={[styles.label]}> Company Location </label>
+            <input type="text" name="companyLocation" style={styles.input} onChange={handleChange('companyLocation')}/>
+          </div>
 
           <h2  style={[styles.text]}>
-            Let{"'"}s set up your Company Page
+            Add more job details.
           </h2>
 
           <div>
@@ -25,9 +47,13 @@ class PostAJob extends Component{
           </div>
 
           <div>
-            <label style={[styles.label]}> LinkedIn public Url </label>
-            <label style={[styles.greyLabel]}>linkedin.com/company/</label>
-            <input type="text" name="companyUrl" style={styles.input2} onChange={handleChange('companyUrl')}/>
+            <label style={[styles.label]}> Job Title </label>
+            <input type="text" name="jobTitle" style={styles.input} onChange={handleChange('jobTitle')}/>
+          </div>
+
+          <div>
+            <label style={[styles.label]}> Company Location </label>
+            <input type="text" name="companyLocation" style={styles.input} onChange={handleChange('companyLocation')}/>
           </div>
 
           <div>
@@ -41,7 +67,8 @@ class PostAJob extends Component{
           </div>
 
           </form>
-      </WhiteWrapper>
+      </Modal>
+      </div>
     )
   }
 }

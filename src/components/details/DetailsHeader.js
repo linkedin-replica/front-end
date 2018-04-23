@@ -61,7 +61,7 @@ const styles = {
     textDiv: {
         display: 'inline-block',
         verticalAlign: 'top',
-        paddingLeft: '1%'
+        paddingLeft: '5%'
     },
     text: {
         margin: '0px',

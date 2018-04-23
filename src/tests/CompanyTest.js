@@ -6,7 +6,8 @@ import GreyAndBorder from '../components/buttons/AdjacentGreyBorder';
 import ListOfApplicants from '../components/company/ListOfApplicants';
 import CreateCompanyContainer from '../main/CreateCompanyContainer';
 import CompanyBasicInfo from '../components/company/CompanyBasicInfo';
-import PostAJob from '../components/company/PostAJob';
+import PostAJobContainer from '../main/PostAJobContainer';
+import BlueButton from '../components/buttons/BlueButton';
 
 class CompanyTest extends Component {
 
@@ -54,7 +55,7 @@ class CompanyTest extends Component {
 
         <section>
           <h2>Post A Job Form</h2>
-          <PostAJob/>
+          <PostAJobContainer/>
         </section>
 
       </div >

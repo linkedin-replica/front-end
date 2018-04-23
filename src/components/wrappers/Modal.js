@@ -58,6 +58,7 @@ const styles = {
     flexDirection: 'column'
   },
 
+
 }
 Modal = Radium(Modal);
 export default Modal;
