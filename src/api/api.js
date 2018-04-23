@@ -29,7 +29,7 @@ export default {
     localStorage.setItem('access-token', newToken)
   },
   getLoggedInUserDetails: () => {
-    return axiosInstance.get('editinfo/loggedInUserInfo')
+    return axiosInstance.get('signing/getLoggedInUserInfo')
   },
 
   // Chat
