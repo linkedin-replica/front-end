@@ -56,7 +56,7 @@ const styles = {
     borderBottom: `${borders.button.width.active} solid ${colors.white}`
   },
   notActive: {
-    border: "none"
+    borderBottom: "none"
   }
 }
 

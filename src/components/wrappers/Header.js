@@ -75,10 +75,12 @@ Header.propTypes = {
 const styles = {
     base: {
         background: colors.lightGreen,
+        position: 'fixed',
         height: '49px',
+        width: '100%',
         display: 'flex',
         alignItems: 'center',
-        padding: '0 50px'
+        padding: '0 80px'
     },
     logoContainer: {
 
