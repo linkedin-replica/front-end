@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import { colors } from '../resources/constants';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import api from '../api/api';
 import Redirect from 'react-router-dom/Redirect';
 import MainContainer from './MainContainer';
+import Header from '../components/wrappers/Header';
+import LoginRegisterationContainer from './LoginRegisterationContainer';
 
 class App extends Component {
 
@@ -17,10 +19,13 @@ class App extends Component {
 
     // If user is logged in, get his info
     if (loggedInToken) {
-      api.getLoggedInUserDetails()
-        .then(res => {
-          loggedInUser: res.results
-        })
+      // api.getLoggedInUserDetails()
+      //   .then(res => {
+      //     this.setState({
+      //       loggedInUser: res.results
+      //     });
+      //   });
+      <Redirect to="/home" />
     } else {
       <Redirect to="/login" />
     }
@@ -30,7 +35,10 @@ class App extends Component {
     const { match } = this.props
     return (
       <div className="main-app" style={styles.base}>
-        <MainContainer />
+        <Switch>
+          <Route path="/login" component={LoginRegisterationContainer} exact />
+          <Route path="/" component={MainContainer} />
+        </Switch>
       </div>);
   }
 }
@@ -38,8 +46,7 @@ class App extends Component {
 const styles = {
   base: {
     background: colors.whiteGray,
-    height: '100%',
-    padding: '30px'
+    overflowX: 'hidden'
   }
 }
 
