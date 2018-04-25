@@ -53,8 +53,8 @@ const styles = {
     },
     md: {
 
-        height: '2em',
-        width: '2em'
+        height: '3em',
+        width: '3em'
     },
     lg: {
         height: '5em',

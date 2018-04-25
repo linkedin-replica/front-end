@@ -13,7 +13,7 @@ class ChatMessage extends Component {
         console.log(message)
         return (
             <div style={[styles.base, styles[isSender ? 'right' : 'left']]}>
-                <div className="single-message" style={[styles.message]}>
+                <div className="single-message" style={[styles.message, styles[isSender ? '' : 'blueMessage']]}>
                     {message}
                 </div>
             </div>
@@ -45,6 +45,9 @@ const styles = {
         background: colors.whiteGray,
         wordWrap: 'break-word',
         borderRadius: borders.button.radius.normal,
+    },
+    blueMessage: {
+        background: colors.lightGray
     }
 }
 

@@ -16,10 +16,10 @@ import AvatarImage from '../images/AvatarImage';
 
 class DetailsHeader extends Component {
     render() {
-        const { src, rounded, header, subHeader, type, id, style, size, } = this.props;
+        const { img, rounded, header, subHeader, type, id, style, size, } = this.props;
         return (
             <div style={[style, styles.base]}>
-                <AvatarImage src={src}
+                <AvatarImage src={img}
                     rounded={rounded}
                     style={styles.img}
                     size={size}
@@ -41,7 +41,7 @@ class DetailsHeader extends Component {
 }
 
 DetailsHeader.propTypes = {
-    src: PropTypes.string,
+    img: PropTypes.string,
     header: PropTypes.string.isRequired,
     subHeader: PropTypes.string.isRequired,
     rounded: PropTypes.bool,
@@ -58,7 +58,7 @@ const styles = {
     textDiv: {
         display: 'inline-block',
         verticalAlign: 'top',
-        paddingLeft: '5%'
+        paddingLeft: '3%'
     },
     text: {
         margin: '0px',

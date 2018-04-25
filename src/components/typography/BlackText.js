@@ -14,7 +14,7 @@ import { colors } from '../../resources/constants';
 class BlackText extends Component {
     render() {
         // Directly get the passed parameters from the props
-        const { text, type, id, style, size } = this.props;
+        const { text, style, size } = this.props;
         return (
             <p style={[styles.base, style, size ? styles[size] : styles['md']]}>
                 {text}

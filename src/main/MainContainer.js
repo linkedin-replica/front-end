@@ -19,7 +19,7 @@ import ProfileTest from '../tests/ProfileTest';
 class MainContainer extends Component {
 
     render() {
-        const { match } = this.props
+        const { userId, match } = this.props
         return (
             <div className="main-app" style={styles.base}>
                 <Header isLoggedIn />
@@ -29,7 +29,7 @@ class MainContainer extends Component {
                     <Route path='/jobs' component={JobsContainer} />
                     <Route path='/notifications' component={NotificationsContainer} />
                     <Route path='/articles' component={ArticlesContainer} />
-                    <Route path='/chat' component={ChatContainer} />
+                    <Route path='/chat' render={() => <ChatContainer userId={userId} />} />
                     <Route path='/profile/:id' component={ProfileContainer} />
                     <Route path='/company/:id' component={CompanyContainer} />
                     <Route path='/job/:id' component={JobContainer} />

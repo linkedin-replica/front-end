@@ -10,15 +10,15 @@ import CommentSection from './CommentSection';
 
 
 class Post extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.likeButtonHandler = this.likeButtonHandler.bind(this);
         this.commentButtonHandler = this.commentButtonHandler.bind(this);
         this.shareButtonHandler = this.shareButtonHandler.bind(this);
         this.state = {
             likeCounter: 0,
-            isLiked:false,
-            visibility : false,
+            isLiked: false,
+            visibility: false,
             shareCounter: 0
 
         };
@@ -28,17 +28,17 @@ class Post extends Component {
         const { postContent, ...rest } = this.props;
         return (
             <div style={styles.test}>
-            <WhiteWrapper style={styles.base}>
-                <DetailsHeader {...rest} />
-                <PostContent postContent={postContent} />
-                <div style={styles.buttons} >
-                    <IconTextButton name="Like" type="like" onClick = {this.likeButtonHandler}  style={this.state.isLiked? styles.likedButton:''}/>
-                    <IconTextButton name="Comment" type="comment" onClick = {this.commentButtonHandler} />
-                </div>
-                <div>
-                <CommentSection {...rest} visibility = {this.state.visibility} />
-                 </div>   
-            </WhiteWrapper>
+                <WhiteWrapper style={styles.base}>
+                    <DetailsHeader {...rest} />
+                    <PostContent postContent={postContent} />
+                    <div style={styles.buttons} >
+                        <IconTextButton name="Like" type="like" onClick={this.likeButtonHandler} style={this.state.isLiked ? styles.likedButton : ''} />
+                        <IconTextButton name="Comment" type="comment" onClick={this.commentButtonHandler} />
+                    </div>
+                    <div>
+                        <CommentSection {...rest} visibility={this.state.visibility} />
+                    </div>
+                </WhiteWrapper>
             </div>
         )
     };
@@ -47,7 +47,7 @@ class Post extends Component {
 Post.propTypes = {
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"]),
-    src: PropTypes.string,
+    img: PropTypes.string,
     rounded: PropTypes.bool,
     header: PropTypes.string,
     subHeader: PropTypes.string,
@@ -58,8 +58,8 @@ Post.propTypes = {
 };
 
 const styles = {
-    test:{
-        align:'justify'
+    test: {
+        align: 'justify'
     },
     base: {
         padding: paddings.wrapper,

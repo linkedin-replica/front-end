@@ -9,6 +9,7 @@ class ChatContainer extends Component {
     state = {
         chats: [],
         receiverId: '',
+        receiverName: '',
         token: '',
         history: [],
         inputMessage: ''
@@ -18,22 +19,30 @@ class ChatContainer extends Component {
         super(props)
 
         const { mockData } = this.props;
+        // If mockdata is passed
         if (mockData)
             this.state.chats = mockData
 
     }
     componentDidMount() {
-
+        api.getFriendsList()
+            .then(({ data }) => {
+                this.setState({
+                    chats: data.results
+                })
+            })
+            .catch(err => console.log(err))
     }
 
-    handleSelect = (receiverId) => {
+    handleSelect = (receiverId, receiverName) => {
         this.setState({
             receiverId,
+            receiverName,
         })
 
         api.initChat(receiverId)
-            .then(res => {
-                const { ip, port, sessionToken, history } = res.results;
+            .then(({ data }) => {
+                const { ip, port, sessionToken, history } = data.results;
                 this.setState({ token: sessionToken, history })
                 this.createSocket(ip, port, sessionToken)
             })
@@ -70,7 +79,7 @@ class ChatContainer extends Component {
             event.preventDefault();
             const { inputMessage, token } = this.state
 
-            if (inputMessage.length == 0)
+            if (inputMessage.length == 0 || inputMessage === '\n')
                 return
 
             let messageObj = {
@@ -89,9 +98,13 @@ class ChatContainer extends Component {
 
     handleChange = (event) => {
         // Enter was pressed without shift key
-        if (event.key === 'Enter' && !event.shiftKey) {
+        if (event.key === 'Enter' && !event.shiftKey || this.state.receiverId === '' || this.state.inputMessage === '\n') {
             event.preventDefault();
-        } else {
+            this.setState({
+                inputMessage: ''
+            })
+        }
+        else {
             this.setState({
                 inputMessage: event.target.value
             })
@@ -100,14 +113,15 @@ class ChatContainer extends Component {
 
     render() {
         const { userId } = this.props
-        const { chats, history, inputMessage } = this.state;
+        const { chats, receiverId, receiverName, history, inputMessage } = this.state;
 
+        const newChats = chats.map(chat => ({ ...chat, handleSelectChat: this.handleSelect, isSelected: receiverId === chat.userId }))
         const chatDetails = history.map(message => ({ ...message, isSender: message.senderId === userId }))
         return (
-            <Chat chats={chats}
+            <Chat chats={newChats}
+                receiverName={receiverName}
                 chatDetails={chatDetails}
                 inputMessageVal={inputMessage}
-                handleSelectChat={this.handleSelect}
                 handleSendMessage={this.handleSendMessage}
                 handleChange={this.handleChange} />
         );
