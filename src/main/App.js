@@ -19,12 +19,13 @@ class App extends Component {
 
     // If user is logged in, get his info
     if (loggedInToken) {
-      // api.getLoggedInUserDetails()
-      //   .then(res => {
-      //     this.setState({
-      //       loggedInUser: res.results
-      //     });
-      //   });
+      api.getLoggedInUserDetails()
+        .then(res => {
+          console.log(res)
+          this.setState({
+            loggedInUser: res.results
+          });
+        });
       <Redirect to="/home" />
     } else {
       <Redirect to="/login" />

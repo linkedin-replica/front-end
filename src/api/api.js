@@ -1,26 +1,26 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://localhost:8081/api/'
+axios.defaults.baseURL = 'http://localhost:8081/api/'
+// axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
+// axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+// axios.defaults.headers.post['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS';
+// axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, access-token';
+// axios.defaults.headers.post['access-token'] = 'eyJhbGciOiJIUzUxMiJ9.eyJzY29wZSI6InNlbGYvZ3JvdXBzL2FkbWlucyIsImlzcyI6ImxpbmtlZGluLmxvZ2luIiwiZXhwIjoxNTI0NjY1MDUzLCJpYXQiOjE1MjQ2NjE0NTMsImVtYWlsIjoiaG16YWhyYW4yQGdtYWlsLmNvbSIsImp0aSI6IjgyMWNjMmQ0LWQ0OTctNDZjZi05NzM3LTNmM2NhNDg4ODY5ZiJ9.CegtM60SNP3g2GRKGDaSN-2BWe0B0xzU7JR81NWvSz7Kpbz_R09t_f16Efbk9MJUF3MVs-gnGe9lDm40h1P-Qg';
 
-const axiosInstance = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  }
-})
-
-axiosInstance.interceptors.request.use(config => {
+axios.interceptors.request.use(config => {
   config.headers['access-token'] = localStorage.getItem('access-token') || ''
+  config.headers['Content-Type'] = 'application/json;charset=UTF-8';
+  console.log(config)
   return config
 })
 
 export default {
   // Signing
   register: (user) => {
-    return axiosInstance.post('signing/signUp', user)
+    return axios.post('signing/signUp', user)
   },
   signIn: (user) => {
-    return axiosInstance.post('signing/signIn', user)
+    return axios.post('signing/signIn', user)
   },
   signOut: (user) => {
     localStorage.removeItem('access-token')
@@ -29,164 +29,164 @@ export default {
     localStorage.setItem('access-token', newToken)
   },
   getLoggedInUserDetails: () => {
-    return axiosInstance.get('signing/getLoggedInUserInfo')
+    return axios.get('/signing/getLoggedInUserInfo')
   },
 
   // Chat
   initChat: (receiverId) => {
-    return axiosInstance.get('chat/register', { params: { receiverId } })
+    return axios.get('chat/register', { params: { receiverId } })
   },
 
   // Connections
   acceptFriendRequest: (userId) => {
-    return axiosInstance.post('connections/acceptFriendRequest', { userId })
+    return axios.post('connections/acceptFriendRequest', { userId })
   },
   addFriend: (userId) => {
-    return axiosInstance.post('connections/addFriend', { userId })
+    return axios.post('connections/addFriend', { userId })
   },
   unfriend: (userId) => {
-    return axiosInstance.delete(`connections/unfriend`, { userId })
+    return axios.delete(`connections/unfriend`, { userId })
   },
   blockUser: (userId) => {
-    return axiosInstance.post('connections/block', { userId })
+    return axios.post('connections/block', { userId })
   },
   unBlockUser: (userId) => {
-    return axiosInstance.post('connections/unblock', { userId })
+    return axios.post('connections/unblock', { userId })
   },
 
   // Edit Info
   getUserProfile: (userId) => {
-    return axiosInstance.get(`editinfo/userGet/${userId}`)
+    return axios.get(`editinfo/userGet/${userId}`)
   },
   updateUserProfile: (updatedProfile) => {
-    return axiosInstance.put(`editinfo/userUpdate`, updatedProfile)
+    return axios.put(`editinfo/userUpdate`, updatedProfile)
   },
   addCV: (cvURL) => {
-    return axiosInstance.post('editinfo/userCvAdd', cvURL)
+    return axios.post('editinfo/userCvAdd', cvURL)
   },
   deleteCV: (cvURL) => {
-    return axiosInstance.delete(`editinfo/userCvDelete`, cvURL)
+    return axios.delete(`editinfo/userCvDelete`, cvURL)
   },
   addUserSkill: (skill) => {
-    return axiosInstance.put('editinfo/userAddSkill', skill)
+    return axios.put('editinfo/userAddSkill', skill)
   },
   deleteUserSkill: (skill) => {
-    return axiosInstance.post('editinfo/userDeleteSkill', skill)
+    return axios.post('editinfo/userDeleteSkill', skill)
   },
 
   // Company
   getCompanyProfile: (companyId) => {
-    return axiosInstance.get(`editinfo/companyGet/${companyId}`)
+    return axios.get(`editinfo/companyGet/${companyId}`)
   },
   addCompanyProfile: (company) => {
-    return axiosInstance.post(`editinfo/companyAdd`, company)
+    return axios.post(`editinfo/companyAdd`, company)
   },
   updateCompanyProfile: (company) => {
-    return axiosInstance.put(`editinfo/companyUpdate`, company)
+    return axios.put(`editinfo/companyUpdate`, company)
   },
 
   // Jobs
   postJobCompany: (job) => {
-    return axiosInstance.post('jobs/postJobCompany', job)
+    return axios.post('jobs/postJobCompany', job)
   },
   getJobListing: (jobId) => {
-    return axiosInstance.get(`jobs/jobListing/${jobId}`)
+    return axios.get(`jobs/jobListing/${jobId}`)
   },
   getAppliedJobs: (companyId) => {
-    return axiosInstance.get(`jobs/viewAppliedJobs/${companyId}`)
+    return axios.get(`jobs/viewAppliedJobs/${companyId}`)
   },
   respondToApplicant: (job) => {
-    return axiosInstance.put('jobs/respondToApplicant', job)
+    return axios.put('jobs/respondToApplicant', job)
   },
   deleteJob: (jobId) => {
-    return axiosInstance.delete('jobs/deleteJobCompany', { jobId })
+    return axios.delete('jobs/deleteJobCompany', { jobId })
   },
 
   // Articles
   addArticle: (article) => {
-    return axiosInstance.post('article', article)
+    return axios.post('article', article)
   },
 
   // Notifications
   getAllNotifications: () => {
-    return axiosInstance.get(`notifications/all/`)
+    return axios.get(`notifications/all/`)
   },
   markReadNotifications: () => {
-    return axiosInstance.get(`notifications/markRead/`)
+    return axios.get(`notifications/markRead/`)
   },
 
   // Recommendations
   getFriendRecommendations: () => {
-    return axiosInstance.get(`recommendations/users/`)
+    return axios.get(`recommendations/users/`)
   },
   getTrendingArticlesRecommendations: () => {
-    return axiosInstance.get(`recommendations/trending.articles/`)
+    return axios.get(`recommendations/trending.articles/`)
   },
   getJobRecommendations: () => {
-    return axiosInstance.get(`recommendations/jobs`)
+    return axios.get(`recommendations/jobs`)
   },
 
   // Wall
   bookmarkPost: (postId) => {
-    return axiosInstance.post('wall/addBookmark', { postId })
+    return axios.post('wall/addBookmark', { postId })
   },
   getBookmarkedPosts: () => {
-    return axiosInstance.get(`wall/getBookmarks`)
+    return axios.get(`wall/getBookmarks`)
   },
   deleteBookmarkedPost: (postId) => {
-    return axiosInstance.post('wall/deleteBookmark', { postId })
+    return axios.post('wall/deleteBookmark', { postId })
   },
   getPosts: () => {
-    return axiosInstance.get(`wall/posts`)
+    return axios.get(`wall/posts`)
   },
   addPost: (authorId, type, text, headLine, img, video) => {
-    return axiosInstance.post('wall/addPost', { authorId, type, text, headLine, images: [img], videos: [video], isArticle: false })
+    return axios.post('wall/addPost', { authorId, type, text, headLine, images: [img], videos: [video], isArticle: false })
   },
   editPost: (postId, authorId, type, text, headLine, likesCount, img, video, commentsCount, isArticle) => {
-    return axiosInstance.put(`wall/editPost`, { postId, authorId, type, text, headLine, likesCount, images: [img], videos: [video], commentsCount, isArticle: true })
+    return axios.put(`wall/editPost`, { postId, authorId, type, text, headLine, likesCount, images: [img], videos: [video], commentsCount, isArticle: true })
   },
   deletePost: (postId) => {
-    return axiosInstance.delete(`wall/deletePost`, { postId })
+    return axios.delete(`wall/deletePost`, { postId })
   },
   addPostComment: (postComment) => {
-    return axiosInstance.post('wall/addComment', postComment)
+    return axios.post('wall/addComment', postComment)
   },
   deleteComment: (commentId) => {
-    return axiosInstance.delete(`wall/deleteComment`, { commentId })
+    return axios.delete(`wall/deleteComment`, { commentId })
   },
   likePost: (postLike) => {
-    return axiosInstance.post('wall/addLike', postLike)
+    return axios.post('wall/addLike', postLike)
   },
   deleteLike: (likeId) => {
-    return axiosInstance.delete(`wall/deleteLike`, { likeId })
+    return axios.delete(`wall/deleteLike`, { likeId })
   },
   replyPost: (reply) => {
-    return axiosInstance.post('wall/addReply', reply)
+    return axios.post('wall/addReply', reply)
   },
   editReply: (reply) => {
-    return axiosInstance.put(`wall/editReply`, reply)
+    return axios.put(`wall/editReply`, reply)
   },
   deleteReply: (replyId) => {
-    return axiosInstance.delete(`wall/deleteReply`, { replyId })
+    return axios.delete(`wall/deleteReply`, { replyId })
   },
   editArticle: (article) => {
-    return axiosInstance.put(`wall/editArticle`, article)
+    return axios.put(`wall/editArticle`, article)
   },
   editComment: (comment) => {
-    return axiosInstance.put(`wall/editComment`, comment)
+    return axios.put(`wall/editComment`, comment)
   },
 
   // Search
   searchUser: (user) => {
-    return axiosInstance.post(`search/user/`, user)
+    return axios.post(`search/user/`, user)
   },
   searchCompany: (company) => {
-    return axiosInstance.post(`search/company/`, company)
+    return axios.post(`search/company/`, company)
   },
   searchPost: (post) => {
-    return axiosInstance.post(`search/post/`, post)
+    return axios.post(`search/post/`, post)
   },
   searchJob: (job) => {
-    return axiosInstance.post(`search/job/`, job)
+    return axios.post(`search/job/`, job)
   },
 }
