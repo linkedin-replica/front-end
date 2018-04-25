@@ -7,6 +7,7 @@ import { colors } from '../resources/constants';
 import FriendRequests from '../components/connections/FriendRequests';
 import FriendRecommendationItem from '../components/connections/FriendRecommendationItem';
 import FriendRecommendations from '../components/connections/FriendRecommendations';
+import WhiteWrapper from '../components/wrappers/WhiteWrapper';
 
 class ConnectionsTest extends Component {
 
@@ -22,7 +23,7 @@ class ConnectionsTest extends Component {
                 </section>
                 
                 <section>
-                    <h2>Friend Recommendation List</h2>
+                <h2>Friend Recommendation List</h2>
                     <FriendRecommendations/>
                 </section>
             </div >

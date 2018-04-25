@@ -8,7 +8,7 @@ import WhiteWrapper from '../wrappers/WhiteWrapper';
 import BorderedButton from '../buttons/BorderedButton';
 import GreyAndBorder from '../buttons/AdjacentGreyBorder';
 import GrayText from '../typography/GrayText';
-
+import { colors, borders } from '../../resources/constants.js'
 
 class FriendRecommendationItem extends Component {
 
@@ -22,8 +22,8 @@ class FriendRecommendationItem extends Component {
             ...rest } = this.props;
 
         return (
-            <WhiteWrapper style={styles.whiteWrapper} size="sm">
-            <section align = "center">
+            <WhiteWrapper style={styles.whiteWrapper}>
+                <div>
                 <AvatarImage src={img}
                     rounded
                     style={styles.img}
@@ -31,8 +31,7 @@ class FriendRecommendationItem extends Component {
                     type="profile"
                     id={id}
                 />
-            </section>
-            <section>
+                </div>
                 <BoldLink 
                     text = {name}
                     type="profile"
@@ -44,8 +43,13 @@ class FriendRecommendationItem extends Component {
                     text = {description}
                     size = "md" 
                 />
-                <BorderedButton name="Connect" color="blue" size="md" />
-            </section>
+                <div style = {styles.center}>
+                <BorderedButton 
+                    name="Connect" 
+                    color="blue" 
+                    size="md" 
+                    style = {styles.blueBorder}/>
+                </div>
             
             </WhiteWrapper>
         );
@@ -61,7 +65,6 @@ FriendRecommendationItem.propTypes = {
 
 const styles = {
     base: {
-
     },
     text: {
         margin: '0px',
@@ -70,20 +73,30 @@ const styles = {
         textOverflow: 'ellipsis'
     },
     whiteWrapper: {
+        width:'100%',
+        height: '280px',
         margin: '0px',
         padding: '20px',
         textAlign: 'center',
-        fontSize: '1.5em',
         position:'relative',
         align: 'center'
     },
-    btnDiv: {
-      position: 'absolute',
-      right: 0,
-      bottom: 0,
-      width: '30%',
-      paddingBottom: '25px'
+    blueBorder: {
+        border: `${borders.button.width.normal} solid ${colors.darkBlue}`,
+        color: colors.darkBlue,
+        ":hover": {
+          background: colors.darkBlue,
+          color: colors.white
+        },
+        
     },
+    center : {
+        position: 'absolute',
+        bottom : '20px',
+        right : '0',
+        left: '0',
+        margin: '0 auto'
+    }
 }
 
 
