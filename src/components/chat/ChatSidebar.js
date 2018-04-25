@@ -12,14 +12,11 @@ import ChatSidebarItem from './ChatSidebarItem';
 class ChatSidebar extends Component {
     render() {
         // Directly get the passed parameters from the props
-        const { chats, handleSelectChat, selectedChat, style } = this.props;
+        const { chats, style } = this.props;
 
-        let newChats = chats.map(chat => {
-            return { ...chat, handleSelectChat, isSelected: chat == selectedChat }
-        })
         return (
             <WhiteWrapper size="sm" style={[styles.base, style]}>
-                <ListAdapter data={newChats} listItemView={ChatSidebarItem} size="sm" />
+                <ListAdapter data={chats} listItemView={ChatSidebarItem} size="sm" />
             </WhiteWrapper>
         );
     }

@@ -38,25 +38,31 @@ export default {
   },
 
   // Connections
-  acceptFriendRequest: (userId) => {
-    return axios.post('connections/acceptFriendRequest', { userId })
+  acceptFriendRequest: (userId1) => {
+    return axios.post('connections/acceptFriendRequest', { userId1 })
   },
-  addFriend: (userId) => {
-    return axios.post('connections/addFriend', { userId })
+  addFriend: (userId1) => {
+    return axios.post('connections/addFriend', { userId1 })
   },
-  unfriend: (userId) => {
-    return axios.delete(`connections/unfriend`, { userId })
+  unfriend: (userId1) => {
+    return axios.delete(`connections/unfriend`, { userId1 })
   },
-  blockUser: (userId) => {
-    return axios.post('connections/block', { userId })
+  blockUser: (userId1) => {
+    return axios.post('connections/block', { userId1 })
   },
-  unBlockUser: (userId) => {
-    return axios.post('connections/unblock', { userId })
+  unBlockUser: (userId1) => {
+    return axios.post('connections/unblock', { userId1 })
+  },
+  getFriendsList: () => {
+    return axios.get('connections/getFriendsList')
   },
 
   // Edit Info
-  getUserProfile: (userId) => {
-    return axios.get(`editinfo/userGet/${userId}`)
+  getUserProfile: () => {
+    return axios.get(`editinfo/userGet`)
+  },
+  getUserProfileById: (profileId) => {
+    return axios.get(`editinfo/userGet`, { query: { profileId } })
   },
   updateUserProfile: (updatedProfile) => {
     return axios.put(`editinfo/userUpdate`, updatedProfile)

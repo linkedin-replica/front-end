@@ -93,7 +93,7 @@ const styles = {
     tabs: {
         width: '100%',
         display: 'flex',
-        justifyContent: 'flex-end'
+        marginLeft: '30px'
     }
 }
 
