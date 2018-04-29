@@ -23,17 +23,18 @@ class WallContainer extends Component {
     }
     imageButtonHandler = () => {
         this.setState({
-          imageButton: !this.state.imageButton
+            imageButton: !this.state.imageButton
         });
         console.log("image button: ", this.state.imageButton);
-      };
-    
-      videoButtonHandler = () => {
+    };
+
+    videoButtonHandler = () => {
         this.setState({
-          videoButton: !this.state.videoButton
+            videoButton: !this.state.videoButton
         });
         console.log("video button: ", this.state.videoButton);
-      };
+    };
+
     componentDidMount() {
 
     }
@@ -43,17 +44,17 @@ class WallContainer extends Component {
         return (
             <Wall posts={posts}
                 comments={comments}
-             />
+            />
         );
     }
 }
 
 WallContainer.propTypes = {
-    userID: propTypes.string,
-    firstName: propTypes.string,
-    lastName: propTypes.string,
-    headline: propTypes.string,
-    profilePictureUrl: propTypes.string
+    userID: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    headline: PropTypes.string,
+    profilePictureUrl: PropTypes.string
 };
 
 

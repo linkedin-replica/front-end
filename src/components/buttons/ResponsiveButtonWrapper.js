@@ -11,15 +11,15 @@ import { paddings } from '../../resources/constants.js'
 import PropTypes from 'prop-types'
 
 class ResponsiveButtonWrapper extends Component {
-    
-    
+
+
     render() {
         // Directly get the passed parameters from the props
         const { size, children, style, onClick } = this.props;
         return (
             <button
                 style={[styles.base, style, size ? styles[size] : styles['md']]}
-                onClick = {onClick}>
+                onClick={onClick}>
                 {children}
             </button>
         );
@@ -45,7 +45,7 @@ const styles = {
         }
     },
     sm: {
-        fontSize: '0.5em'
+        fontSize: '0.7em'
     },
     md: {
         fontSize: '1em'

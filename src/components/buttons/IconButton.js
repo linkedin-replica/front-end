@@ -40,7 +40,6 @@ const styles = {
   },
   icon: {
     fontSize: '1.5em',
-    marginRight: '5px'
   },
   borderless: {
     border: "none"
