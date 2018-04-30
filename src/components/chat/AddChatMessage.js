@@ -19,7 +19,8 @@ class AddChatMessage extends Component {
                     onChange={handleChange}
                     value={inputMessageVal}
                     maxLength={300}
-                    style={styles.input} />
+                    style={styles.input}
+                />
             </div>
         );
     }

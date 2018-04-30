@@ -9,7 +9,14 @@ class TabBar extends Component {
     state = {
         activeTab: 'home'
     }
+    constructor(props) {
+        super(props)
 
+        if (props.match) {
+            console.log(props.location)
+            this.state.activeTab = props.location.pathname.substring(1)
+        }
+    }
     handleClick = (type) => (event) => {
         // Change State
         this.setState({ activeTab: type })

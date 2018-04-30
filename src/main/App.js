@@ -19,12 +19,12 @@ class App extends Component {
 
     // If user is logged in, get his info
     if (loggedInToken) {
-      // api.getLoggedInUserDetails()
-      //   .then(res => {
-      //     this.setState({
-      //       loggedInUser: res.results
-      //     });
-      //   });
+      api.getLoggedInUserDetails()
+        .then(({ data }) => {
+          this.setState({
+            loggedInUser: data.results
+          });
+        });
       <Redirect to="/home" />
     } else {
       <Redirect to="/login" />
@@ -33,11 +33,12 @@ class App extends Component {
 
   render() {
     const { match } = this.props
+    const { loggedInUser } = this.state
     return (
       <div className="main-app" style={styles.base}>
         <Switch>
-          <Route path="/login" component={LoginRegisterationContainer} exact />
-          <Route path="/" component={MainContainer} />
+          <Route path="/login" render={() => <LoginRegisterationContainer {...loggedInUser} />} exact />
+          <Route path="/" render={() => <MainContainer {...loggedInUser} />} />
         </Switch>
       </div>);
   }

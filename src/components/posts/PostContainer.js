@@ -61,8 +61,6 @@ PostContainer.propTypes = {
     authorName: PropTypes.string,
     authorProfilePictureUrl: PropTypes.string,
     headline: PropTypes.string
-
-
 };
 
 
