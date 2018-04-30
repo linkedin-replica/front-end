@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import Radium from 'radium';
 import Signup from '../components/login_signup/Signup'
 import api from '../api/api'
+import { withRouter } from 'react-router';
 
 class RegistrationContainer extends Component {
   state = {
     firstName: '',
     lastName: '',
     email: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
   }
 
   handleChange = (key) => (event) => {
@@ -19,10 +21,12 @@ class RegistrationContainer extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    alert("first name: " + this.state.email + "\nlast name: " + this.state.lastName + "\nemail: " + this.state.email + "\npassword: " + this.state.password)
-    api.register(this.state)
-      .then(res => {
 
+    const { firstName, lastName, email, password, confirmPassword } = this.state
+    api.register({ firstName, lastName, email, password, confirmPassword })
+      .then(res => {
+        console.log(res.data.results)
+        this.props.history.push('/login')
       })
       .catch(err => {
         console.log(err)
@@ -37,5 +41,7 @@ class RegistrationContainer extends Component {
     return <Signup handleChange={this.handleChange} handleSubmit={this.handleSubmit}></Signup>
   }
 }
+RegistrationContainer = Radium(RegistrationContainer)
+RegistrationContainer = withRouter(RegistrationContainer)
 
-export default Radium(RegistrationContainer)
+export default RegistrationContainer

@@ -62,13 +62,23 @@ class ProfileContainer extends Component {
 
         const { match } = this.props;
 
-        api.getUserProfile(match.params.id)
-            .then(res => {
-                this.setState({ profileData: res.results })
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        if (match.params.id) {
+            api.getUserProfileById(match.params.id)
+                .then(res => {
+                    this.setState({ profileData: res.results })
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        } else {
+            api.getUserProfile()
+                .then(res => {
+                    this.setState({ profileData: res.results })
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
     }
 
     handleChange = (form) => (key) => (event) => {

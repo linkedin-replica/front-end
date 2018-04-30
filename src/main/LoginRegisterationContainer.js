@@ -28,7 +28,10 @@ class LoginRegisterationContainer extends Component {
 
 const styles = {
     details: {
-        padding: '30px'
+        padding: '80px 30px',
+        display: 'flex',
+        justifyContent: 'center',
+        height: '100%'
     }
 }
 
