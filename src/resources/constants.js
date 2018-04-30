@@ -2,12 +2,14 @@
 export const colors = {
   darkBlue: '#0077B5',
   mediumBlue: '#0077A0',
+  lightBlue: '#F2F6F8',
   black: '#000000',
   white: '#FFFFFF',
   darkGray: '#313335',
   mediumGray: '#86888A',
   lightGray: '#CACCCE',
-  whiteGray: '#F5F5F5'
+  whiteGray: '#F5F5F5',
+  lightGreen: '#23414B'
 }
 
 export const icons = {
@@ -23,11 +25,16 @@ export const icons = {
   jobs: "fa fa-briefcase",
   chat: "fa fa-comments",
   profile: 'fa fa-user-circle',
-  articles: 'fa fa-book'
+  articles: 'fa fa-book',
+  edit: 'fa fa-edit',
+  add: 'fa fa-plus',
+  skill: 'fa fa-wrench',
+  logo: 'fa fa-linkedin'
 }
 
 export const paddings = {
-  button: '5px 10px'
+  button: '5px 10px',
+  wrapper: '15px'
 }
 
 export const borders = {

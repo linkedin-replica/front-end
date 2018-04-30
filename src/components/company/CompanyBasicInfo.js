@@ -24,7 +24,7 @@ class CompanyBasicInfo extends Component {
         return (
           <WhiteWrapper style={styles.whiteWrapper} size="lg">
               <AvatarImage src={img}
-                size='xl'
+                size='lg'
                 style={styles.img}
                 id={id}
               />

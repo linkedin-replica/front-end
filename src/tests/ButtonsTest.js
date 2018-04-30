@@ -8,6 +8,7 @@ import BorderedButton from '../components/buttons/BorderedButton.js';
 import TabButton from '../components/buttons/TabButton.js';
 import GrayTextButton from '../components/buttons/GrayTextButton.js';
 import BlueButton from '../components/buttons/BlueButton.js';
+import IconButton from '../components/buttons/IconButton.js';
 import { colors } from '../resources/constants';
 
 const Result = props => {
@@ -35,6 +36,12 @@ class ButtonsTest extends Component {
         <header>
           <h1>Buttons Testing</h1>
         </header>
+
+      <section>
+          <h2>Icon</h2>
+          <IconButton type="edit" onClick={this.incrementCounter} />
+          <IconButton type="add" onClick={this.incrementCounter} />
+        </section>
 
         <section>
           <h2>Icon + Text</h2>

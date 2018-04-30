@@ -11,7 +11,7 @@ class PostAJob extends Component{
     const {handleChange, handleSubmit, history, toggleModal, isOpen} = this.props
     return (
       <div>
-      <Modal show={true}
+      <Modal show={false}
         onClose={toggleModal}
         btnText="Submit Form">
         <form onSubmit={handleSubmit}>
