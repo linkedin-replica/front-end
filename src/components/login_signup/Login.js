@@ -17,7 +17,7 @@ class Login extends Component {
             type='email'
             placeholder='Email'
             size="sm"
-            onChange={handleChange('email')}
+            handleChange={handleChange('email')}
             isRequired
           />
           <UnlabeledInput
@@ -26,7 +26,7 @@ class Login extends Component {
             placeholder='Password'
             size="sm"
             style={styles.password}
-            onChange={handleChange('password')}
+            handleChange={handleChange('password')}
             isRequired
           />
           <BorderedButton name='Sign in' color='white'> </BorderedButton>

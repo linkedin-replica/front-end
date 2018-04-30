@@ -21,6 +21,11 @@ class WallContainer extends Component {
             this.state.posts = mockData
 
     }
+
+    componentDidMount() {
+
+    }
+
     imageButtonHandler = () => {
         this.setState({
             imageButton: !this.state.imageButton
@@ -34,10 +39,6 @@ class WallContainer extends Component {
         });
         console.log("video button: ", this.state.videoButton);
     };
-
-    componentDidMount() {
-
-    }
 
     render() {
         const { posts, comments } = this.state;
