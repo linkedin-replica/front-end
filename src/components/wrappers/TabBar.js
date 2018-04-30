@@ -42,7 +42,8 @@ class TabBar extends Component {
 
 const styles = {
     base: {
-
+        flexShrink: 0,
+        marginLeft: '50px'
     }
 }
 

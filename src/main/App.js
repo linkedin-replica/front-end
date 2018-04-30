@@ -47,7 +47,6 @@ class App extends Component {
 const styles = {
   base: {
     background: colors.whiteGray,
-    overflowX: 'hidden'
   }
 }
 

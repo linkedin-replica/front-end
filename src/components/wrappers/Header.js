@@ -36,26 +36,28 @@ class Header extends Component {
                     styles.base,
                     // you can add here additional styles (e.g. style for each size passed as prop)
                 ]}>
-                <span style={styles.logoContainer}>
-                    <img src={Logo} style={styles.logo} />
-                </span>
-                {isLoggedIn &&
-                    <span style={styles.searchContainer}>
-                        <UnlabeledInput
-                            placeholder="Search"
-                            type="search"
-                            handleChange={this.handleSearchChange}
-                            handleSubmit={this.handleSubmitSearch}
-                            size="md"
-                        />
+                <div style={styles.content}>
+                    <span style={styles.logoContainer}>
+                        <img src={Logo} style={styles.logo} />
                     </span>
-                }
-                <nav style={styles.tabs}>
-                    {isLoggedIn ?
-                        <TabBar size="sm" /> :
-                        <LoginContainer />
+                    {isLoggedIn &&
+                        <span style={styles.searchContainer}>
+                            <UnlabeledInput
+                                placeholder="Search"
+                                type="search"
+                                handleChange={this.handleSearchChange}
+                                handleSubmit={this.handleSubmitSearch}
+                                size="md"
+                            />
+                        </span>
                     }
-                </nav>
+                    <nav style={styles.tabs}>
+                        {isLoggedIn ?
+                            <TabBar size="sm" /> :
+                            <LoginContainer />
+                        }
+                    </nav>
+                </div>
             </header>
         );
     }
@@ -76,19 +78,23 @@ const styles = {
     base: {
         background: colors.lightGreen,
         position: 'fixed',
-        height: '49px',
+        height: '52px',
+        top: 0,
+        left: 0,
         width: '100%',
+        zIndex: '100',
+        padding: '0 60px'
+    },
+    content: {
+        maxWidth: '1128px',
+        margin: 'auto',
         display: 'flex',
         alignItems: 'center',
-        padding: '0 80px'
     },
-    logoContainer: {
 
-    },
-    logo: {
-    },
     searchContainer: {
-        marginLeft: '30px'
+        marginLeft: '30px',
+        height: '100%'
     },
     tabs: {
         width: '100%',

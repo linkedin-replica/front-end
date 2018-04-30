@@ -18,6 +18,7 @@ class Login extends Component {
             placeholder='Email'
             size="sm"
             onChange={handleChange('email')}
+            isRequired
           />
           <UnlabeledInput
             className='form-inline'
@@ -26,6 +27,7 @@ class Login extends Component {
             size="sm"
             style={styles.password}
             onChange={handleChange('password')}
+            isRequired
           />
           <BorderedButton name='Sign in' color='white'> </BorderedButton>
           <a style={styles.forgotPassword} href='url'>Forgot password?</a>
@@ -44,7 +46,10 @@ const styles = {
   base: {
     padding: '10px',
     paddingRight: '20px',
-    textAlign: 'right'
+    marginLeft: '40%',
+    display: 'flex',
+    alignItems: 'baseline',
+    flexShrink: '0',
   },
   password: {
     marginLeft: '20px',
@@ -53,7 +58,8 @@ const styles = {
   forgotPassword: {
     paddingLeft: '20px',
     fontSize: '0.8em',
-    color: 'white'
+    color: 'white',
+    flexShrink: 0
   }
 }
 
