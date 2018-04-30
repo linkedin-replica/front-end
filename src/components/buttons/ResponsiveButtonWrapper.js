@@ -52,7 +52,7 @@ const styles = {
     },
     lg: {
         width: '160px'
-    }
+    },
 }
 
 ResponsiveButtonWrapper = Radium(ResponsiveButtonWrapper);

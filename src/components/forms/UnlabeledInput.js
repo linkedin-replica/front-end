@@ -6,7 +6,7 @@ import { colors, borders } from '../../resources/constants.js'
 class UnlabeledInput extends Component {
     render() {
         // Directly get the needed props
-        const { placeholder, type, handleChange, handleSubmit, size, style } = this.props;
+        const { placeholder, type, handleChange, handleSubmit, size, style, isRequired } = this.props;
         return (
             <input
                 style={[styles.base, size ? styles[size] : styles['md'], style]}
@@ -15,6 +15,7 @@ class UnlabeledInput extends Component {
                 placeholder={placeholder}
                 onChange={handleChange}
                 onKeyUp={handleSubmit ? handleSubmit : () => { }}
+                required={isRequired}
             />
         );
     }
