@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import api from '../api/api';
 import Profile from '../components/profile/Profile';
+import { toast } from 'react-toastify';
 
 class ProfileContainer extends Component {
 
@@ -68,7 +69,7 @@ class ProfileContainer extends Component {
                     this.setState({ profileData: res.results })
                 })
                 .catch(err => {
-                    console.log(err)
+                    toast.error(err.response.data.error)
                 })
         } else {
             api.getUserProfile()
@@ -76,7 +77,7 @@ class ProfileContainer extends Component {
                     this.setState({ profileData: res.results })
                 })
                 .catch(err => {
-                    console.log(err)
+                    toast.error(err.response.data.error)
                 })
         }
     }
@@ -110,7 +111,7 @@ class ProfileContainer extends Component {
         // Update the backend + state with the new list
         api.updateUserProfile({ positions: newList })
             .then(res => {
-                console.log('Added Experience')
+                toast.success(res.data.results)
                 this.setState(prevState => ({
                     ...prevState,
                     profileData: {
@@ -121,7 +122,7 @@ class ProfileContainer extends Component {
                 }))
             })
             .catch(err => {
-                console.log(err)
+                toast.error(err.response.data.error)
             })
     }
 
@@ -144,7 +145,7 @@ class ProfileContainer extends Component {
         // Update the backend + state with the new list
         api.updateUserProfile({ educations: newList })
             .then(res => {
-                console.log('Added Education')
+                toast.success(res.data.results)
                 this.setState(prevState => ({
                     ...prevState,
                     profileData: {
@@ -155,7 +156,7 @@ class ProfileContainer extends Component {
                 }))
             })
             .catch(err => {
-                console.log(err)
+                toast.error(err.response.data.error)
             })
     }
 
@@ -164,7 +165,7 @@ class ProfileContainer extends Component {
 
         api.updateUserProfile({ skills: [...this.state.profileData.skills, this.state.newSkill] })
             .then(res => {
-                console.log('Added Skill')
+                toast.success(res.data.results)
                 this.setState(prevState => ({
                     ...prevState,
                     profileData: {
@@ -175,7 +176,7 @@ class ProfileContainer extends Component {
                 }))
             })
             .catch(err => {
-                console.log(err)
+                toast.error(err.response.data.error)
             })
     }
 

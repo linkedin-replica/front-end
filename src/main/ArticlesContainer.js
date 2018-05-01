@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import ArticleContainer from './ArticleContainer';
 import ListAdapter from '../components/wrappers/ListAdapter';
 import api from '../api/api';
+import { toast } from 'react-toastify';
 
 class ArticlesContainer extends Component {
 
@@ -22,11 +23,10 @@ class ArticlesContainer extends Component {
     componentDidMount() {
         api.getTrendingArticlesRecommendations()
             .then(res => {
-                console.log(res)
                 this.setState({
                     posts: res.data.results
                 })
-            }).catch(err => console.log(err))
+            }).catch(err => toast.error(err.response.data.error))
     }
 
     render() {

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import api from '../api/api';
 import AddPost from '../components/posts/AddPost';
+import { toast } from 'react-toastify';
 
 class AddPostContainer extends Component {
 
@@ -30,8 +31,11 @@ class AddPostContainer extends Component {
 
         api.addPost(userId, addPostContent, img, video)
             .then(res => {
+                toast.success(res.data.results)
             })
-            .catch(err => console.log(err))
+            .catch(err =>
+                toast.error(err.response.data.error)
+            )
     }
 
     imageButtonHandler = (event) => {

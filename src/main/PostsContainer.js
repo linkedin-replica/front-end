@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import PostContainer from './PostContainer';
 import ListAdapter from '../components/wrappers/ListAdapter';
 import api from '../api/api';
+import { toast } from 'react-toastify';
 
 class PostsContainer extends Component {
 
@@ -22,11 +23,10 @@ class PostsContainer extends Component {
     componentDidMount() {
         api.getPosts()
             .then(res => {
-                console.log(res)
                 this.setState({
                     posts: res.data.results
                 })
-            }).catch(err => console.log(err))
+            }).catch(err => toast.error(err.response.data.error))
     }
 
     render() {

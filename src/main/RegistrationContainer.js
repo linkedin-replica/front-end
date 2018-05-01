@@ -40,10 +40,6 @@ class RegistrationContainer extends Component {
       })
   }
 
-  print = () => {
-    console.log(this.state)
-  }
-
   render() {
     return <Signup handleChange={this.handleChange} handleSubmit={this.handleSubmit} {...this.state}></Signup>
   }
