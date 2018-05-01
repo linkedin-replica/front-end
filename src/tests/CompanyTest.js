@@ -55,7 +55,7 @@ class CompanyTest extends Component {
 
         <section>
           <h2>Post A Job Form</h2>
-          <PostAJobContainer/>
+          <PostAJobContainer isOpen={false}/>
         </section>
 
       </div >

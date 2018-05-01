@@ -14,12 +14,8 @@ class Modal extends React.Component {
 
     return (
       <div className="backdrop" style={styles.backdropStyle}>
-        <div className="modal" style={styles.modalStyle}>
+        <div className="modal" style={[this.props.style]}>
           {this.props.children}
-
-          <div style={styles.submitButton}>
-            <BlueButton name={this.props.btnText} onClick={this.props.onClose} />
-          </div>
         </div>
       </div>
     );

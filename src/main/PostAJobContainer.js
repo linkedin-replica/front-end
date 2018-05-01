@@ -1,13 +1,21 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Radium from 'radium';
 import PostAJob from '../components/company/PostAJob'
+import { withRouter } from 'react-router';
+import BlueButton from '../components/buttons/BlueButton';
 
-class PostAJobContainer extends Component{
+
+class PostAJobContainer extends Component {
+
   state = {
-    companyName:'',
-    companyUrl:'',
-    verify:'',
-    isOpen: false
+    data: {
+      companyName: '',
+      jobTitle: '',
+      companyLocation: '',
+      industryType: '',
+      jobBrief: ''
+    },
+    isOpen: this.props.isOpen
   }
 
   toggleModal = () => {
@@ -18,26 +26,27 @@ class PostAJobContainer extends Component{
 
   handleChange = (key) => (event) => {
     this.setState({
-      [key] : event.target.value
+      [key]: event.target.value
     })
   }
 
-  handleSubmit = (event) =>{
+  handleSubmit = (event) => {
     event.preventDefault()
-    //TODO API call
+
+    const { data } = this.state
+
   }
 
-  print = () => {
-    console.log(this.state)
-  }
-
-  render(){
-    return <PostAJob
-               handleChange={this.handleChange}
-               handleSubmit={this.handleSubmit}
-               toggleModal={this.toggleModel}
-               isOpen={this.state.isOpen}/>
-  }
+  render() {
+    return (
+      <div className="App">
+        <BlueButton name="Open Form" onClick={this.toggleModal}/>
+        <PostAJob handleChange={this.handleChange} handleSubmit={this.handleSubmit} show={this.state.isOpen}
+          onClose={this.toggleModal}></PostAJob>
+      </div>
+  )}
 }
+PostAJobContainer = Radium(PostAJobContainer)
+PostAJobContainer = withRouter(PostAJobContainer)
 
-export default Radium(PostAJobContainer)
+export default PostAJobContainer

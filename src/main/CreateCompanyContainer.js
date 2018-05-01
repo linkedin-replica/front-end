@@ -1,14 +1,24 @@
 import React, {Component} from 'react';
 import Radium from 'radium';
 import CreateCompany from '../components/company/CreateCompany'
+import BlueButton from '../components/buttons/BlueButton';
 
 class CreateCompanyContainer extends Component{
   state = {
-    companyName:'',
-    companyUrl:'',
-    verify:''
-
+    data: {
+      companyName:'',
+      companyUrl:'',
+      verify:''
+    },
+    isOpen: this.props.isOpen
   }
+
+  toggleModal = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+
   handleChange = (key) => (event) => {
     this.setState({
       [key] : event.target.value
@@ -20,13 +30,14 @@ class CreateCompanyContainer extends Component{
     //TODO API call
   }
 
-  print = () => {
-    console.log(this.state)
-  }
-
   render(){
-    return <CreateCompany handleChange={this.handleChange} handleSubmit={this.handleSubmit}></CreateCompany>
-  }
+    return (
+      <div className="App">
+        <BlueButton name="Open Form" onClick={this.toggleModal}/>
+        <CreateCompany handleChange={this.handleChange} handleSubmit={this.handleSubmit} show={this.state.isOpen}
+          onClose={this.toggleModal}></CreateCompany>
+      </div>
+  )}
 }
 
 export default Radium(CreateCompanyContainer)

@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router'
 import Radium from 'radium';
 import BlueButton from '../buttons/BlueButton';
-import GrayTextButton from '../buttons/GrayTextButton';
 import Modal from '../wrappers/Modal';
 import PropTypes from 'prop-types'
-import WhiteWrapper from '../wrappers/WhiteWrapper';
 import LabeledInput from '../forms/LabeledInput';
-import { colors } from '../../resources/constants';
+import { colors, borders } from '../../resources/constants.js';
+
 
 
 class PostAJob extends Component{
 
   render() {
-    const { handleChange, handleSubmit } = this.props
+    const { handleChange, handleSubmit, show, onClose, toggleModal } = this.props
     return (
-      <WhiteWrapper style={styles.base}>
+      <Modal style={styles.base}
+        show={show}
+        onClose={toggleModal}
+        btnText="Submit Form">
         <header>
           <h1 style={styles.header}>
             Reach the quality candidates you can’t find anywhere else.
@@ -40,13 +41,13 @@ class PostAJob extends Component{
 
           <LabeledInput
             id="company-location"
-            label="Email"
+            label="Company Location"
             type="text"
             handleChange={handleChange('companyLocation')}
             isRequired
           />
 
-          <hr>
+          <hr />
 
           <h2 style={styles.header}>
             Add more job details
@@ -61,18 +62,19 @@ class PostAJob extends Component{
           />
 
           <div>
-              <label htmlFor="job-brief" style={styles.label}>"Job Description"</label>
+              <label htmlFor="job-brief" style={styles.textLabel}>Job Description</label>
               <textarea
+                  style={styles.textarea}
                   placeholder="Add 4 to 6 bullets to describe the role, and help potential applicants learn what makes it a great opportunity."
-                  onChange={handleChange('jobBrief')
+                  onChange={handleChange('jobBrief')}
               />
           </div>
 
           <div style={styles.buttonContainer}>
-            <BlueButton name="Join now" style={styles.button} size="sm" color="blue"></BlueButton>
+            <BlueButton name="Post Job" style={styles.button} size="sm" color="blue" onClick={onClose}></BlueButton>
           </div>
         </form>
-      </WhiteWrapper>
+      </Modal>
     )
   }
 }
@@ -106,6 +108,16 @@ const styles = {
   label: {
     width: '100%',
     height: '30px'
+  },
+  textLabel: {
+      fontSize: '0.7em'
+  },
+  textarea: {
+    padding: '5px',
+    borderRadius: borders.button.radius.normal,
+    border: 'none',
+    width: '100%',
+    display: 'block'
   }
 }
 export default Radium(PostAJob)
