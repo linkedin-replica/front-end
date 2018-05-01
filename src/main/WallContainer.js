@@ -38,9 +38,7 @@ const styles = {
     base: {
         background: colors.whiteGray,
         display: 'block',
-        width: '100%',
         padding: '10px'
-
     },
     header: {
         textAlign: 'center'

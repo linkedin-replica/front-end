@@ -44,8 +44,7 @@ Login.PropTypes = {
 
 const styles = {
   base: {
-    padding: '10px',
-    paddingRight: '20px',
+    padding: '10px 20px 10px 10px',
     marginLeft: '40%',
     display: 'flex',
     alignItems: 'baseline',

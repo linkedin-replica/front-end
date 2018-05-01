@@ -4,22 +4,22 @@ import PropTypes from 'prop-types'
 import api from '../api/api';
 import AddPost from '../components/posts/AddPost';
 import { toast } from 'react-toastify';
+import Radium from 'radium';
 
 class AddPostContainer extends Component {
 
     state = {
         addPostContent: '',
-        img: null,
-        video: null
+        inputFile: null
     }
 
     componentDidMount() {
 
     }
 
-    handleChange = (event) => {
+    handleChange = (key) => (event) => {
         this.setState({
-            addPostContent: event.target.value
+            [key]: event.target.value
         })
     }
 
@@ -29,40 +29,43 @@ class AddPostContainer extends Component {
         const { userId } = this.props
         const { addPostContent, img, video } = this.state
 
-        api.addPost(userId, addPostContent, img, video)
+        api.addPost(userId, addPostContent, img, video, false)
             .then(res => {
-                toast.success(res.data.results)
+                toast.success("Added a new post")
             })
             .catch(err =>
                 toast.error(err.response.data.error)
             )
     }
 
-    imageButtonHandler = (event) => {
-        this.setState({
-            img: event.target.files[0]
-        });
+    handleMediaClick = (event) => {
+        this.upload.click()
     };
-
-    videoButtonHandler = (event) => {
-        this.setState({
-            video: event.target.files[0]
-        });
-    };
-
     render() {
         const { addPostContent } = this.state;
         return (
-            <AddPost
-                addPostContent={addPostContent}
-                handleChange={this.handleChange}
-                imageButtonHandler={this.imageButtonHandler}
-                videoButtonHandler={this.videoButtonHandler}
-            />
+            <section class="add-post">
+                <AddPost
+                    addPostContent={addPostContent}
+                    handleChange={this.handleChange}
+                    handleMediaClick={this.handleMediaClick}
+                    handleSubmit={this.handleSubmit}
+                />
+                <input id="myInput"
+                    type="file" ref={(ref) => this.upload = ref}
+                    style={styles.input}
+                    onChangeCapture={this.handleChange('inputFile')}
+                />
+            </section>
         );
     }
 }
 
+const styles = {
+    input: {
+        display: 'none',
+    }
+}
 AddPostContainer.propTypes = {
     userId: PropTypes.string.isRequired,
     isCompany: PropTypes.bool,
@@ -70,4 +73,4 @@ AddPostContainer.propTypes = {
 };
 
 
-export default AddPostContainer;
+export default Radium(AddPostContainer);

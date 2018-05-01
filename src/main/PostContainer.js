@@ -8,8 +8,16 @@ class PostContainer extends Component {
 
     state = {
         likeCounter: 0,
-        isLiked: false,
-        visibility: false,
+        liked: false,
+        showComments: false,
+    }
+
+    constructor(props) {
+        super(props)
+
+        const { mockData } = this.props;
+        if (mockData)
+            this.state.posts = mockData
     }
 
     likeButtonHandler = () => {
@@ -27,14 +35,6 @@ class PostContainer extends Component {
             visibility: !this.state.visibility
         });
 
-    }
-
-    constructor(props) {
-        super(props)
-
-        const { mockData } = this.props;
-        if (mockData)
-            this.state.posts = mockData
     }
 
     componentDidMount() {

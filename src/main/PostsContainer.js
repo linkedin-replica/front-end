@@ -5,6 +5,7 @@ import PostContainer from './PostContainer';
 import ListAdapter from '../components/wrappers/ListAdapter';
 import api from '../api/api';
 import { toast } from 'react-toastify';
+import { postsLimit } from '../resources/constants';
 
 class PostsContainer extends Component {
 
@@ -21,8 +22,9 @@ class PostsContainer extends Component {
     }
 
     componentDidMount() {
-        api.getPosts()
+        api.getNewsFeed(postsLimit)
             .then(res => {
+                console.log(res.data.results);
                 this.setState({
                     posts: res.data.results
                 })

@@ -49,7 +49,7 @@ const styles = {
   name: {
     display: 'block',
     fontSize: '0.9em',
-    marginTop: '6px',
+    marginTop: '7.5px',
   },
   active: {
     color: colors.white,

@@ -57,3 +57,5 @@ export const borders = {
 export const toastPosition = {
   position: toast.POSITION.BOTTOM_LEFT
 }
+
+export const postsLimit = 50
