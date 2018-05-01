@@ -1,14 +1,32 @@
 import io from 'socket.io-client';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import ArticleContainer from './ArticleContainer';
-import ListAdapter from '../components/wrappers/ListAdapter';
 import api from '../api/api';
+import Post from '../components/posts/Post';
 
-class ArticlesContainer extends Component {
+class PostContainer extends Component {
 
     state = {
-        posts: []
+        likeCounter: 0,
+        isLiked: false,
+        visibility: false,
+    }
+
+    likeButtonHandler = () => {
+        this.setState({
+            likeCounter: this.state.likeCounter += (this.state.isLiked ? -1 : 1),
+            isLiked: !this.state.isLiked
+        });
+        console.log("like counter: ", this.state.likeCounter)
+
+    }
+
+
+    commentButtonHandler = () => {
+        this.setState({
+            visibility: !this.state.visibility
+        });
+
     }
 
     constructor(props) {
@@ -20,24 +38,18 @@ class ArticlesContainer extends Component {
     }
 
     componentDidMount() {
-        api.getTrendingArticlesRecommendations()
-            .then(res => {
-                console.log(res)
-                this.setState({
-                    posts: res.data.results
-                })
-            }).catch(err => console.log(err))
+
     }
 
     render() {
-        const { articles } = this.state;
+        const { posts } = this.state;
         return (
-            <ListAdapter data={articles} listItemView={ArticleContainer} verticalSplit />
+            <Post />
         );
     }
 }
 
-ArticlesContainer.propTypes = {
+PostContainer.propTypes = {
     text: PropTypes.string,
     images: PropTypes.string,
     videos: PropTypes.string,
@@ -51,4 +63,4 @@ ArticlesContainer.propTypes = {
 };
 
 
-export default ArticlesContainer;
+export default PostContainer;

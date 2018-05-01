@@ -2,16 +2,12 @@ import io from 'socket.io-client';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import api from '../api/api';
-import Wall from '../components/wall/Wall';
+import AddPostContainer from './AddPostContainer';
+import PostsContainer from './PostsContainer';
+import ArticlesContainer from './ArticleContainer';
+import { colors } from '../resources/constants';
 
 class WallContainer extends Component {
-
-    state = {
-        posts: [],
-        comments: [],
-        imageButton: false,
-        videoButton: false
-    }
 
     constructor(props) {
         super(props)
@@ -22,40 +18,38 @@ class WallContainer extends Component {
 
     }
 
-    componentDidMount() {
-
-    }
-
-    imageButtonHandler = () => {
-        this.setState({
-            imageButton: !this.state.imageButton
-        });
-        console.log("image button: ", this.state.imageButton);
-    };
-
-    videoButtonHandler = () => {
-        this.setState({
-            videoButton: !this.state.videoButton
-        });
-        console.log("video button: ", this.state.videoButton);
-    };
-
     render() {
-        const { posts, comments } = this.state;
+        const { userId, isCompany, isArticle } = this.props
         return (
-            <Wall posts={posts}
-                comments={comments}
-            />
+            <div style={styles.base}>
+                <AddPostContainer isCompany={isCompany} isArticle={isArticle} userId={userId} />
+                <section>
+                    {isArticle ?
+                        <ArticlesContainer /> :
+                        <PostsContainer />
+                    }
+                </section>
+            </div >
         );
     }
 }
 
+const styles = {
+    base: {
+        background: colors.whiteGray,
+        display: 'block',
+        width: '100%',
+        padding: '10px'
+
+    },
+    header: {
+        textAlign: 'center'
+    }
+}
+
 WallContainer.propTypes = {
-    userID: PropTypes.string,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    headline: PropTypes.string,
-    profilePictureUrl: PropTypes.string
+    userID: PropTypes.string.isRequired,
+    isCompany: PropTypes.bool
 };
 
 

@@ -8,6 +8,7 @@ import WhiteWrapper from '../components/wrappers/WhiteWrapper';
 import BorderedButton from '../components/buttons/BorderedButton';
 import ListAdapter from '../components/wrappers/ListAdapter';
 import GridView from '../components/wrappers/GridView';
+import Toast from '../components/wrappers/Toast';
 
 class WrappersTest extends Component {
 
@@ -16,7 +17,7 @@ class WrappersTest extends Component {
             <div style={styles.base}>
                 <header>
                     <h1>Wrappers Testing</h1>
-                </header>   
+                </header>
                 <section>
                     <h2>White Wrapper (sm, md, lg)</h2>
                     <WhiteWrapper style={styles.whiteWrapper} size="sm">
@@ -45,6 +46,8 @@ class WrappersTest extends Component {
                         <GridView data={mockData2} gridItemView={WhiteWrapper} horizontalSplit verticalSplit size="md" />
                     </WhiteWrapper>
                 </section>
+
+                <Toast text="Logged in successfully" isSuccess={true} />
             </div>
         );
     }

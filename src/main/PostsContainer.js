@@ -1,32 +1,14 @@
 import io from 'socket.io-client';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import Post from './Post';
-import api from '../../api/api';
+import PostContainer from './PostContainer';
+import ListAdapter from '../components/wrappers/ListAdapter';
+import api from '../api/api';
 
-class PostContainer extends Component {
+class PostsContainer extends Component {
 
     state = {
-        likeCounter: 0,
-        isLiked: false,
-        visibility: false,
-    }
-
-    likeButtonHandler = () => {
-        this.setState({
-            likeCounter: this.state.likeCounter += (this.state.isLiked ? -1 : 1),
-            isLiked: !this.state.isLiked
-        });
-        console.log("like counter: ", this.state.likeCounter)
-
-    }
-
-
-    commentButtonHandler = () => {
-        this.setState({
-            visibility: !this.state.visibility
-        });
-
+        posts: []
     }
 
     constructor(props) {
@@ -38,19 +20,24 @@ class PostContainer extends Component {
     }
 
     componentDidMount() {
-
+        api.getPosts()
+            .then(res => {
+                console.log(res)
+                this.setState({
+                    posts: res.data.results
+                })
+            }).catch(err => console.log(err))
     }
 
     render() {
-        const { posts, comments } = this.state;
+        const { posts } = this.state;
         return (
-            <Post />
-
+            <ListAdapter data={posts} listItemView={PostContainer} verticalSplit />
         );
     }
 }
 
-PostContainer.propTypes = {
+PostsContainer.propTypes = {
     text: PropTypes.string,
     images: PropTypes.string,
     videos: PropTypes.string,
@@ -64,4 +51,4 @@ PostContainer.propTypes = {
 };
 
 
-export default PostContainer;
+export default PostsContainer;
