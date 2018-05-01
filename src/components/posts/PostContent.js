@@ -18,13 +18,13 @@ const VideoContent = ({ url }) => (
 class PostContent extends Component {
 
     render() {
-        const { postContent, type, style } = this.props;
+        const { postContent, text, type, style } = this.props;
         return (
             <div style={[styles.base, style]}>
+                <TextContent text={text} />
                 {
                     type === 'img' && <ImageContent url={postContent} />
                     || type === 'video' && <VideoContent url={postContent} />
-                    || <TextContent text={postContent} />
                 }
             </div>
         )
@@ -32,6 +32,7 @@ class PostContent extends Component {
 }
 
 PostContent.propTypes = {
+    text: PropTypes.string,
     postContent: PropTypes.string,
     type: PropTypes.oneOf(['text', 'img', 'video']),
     style: PropTypes.object

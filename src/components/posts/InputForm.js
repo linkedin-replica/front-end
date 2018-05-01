@@ -34,10 +34,12 @@ const styles = {
 
     },
     post: {
-        border: 'none',
         width: '100%',
         fontSize: '1.2em',
         borderBottom: `solid 0.02em ${colors.lightGray}`,
+        borderTop: 'none',
+        borderLeft: 'none',
+        borderRight: 'none',
     }
 }
 

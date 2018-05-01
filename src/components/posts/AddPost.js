@@ -61,7 +61,6 @@ AddPost.propTypes = {
 const styles = {
   base: {
     padding: paddings.wrapper,
-    height: "10.0em",
     display: 'block',
   },
   postButton: {

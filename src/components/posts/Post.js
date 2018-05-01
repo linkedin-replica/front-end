@@ -15,12 +15,14 @@ class Post extends Component {
             authorId,
             authorName,
             authorProfilePictureUrl,
-            headline,
+            headLine,
             liked,
+            text,
             postContent,
-            likeButtonHandler,
-            commentButtonHandler,
+            handleLikeButton,
+            handleCommentButton,
             showComments,
+            comments,
             style } = this.props;
 
         return (
@@ -28,24 +30,25 @@ class Post extends Component {
                 <DetailsHeader
                     img={authorProfilePictureUrl}
                     header={authorName}
-                    subHeader={headline}
+                    subHeader={headLine}
                     rounded
                     type={type}
                     id={authorId} />
-                <PostContent postContent={postContent} />
+                <PostContent text={text} postContent={postContent} />
                 <div style={styles.buttons} >
-                    <IconTextButton name="Like" type="like" onClick={this.likeButtonHandler} style={liked ? styles.likedButton : ''} />
-                    <IconTextButton name="Comment" type="comment" onClick={this.commentButtonHandler} />
+                    <IconTextButton name="Like" type="like" onClick={this.handleLikeButton} style={liked ? styles.likedButton : ''} />
+                    <IconTextButton name="Comment" type="comment" onClick={this.handleCommentButton} />
                 </div>
                 <div>
                     <CommentSection
                         img={authorProfilePictureUrl}
                         header={authorName}
-                        subHeader={headline}
+                        subHeader={headLine}
                         rounded
                         type={type}
                         id={authorId}
-                        visibility={showComments} />
+                        visibility={showComments}
+                        comments={comments} />
                 </div>
             </WhiteWrapper>
         )
@@ -62,8 +65,10 @@ Post.propTypes = {
     type: PropTypes.string,
     liked: PropTypes.bool,
     showComments: PropTypes.bool,
-    likeButtonHandler: PropTypes.func,
-    commentButtonHandler: PropTypes.func,
+    comments: PropTypes.array,
+    handleLikeButton: PropTypes.func,
+    handleCommentButton: PropTypes.func,
+
 };
 
 const styles = {

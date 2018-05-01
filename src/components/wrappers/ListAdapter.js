@@ -66,7 +66,6 @@ const styles = {
         margin: '10px auto',
         borderBottom: '1px solid',
         borderBottomColor: colors.lightGray,
-        marginLeft: '3%',
         maxWidth: '40em',
     },
     noSplit: {

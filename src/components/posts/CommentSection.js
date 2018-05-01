@@ -7,20 +7,20 @@ import Comment from './Comment';
 import ListAdapter from '../wrappers/ListAdapter';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 
-class InputForm extends Component {
+class CommentsSection extends Component {
 
 
     render() {
-        const {src, rounded, visibility, comments} = this.props
+        const { src, rounded, visibility, comments } = this.props
         // const commentData = {...rest}
-        return (    
-        <div style={[styles.base, visibility ? styles.clicked: styles.base]} >
-        
-            <WriteAComment src = {src} rounded = {rounded}/>
-            <ListAdapter data={comments} listItemView = {Comment} style={styles.commentList}  />
-            
-        </div>
-        
+        return (
+            <div style={[styles.base, visibility ? styles.clicked : styles.base]} >
+
+                <WriteAComment src={src} rounded={rounded} />
+                {/* <ListAdapter data={comments} listItemView={Comment} style={styles.commentList} /> */}
+
+            </div>
+
         )
     };
 }
@@ -28,24 +28,24 @@ class InputForm extends Component {
 
 const styles = {
     base: {
-        display:'none',
-        
+        display: 'none',
+
     },
-    commentList:{
-        background:colors.lightBlue,
-        marginLeft:'-0.9em',
-        padding:paddings.wrapper
+    commentList: {
+        background: colors.lightBlue,
+        marginLeft: '-0.9em',
+        padding: paddings.wrapper
     },
     clicked: {
-        display:'block'
+        display: 'block'
     },
-    wrapper:{
-        padding:paddings.wrapper,
-        
+    wrapper: {
+        padding: paddings.wrapper,
+
     }
 }
 
 
 
-InputForm = Radium(InputForm);
-export default InputForm;
+CommentsSection = Radium(CommentsSection);
+export default CommentsSection;

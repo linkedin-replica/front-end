@@ -59,3 +59,4 @@ export const toastPosition = {
 }
 
 export const postsLimit = 50
+export const commentsLimit = 20

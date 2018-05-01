@@ -13,16 +13,15 @@ class PostsContainer extends Component {
         posts: []
     }
 
-    constructor(props) {
-        super(props)
-
-        const { mockData } = this.props;
-        if (mockData)
-            this.state.posts = mockData
-    }
-
     componentDidMount() {
-        api.getNewsFeed(postsLimit)
+        const { userId, isCompany } = this.props
+
+        const request =
+            isCompany ?
+                api.getCompanyPosts(userId, postsLimit) :
+                api.getNewsFeed(postsLimit)
+
+        request
             .then(res => {
                 this.setState({
                     posts: res.data.results
@@ -32,23 +31,17 @@ class PostsContainer extends Component {
 
     render() {
         const { posts } = this.state;
+        const { userId } = this.props;
+        const newPosts = posts.map(post => ({ ...post, userId }))
         return (
-            <ListAdapter data={posts} listItemView={PostContainer} verticalSplit />
+            <ListAdapter data={newPosts} listItemView={PostContainer} verticalSplit />
         );
     }
 }
 
 PostsContainer.propTypes = {
-    text: PropTypes.string,
-    images: PropTypes.string,
-    videos: PropTypes.string,
-    commentsCount: PropTypes.string,
-    timestamp: PropTypes.number,
-    likers: PropTypes.object,
-    liked: PropTypes.bool,
-    authorName: PropTypes.string,
-    authorProfilePictureUrl: PropTypes.string,
-    headline: PropTypes.string
+    userId: PropTypes.string,
+    isCompany: PropTypes.bool
 };
 
 

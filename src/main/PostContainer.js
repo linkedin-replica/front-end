@@ -3,52 +3,83 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import api from '../api/api';
 import Post from '../components/posts/Post';
+import { commentsLimit } from '../resources/constants';
+import { toast } from 'react-toastify';
 
 class PostContainer extends Component {
 
     state = {
-        likeCounter: 0,
+        likesCount: 0,
+        commentsCount: 0,
         liked: false,
         showComments: false,
+        comments: [],
+        likers: []
     }
     componentDidMount() {
-        api.getPostComments()
+        const { postId, userId } = this.props
+        api.getPostComments(postId, userId, commentsLimit)
+            .then(res => {
+                this.setState({
+                    comments: res.data.results
+                })
+            }).catch(err => toast.error(err.response.data.error))
     }
 
     constructor(props) {
         super(props)
 
-        const { mockData } = this.props;
-        if (mockData)
-            this.state.posts = mockData
+        this.state = {
+            liked: props.liked,
+            likeCount: props.likers.length,
+            commentsCount: props.commentsCount,
+            likers: props.likers
+        }
     }
 
-    likeButtonHandler = () => {
-        this.setState({
-            likeCounter: this.state.likeCounter += (this.state.isLiked ? -1 : 1),
-            isLiked: !this.state.isLiked
-        });
-        console.log("like counter: ", this.state.likeCounter)
+    handleLikeButton = () => {
+        const { userId, postId } = this.props
+        const { liked, likesCount } = this.state
 
+        let request = liked ?
+            api.deleteLike(userId, postId) :
+            api.likePost(userId, postId)
+
+        request
+            .then(res => {
+                this.setState({
+                    likesCount: likesCount + (liked ? -1 : 1),
+                    liked: !liked
+                });
+            })
+            .catch(err => toast.error(err.response.data.error))
     }
 
 
-    commentButtonHandler = () => {
+    handleCommentButton = () => {
+        const { showComments } = this.state
         this.setState({
-            visibility: !this.state.visibility
+            showComments: !showComments
         });
-
     }
 
     render() {
-        const { posts } = this.state;
+        const { images, videos } = this.props
+        let postContent = images ? images[0] : (videos ? videos[0] : '')
         return (
-            <Post />
+            <Post
+                {...this.props}
+                {...this.state}
+                postContent={this.postContent}
+                handleLikeButton={this.handleLikeButton}
+                handleCommentButton={this.handleCommentButton} />
         );
     }
 }
 
 PostContainer.propTypes = {
+    userId: PropTypes.string,
+    postId: PropTypes.string,
     text: PropTypes.string,
     images: PropTypes.string,
     videos: PropTypes.string,
@@ -58,7 +89,7 @@ PostContainer.propTypes = {
     liked: PropTypes.bool,
     authorName: PropTypes.string,
     authorProfilePictureUrl: PropTypes.string,
-    headline: PropTypes.string
+    headLine: PropTypes.string
 };
 
 

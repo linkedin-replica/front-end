@@ -17,7 +17,7 @@ class WallContainer extends Component {
                 <section>
                     {isArticle ?
                         <ArticlesContainer /> :
-                        <PostsContainer />
+                        <PostsContainer userId={userId} />
                     }
                 </section>
             </div >
@@ -37,7 +37,7 @@ const styles = {
 }
 
 WallContainer.propTypes = {
-    userID: PropTypes.string.isRequired,
+    userId: PropTypes.string.isRequired,
     isCompany: PropTypes.bool,
     isArticle: PropTypes.bool
 };

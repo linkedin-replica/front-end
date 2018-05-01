@@ -181,11 +181,11 @@ export default {
   deleteComment: (commentId) => {
     return axios.delete(`wall/deleteComment`, { commentId })
   },
-  likePost: (postLike) => {
-    return axios.post('wall/addLike', postLike)
+  likePost: (likerId, postId) => {
+    return axios.post('wall/addLike', { likerId, postId })
   },
-  deleteLike: (likeId) => {
-    return axios.delete(`wall/deleteLike`, { likeId })
+  deleteLike: (likerId, postId) => {
+    return axios.delete(`wall/deleteLike`, { likerId, postId })
   },
   getReplies: (parentCommentId, authorId, limit) => {
     return axios.get('wall/getReplies', { params: { parentCommentId, authorId, limit } })
