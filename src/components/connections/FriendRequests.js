@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import PropTypes from 'prop-types'
-import { colors } from '../../resources/constants';
 import ListAdapter from '../wrappers/ListAdapter';
-import WhiteWrapper from '../wrappers/WhiteWrapper';
 import FriendRequestItem from '../connections/FriendRequestItem';
 
 class FriendRequests extends Component {
@@ -14,7 +12,7 @@ class FriendRequests extends Component {
                 verticalSplit } = this.props;
         return (
             <ListAdapter 
-                data={mockData}
+                data = {data}
                 style = {style}
                 size = {size}
                 verticalSplit = {verticalSplit}

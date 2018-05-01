@@ -56,6 +56,9 @@ export default {
   getFriendsList: () => {
     return axios.get('connections/getFriendsList')
   },
+  getFriendRequests: () => {
+    return axios.get('connections/getFriendRequests')
+  },
 
   // Edit Info
   getUserProfile: () => {

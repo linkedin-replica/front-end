@@ -3,11 +3,8 @@
 */
 import React, { Component } from 'react';
 import Radium from 'radium';
-import { colors } from '../resources/constants';
 import FriendRequests from '../components/connections/FriendRequests';
-import FriendRecommendationItem from '../components/connections/FriendRecommendationItem';
 import FriendRecommendations from '../components/connections/FriendRecommendations';
-import WhiteWrapper from '../components/wrappers/WhiteWrapper';
 
 class ConnectionsTest extends Component {
 

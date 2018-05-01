@@ -3,10 +3,8 @@ import Radium from 'radium';
 import PropTypes from 'prop-types'
 import AvatarImage from '../images/AvatarImage';
 import BoldLink from '../typography/BoldLink';
-import DetailsHeader from '../details/DetailsHeader';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import BorderedButton from '../buttons/BorderedButton';
-import GreyAndBorder from '../buttons/AdjacentGreyBorder';
 import GrayText from '../typography/GrayText';
 import { colors, borders } from '../../resources/constants.js'
 
@@ -19,6 +17,7 @@ class FriendRecommendationItem extends Component {
             description,
             img,
             id,
+            handleConnect,
             ...rest } = this.props;
 
         return (
@@ -48,6 +47,7 @@ class FriendRecommendationItem extends Component {
                     name="Connect" 
                     color="blue" 
                     size="md" 
+                    onClick={handleConnect}
                     style = {styles.blueBorder}/>
                 </div>
             
@@ -61,7 +61,9 @@ FriendRecommendationItem.propTypes = {
     description: PropTypes.string.isRequired,
     img: PropTypes.string.isRequired,
     id: PropTypes.string,
+    handleConnect: PropTypes.func.isRequired,
 };
+
 
 const styles = {
     base: {

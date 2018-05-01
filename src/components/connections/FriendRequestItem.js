@@ -37,7 +37,9 @@ class FriendRequestItem extends Component {
                 <div style={styles.btnDiv}>
                 <GreyAndBorder 
                     greyText="Ignore" 
-                    blueText="Accept" 
+                    blueText="Accept"
+                    greyOnClick = {handleIgnore}
+                    blueOnClick = {handleAccept} 
                     size="md">
                 </GreyAndBorder>
                 </div>

@@ -8,11 +8,11 @@ import GrayTextButton from '../buttons/GrayTextButton';
 
 class AdjacentGreyBorder extends Component {
     render() {
-        const { greyText, blueText, size } = this.props;
+        const { greyText, blueText, size, greyOnClick, blueOnClick } = this.props;
         return (
           <div  style={[styles.base, styles.btnDiv]}>
-            <GrayTextButton name={greyText} size={size} type="Button"/>
-            <BorderedButton name={blueText} color="blue" size={size} />
+            <GrayTextButton name={greyText} size={size} type="Button" onClick = {greyOnClick}/>
+            <BorderedButton name={blueText} color="blue" size={size} onClick = {blueOnClick} />
           </div>
         )
     };
@@ -22,6 +22,8 @@ AdjacentGreyBorder.propTypes = {
     greyText: PropTypes.string.isRequired,
     blueText: PropTypes.string.isRequired,
     size: PropTypes.oneOf(["sm", "md", "lg"]),
+    greyOnClick: PropTypes.func,
+    blueOnClick: PropTypes.func,
 };
 
 const styles = {

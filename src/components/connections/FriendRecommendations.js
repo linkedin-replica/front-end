@@ -23,22 +23,13 @@ class FriendRecommendations extends Component {
                     />
                 </div>
                 <GridView 
-                    data = {mockData}
+                    data = {this.props.data}
                     gridItemView = {FriendRecommendationItem}/>
             </WhiteWrapper>
         )
     };
 }
 
-const mockData = [
-    { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", rounded: true, name:"Yara Yehia", description:"A Computer Science Student at the German University in Cairo", type:"profile", id:"1" },
-    { img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", rounded: true, name: "Hisham Zahran", description:"A Computer Science Student at the German University in Cairo", type:"profile", id:"2" },
-    { img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", rounded: true, name: "Esraa Salah", description:"A Computer Science Student at the German University in Cairo", type:"profile", id:"3" },
-    { img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", rounded: true, name: "Rana Saeed", description:"A Computer Science Student ", type:"profile", id:"4" },
-    { img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", rounded: true, name: "Rana Saeed", description:"A Computer Science Student ", type:"profile", id:"4" },
-    { img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", rounded: true, name: "Rana Saeed", description:"A Computer Science Student ", type:"profile", id:"4" },
-    
-]
 
 
 FriendRecommendations.propTypes = {
@@ -46,7 +37,8 @@ FriendRecommendations.propTypes = {
     style: PropTypes.object, // Content style
     size: PropTypes.oneOf(["sm", "md", "lg"]),
     horizontalSplit: PropTypes.bool,
-    verticalSplit: PropTypes.bool
+    verticalSplit: PropTypes.bool,
+    
 };
 
 const styles = {
