@@ -7,6 +7,9 @@ import TabBar from './TabBar';
 import LoginContainer from '../../main/LoginContainer';
 import Logo from '../../resources/logo.png';
 import UnlabeledInput from '../forms/UnlabeledInput';
+import api from '../../api/api';
+import { withRouter } from 'react-router-dom';
+import BorderedButton from '../buttons/BorderedButton';
 class Header extends Component {
     state = {
         searchText: ''
@@ -21,6 +24,11 @@ class Header extends Component {
     handleSubmitSearch = (event) => {
         event.preventDefault();
 
+    }
+
+    handleSignOut = (event) => {
+        api.removeLoginToken()
+        this.props.history.push('/login')
     }
     componentDidMount() {
 
@@ -55,6 +63,9 @@ class Header extends Component {
                             <LoginContainer />
                         }
                     </nav>
+                    {isLoggedIn &&
+                        <BorderedButton name='Sign Out' color='white' onClick={this.handleSignOut}> </BorderedButton>
+                    }
                 </div>
             </header>
         );
@@ -107,5 +118,6 @@ Header.propTypes = {
 
 // Wrap it with Radium
 Header = Radium(Header);
+Header = withRouter(Header);
 
 export default Header;

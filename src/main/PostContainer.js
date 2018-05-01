@@ -11,6 +11,9 @@ class PostContainer extends Component {
         liked: false,
         showComments: false,
     }
+    componentDidMount() {
+        api.getPostComments()
+    }
 
     constructor(props) {
         super(props)
@@ -34,10 +37,6 @@ class PostContainer extends Component {
         this.setState({
             visibility: !this.state.visibility
         });
-
-    }
-
-    componentDidMount() {
 
     }
 

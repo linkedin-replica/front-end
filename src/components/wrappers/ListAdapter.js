@@ -24,6 +24,7 @@ class ListAdapter extends Component {
             verticalSplit
           } = this.props;
 
+        console.log(data)
         return (
             <ul style={[
                 styles.base,

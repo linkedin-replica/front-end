@@ -24,7 +24,6 @@ class PostsContainer extends Component {
     componentDidMount() {
         api.getNewsFeed(postsLimit)
             .then(res => {
-                console.log(res.data.results);
                 this.setState({
                     posts: res.data.results
                 })

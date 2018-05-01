@@ -9,15 +9,6 @@ import { colors } from '../resources/constants';
 
 class WallContainer extends Component {
 
-    constructor(props) {
-        super(props)
-
-        const { mockData } = this.props;
-        if (mockData)
-            this.state.posts = mockData
-
-    }
-
     render() {
         const { userId, isCompany, isArticle } = this.props
         return (
@@ -47,7 +38,8 @@ const styles = {
 
 WallContainer.propTypes = {
     userID: PropTypes.string.isRequired,
-    isCompany: PropTypes.bool
+    isCompany: PropTypes.bool,
+    isArticle: PropTypes.bool
 };
 
 
