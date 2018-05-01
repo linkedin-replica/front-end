@@ -3,11 +3,14 @@ import Radium from 'radium';
 import Login from '../components/login_signup/Login'
 import api from '../api/api';
 import { withRouter } from 'react-router';
+import { toast } from 'react-toastify';
+import { toastPosition } from '../resources/constants';
 
 class LoginContainer extends Component {
   state = {
     email: '',
-    password: ''
+    password: '',
+    msg: ''
   }
 
   handleChange = (key) => (event) => {
@@ -26,12 +29,15 @@ class LoginContainer extends Component {
         this.props.history.push('/profile')
       })
       .catch(err => {
-        console.log(err)
+        toast.error(err.response.data.error)
       })
   }
 
   render() {
-    return <Login handleChange={this.handleChange} handleSubmit={this.handleSubmit}></Login>
+    const { successMessage, errMessage } = this.state
+    return (
+      <Login handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
+    )
   }
 }
 

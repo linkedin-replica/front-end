@@ -11,7 +11,6 @@ axios.interceptors.request.use(config => {
   if (localStorage.getItem('access-token'))
     config.headers['access-token'] = localStorage.getItem('access-token')
   config.headers['Content-Type'] = 'application/json;charset=UTF-8';
-  console.log(config)
   return config
 })
 

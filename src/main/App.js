@@ -3,7 +3,6 @@ import Radium from 'radium';
 import { colors } from '../resources/constants';
 import { Route, Switch } from 'react-router-dom';
 import api from '../api/api';
-import Redirect from 'react-router-dom/Redirect';
 import MainContainer from './MainContainer';
 import Header from '../components/wrappers/Header';
 import LoginRegisterationContainer from './LoginRegisterationContainer';
@@ -25,9 +24,9 @@ class App extends Component {
             loggedInUser: data.results
           });
         });
-      <Redirect to="/home" />
+      this.props.history.push('/home')
     } else {
-      <Redirect to="/login" />
+      this.props.history.push('/login')
     }
   }
 
@@ -47,7 +46,7 @@ class App extends Component {
 const styles = {
   base: {
     background: colors.whiteGray,
-  }
+  },
 }
 
 App = Radium(App);

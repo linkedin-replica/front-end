@@ -15,6 +15,8 @@ import SearchResultsContainer from './SearchResultsContainer';
 import RegistrationContainer from './RegistrationContainer';
 import Header from '../components/wrappers/Header';
 import ProfileTest from '../tests/ProfileTest';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 class MainContainer extends Component {
 
@@ -36,6 +38,7 @@ class MainContainer extends Component {
                     <Route path='/article/:id' component={ArticleContainer} />
                     <Route path='/search-results' component={SearchResultsContainer} />
                 </main>
+                <ToastContainer position='bottom-left' style={styles.toast} autoClose={4000} />
             </div>);
     }
 }
@@ -46,6 +49,10 @@ const styles = {
         display: 'flex',
         justifyContent: 'center',
         height: '100%'
+    },
+    toast: {
+        height: '50px',
+        fontWeight: 'bold',
     }
 }
 

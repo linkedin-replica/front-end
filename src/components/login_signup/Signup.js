@@ -8,7 +8,7 @@ import { colors } from '../../resources/constants';
 
 class Signup extends Component {
   render() {
-    const { handleChange, handleSubmit } = this.props
+    const { firstName, lastName, email, password, confirmPassword, handleChange, handleSubmit } = this.props
     return (
       <WhiteWrapper style={styles.base}>
         <header>
@@ -21,6 +21,7 @@ class Signup extends Component {
             id="first-name"
             label="First Name"
             type="text"
+            text={firstName}
             handleChange={handleChange('firstName')}
             isRequired
           />
@@ -29,6 +30,7 @@ class Signup extends Component {
             id="last-name"
             label="Last Name"
             type="text"
+            text={lastName}
             handleChange={handleChange('lastName')}
             isRequired
           />
@@ -37,6 +39,7 @@ class Signup extends Component {
             id="email"
             label="Email"
             type="email"
+            text={email}
             handleChange={handleChange('email')}
             isRequired
           />
@@ -45,6 +48,7 @@ class Signup extends Component {
             id="password"
             label="Password"
             type="password"
+            text={password}
             handleChange={handleChange('password')}
             isRequired
           />
@@ -53,6 +57,7 @@ class Signup extends Component {
             id="confirm-password"
             label="Confirm Password"
             type="password"
+            text={confirmPassword}
             handleChange={handleChange('confirmPassword')}
             isRequired
           />

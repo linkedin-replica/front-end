@@ -6,13 +6,14 @@ import { colors, borders } from '../../resources/constants.js'
 class LabeledInput extends Component {
     render() {
         // Directly get the needed props
-        const { id, label, placeholder, type, handleChange, handleSubmit, size, style, isRequired } = this.props;
+        const { id, label, placeholder, text, type, handleChange, handleSubmit, size, style, isRequired } = this.props;
         return (
             <div className="form-input">
                 <label htmlFor={id} style={styles.label}>{label}</label>
                 <input
                     style={[styles.base, size ? styles[size] : styles['md'], style]}
                     type={type}
+                    value={text}
                     placeholder={placeholder}
                     onChange={handleChange}
                     onKeyUp={handleSubmit ? handleSubmit : () => { }}
@@ -26,6 +27,7 @@ class LabeledInput extends Component {
 LabeledInput.propTypes = {
     id: PropTypes.string,
     label: PropTypes.string,
+    text: PropTypes.string,
     type: PropTypes.string,
     placeholder: PropTypes.string.isRequired,
     handleChange: PropTypes.func,

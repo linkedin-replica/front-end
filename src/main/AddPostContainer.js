@@ -30,7 +30,6 @@ class AddPostContainer extends Component {
 
         api.addPost(userId, addPostContent, img, video)
             .then(res => {
-                console.log(res.data.results)
             })
             .catch(err => console.log(err))
     }

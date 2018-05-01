@@ -13,7 +13,6 @@ class TabBar extends Component {
         super(props)
 
         if (props.match) {
-            console.log(props.location)
             this.state.activeTab = props.location.pathname.substring(1)
         }
     }

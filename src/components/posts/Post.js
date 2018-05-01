@@ -8,7 +8,6 @@ import WhiteWrapper from '../wrappers/WhiteWrapper';
 import PostContent from './PostContent';
 import CommentSection from './CommentSection';
 
-
 class Post extends Component {
     constructor(props) {
         super(props)
@@ -20,7 +19,6 @@ class Post extends Component {
             isLiked: false,
             visibility: false,
             shareCounter: 0
-
         };
     }
 
