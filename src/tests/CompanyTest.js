@@ -70,5 +70,4 @@ const styles = {
 }
 
 CompanyTest = Radium(CompanyTest);
-export default CompanyTest
-;
+export default CompanyTest;

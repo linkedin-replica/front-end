@@ -19,10 +19,10 @@ class CompanyBasicInfo extends Component {
   };
 
     render() {
-        const { img, companyName, industryType, companyLocation, id} = this.props;
+        const { img, companyName, industryType, companyLocation, id, style} = this.props;
 
         return (
-          <WhiteWrapper style={styles.whiteWrapper} size="lg">
+          <WhiteWrapper style={[styles.whiteWrapper, style]} size="lg">
               <AvatarImage src={img}
                 size='lg'
                 style={styles.img}
@@ -51,6 +51,8 @@ CompanyBasicInfo.propTypes = {
     subHeader: PropTypes.string.isRequired,
     type: PropTypes.string,
     id: PropTypes.string,
+    style: PropTypes.object
+
 };
 
 const styles = {

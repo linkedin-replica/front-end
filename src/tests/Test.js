@@ -21,6 +21,8 @@ import RecommendedArticlesTest from './RecommendedArticlesTest'
 import JobCardTest from './JobCardTest'
 import ModalTest from './ModalTest';
 import TabBarTest from './TabBarTest';
+import CompanyForUserTest from './CompanyForUserTest';
+
 
 class Test extends Component {
   render() {
@@ -33,6 +35,8 @@ class Test extends Component {
         <Route path={`${match.url}/wrappers`} component={WrappersTest} />
 
         <Route path={`${match.url}/company`} component={CompanyTest} />
+        <Route path={`${match.url}/companyForUser`} component={CompanyForUserTest} />
+
 
         <Route path={`${match.url}/typography`} component={TypographyTest} />
 
