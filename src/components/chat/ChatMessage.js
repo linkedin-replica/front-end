@@ -10,7 +10,6 @@ class ChatMessage extends Component {
     render() {
         // Directly get the passed parameters from the props
         const { message, isSender } = this.props;
-        console.log(message)
         return (
             <div style={[styles.base, styles[isSender ? 'right' : 'left']]}>
                 <div className="single-message" style={[styles.message, styles[isSender ? '' : 'blueMessage']]}>

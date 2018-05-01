@@ -1,8 +1,8 @@
 import io from 'socket.io-client';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import Post from './Post';
-import api from '../../api/api';
+import api from '../api/api';
+import Post from '../components/posts/Post';
 
 class PostContainer extends Component {
 
@@ -42,10 +42,9 @@ class PostContainer extends Component {
     }
 
     render() {
-        const { posts, comments } = this.state;
+        const { posts } = this.state;
         return (
             <Post />
-
         );
     }
 }

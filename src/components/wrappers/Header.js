@@ -13,7 +13,6 @@ class Header extends Component {
     }
 
     handleSearchChange = (event) => {
-        console.log(event)
         this.setState({
             searchText: event.target.value
         })
@@ -21,7 +20,6 @@ class Header extends Component {
 
     handleSubmitSearch = (event) => {
         event.preventDefault();
-        console.log('submitted')
 
     }
     componentDidMount() {

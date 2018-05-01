@@ -1,4 +1,5 @@
 // color pallete
+import { toast } from 'react-toastify';
 export const colors = {
   darkBlue: '#0077B5',
   mediumBlue: '#0077A0',
@@ -51,4 +52,8 @@ export const borders = {
   wrapper: {
     radius: '2px',
   }
+}
+
+export const toastPosition = {
+  position: toast.POSITION.BOTTOM_LEFT
 }
