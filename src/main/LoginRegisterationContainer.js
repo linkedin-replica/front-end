@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import { Route, withRouter } from 'react-router-dom';
-import WallContainer from './WallContainer';
-import ConnectionsContainer from './ConnectionsContainer';
-import JobsContainer from './JobsContainer';
-import NotificationsContainer from './NotificationsContainer';
-import ArticlesContainer from './ArticlesContainer';
-import ChatContainer from './ChatContainer';
-import ProfileContainer from './ProfileContainer';
-import SearchResultsContainer from './SearchResultsContainer';
 import RegistrationContainer from './RegistrationContainer';
 import Header from '../components/wrappers/Header';
 

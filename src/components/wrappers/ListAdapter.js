@@ -1,6 +1,6 @@
 /**
- * A list adapter which is responsible for rendering all types of lists 
- * takes input data and a single view, then renders a list containing 
+ * A list adapter which is responsible for rendering all types of lists
+ * takes input data and a single view, then renders a list containing
  * this view rendered for each data item
  * It can also be split vertically to have some spacing
  *  */

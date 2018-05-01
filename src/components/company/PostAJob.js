@@ -5,124 +5,107 @@ import BlueButton from '../buttons/BlueButton';
 import GrayTextButton from '../buttons/GrayTextButton';
 import Modal from '../wrappers/Modal';
 import PropTypes from 'prop-types'
+import WhiteWrapper from '../wrappers/WhiteWrapper';
+import LabeledInput from '../forms/LabeledInput';
+import { colors } from '../../resources/constants';
+
 
 class PostAJob extends Component{
-  render(){
-    const {handleChange, handleSubmit, history, toggleModal, isOpen} = this.props
+
+  render() {
+    const { handleChange, handleSubmit } = this.props
     return (
-      <div>
-      <Modal show={false}
-        onClose={toggleModal}
-        btnText="Submit Form">
+      <WhiteWrapper style={styles.base}>
+        <header>
+          <h1 style={styles.header}>
+            Reach the quality candidates you can’t find anywhere else.
+          </h1>
+        </header>
         <form onSubmit={handleSubmit}>
-          <div>
-            <h2  style={[styles.text]}>
-              Reach the quality candidates you can’t find anywhere else.
-            </h2>
+          <LabeledInput
+            id="company-name"
+            label="Company Name"
+            type="text"
+            handleChange={handleChange('companyName')}
+            isRequired
+          />
 
-            <div>
-              <label style={[styles.label]}> Company Name </label>
-              <input type="text" name="companyName" style={styles.input} onChange={handleChange('companyName')}/>
-            </div>
+          <LabeledInput
+            id="job-title"
+            label="Job Title"
+            type="text"
+            handleChange={handleChange('jobTitle')}
+            isRequired
+          />
 
-            <div>
-              <label style={[styles.label]}> Job Title </label>
-              <input type="text" name="jobTitle" style={styles.input} onChange={handleChange('jobTitle')}/>
-            </div>
-          </div>
+          <LabeledInput
+            id="company-location"
+            label="Email"
+            type="text"
+            handleChange={handleChange('companyLocation')}
+            isRequired
+          />
 
+          <hr>
 
-          <div>
-            <label style={[styles.label]}> Company Location </label>
-            <input type="text" name="companyLocation" style={styles.input} onChange={handleChange('companyLocation')}/>
-          </div>
-
-          <h2  style={[styles.text]}>
-            Add more job details.
+          <h2 style={styles.header}>
+            Add more job details
           </h2>
 
-          <div>
-            <label style={[styles.label]}> Company Name </label>
-            <input type="text" name="companyName" style={styles.input} onChange={handleChange('companyName')}/>
-          </div>
+          <LabeledInput
+            id="industry-type"
+            label="Company Industry"
+            type="text"
+            placeholder=" + Add company industry"
+            handleChange={handleChange('industryType')}
+          />
 
           <div>
-            <label style={[styles.label]}> Job Title </label>
-            <input type="text" name="jobTitle" style={styles.input} onChange={handleChange('jobTitle')}/>
+              <label htmlFor="job-brief" style={styles.label}>"Job Description"</label>
+              <textarea
+                  placeholder="Add 4 to 6 bullets to describe the role, and help potential applicants learn what makes it a great opportunity."
+                  onChange={handleChange('jobBrief')
+              />
           </div>
 
-          <div>
-            <label style={[styles.label]}> Company Location </label>
-            <input type="text" name="companyLocation" style={styles.input} onChange={handleChange('companyLocation')}/>
+          <div style={styles.buttonContainer}>
+            <BlueButton name="Join now" style={styles.button} size="sm" color="blue"></BlueButton>
           </div>
-
-          <div>
-            <input type="checkbox" name="verify" onChange={handleChange('verify')}/>
-            <label style={[styles.greyLabel]}> I verify that I am the official representative of this company and have the right to act on behalf of the company in the creation of this page. </label>
-          </div>
-
-          <div style={[styles.btnDiv]}>
-            <GrayTextButton name="Cancel" type="Button" onClick={this.props.history.goBack}/>
-            <BlueButton name="Create page" size="md" color="blue" onClick={handleSubmit}></BlueButton>
-          </div>
-
-          </form>
-      </Modal>
-      </div>
+        </form>
+      </WhiteWrapper>
     )
   }
 }
 
 PostAJob.PropTypes = {
   handleChange: PropTypes.func,
-  handleSubmit: PropTypes.func,
-  history: PropTypes.object
+  handleSubmit: PropTypes.func
 }
 
 const styles = {
-
-    whiteWrapper: {
-        margin: '10px auto',
-        padding: '20px',
-        textAlign: 'left',
-        fontSize: '1.5em'
-    },
-    button: {
-      textAlign: 'center',
-      paddingTop: '10px',
-      alignSelf:'center',
-    },
-    btnDiv: {
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
-
-
-    input: {
-      margin: '10px auto',
-      padding: '20px',
-      width: '100%',
-      height: '30px',
-    },
-    input2: {
-      margin: '10px auto',
-      padding: '20px',
-      width: '50%',
-      height: '30px',
-    },
-    text: {
-      textAlign:'center',
-      alignSelf:'center',
-    },
-    label: {
-      display: 'block'
-    },
-    greyLabel: {
-      width: '50%',
-      color: 'grey',
-      fontSize: 15
-
-    }
+  base: {
+    padding: '10px',
+    background: '#edf0f3',
+    margin: '10px auto',
+    padding: '30px',
+    textAlign: 'left',
+    fontSize: '1.5em',
+    width: '400px'
+  },
+  header: {
+    fontSize: '1em',
+    textAlign: 'center'
+  },
+  buttonContainer: {
+    paddingTop: '15px',
+    textAlign: 'center'
+  },
+  button: {
+    width: '100%',
+  },
+  label: {
+    width: '100%',
+    height: '30px'
+  }
 }
-
-export default withRouter(Radium(PostAJob))
+export default Radium(PostAJob)
