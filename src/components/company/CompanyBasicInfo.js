@@ -10,16 +10,10 @@ import GrayText from '../typography/GrayText';
 import BoldLink from '../typography/BoldLink';
 
 class CompanyBasicInfo extends Component {
-  state = { follow: "Follow" };
-
-  toggleFollow = () => {
-    this.setState(prevstate => ({
-      follow: prevstate.follow === "Follow" ? "Following": "Follow"
-    }));
-  };
+  state = { isAdmin: false };
 
     render() {
-        const { img, companyName, industryType, companyLocation, id, style} = this.props;
+        const { img, companyName, industryType, companyLocation, id, style, isAdmin, borderedText ,borderedFunc ,blueText ,blueFunc} = this.props;
 
         return (
           <WhiteWrapper style={[styles.whiteWrapper, style]} size="lg">
@@ -33,10 +27,14 @@ class CompanyBasicInfo extends Component {
                   <GrayText text={industryType + " - " + companyLocation}style={styles.text} size="sm" />
               </div>
 
-            <div style={styles.btnDiv}>
-              <BorderedButton name={this.state.follow} color="blue" onClick={this.toggleFollow} size="md" />
-              <BlueButton name="See Jobs" onClick={this.incrementCounter} />
-            </div>
+              {isAdmin ?
+                <div style={styles.btnDiv}>
+                <BlueButton name={blueText} onClick={() => blueFunc()} />   </div> :
+                  <div style={styles.btnDiv}>
+                    <BorderedButton name={borderedText} color="blue" onClick={() => borderedFunc()} size="md" />
+                    <BlueButton name={blueText} onClick={() => blueFunc()} />
+                  </div>
+              }
           </WhiteWrapper>
 
         )

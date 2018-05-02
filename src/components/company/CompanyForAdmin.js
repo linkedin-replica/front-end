@@ -3,15 +3,26 @@ import Radium from 'radium';
 import PropTypes from 'prop-types'
 import { colors, paddings } from '../../resources/constants';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
-import TabBar from '../wrappers/TabBar';
+import Header from '../wrappers/Header';
+import CompanyBasicInfo from './CompanyBasicInfo';
 
-class CompanyForUser extends Component {
+class CompanyForAdmin extends Component {
 
     render() {
         return (
-            <TabBar />
+          <div>
+            <Header isLoggedIn />
             <WhiteWrapper style={styles.whiteWrapper} size="lg">
-            </WhiteWrapper>
+              <CompanyBasicInfo style={styles.info}
+                img='http://www.mamboproductora.com.ar/wp-content/uploads/2017/04/descarga.png'
+                companyName='Microsoft'
+                industryType='Computer Software'
+                companyLocation='Redmond, WA'
+                isAdmin
+                id='1'/>
+              </WhiteWrapper>
+
+          </div>
 
 
         )
@@ -21,15 +32,16 @@ class CompanyForUser extends Component {
 const styles = {
   whiteWrapper: {
       margin: '10px auto',
-      paddingTop: '6em',
-      paddingBottom: '2em',
       backgroundImage: 'url(http://www.thepartnermarketinggroup.com/wp-content/uploads/2018/01/LinkedInDefaultBanner.png)',
-      backgroundRepeat: 'no-repeat',
       backgroundPosition: 'top',
-      height: '7em',
-      width: '90%',
+      height: '15em',
+      width: '100%',
+      position: 'relative'
+  },
+  info:{
+    top:'60%'
   }
 }
 
-CompanyForUser = Radium(CompanyForUser);
-export default CompanyForUser;
+CompanyForAdmin = Radium(CompanyForAdmin);
+export default CompanyForAdmin;

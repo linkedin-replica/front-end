@@ -22,6 +22,8 @@ import JobCardTest from './JobCardTest'
 import ModalTest from './ModalTest';
 import TabBarTest from './TabBarTest';
 import CompanyForUserTest from './CompanyForUserTest';
+import CompanyForAdminTest from './CompanyForAdminTest.js';
+
 
 
 class Test extends Component {
@@ -36,7 +38,7 @@ class Test extends Component {
 
         <Route path={`${match.url}/company`} component={CompanyTest} />
         <Route path={`${match.url}/companyForUser`} component={CompanyForUserTest} />
-
+        <Route path={`${match.url}/companyForAdmin`} component={CompanyForAdminTest} />
 
         <Route path={`${match.url}/typography`} component={TypographyTest} />
 

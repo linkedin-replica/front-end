@@ -52,3 +52,5 @@ export const borders = {
     radius: '2px',
   }
 }
+
+export const companyPostsLimit = 20
