@@ -12,6 +12,7 @@ import DetailsHeaderTest from './DetailsHeaderTest';
 
 // import WallTest from './WallTest';
 import ConnectionsTest from './ConnectionsTest';
+import NotificationsTest from './NotificationsTest';
 import LoginContainerTest from './LoginContainerTest';
 import LoginTest from './LoginTest';
 import RegistrationContainerTest from './RegistrationContainerTest';
@@ -50,7 +51,7 @@ class Test extends Component {
         {/* <Route path={`${match.url}/wall`} component={WallTest} /> */}
 
         <Route path={`${match.url}/connections`} component={ConnectionsTest} />
-
+        <Route path={`${match.url}/notifications`} component={NotificationsTest} />
         <Route path={`${match.url}/JobCard`} component={JobCardTest} />
         <Route path={`${match.url}/applicant`} component={CompanyTest} />
         <Route path={`${match.url}/login`} component={LoginContainerTest} />
