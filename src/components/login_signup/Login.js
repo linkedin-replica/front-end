@@ -37,15 +37,14 @@ class Login extends Component {
   }
 }
 
-Login.PropTypes = {
+Login.propTypes = {
   handleChange: PropTypes.func,
   handleSubmit: PropTypes.func
 }
 
 const styles = {
   base: {
-    padding: '10px',
-    paddingRight: '20px',
+    padding: '10px 20px 10px 10px',
     marginLeft: '40%',
     display: 'flex',
     alignItems: 'baseline',

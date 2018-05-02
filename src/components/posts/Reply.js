@@ -6,11 +6,9 @@ import DetailsHeader from '../details/DetailsHeader';
 import IconTextButton from '../buttons/IconTextButton';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import PostContent from './PostContent';
-import WriteAComment from './WriteAComment';
-import ReplySection from './ReplySection';
 
 
-class Comment extends Component {
+class Reply extends Component {
     constructor(props) {
         super(props)
         this.stateHandler = this.stateHandler.bind(this);
@@ -35,10 +33,7 @@ class Comment extends Component {
             headLine,
             liked,
             text,
-            handleLikeButton,
-            handleReplyButton,
-            showReplies,
-            replies,
+            handleLikeReplyButton,
             style,
             ...rest } = this.props;
 
@@ -50,37 +45,22 @@ class Comment extends Component {
                     subHeader={headLine}
                     rounded
                     type={type}
-                    imgSize="sm"
-                    id={authorId} />
+                    id={authorId}
+                    imgSize="sm" />
                 <div style={styles.details}>
                     <p style={styles.text}>{text}</p>
                     <div style={styles.buttons} >
-                        <IconTextButton name="Like" type="like" onClick={handleLikeButton} style={liked ? styles.likedButton : ''} />
-                        <IconTextButton name="Reply" type="comment" onClick={handleReplyButton} />
+                        <IconTextButton name="Like" type="like" onClick={handleLikeReplyButton} style={liked ? styles.likedButton : ''} />
                     </div>
-                    <ReplySection
-                        {...loggedInUser}
-                        header={authorName}
-                        subHeader={headLine}
-                        rounded
-                        type={type}
-                        id={authorId}
-                        visibility={showReplies}
-                        replies={replies}
-                        {...rest}
-                        style={styles.replies}
-                    />
                 </div>
             </section>
         )
     };
 }
 
-Comment.propTypes = {
-    commentId: PropTypes.string,
+Reply.propTypes = {
+    replyId: PropTypes.string,
     authorId: PropTypes.string,
-    parentCommentId: PropTypes.string,
-    repliesCount: PropTypes.number,
     text: PropTypes.string,
     timestamp: PropTypes.number,
     likers: PropTypes.array,
@@ -90,13 +70,12 @@ Comment.propTypes = {
 
 const styles = {
     base: {
-        padding: paddings.wrapper,
+        paddingLeft: paddings.wrapper,
         background: 'none',
         width: '100%',
-        borderBottom: `1px solid ${colors.lightGray}`
     },
     buttons: {
-        paddingTop: '2px'
+        paddingTop: '2px',
     },
     likedButton: {
         color: colors.darkBlue
@@ -106,9 +85,9 @@ const styles = {
     },
     text: {
         margin: 0,
-        paddingTop: '3%'
+        padding: '3% 2% 0 2%'
     }
 }
 
-Comment = Radium(Comment);
-export default Comment;
+Reply = Radium(Reply);
+export default Reply;

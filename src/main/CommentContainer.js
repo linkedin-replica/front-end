@@ -5,25 +5,25 @@ import api from '../api/api';
 import Post from '../components/posts/Post';
 import { commentsLimit } from '../resources/constants';
 import { toast } from 'react-toastify';
+import Comment from '../components/posts/Comment';
 
-class PostContainer extends Component {
+class CommentContainer extends Component {
 
     state = {
         likesCount: 0,
-        commentsCount: 0,
+        repliesCount: 0,
         liked: false,
-        showComments: false,
-        comments: [],
+        showReplies: false,
+        replies: [],
         likers: [],
-        addCommentText: '',
-
+        addReplyText: '',
     }
     componentDidMount() {
-        const { postId, loggedInUser } = this.props
-        api.getPostComments(postId, loggedInUser.userId, commentsLimit)
+        const { commentId, loggedInUser } = this.props
+        api.getReplies(commentId, loggedInUser.userId, commentsLimit)
             .then(res => {
                 this.setState({
-                    comments: res.data.results
+                    replies: res.data.results
                 })
             }).catch(err => toast.error(err.response.data.error))
     }
@@ -31,39 +31,55 @@ class PostContainer extends Component {
     constructor(props) {
         super(props)
 
-        let isLiked = props.likers.find(({ likerId }) => likerId === props.loggedInUser.userId)
         this.state = {
             ...this.state,
-            liked: isLiked,
+            liked: props.liked,
             likeCount: props.likers.length,
-            commentsCount: props.commentsCount,
+            repliesCount: props.repliesCount,
             likers: props.likers,
         }
     }
 
-    handleLikeButton = (event) => {
-        const { loggedInUser, postId } = this.props
+    handleLikeButton = () => {
+        const { loggedInUser, commentId } = this.props
         const { liked, likesCount } = this.state
 
         let request = liked ?
-            api.deletePostLike(loggedInUser.userId, postId) :
-            api.likePost(loggedInUser.userId, postId)
+            api.deleteCommentLike(loggedInUser.userId, commentId) :
+            api.likeComment(loggedInUser.userId, commentId)
 
         request
             .then(res => {
-                this.setState((prevState) => ({
+                this.setState({
                     likesCount: likesCount + (liked ? -1 : 1),
-                    liked: !prevState.liked
-                }));
+                    liked: !liked
+                });
             })
             .catch(err => toast.error(err.response.data.error))
     }
 
+    handleLikeReplyButton = (replyId) => {
+        const { loggedInUser } = this.props
+        const { liked, likesCount } = this.state
 
-    handleCommentButton = (event) => {
-        const { showComments } = this.state
+        let request = liked ?
+            api.deleteReplyLike(loggedInUser.userId, replyId) :
+            api.likeReply(loggedInUser.userId, replyId)
+
+        request
+            .then(res => {
+                this.setState({
+                    likesCount: likesCount + (liked ? -1 : 1),
+                    liked: !liked
+                });
+            })
+            .catch(err => toast.error(err.response.data.error))
+    }
+
+    handleReplyButton = () => {
+        const { showReplies } = this.state
         this.setState({
-            showComments: !showComments
+            showReplies: !showReplies
         });
     }
 
@@ -71,17 +87,17 @@ class PostContainer extends Component {
         // Enter was pressed without shift key
         if (event.key === 'Enter' && !event.shiftKey) {
             event.preventDefault();
-            const { addCommentText } = this.state
-            const { postId, loggedInUser } = this.props
+            const { addReplyText } = this.state
+            const { postId, commentId, loggedInUser } = this.props
 
-            if (addCommentText.length == 0 || addCommentText === '\n')
+            if (addReplyText.length == 0 || addReplyText === '\n')
                 return
 
-            api.addPostComment(postId, loggedInUser.userId, addCommentText)
+            api.replyPost(postId, commentId, loggedInUser.userId, addReplyText)
                 .then(res => {
-                    toast.success("Added comment successfully")
+                    toast.success("Added reply successfully")
                     this.setState({
-                        addCommentText: ''
+                        addReplyText: ''
                     })
                 }).catch(err => toast.error(err.response.data.error))
         }
@@ -92,45 +108,41 @@ class PostContainer extends Component {
         if (event.key === 'Enter' && !event.shiftKey || this.state.receiverId === '' || this.state.inputMessage === '\n') {
             event.preventDefault();
             this.setState({
-                addCommentText: ''
+                addReplyText: ''
             })
         }
         else {
             this.setState({
-                addCommentText: event.target.value
+                addReplyText: event.target.value
             })
         }
     }
 
-    handleSubmitComment
     render() {
-        const { addCommentText, liked } = this.state
+        const { addReplyText } = this.state
         const { images, videos } = this.props
-        let postContent = images ? images[0] : (videos ? videos[0] : '')
-        let postType = images.length > 0 ? 'img' : (videos.length > 0 ? 'video' : '')
 
+        console.log(this.state)
         return (
-            <Post
+            <Comment
                 {...this.props}
                 {...this.state}
-                postContent={postContent}
-                postType={postType}
                 handleLikeButton={this.handleLikeButton}
-                handleCommentButton={this.handleCommentButton}
-                addCommentText={addCommentText}
+                handleReplyButton={this.handleReplyButton}
+                addReplyText={addReplyText}
                 handleChangeComment={this.handleChangeComment}
                 handleSubmitComment={this.handleSubmitComment} />
         );
     }
 }
 
-PostContainer.propTypes = {
+CommentContainer.propTypes = {
     loggedInUser: PropTypes.object,
-    postId: PropTypes.string,
+    commentId: PropTypes.string,
     text: PropTypes.string,
     images: PropTypes.array,
     videos: PropTypes.array,
-    commentsCount: PropTypes.number,
+    repliesCount: PropTypes.number,
     timestamp: PropTypes.number,
     likers: PropTypes.array,
     liked: PropTypes.bool,
@@ -140,4 +152,4 @@ PostContainer.propTypes = {
 };
 
 
-export default PostContainer;
+export default CommentContainer;

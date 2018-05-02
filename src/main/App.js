@@ -18,13 +18,19 @@ class App extends Component {
 
     // If user is logged in, get his info
     if (loggedInToken) {
+      this.props.history.push('/')
+
       api.getLoggedInUserDetails()
         .then(({ data }) => {
           this.setState({
             loggedInUser: data.results
-          });
-        });
-      this.props.history.push('/home')
+          }, () => this.props.history.push('/home'))
+
+        })
+        .catch(err => {
+          api.removeLoginToken()
+          this.props.history.push('/login')
+        })
     } else {
       this.props.history.push('/login')
     }
@@ -33,11 +39,19 @@ class App extends Component {
   render() {
     const { match } = this.props
     const { loggedInUser } = this.state
+
+
     return (
       <div className="main-app" style={styles.base}>
         <Switch>
-          <Route path="/login" render={() => <LoginRegisterationContainer {...loggedInUser} />} exact />
-          <Route path="/" render={() => <MainContainer {...loggedInUser} />} />
+          <Route path="/login" render={() => <LoginRegisterationContainer />} exact />
+          <Route path="/" render={() => (
+            loggedInUser ?
+              <MainContainer loggedInUser={loggedInUser} /> :
+              <div>Please Login First</div>
+          )}
+          />
+          }
         </Switch>
       </div>);
   }

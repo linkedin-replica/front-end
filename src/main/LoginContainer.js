@@ -26,7 +26,7 @@ class LoginContainer extends Component {
       .then(res => {
         api.saveLoginToken(res.data.results)
 
-        this.props.history.push('/profile')
+        this.props.history.push('/home')
       })
       .catch(err => {
         toast.error(err.response.data.error)

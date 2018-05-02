@@ -58,3 +58,6 @@ export const companyPostsLimit = 20
 export const toastPosition = {
   position: toast.POSITION.BOTTOM_LEFT
 }
+
+export const postsLimit = 50
+export const commentsLimit = 20

@@ -28,6 +28,9 @@ export default {
   saveLoginToken: (newToken) => {
     localStorage.setItem('access-token', newToken)
   },
+  removeLoginToken: () => {
+    localStorage.removeItem('access-token')
+  },
   getLoggedInUserDetails: () => {
     return axios.get('/signing/getLoggedInUserInfo')
   },
@@ -62,7 +65,7 @@ export default {
     return axios.get(`editinfo/userGet`)
   },
   getUserProfileById: (profileId) => {
-    return axios.get(`editinfo/userGet`, { query: { profileId } })
+    return axios.get(`editinfo/userGet`, { params: { profileId } })
   },
   updateUserProfile: (updatedProfile) => {
     return axios.put(`editinfo/userUpdate`, updatedProfile)
@@ -109,8 +112,14 @@ export default {
   },
 
   // Articles
-  addArticle: (article) => {
-    return axios.post('article', article)
+  getArticle: (postId) => {
+    return axios.get(`wall/getPost`, { params: { postId } })
+  },
+  addArticle: (authorId, text, img, video, isCompanyPost) => {
+    return axios.post('wall/addPost', { authorId, text, images: [img], videos: [video], isCompanyPost, isArticle: true })
+  },
+  editArticle: (article) => {
+    return axios.put(`wall/editArticle`, article)
   },
 
   // Notifications
@@ -142,11 +151,23 @@ export default {
   deleteBookmarkedPost: (postId) => {
     return axios.post('wall/deleteBookmark', { postId })
   },
-  getPosts: () => {
-    return axios.get(`wall/posts`)
+  getCompanyPosts: (companyId, limit) => {
+    return axios.get(`wall/getPosts`, { params: { companyId, limit } })
   },
-  addPost: (authorId, text, img, video) => {
-    return axios.post('wall/addPost', { authorId, text, images: [img], videos: [video], isCompanyPost: false, isArticle: false })
+  getNewsFeed: (limit) => {
+    return axios.get(`wall/getNewsfeed`, { params: { limit } })
+  },
+  getPostComments: (parentPostId, authorId, limit) => {
+    return axios.get(`wall/getComments`, { params: { parentPostId, authorId, limit } })
+  },
+  getPostLikes: (postId) => {
+    return axios.get(`wall/getPostLikes`)
+  },
+  getCommentLikes: (postId) => {
+    return axios.get(`wall/getCommentLikes`)
+  },
+  addPost: (authorId, text, img, video, isCompanyPost) => {
+    return axios.post('wall/addPost', { authorId, text, images: [img], videos: [video], isCompanyPost, isArticle: false })
   },
   editPost: (postId, authorId, type, text, headLine, likesCount, img, video, commentsCount, isArticle) => {
     return axios.put(`wall/editPost`, { postId, authorId, type, text, headLine, likesCount, images: [img], videos: [video], commentsCount, isArticle: true })
@@ -154,29 +175,44 @@ export default {
   deletePost: (postId) => {
     return axios.delete(`wall/deletePost`, { postId })
   },
-  addPostComment: (postComment) => {
-    return axios.post('wall/addComment', postComment)
+  addPostComment: (parentPostId, authorId, text) => {
+    return axios.post('wall/addComment', { parentPostId, authorId, text })
   },
   deleteComment: (commentId) => {
     return axios.delete(`wall/deleteComment`, { commentId })
   },
-  likePost: (postLike) => {
-    return axios.post('wall/addLike', postLike)
+  likePost: (likerId, postId) => {
+    return axios.post('wall/addLikeToPost', { likerId, postId })
   },
-  deleteLike: (likeId) => {
-    return axios.delete(`wall/deleteLike`, { likeId })
+  likeComment: (likerId, commentId) => {
+    return axios.post('wall/addLikeToComment', { likerId, commentId })
   },
-  replyPost: (reply) => {
-    return axios.post('wall/addReply', reply)
+  likePost: (likerId, postId) => {
+    return axios.post('wall/addLikeToPost', { likerId, postId })
+  },
+  likeReply: (likerId, replyId) => {
+    return axios.post('wall/addLikeToReply', { likerId, replyId })
+  },
+  deletePostLike: (likerId, postId) => {
+    return axios.post(`wall/deleteLikeFromPost`, { likerId, postId })
+  },
+  deleteCommentLike: (likerId, commentId) => {
+    return axios.post(`wall/deleteLikeFromComment`, { likerId, commentId })
+  },
+  deleteReplyLike: (likerId, replyId) => {
+    return axios.post(`wall/deleteLikeFromPost`, { likerId, replyId })
+  },
+  getReplies: (parentCommentId, authorId, limit) => {
+    return axios.get('wall/getReplies', { params: { parentCommentId, authorId, limit } })
+  },
+  replyPost: (parentPostId, parentCommentId, authorId, text) => {
+    return axios.post('wall/addReply', { parentPostId, parentCommentId, authorId, text })
   },
   editReply: (reply) => {
     return axios.put(`wall/editReply`, reply)
   },
   deleteReply: (replyId) => {
     return axios.delete(`wall/deleteReply`, { replyId })
-  },
-  editArticle: (article) => {
-    return axios.put(`wall/editArticle`, article)
   },
   editComment: (comment) => {
     return axios.put(`wall/editComment`, comment)

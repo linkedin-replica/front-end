@@ -6,17 +6,18 @@ import InputForm from './InputForm';
 import AvatarImage from '../images/AvatarImage';
 
 
-class WriteAComment extends Component {
+class WriteAReply extends Component {
 
     render() {
-        const { loggedInUser, addCommentText, handleChangeComment, handleSubmitComment, style } = this.props
+        const { img, rounded, addCommentText, handleChangeComment, handleSubmitComment } = this.props
         return (
-            <div style={[styles.base, style]}>
+            <div style={styles.base}>
                 <span style={styles.imgDiv}>
-                    <AvatarImage src={loggedInUser ? loggedInUser.profilePictureUrl : ''} rounded size='sm' />
+                    <AvatarImage src={img} rounded={rounded} size='sm' />
                 </span>
                 <div style={styles.commentDiv}>
-                    <InputForm placeholder="Write a comment"
+                    <InputForm placeholder="Write a reply"
+                        commentBool={true}
                         value={addCommentText}
                         handleChange={handleChangeComment}
                         onKeyUp={handleSubmitComment}
@@ -28,7 +29,7 @@ class WriteAComment extends Component {
     };
 }
 
-WriteAComment.propTypes = {
+WriteAReply.propTypes = {
     src: PropTypes.string,
     rounded: PropTypes.bool
 };
@@ -36,7 +37,7 @@ WriteAComment.propTypes = {
 const styles = {
     base: {
         display: 'flex',
-        width: '100%',
+        width: '80%',
     },
     imgDiv: {
 
@@ -47,5 +48,5 @@ const styles = {
     },
 }
 
-WriteAComment = Radium(WriteAComment);
-export default WriteAComment;
+WriteAReply = Radium(WriteAReply);
+export default WriteAReply;
