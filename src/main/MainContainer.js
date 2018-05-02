@@ -21,17 +21,17 @@ import 'react-toastify/dist/ReactToastify.min.css';
 class MainContainer extends Component {
 
     render() {
-        const { userId, match } = this.props
+        const { loggedInUser, match } = this.props
         return (
             <div className="main-app" style={styles.base}>
                 <Header isLoggedIn />
                 <main className="main-details" style={styles.details}>
-                    <Route path='/home' render={() => <WallContainer userId={userId} />} />
+                    <Route path='/home' render={() => <WallContainer loggedInUser={loggedInUser} />} />
                     <Route path='/connections' component={ConnectionsContainer} />
                     <Route path='/jobs' component={JobsContainer} />
                     <Route path='/notifications' component={NotificationsContainer} />
                     <Route path='/articles' component={ArticlesContainer} />
-                    <Route path='/chat' render={() => <ChatContainer userId={userId} />} />
+                    <Route path='/chat' render={() => <ChatContainer loggedInUser={loggedInUser} />} />
                     <Route path='/profile/:id' component={ProfileContainer} />
                     <Route path='/company/:id' component={CompanyContainer} />
                     <Route path='/job/:id' component={JobContainer} />

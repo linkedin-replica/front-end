@@ -10,14 +10,14 @@ import { colors } from '../resources/constants';
 class WallContainer extends Component {
 
     render() {
-        const { userId, isCompany, isArticle } = this.props
+        const { loggedInUser, isCompany, isArticle } = this.props
         return (
             <div style={styles.base}>
-                <AddPostContainer isCompany={isCompany} isArticle={isArticle} userId={userId} />
+                <AddPostContainer isCompany={isCompany} isArticle={isArticle} loggedInUser={loggedInUser} />
                 <section>
                     {isArticle ?
                         <ArticlesContainer /> :
-                        <PostsContainer userId={userId} />
+                        <PostsContainer loggedInUser={loggedInUser} />
                     }
                 </section>
             </div >
@@ -37,7 +37,7 @@ const styles = {
 }
 
 WallContainer.propTypes = {
-    userId: PropTypes.string.isRequired,
+    loggedInUser: PropTypes.object,
     isCompany: PropTypes.bool,
     isArticle: PropTypes.bool
 };

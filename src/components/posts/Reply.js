@@ -6,11 +6,9 @@ import DetailsHeader from '../details/DetailsHeader';
 import IconTextButton from '../buttons/IconTextButton';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import PostContent from './PostContent';
-import WriteAComment from './WriteAComment';
-import ReplySection from './ReplySection';
 
 
-class Comment extends Component {
+class Reply extends Component {
     constructor(props) {
         super(props)
         this.stateHandler = this.stateHandler.bind(this);
@@ -35,11 +33,8 @@ class Comment extends Component {
             headLine,
             liked,
             text,
-            commentContent,
+            replyContent,
             handleLikeButton,
-            handleReplyButton,
-            showReplies,
-            replies,
             style,
             ...rest } = this.props;
 
@@ -52,34 +47,18 @@ class Comment extends Component {
                     rounded
                     type={type}
                     id={authorId} />
-                <p style={styles.text}>{commentContent}</p>
+                <p style={styles.text}>{replyContent}</p>
                 <div style={styles.buttons} >
                     <IconTextButton name="Like" type="like" onClick={handleLikeButton} style={liked ? styles.likedButton : ''} />
-                    <IconTextButton name="Reply" type="comment" onClick={handleReplyButton} />
-                </div>
-                <div>
-                    <ReplySection
-                        {...loggedInUser}
-                        header={authorName}
-                        subHeader={headLine}
-                        rounded
-                        type={type}
-                        id={authorId}
-                        visibility={showReplies}
-                        replies={replies}
-                        {...rest}
-                    />
                 </div>
             </WhiteWrapper>
         )
     };
 }
 
-Comment.propTypes = {
-    commentId: PropTypes.string,
+Reply.propTypes = {
+    replyId: PropTypes.string,
     authorId: PropTypes.string,
-    parentCommentId: PropTypes.string,
-    repliesCount: PropTypes.number,
     text: PropTypes.string,
     timestamp: PropTypes.number,
     likers: PropTypes.array,
@@ -102,5 +81,5 @@ const styles = {
     }
 }
 
-Comment = Radium(Comment);
-export default Comment;
+Reply = Radium(Reply);
+export default Reply;

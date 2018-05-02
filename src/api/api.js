@@ -175,23 +175,38 @@ export default {
   deletePost: (postId) => {
     return axios.delete(`wall/deletePost`, { postId })
   },
-  addPostComment: (postComment) => {
-    return axios.post('wall/addComment', postComment)
+  addPostComment: (parentPostId, authorId, text) => {
+    return axios.post('wall/addComment', { parentPostId, authorId, text })
   },
   deleteComment: (commentId) => {
     return axios.delete(`wall/deleteComment`, { commentId })
   },
   likePost: (likerId, postId) => {
-    return axios.post('wall/addLike', { likerId, postId })
+    return axios.post('wall/addLikeToPost', { likerId, postId })
   },
-  deleteLike: (likerId, postId) => {
-    return axios.delete(`wall/deleteLike`, { likerId, postId })
+  likeComment: (likerId, commentId) => {
+    return axios.post('wall/addLikeToComment', { likerId, commentId })
+  },
+  likePost: (likerId, postId) => {
+    return axios.post('wall/addLikeToPost', { likerId, postId })
+  },
+  likeReply: (likerId, replyId) => {
+    return axios.post('wall/addLikeToReply', { likerId, replyId })
+  },
+  deletePostLike: (likerId, postId) => {
+    return axios.post(`wall/deleteLikeFromPost`, { likerId, postId })
+  },
+  deleteCommentLike: (likerId, commentId) => {
+    return axios.post(`wall/deleteLikeFromComment`, { likerId, commentId })
+  },
+  deleteReplyLike: (likerId, replyId) => {
+    return axios.post(`wall/deleteLikeFromPost`, { likerId, replyId })
   },
   getReplies: (parentCommentId, authorId, limit) => {
     return axios.get('wall/getReplies', { params: { parentCommentId, authorId, limit } })
   },
-  replyPost: (reply) => {
-    return axios.post('wall/addReply', reply)
+  replyPost: (parentPostId, parentCommentId, authorId, text) => {
+    return axios.post('wall/addReply', { parentPostId, parentCommentId, authorId, text })
   },
   editReply: (reply) => {
     return axios.put(`wall/editReply`, reply)

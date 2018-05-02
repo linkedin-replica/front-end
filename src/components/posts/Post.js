@@ -12,6 +12,7 @@ class Post extends Component {
 
     render() {
         const { type,
+            loggedInUser,
             authorId,
             authorName,
             authorProfilePictureUrl,
@@ -19,11 +20,13 @@ class Post extends Component {
             liked,
             text,
             postContent,
+            postType,
             handleLikeButton,
             handleCommentButton,
             showComments,
             comments,
-            style } = this.props;
+            style,
+            ...rest } = this.props;
 
         return (
             <WhiteWrapper style={styles.base}>
@@ -34,21 +37,23 @@ class Post extends Component {
                     rounded
                     type={type}
                     id={authorId} />
-                <PostContent text={text} postContent={postContent} />
+                <PostContent text={text} postContent={postContent} type={postType} />
                 <div style={styles.buttons} >
-                    <IconTextButton name="Like" type="like" onClick={this.handleLikeButton} style={liked ? styles.likedButton : ''} />
-                    <IconTextButton name="Comment" type="comment" onClick={this.handleCommentButton} />
+                    <IconTextButton name="Like" type="like" onClick={handleLikeButton} style={liked ? styles.likedButton : ''} />
+                    <IconTextButton name="Comment" type="comment" onClick={handleCommentButton} />
                 </div>
                 <div>
                     <CommentSection
-                        img={authorProfilePictureUrl}
+                        {...loggedInUser}
                         header={authorName}
                         subHeader={headLine}
                         rounded
                         type={type}
                         id={authorId}
                         visibility={showComments}
-                        comments={comments} />
+                        comments={comments}
+                        {...rest}
+                    />
                 </div>
             </WhiteWrapper>
         )

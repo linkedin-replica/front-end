@@ -6,7 +6,7 @@ import InputForm from './InputForm';
 import AvatarImage from '../images/AvatarImage';
 
 
-class WriteAComment extends Component {
+class WriteAReply extends Component {
 
     render() {
         const { img, rounded, addCommentText, handleChangeComment, handleSubmitComment } = this.props
@@ -29,7 +29,7 @@ class WriteAComment extends Component {
     };
 }
 
-WriteAComment.propTypes = {
+WriteAReply.propTypes = {
     src: PropTypes.string,
     rounded: PropTypes.bool
 };
@@ -48,5 +48,5 @@ const styles = {
     },
 }
 
-WriteAComment = Radium(WriteAComment);
-export default WriteAComment;
+WriteAReply = Radium(WriteAReply);
+export default WriteAReply;

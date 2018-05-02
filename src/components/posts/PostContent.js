@@ -8,7 +8,7 @@ const TextContent = ({ text }) => (
 )
 
 const ImageContent = ({ url }) => (
-    <img src={`data:image/jpeg;${url}`} style={styles.img} alt="post-image" />
+    <img src={url} style={styles.img} alt="post-image" />
 )
 
 const VideoContent = ({ url }) => (

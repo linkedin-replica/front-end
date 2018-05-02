@@ -14,11 +14,11 @@ class PostsContainer extends Component {
     }
 
     componentDidMount() {
-        const { userId, isCompany } = this.props
+        const { loggedInUser, isCompany } = this.props
 
         const request =
             isCompany ?
-                api.getCompanyPosts(userId, postsLimit) :
+                api.getCompanyPosts(loggedInUser.userId, postsLimit) :
                 api.getNewsFeed(postsLimit)
 
         request
@@ -31,8 +31,8 @@ class PostsContainer extends Component {
 
     render() {
         const { posts } = this.state;
-        const { userId } = this.props;
-        const newPosts = posts.map(post => ({ ...post, userId }))
+        const { loggedInUser } = this.props;
+        const newPosts = posts.map(post => ({ ...post, loggedInUser }))
         return (
             <ListAdapter data={newPosts} listItemView={PostContainer} verticalSplit />
         );

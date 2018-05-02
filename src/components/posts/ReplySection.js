@@ -6,21 +6,23 @@ import WriteAComment from './WriteAComment';
 import Comment from './Comment';
 import ListAdapter from '../wrappers/ListAdapter';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
+import WriteAReply from './WriteAReply';
+import Reply from './Reply';
 
-class CommentsSection extends Component {
+class ReplySection extends Component {
 
     render() {
-        const { profilePictureUrl, rounded, visibility, comments, ...rest } = this.props
+        const { profilePictureUrl, rounded, visibility, replies, ...rest } = this.props
         return (
             <div style={[styles.base, visibility ? styles.clicked : styles.base]} >
-                <WriteAComment img={profilePictureUrl} rounded={rounded} {...rest} />
-                <ListAdapter data={comments} listItemView={Comment} style={styles.commentList} />
+                <WriteAReply img={profilePictureUrl} rounded={rounded} {...rest} />
+                <ListAdapter data={replies} listItemView={Reply} style={styles.commentList} />
             </div>
         )
     };
 }
 
-CommentsSection.propTypes = {
+ReplySection.propTypes = {
     img: PropTypes.string,
     header: PropTypes.string,
     subHeader: PropTypes.string,
@@ -49,5 +51,5 @@ const styles = {
 
 
 
-CommentsSection = Radium(CommentsSection);
-export default CommentsSection;
+ReplySection = Radium(ReplySection);
+export default ReplySection;

@@ -26,10 +26,10 @@ class AddPostContainer extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
 
-        const { userId } = this.props
+        const { loggedInUser } = this.props
         const { addPostContent, img, video } = this.state
 
-        api.addPost(userId, addPostContent, img, video, false)
+        api.addPost(loggedInUser.userId, addPostContent, img, video, false)
             .then(res => {
                 toast.success("Added a new post")
             })
@@ -67,7 +67,7 @@ const styles = {
     }
 }
 AddPostContainer.propTypes = {
-    userId: PropTypes.string.isRequired,
+    loggedInUser: PropTypes.object.isRequired,
     isCompany: PropTypes.bool,
     isArticle: PropTypes.bool,
 };

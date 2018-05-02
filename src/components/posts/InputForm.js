@@ -7,11 +7,12 @@ import { colors, paddings } from '../../resources/constants';
 class InputForm extends Component {
 
     render() {
-        const { placeholder, commentBool, value, handleChange } = this.props
+        const { placeholder, commentBool, value, handleChange, onKeyUp } = this.props
         return (
             <textarea style={[styles.base, commentBool ? styles.comment : styles.post]}
                 type="text"
                 autoComplete="off"
+                onKeyUpCapture={onKeyUp}
                 placeholder={placeholder}
                 value={value}
                 onChangeCapture={handleChange} />
@@ -26,12 +27,10 @@ const styles = {
         resize: 'none',
     },
     comment: {
-        padding: '0.3%',
-        width: "118%",
+        width: '100%',
+        paddingLeft: '2%',
         height: "25px",
-        maxWidth: '150%',
         overflow: 'hidden',
-
     },
     post: {
         width: '100%',
