@@ -20,7 +20,7 @@ class Notification extends Component {
             ...rest } = this.props;
 
         return (
-            <WhiteWrapper style={styles.whiteWrapper} size="lg">
+            <WhiteWrapper style={[styles.whiteWrapper, read? styles.read:""]} size="lg">
             <Link to={`/${link}`}
                 style={styles.link}>
                 <span style={[styles.base, style, "md"]}>
@@ -72,6 +72,9 @@ const styles = {
         position:'relative',
         align: 'center'
     },
+    read:{
+        background:colors.lightBlue
+    }
 }
 
 
