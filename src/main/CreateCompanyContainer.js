@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Radium from 'radium';
 import CreateCompany from '../components/company/CreateCompany'
 import BlueButton from '../components/buttons/BlueButton';
 
-class CreateCompanyContainer extends Component{
+class CreateCompanyContainer extends Component {
   state = {
     data: {
       companyName:'',
@@ -21,15 +21,16 @@ class CreateCompanyContainer extends Component{
 
   handleChange = (key) => (event) => {
     this.setState({
-      [key] : event.target.value
+      [key]: event.target.value
     })
   }
 
-  handleSubmit = (event) =>{
+  handleSubmit = (event) => {
     event.preventDefault()
     //TODO API call
   }
 
+<<<<<<< HEAD
   render(){
     return (
       <div className="App">
@@ -38,6 +39,11 @@ class CreateCompanyContainer extends Component{
           onClose={this.toggleModal}></CreateCompany>
       </div>
   )}
+=======
+  render() {
+    return <CreateCompany handleChange={this.handleChange} handleSubmit={this.handleSubmit}></CreateCompany>
+  }
+>>>>>>> 589a85130fe975036cde115d47266fcd262c6339
 }
 
 export default Radium(CreateCompanyContainer)

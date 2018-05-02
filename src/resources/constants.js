@@ -1,4 +1,5 @@
 // color pallete
+import { toast } from 'react-toastify';
 export const colors = {
   darkBlue: '#0077B5',
   mediumBlue: '#0077A0',
@@ -54,3 +55,6 @@ export const borders = {
 }
 
 export const companyPostsLimit = 20
+export const toastPosition = {
+  position: toast.POSITION.BOTTOM_LEFT
+}

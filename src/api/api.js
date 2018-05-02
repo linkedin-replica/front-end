@@ -11,7 +11,6 @@ axios.interceptors.request.use(config => {
   if (localStorage.getItem('access-token'))
     config.headers['access-token'] = localStorage.getItem('access-token')
   config.headers['Content-Type'] = 'application/json;charset=UTF-8';
-  console.log(config)
   return config
 })
 
@@ -146,8 +145,8 @@ export default {
   getPosts: () => {
     return axios.get(`wall/posts`)
   },
-  addPost: (authorId, type, text, headLine, img, video) => {
-    return axios.post('wall/addPost', { authorId, type, text, headLine, images: [img], videos: [video], isArticle: false })
+  addPost: (authorId, text, img, video) => {
+    return axios.post('wall/addPost', { authorId, text, images: [img], videos: [video], isCompanyPost: false, isArticle: false })
   },
   editPost: (postId, authorId, type, text, headLine, likesCount, img, video, commentsCount, isArticle) => {
     return axios.put(`wall/editPost`, { postId, authorId, type, text, headLine, likesCount, images: [img], videos: [video], commentsCount, isArticle: true })

@@ -3,6 +3,8 @@ import Radium from 'radium';
 import { Route, withRouter } from 'react-router-dom';
 import RegistrationContainer from './RegistrationContainer';
 import Header from '../components/wrappers/Header';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 class LoginRegisterationContainer extends Component {
 
@@ -14,6 +16,7 @@ class LoginRegisterationContainer extends Component {
                 <main className="main-details" style={styles.details}>
                     <RegistrationContainer />
                 </main>
+                <ToastContainer position='bottom-left' style={styles.toast} autoClose={4000} />
             </div>);
     }
 }
@@ -24,6 +27,10 @@ const styles = {
         display: 'flex',
         justifyContent: 'center',
         height: '100%'
+    },
+    toast: {
+        height: '50px',
+        fontWeight: 'bold',
     }
 }
 
