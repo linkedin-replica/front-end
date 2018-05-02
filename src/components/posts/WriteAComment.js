@@ -17,7 +17,6 @@ class WriteAComment extends Component {
                 </span>
                 <div style={styles.commentDiv}>
                     <InputForm placeholder="Write a comment"
-                        commentBool={true}
                         value={addCommentText}
                         handleChange={handleChangeComment}
                         onKeyUp={handleSubmitComment}
@@ -37,7 +36,8 @@ WriteAComment.propTypes = {
 const styles = {
     base: {
         display: 'flex',
-        width: '80%'
+        width: '100%',
+        borderBottom: `1px solid ${colors.lightGray}`
     },
     imgDiv: {
 

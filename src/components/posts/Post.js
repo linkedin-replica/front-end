@@ -13,6 +13,7 @@ class Post extends Component {
     render() {
         const { type,
             loggedInUser,
+            postId,
             authorId,
             authorName,
             authorProfilePictureUrl,
@@ -53,6 +54,7 @@ class Post extends Component {
                     id={authorId}
                     visibility={showComments}
                     comments={comments}
+                    postId={postId}
                     {...rest}
                 />
             </WhiteWrapper>

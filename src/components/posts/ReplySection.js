@@ -35,10 +35,14 @@ ReplySection.propTypes = {
 const styles = {
     base: {
         display: 'none',
+        width: '100%',
+        background: colors.lightBlue,
+    },
+    addComment: {
+        padding: paddings.wrapper,
     },
     commentList: {
-        background: colors.lightBlue,
-        padding: paddings.wrapper
+        width: '100%'
     },
     clicked: {
         display: 'block'

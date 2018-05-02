@@ -10,8 +10,8 @@ import CommentContainer from '../../main/CommentContainer';
 class CommentsSection extends Component {
 
     render() {
-        const { loggedInUser, visibility, comments, ...rest } = this.props
-        const newComments = comments.map(comment => ({ ...comment, loggedInUser }))
+        const { loggedInUser, postId, visibility, comments, ...rest } = this.props
+        const newComments = comments.map(comment => ({ ...comment, loggedInUser, postId }))
         return (
             <div style={[styles.base, visibility ? styles.clicked : styles.base]} >
                 <WriteAComment style={styles.addComment} loggedInUser={loggedInUser} {...rest} />
@@ -31,13 +31,13 @@ CommentsSection.propTypes = {
 const styles = {
     base: {
         display: 'none',
-        width: '100%'
+        width: '100%',
+        background: colors.lightBlue,
     },
     addComment: {
         padding: paddings.wrapper,
     },
     commentList: {
-        background: colors.lightBlue,
         width: '100%'
     },
     clicked: {

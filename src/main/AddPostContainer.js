@@ -32,6 +32,9 @@ class AddPostContainer extends Component {
         api.addPost(loggedInUser.userId, addPostContent, img, video, false)
             .then(res => {
                 toast.success("Added a new post")
+                this.setState({
+                    addPostContent: ''
+                })
             })
             .catch(err =>
                 toast.error(err.response.data.error)

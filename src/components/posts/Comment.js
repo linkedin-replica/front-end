@@ -57,19 +57,18 @@ class Comment extends Component {
                     <IconTextButton name="Like" type="like" onClick={handleLikeButton} style={liked ? styles.likedButton : ''} />
                     <IconTextButton name="Reply" type="comment" onClick={handleReplyButton} />
                 </div>
-                <div>
-                    <ReplySection
-                        {...loggedInUser}
-                        header={authorName}
-                        subHeader={headLine}
-                        rounded
-                        type={type}
-                        id={authorId}
-                        visibility={showReplies}
-                        replies={replies}
-                        {...rest}
-                    />
-                </div>
+                <ReplySection
+                    {...loggedInUser}
+                    header={authorName}
+                    subHeader={headLine}
+                    rounded
+                    type={type}
+                    id={authorId}
+                    visibility={showReplies}
+                    replies={replies}
+                    {...rest}
+                    style={styles.replies}
+                />
             </section>
         )
     };

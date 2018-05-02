@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import PropTypes from 'prop-types'
-import { colors, paddings } from '../../resources/constants';
+import { colors, paddings, borders } from '../../resources/constants';
 
 
 class InputForm extends Component {
@@ -31,6 +31,7 @@ const styles = {
         paddingLeft: '2%',
         height: "25px",
         overflow: 'hidden',
+        borderRadius: '15px'
     },
     post: {
         width: '100%',

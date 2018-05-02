@@ -69,15 +69,19 @@ Reply.propTypes = {
 const styles = {
     base: {
         padding: paddings.wrapper,
+        background: 'none',
+        width: '100%',
+        borderBottom: `1px solid ${colors.lightGray}`
     },
     buttons: {
-        paddingTop: '5px'
+        paddingTop: '2px'
     },
     likedButton: {
         color: colors.darkBlue
     },
     text: {
-        padding: '5px auto',
+        padding: '5px 20px',
+        margin: 0
     }
 }
 
