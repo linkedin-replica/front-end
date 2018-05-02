@@ -9,11 +9,11 @@ import AvatarImage from '../images/AvatarImage';
 class WriteAComment extends Component {
 
     render() {
-        const { img, rounded, addCommentText, handleChangeComment, handleSubmitComment } = this.props
+        const { loggedInUser, addCommentText, handleChangeComment, handleSubmitComment, style } = this.props
         return (
-            <div style={styles.base}>
+            <div style={[styles.base, style]}>
                 <span style={styles.imgDiv}>
-                    <AvatarImage src={img} rounded={rounded} size='sm' />
+                    <AvatarImage src={loggedInUser ? loggedInUser.profilePictureUrl : ''} rounded size='sm' />
                 </span>
                 <div style={styles.commentDiv}>
                     <InputForm placeholder="Write a comment"

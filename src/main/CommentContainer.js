@@ -5,6 +5,7 @@ import api from '../api/api';
 import Post from '../components/posts/Post';
 import { commentsLimit } from '../resources/constants';
 import { toast } from 'react-toastify';
+import Comment from '../components/posts/Comment';
 
 class CommentContainer extends Component {
 
@@ -13,7 +14,7 @@ class CommentContainer extends Component {
         repliesCount: 0,
         liked: false,
         showReplies: false,
-        comments: [],
+        replies: [],
         likers: [],
         addReplyText: '',
     }
@@ -22,7 +23,7 @@ class CommentContainer extends Component {
         api.getReplies(commentId, loggedInUser.userId, commentsLimit)
             .then(res => {
                 this.setState({
-                    comments: res.data.results
+                    replies: res.data.results
                 })
             }).catch(err => toast.error(err.response.data.error))
     }
@@ -43,8 +44,8 @@ class CommentContainer extends Component {
         const { liked, likesCount } = this.state
 
         let request = liked ?
-            api.deleteLike(loggedInUser.userId, commentId) :
-            api.likePost(loggedInUser.userId, commentId)
+            api.deleteCommentLike(loggedInUser.userId, commentId) :
+            api.likeComment(loggedInUser.userId, commentId)
 
         request
             .then(res => {
@@ -103,16 +104,12 @@ class CommentContainer extends Component {
     render() {
         const { addReplyText } = this.state
         const { images, videos } = this.props
-        let postContent = images ? images[0] : (videos ? videos[0] : '')
-        let postType = images ? 'img' : (videos ? 'video' : '')
 
         console.log(this.state)
         return (
-            <Post
+            <Comment
                 {...this.props}
                 {...this.state}
-                postContent={postContent}
-                postType={postType}
                 handleLikeButton={this.handleLikeButton}
                 handleReplyButton={this.handleReplyButton}
                 addReplyText={addReplyText}

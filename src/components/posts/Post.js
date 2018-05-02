@@ -30,31 +30,31 @@ class Post extends Component {
 
         return (
             <WhiteWrapper style={styles.base}>
-                <DetailsHeader
-                    img={authorProfilePictureUrl}
-                    header={authorName}
-                    subHeader={headLine}
-                    rounded
-                    type={type}
-                    id={authorId} />
-                <PostContent text={text} postContent={postContent} type={postType} />
-                <div style={styles.buttons} >
-                    <IconTextButton name="Like" type="like" onClick={handleLikeButton} style={liked ? styles.likedButton : ''} />
-                    <IconTextButton name="Comment" type="comment" onClick={handleCommentButton} />
-                </div>
-                <div>
-                    <CommentSection
-                        {...loggedInUser}
+                <div style={styles.main}>
+                    <DetailsHeader
+                        img={authorProfilePictureUrl}
                         header={authorName}
                         subHeader={headLine}
                         rounded
                         type={type}
-                        id={authorId}
-                        visibility={showComments}
-                        comments={comments}
-                        {...rest}
-                    />
+                        id={authorId} />
+                    <PostContent text={text} postContent={postContent} type={postType} />
+                    <div style={styles.buttons} >
+                        <IconTextButton name="Like" type="like" onClick={handleLikeButton} style={liked ? styles.likedButton : ''} />
+                        <IconTextButton name="Comment" type="comment" onClick={handleCommentButton} />
+                    </div>
                 </div>
+                <CommentSection
+                    loggedInUser={loggedInUser}
+                    header={authorName}
+                    subHeader={headLine}
+                    rounded
+                    type={type}
+                    id={authorId}
+                    visibility={showComments}
+                    comments={comments}
+                    {...rest}
+                />
             </WhiteWrapper>
         )
     };
@@ -78,10 +78,12 @@ Post.propTypes = {
 
 const styles = {
     base: {
-        padding: paddings.wrapper,
     },
     buttons: {
         paddingTop: '5px'
+    },
+    main: {
+        padding: paddings.wrapper,
     },
     likedButton: {
         color: colors.darkBlue

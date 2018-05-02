@@ -37,7 +37,7 @@ class Login extends Component {
   }
 }
 
-Login.PropTypes = {
+Login.propTypes = {
   handleChange: PropTypes.func,
   handleSubmit: PropTypes.func
 }

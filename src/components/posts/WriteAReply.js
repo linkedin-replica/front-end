@@ -16,7 +16,7 @@ class WriteAReply extends Component {
                     <AvatarImage src={img} rounded={rounded} size='sm' />
                 </span>
                 <div style={styles.commentDiv}>
-                    <InputForm placeholder="Write a comment"
+                    <InputForm placeholder="Write a reply"
                         commentBool={true}
                         value={addCommentText}
                         handleChange={handleChangeComment}

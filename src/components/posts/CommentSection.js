@@ -3,27 +3,25 @@ import Radium from 'radium';
 import PropTypes from 'prop-types'
 import { colors, paddings } from '../../resources/constants';
 import WriteAComment from './WriteAComment';
-import Comment from './Comment';
 import ListAdapter from '../wrappers/ListAdapter';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
+import CommentContainer from '../../main/CommentContainer';
 
 class CommentsSection extends Component {
 
     render() {
-        const { profilePictureUrl, rounded, visibility, comments, ...rest } = this.props
+        const { loggedInUser, visibility, comments, ...rest } = this.props
+        const newComments = comments.map(comment => ({ ...comment, loggedInUser }))
         return (
             <div style={[styles.base, visibility ? styles.clicked : styles.base]} >
-                <WriteAComment img={profilePictureUrl} rounded={rounded} {...rest} />
-                <ListAdapter data={comments} listItemView={Comment} style={styles.commentList} />
+                <WriteAComment style={styles.addComment} loggedInUser={loggedInUser} {...rest} />
+                <ListAdapter data={newComments} listItemView={CommentContainer} style={styles.commentList} />
             </div>
         )
     };
 }
 
 CommentsSection.propTypes = {
-    img: PropTypes.string,
-    header: PropTypes.string,
-    subHeader: PropTypes.string,
     type: PropTypes.string,
     id: PropTypes.string,
     visibility: PropTypes.bool,
@@ -33,11 +31,14 @@ CommentsSection.propTypes = {
 const styles = {
     base: {
         display: 'none',
+        width: '100%'
+    },
+    addComment: {
+        padding: paddings.wrapper,
     },
     commentList: {
         background: colors.lightBlue,
-        marginLeft: '-0.9em',
-        padding: paddings.wrapper
+        width: '100%'
     },
     clicked: {
         display: 'block'

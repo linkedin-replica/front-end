@@ -35,7 +35,6 @@ class Comment extends Component {
             headLine,
             liked,
             text,
-            commentContent,
             handleLikeButton,
             handleReplyButton,
             showReplies,
@@ -44,15 +43,16 @@ class Comment extends Component {
             ...rest } = this.props;
 
         return (
-            <WhiteWrapper style={styles.base}>
+            <section style={styles.base}>
                 <DetailsHeader
                     img={authorProfilePictureUrl}
                     header={authorName}
                     subHeader={headLine}
                     rounded
                     type={type}
+                    imgSize="sm"
                     id={authorId} />
-                <p style={styles.text}>{commentContent}</p>
+                <p style={styles.text}>{text}</p>
                 <div style={styles.buttons} >
                     <IconTextButton name="Like" type="like" onClick={handleLikeButton} style={liked ? styles.likedButton : ''} />
                     <IconTextButton name="Reply" type="comment" onClick={handleReplyButton} />
@@ -70,7 +70,7 @@ class Comment extends Component {
                         {...rest}
                     />
                 </div>
-            </WhiteWrapper>
+            </section>
         )
     };
 }
@@ -90,15 +90,19 @@ Comment.propTypes = {
 const styles = {
     base: {
         padding: paddings.wrapper,
+        background: 'none',
+        width: '100%',
+        borderBottom: `1px solid ${colors.lightGray}`
     },
     buttons: {
-        paddingTop: '5px'
+        paddingTop: '2px'
     },
     likedButton: {
         color: colors.darkBlue
     },
     text: {
-        padding: '5px auto',
+        padding: '5px 20px',
+        margin: 0
     }
 }
 

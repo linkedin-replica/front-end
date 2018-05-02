@@ -38,7 +38,6 @@ const styles = {
     },
     commentList: {
         background: colors.lightBlue,
-        marginLeft: '-0.9em',
         padding: paddings.wrapper
     },
     clicked: {

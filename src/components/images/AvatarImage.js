@@ -48,8 +48,8 @@ const styles = {
         borderRadius: '0%',
     },
     sm: {
-        height: '1.5em',
-        width: '1.5em'
+        height: '2em',
+        width: '2em'
     },
     md: {
 
