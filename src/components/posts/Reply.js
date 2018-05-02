@@ -33,25 +33,27 @@ class Reply extends Component {
             headLine,
             liked,
             text,
-            replyContent,
-            handleLikeButton,
+            handleLikeReplyButton,
             style,
             ...rest } = this.props;
 
         return (
-            <WhiteWrapper style={styles.base}>
+            <section style={styles.base}>
                 <DetailsHeader
                     img={authorProfilePictureUrl}
                     header={authorName}
                     subHeader={headLine}
                     rounded
                     type={type}
-                    id={authorId} />
-                <p style={styles.text}>{replyContent}</p>
-                <div style={styles.buttons} >
-                    <IconTextButton name="Like" type="like" onClick={handleLikeButton} style={liked ? styles.likedButton : ''} />
+                    id={authorId}
+                    imgSize="sm" />
+                <div style={styles.details}>
+                    <p style={styles.text}>{text}</p>
+                    <div style={styles.buttons} >
+                        <IconTextButton name="Like" type="like" onClick={handleLikeReplyButton} style={liked ? styles.likedButton : ''} />
+                    </div>
                 </div>
-            </WhiteWrapper>
+            </section>
         )
     };
 }
@@ -68,20 +70,22 @@ Reply.propTypes = {
 
 const styles = {
     base: {
-        padding: paddings.wrapper,
+        paddingLeft: paddings.wrapper,
         background: 'none',
         width: '100%',
-        borderBottom: `1px solid ${colors.lightGray}`
     },
     buttons: {
-        paddingTop: '2px'
+        paddingTop: '2px',
     },
     likedButton: {
         color: colors.darkBlue
     },
+    details: {
+        margin: '0 0 0 8%'
+    },
     text: {
-        padding: '5px 20px',
-        margin: 0
+        margin: 0,
+        padding: '3% 2% 0 2%'
     }
 }
 

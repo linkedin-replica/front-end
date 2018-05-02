@@ -31,12 +31,13 @@ class CommentContainer extends Component {
     constructor(props) {
         super(props)
 
-        this.setState({
+        this.state = {
+            ...this.state,
             liked: props.liked,
             likeCount: props.likers.length,
             repliesCount: props.repliesCount,
-            likers: props.likers
-        })
+            likers: props.likers,
+        }
     }
 
     handleLikeButton = () => {
@@ -57,6 +58,23 @@ class CommentContainer extends Component {
             .catch(err => toast.error(err.response.data.error))
     }
 
+    handleLikeReplyButton = (replyId) => {
+        const { loggedInUser } = this.props
+        const { liked, likesCount } = this.state
+
+        let request = liked ?
+            api.deleteReplyLike(loggedInUser.userId, replyId) :
+            api.likeReply(loggedInUser.userId, replyId)
+
+        request
+            .then(res => {
+                this.setState({
+                    likesCount: likesCount + (liked ? -1 : 1),
+                    liked: !liked
+                });
+            })
+            .catch(err => toast.error(err.response.data.error))
+    }
 
     handleReplyButton = () => {
         const { showReplies } = this.state
@@ -100,7 +118,6 @@ class CommentContainer extends Component {
         }
     }
 
-    handleSubmitComment
     render() {
         const { addReplyText } = this.state
         const { images, videos } = this.props

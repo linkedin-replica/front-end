@@ -37,9 +37,9 @@ const styles = {
         display: 'none',
         width: '100%',
         background: colors.lightBlue,
+        padding: paddings.wrapper,
     },
     addComment: {
-        padding: paddings.wrapper,
     },
     commentList: {
         width: '100%'

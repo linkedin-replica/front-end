@@ -37,7 +37,6 @@ const styles = {
     base: {
         display: 'flex',
         width: '100%',
-        borderBottom: `1px solid ${colors.lightGray}`
     },
     imgDiv: {
 

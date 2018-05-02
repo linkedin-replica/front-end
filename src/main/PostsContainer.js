@@ -33,6 +33,7 @@ class PostsContainer extends Component {
         const { posts } = this.state;
         const { loggedInUser } = this.props;
         const newPosts = posts.map(post => ({ ...post, loggedInUser }))
+
         return (
             <ListAdapter data={newPosts} listItemView={PostContainer} verticalSplit />
         );

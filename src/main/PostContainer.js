@@ -31,34 +31,36 @@ class PostContainer extends Component {
     constructor(props) {
         super(props)
 
-        this.setState({
-            liked: props.liked,
+        let isLiked = props.likers.find(({ likerId }) => likerId === props.loggedInUser.userId)
+        this.state = {
+            ...this.state,
+            liked: isLiked,
             likeCount: props.likers.length,
             commentsCount: props.commentsCount,
-            likers: props.likers
-        })
+            likers: props.likers,
+        }
     }
 
-    handleLikeButton = () => {
+    handleLikeButton = (event) => {
         const { loggedInUser, postId } = this.props
         const { liked, likesCount } = this.state
 
         let request = liked ?
-            api.deleteLike(loggedInUser.userId, postId) :
+            api.deletePostLike(loggedInUser.userId, postId) :
             api.likePost(loggedInUser.userId, postId)
 
         request
             .then(res => {
-                this.setState({
+                this.setState((prevState) => ({
                     likesCount: likesCount + (liked ? -1 : 1),
-                    liked: !liked
-                });
+                    liked: !prevState.liked
+                }));
             })
             .catch(err => toast.error(err.response.data.error))
     }
 
 
-    handleCommentButton = () => {
+    handleCommentButton = (event) => {
         const { showComments } = this.state
         this.setState({
             showComments: !showComments
@@ -102,12 +104,11 @@ class PostContainer extends Component {
 
     handleSubmitComment
     render() {
-        const { addCommentText } = this.state
+        const { addCommentText, liked } = this.state
         const { images, videos } = this.props
         let postContent = images ? images[0] : (videos ? videos[0] : '')
-        let postType = images ? 'img' : (videos ? 'video' : '')
+        let postType = images.length > 0 ? 'img' : (videos.length > 0 ? 'video' : '')
 
-        console.log(this.state)
         return (
             <Post
                 {...this.props}

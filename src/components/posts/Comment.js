@@ -52,23 +52,25 @@ class Comment extends Component {
                     type={type}
                     imgSize="sm"
                     id={authorId} />
-                <p style={styles.text}>{text}</p>
-                <div style={styles.buttons} >
-                    <IconTextButton name="Like" type="like" onClick={handleLikeButton} style={liked ? styles.likedButton : ''} />
-                    <IconTextButton name="Reply" type="comment" onClick={handleReplyButton} />
+                <div style={styles.details}>
+                    <p style={styles.text}>{text}</p>
+                    <div style={styles.buttons} >
+                        <IconTextButton name="Like" type="like" onClick={handleLikeButton} style={liked ? styles.likedButton : ''} />
+                        <IconTextButton name="Reply" type="comment" onClick={handleReplyButton} />
+                    </div>
+                    <ReplySection
+                        {...loggedInUser}
+                        header={authorName}
+                        subHeader={headLine}
+                        rounded
+                        type={type}
+                        id={authorId}
+                        visibility={showReplies}
+                        replies={replies}
+                        {...rest}
+                        style={styles.replies}
+                    />
                 </div>
-                <ReplySection
-                    {...loggedInUser}
-                    header={authorName}
-                    subHeader={headLine}
-                    rounded
-                    type={type}
-                    id={authorId}
-                    visibility={showReplies}
-                    replies={replies}
-                    {...rest}
-                    style={styles.replies}
-                />
             </section>
         )
     };
@@ -99,9 +101,12 @@ const styles = {
     likedButton: {
         color: colors.darkBlue
     },
+    details: {
+        margin: '0 0 0 8%'
+    },
     text: {
-        padding: '5px 20px',
-        margin: 0
+        margin: 0,
+        paddingTop: '3%'
     }
 }
 

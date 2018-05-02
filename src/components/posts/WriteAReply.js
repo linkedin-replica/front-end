@@ -37,7 +37,7 @@ WriteAReply.propTypes = {
 const styles = {
     base: {
         display: 'flex',
-        width: '80%'
+        width: '80%',
     },
     imgDiv: {
 
