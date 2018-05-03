@@ -30,7 +30,8 @@ export const icons = {
   edit: 'fa fa-edit',
   add: 'fa fa-plus',
   skill: 'fa fa-wrench',
-  logo: 'fa fa-linkedin'
+  logo: 'fa fa-linkedin',
+  close: 'fa fa-times'
 }
 
 export const paddings = {

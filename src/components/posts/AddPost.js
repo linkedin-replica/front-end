@@ -19,33 +19,31 @@ class AddPost extends Component {
     const { addPostContent, handleChange, handleMediaClick, handleSubmit } = this.props;
     return (
       <WhiteWrapper style={styles.base}>
-        <form onSubmitCapture={handleSubmit}>
-          <InputForm placeholder="Share an article, photo, video or idea"
-            commentBool={false}
-            value={addPostContent}
-            handleChange={handleChange('addPostContent')} />
-          <div style={styles.tabDiv}>
-            <IconTextButton
-              name="Image"
-              type="image"
-              onClick={handleMediaClick}
-              style={styles.postButton}
-              hasBorder
-            />
-            <IconTextButton
-              name="Video"
-              type="video"
-              onClick={handleMediaClick}
-              style={styles.postButton}
-              hasBorder
-            />
-            <BlueButton
-              name="Post"
-              style={styles.postButton}
-
-            />
-          </div>
-        </form>
+        <InputForm placeholder="Share an article, photo, video or idea"
+          commentBool={false}
+          value={addPostContent}
+          handleChange={handleChange('addPostContent')} />
+        <div style={styles.tabDiv}>
+          <IconTextButton
+            name="Image"
+            type="image"
+            onClick={handleMediaClick}
+            style={styles.postButton}
+            hasBorder
+          />
+          <IconTextButton
+            name="Video"
+            type="video"
+            onClick={handleMediaClick}
+            style={styles.postButton}
+            hasBorder
+          />
+          <BlueButton
+            name="Post"
+            style={styles.postButton}
+            onClick={handleSubmit}
+          />
+        </div>
       </WhiteWrapper>
     );
   }

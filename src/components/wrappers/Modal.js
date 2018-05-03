@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
 import BlueButton from '../buttons/BlueButton.js';
+import GrayTextButton from '../buttons/GrayTextButton';
 
 
 
 class Modal extends React.Component {
   render() {
+    const { show, onCancelEdit, onSubmitEdit, cancelText, submitText } = this.props
     // Render nothing if the "show" prop is false
-    if(!this.props.show) {
+    if (!this.props.show) {
       return null;
     }
 

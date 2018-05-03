@@ -9,16 +9,16 @@ import AvatarImage from '../images/AvatarImage';
 class WriteAReply extends Component {
 
     render() {
-        const { img, rounded, addCommentText, handleChangeComment, handleSubmitComment } = this.props
+        const { img, rounded, addReplyText, handleChangeComment, handleSubmitComment } = this.props
         return (
             <div style={styles.base}>
                 <span style={styles.imgDiv}>
                     <AvatarImage src={img} rounded={rounded} size='sm' />
                 </span>
                 <div style={styles.commentDiv}>
-                    <InputForm placeholder="Write a reply"
+                    <InputForm placeholder="Write a reply..."
                         commentBool={true}
-                        value={addCommentText}
+                        value={addReplyText}
                         handleChange={handleChangeComment}
                         onKeyUp={handleSubmitComment}
                         commentBool />

@@ -7,6 +7,7 @@ import IconTextButton from '../buttons/IconTextButton';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import PostContent from './PostContent';
 import CommentSection from './CommentSection';
+import IconButton from '../buttons/IconButton';
 
 class Post extends Component {
 
@@ -17,13 +18,14 @@ class Post extends Component {
             authorId,
             authorName,
             authorProfilePictureUrl,
-            headLine,
+            headline,
             liked,
             text,
             postContent,
             postType,
             handleLikeButton,
             handleCommentButton,
+            handleDeletePost,
             showComments,
             comments,
             style,
@@ -31,11 +33,12 @@ class Post extends Component {
 
         return (
             <WhiteWrapper style={styles.base}>
+                <IconButton type="close" style={styles.delete} size="sm" onClick={handleDeletePost} />
                 <div style={styles.main}>
                     <DetailsHeader
                         img={authorProfilePictureUrl}
                         header={authorName}
-                        subHeader={headLine}
+                        subHeader={headline}
                         rounded
                         type={type}
                         id={authorId} />
@@ -48,7 +51,7 @@ class Post extends Component {
                 <CommentSection
                     loggedInUser={loggedInUser}
                     header={authorName}
-                    subHeader={headLine}
+                    subHeader={headline}
                     rounded
                     type={type}
                     id={authorId}
@@ -80,6 +83,7 @@ Post.propTypes = {
 
 const styles = {
     base: {
+        position: 'relative'
     },
     buttons: {
         paddingTop: '5px'
@@ -89,6 +93,11 @@ const styles = {
     },
     likedButton: {
         color: colors.darkBlue
+    },
+    delete: {
+        position: 'absolute',
+        top: '10px',
+        right: '10px',
     }
 }
 

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import api from '../api/api';
 import Post from '../components/posts/Post';
-import { commentsLimit } from '../resources/constants';
+import { repliesLimit, commentsLimit } from '../resources/constants';
 import { toast } from 'react-toastify';
 import Comment from '../components/posts/Comment';
 
@@ -58,7 +58,7 @@ class CommentContainer extends Component {
             .catch(err => toast.error(err.response.data.error))
     }
 
-    handleLikeReplyButton = (replyId) => {
+    handleLikeReplyButton = (replyId) => (event) => {
         const { loggedInUser } = this.props
         const { liked, likesCount } = this.state
 
@@ -68,10 +68,7 @@ class CommentContainer extends Component {
 
         request
             .then(res => {
-                this.setState({
-                    likesCount: likesCount + (liked ? -1 : 1),
-                    liked: !liked
-                });
+
             })
             .catch(err => toast.error(err.response.data.error))
     }
@@ -102,7 +99,6 @@ class CommentContainer extends Component {
                 }).catch(err => toast.error(err.response.data.error))
         }
     }
-
     handleChangeComment = (event) => {
         // Enter was pressed without shift key
         if (event.key === 'Enter' && !event.shiftKey || this.state.receiverId === '' || this.state.inputMessage === '\n') {
@@ -118,15 +114,30 @@ class CommentContainer extends Component {
         }
     }
 
+    handleDeleteReply = (replyId) => (event) => {
+
+        api.deleteReply(replyId)
+            .then(res => {
+                toast.success("Reply deleted successfully")
+            }).catch(err => toast.error(err.response.data.error))
+    }
+
     render() {
-        const { addReplyText } = this.state
+        const { addReplyText, replies } = this.state
         const { images, videos } = this.props
+
+        const newReplies = replies.map(reply => ({
+            ...reply,
+            handleLikeReplyButton: this.handleLikeReplyButton(reply.replyId),
+            handleDeleteReply: this.handleDeleteReply(reply.replyId)
+        }))
 
         console.log(this.state)
         return (
             <Comment
                 {...this.props}
                 {...this.state}
+                replies={newReplies}
                 handleLikeButton={this.handleLikeButton}
                 handleReplyButton={this.handleReplyButton}
                 addReplyText={addReplyText}
@@ -148,7 +159,7 @@ CommentContainer.propTypes = {
     liked: PropTypes.bool,
     authorName: PropTypes.string,
     authorProfilePictureUrl: PropTypes.string,
-    headLine: PropTypes.string
+    headline: PropTypes.string
 };
 
 

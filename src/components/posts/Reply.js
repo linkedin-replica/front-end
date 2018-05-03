@@ -6,6 +6,7 @@ import DetailsHeader from '../details/DetailsHeader';
 import IconTextButton from '../buttons/IconTextButton';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import PostContent from './PostContent';
+import IconButton from '../buttons/IconButton';
 
 
 class Reply extends Component {
@@ -30,19 +31,22 @@ class Reply extends Component {
             authorId,
             authorName,
             authorProfilePictureUrl,
-            headLine,
+            headline,
             liked,
             text,
             handleLikeReplyButton,
+            handleDeleteReply,
             style,
             ...rest } = this.props;
 
         return (
             <section style={styles.base}>
+                <IconButton type="close" style={styles.delete} size="sm" onClick={handleDeleteReply} />
+
                 <DetailsHeader
                     img={authorProfilePictureUrl}
                     header={authorName}
-                    subHeader={headLine}
+                    subHeader={headline}
                     rounded
                     type={type}
                     id={authorId}
@@ -50,7 +54,7 @@ class Reply extends Component {
                 <div style={styles.details}>
                     <p style={styles.text}>{text}</p>
                     <div style={styles.buttons} >
-                        <IconTextButton name="Like" type="like" onClick={handleLikeReplyButton} style={liked ? styles.likedButton : ''} />
+                        <IconTextButton name="Like" type="like" size="sm" onClick={handleLikeReplyButton} style={liked ? styles.likedButton : ''} />
                     </div>
                 </div>
             </section>
@@ -73,6 +77,7 @@ const styles = {
         paddingLeft: paddings.wrapper,
         background: 'none',
         width: '100%',
+        position: 'relative'
     },
     buttons: {
         paddingTop: '2px',
@@ -86,6 +91,11 @@ const styles = {
     text: {
         margin: 0,
         padding: '3% 2% 0 2%'
+    },
+    delete: {
+        position: 'absolute',
+        top: '10px',
+        right: '10px',
     }
 }
 
