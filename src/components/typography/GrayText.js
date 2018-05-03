@@ -11,7 +11,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { colors } from '../../resources/constants';
 
-class BoldLink extends Component {
+class GrayText extends Component {
     render() {
         // Directly get the passed parameters from the props
         const { text, type, id, style, size } = this.props;
@@ -24,7 +24,7 @@ class BoldLink extends Component {
 }
 
 // Define the passed input types for this component
-BoldLink.propTypes = {
+GrayText.propTypes = {
     text: PropTypes.string.isRequired,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"]),
@@ -32,7 +32,7 @@ BoldLink.propTypes = {
 
 const styles = {
     base: {
-        color: colors.mediumGray,
+        color: colors.darkGray,
     },
     sm: {
         fontSize: '0.8em'
@@ -45,5 +45,5 @@ const styles = {
     }
 }
 
-BoldLink = Radium(BoldLink);
-export default BoldLink;
+GrayText = Radium(GrayText);
+export default GrayText;

@@ -28,7 +28,7 @@ class ListAdapter extends Component {
             <ul style={[
                 styles.base,
                 style,
-                size ? styles[size] : styles['md']
+                size ? styles[size] : styles.noSize
             ]}>
                 {
                     data.map((item, index) => (
@@ -62,19 +62,26 @@ const styles = {
 
     },
     split: {
-        margin: '10px auto'
+        margin: '10px auto',
+        borderBottom: '1px solid',
+        borderBottomColor: colors.lightGray,
+        marginLeft: '3%',
+        maxWidth: '40em',
     },
     noSplit: {
         margin: 0
     },
     sm: {
-        width: '216px'
+        width: '710px'
     },
     md: {
-        width: '550px'
+        width: '1050px'
     },
     lg: {
-        width: '780px'
+        width: '1500px'
+    },
+    noSize: {
+        width: '100%'
     }
 }
 

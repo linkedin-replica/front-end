@@ -41,7 +41,7 @@ class DetailsHeader extends Component {
 }
 
 DetailsHeader.propTypes = {
-    img: PropTypes.string.isRequired,
+    img: PropTypes.string,
     header: PropTypes.string.isRequired,
     subHeader: PropTypes.string.isRequired,
     rounded: PropTypes.bool,
@@ -58,7 +58,7 @@ const styles = {
     textDiv: {
         display: 'inline-block',
         verticalAlign: 'top',
-        paddingLeft: '1%'
+        paddingLeft: '3%'
     },
     text: {
         margin: '0px',

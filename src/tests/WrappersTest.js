@@ -7,6 +7,7 @@ import { colors } from '../resources/constants';
 import WhiteWrapper from '../components/wrappers/WhiteWrapper';
 import BorderedButton from '../components/buttons/BorderedButton';
 import ListAdapter from '../components/wrappers/ListAdapter';
+import GridView from '../components/wrappers/GridView';
 
 class WrappersTest extends Component {
 
@@ -31,11 +32,20 @@ class WrappersTest extends Component {
 
                 <section>
                     <h2>List Adapter</h2>
-                    <ListAdapter data={mockData} listItemView={BorderedButton} />
+                    <ListAdapter data={mockData} listItemView={BorderedButton} verticalSplit />
                     <h2>List Adapter (Vertical Split)</h2>
                     <ListAdapter data={mockData2} listItemView={WhiteWrapper} verticalSplit />
                 </section>
-            </div >
+
+                <section>
+                    <h2>Grid View</h2>
+                    {/* <GridView data={mockData} gridItemView={BorderedButton} /> */}
+                    <h2>Grid View</h2>
+                    <WhiteWrapper style={styles.gridWrapper}>
+                        <GridView data={mockData2} gridItemView={WhiteWrapper} horizontalSplit verticalSplit size="md" />
+                    </WhiteWrapper>
+                </section>
+            </div>
         );
     }
 }
@@ -45,13 +55,30 @@ const mockData = [
     { name: 'Button 2' },
     { name: 'Button 3' },
     { name: 'Button 4' },
+    { name: 'Button 5' },
+    { name: 'Button 6' },
+    { name: 'Button 7' },
+    { name: 'Button 8' },
+    { name: 'Button 9' },
+    { name: 'Button 10' },
+    { name: 'Button 11' },
+    { name: 'Button 12' },
+    { name: 'Button 13' },
 ]
 
 const mockData2 = [
-    { children: 'Post 1' },
-    { children: 'Post 2' },
-    { children: 'Post 3' },
-    { children: 'Post 4' },
+    { children: 'Job 1' },
+    { children: 'Job 2' },
+    { children: 'Job 3' },
+    { children: 'Job 4' },
+    { children: 'Job 4' },
+    { children: 'Job 4' },
+    { children: 'Job 4' },
+    { children: 'Job 4' },
+    { children: 'Job 4' },
+    { children: 'Job 4' },
+    { children: 'Job 4' },
+    { children: 'Job 4' },
 ]
 
 const styles = {
@@ -63,6 +90,11 @@ const styles = {
         margin: '10px auto',
         padding: '10px',
         textAlign: 'center'
+    },
+    gridWrapper: {
+        // width: '80%',
+        // padding: '10px',
+        // textAlign: 'center'
     }
 }
 

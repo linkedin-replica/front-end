@@ -8,14 +8,21 @@ import { colors, icons, borders } from '../../resources/constants.js'
 import ResponsiveButtonWrapper from './ResponsiveButtonWrapper';
 
 class IconTextButton extends Component {
+
+
+
   render() {
     // Directly get the needed props
-    const { name, type, hasBorder, ...rest } = this.props;
+    
+    const { name, type, style, hasBorder, onClick, ...rest } = this.props;
     return (
       <ResponsiveButtonWrapper
-        style={[styles.base, hasBorder ? styles.bordered : styles.borderless]}
+        style={[styles.base, style, hasBorder ? styles.bordered : styles.borderless]}
+        
+        
         // Passes on the rest of the props to apply the size and onClick functions on the button
-        {...rest}>
+        {...rest} 
+        onClick = {onClick}>
         <i style={styles.icon} className={icons[type]}></i>
         <span>
           {name}
@@ -31,7 +38,8 @@ IconTextButton.propTypes = {
   type: PropTypes.oneOf(['like', 'share', 'comment', 'write', 'image', 'video']).isRequired,
   hasBorder: PropTypes.bool,
   size: PropTypes.oneOf(["sm", "md", "lg"]),
-  onClick: PropTypes.func.isRequired,
+  style:PropTypes.obj,
+  onClick: PropTypes.func.isRequired
 };
 
 const styles = {

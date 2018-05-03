@@ -31,6 +31,7 @@ const styles = {
   base: {
     fontWeight: 'bold',
     borderRadius: borders.button.radius.normal,
+    flexShrink: 0
   },
   whiteBorder: {
     border: `${borders.button.width.normal} solid ${colors.white}`,
