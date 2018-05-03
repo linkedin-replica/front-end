@@ -33,7 +33,7 @@ class MainContainer extends Component {
                     <Route path='/articles' component={ArticlesContainer} />
                     <Route path='/chat' render={() => <ChatContainer loggedInUser={loggedInUser} />} />
                     <Route path='/profile/:id' component={ProfileContainer} />
-                    <Route path='/company/:id' component={CompanyContainer} />
+                    <Route path='/company/:id' render={() => <CompanyContainer loggedInUser={loggedInUser} />}  />
                     <Route path='/job/:id' component={JobContainer} />
                     <Route path='/article/:id' component={ArticleContainer} />
                     <Route path='/search-results' component={SearchResultsContainer} />

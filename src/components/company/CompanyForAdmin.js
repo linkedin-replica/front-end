@@ -6,20 +6,33 @@ import WhiteWrapper from '../wrappers/WhiteWrapper';
 import Header from '../wrappers/Header';
 import CompanyBasicInfo from './CompanyBasicInfo';
 
+
+
 class CompanyForAdmin extends Component {
+  state = {
+      isOpen: this.props.isOpen
+  }
+
+  openPostAJobForm = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
 
     render() {
+      const { img, companyName, industryType, companyLocation, id} = this.props;
         return (
           <div>
-            <Header isLoggedIn />
             <WhiteWrapper style={styles.whiteWrapper} size="lg">
               <CompanyBasicInfo style={styles.info}
-                img='http://www.mamboproductora.com.ar/wp-content/uploads/2017/04/descarga.png'
-                companyName='Microsoft'
-                industryType='Computer Software'
-                companyLocation='Redmond, WA'
+                img={img}
+                companyName={companyName}
+                industryType={industryType}
+                companyLocation={companyLocation}
                 isAdmin
-                id='1'/>
+                id={id}
+                blueText="Post A Job"
+                blueFunc={this.openPostAJobForm}/>
               </WhiteWrapper>
 
           </div>

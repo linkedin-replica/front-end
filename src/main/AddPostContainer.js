@@ -26,10 +26,14 @@ class AddPostContainer extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
 
-        const { loggedInUser } = this.props
+        const { loggedInUser, companyId, isCompany } = this.props
         const { addPostContent, img, video } = this.state
 
-        api.addPost(loggedInUser.userId, addPostContent, img, video, false)
+        let request = isCompany ?
+           api.addPost(companyId, addPostContent, img, video, isCompany) :
+           api.addPost(loggedInUser.userId, addPostContent, img, video, isCompany)
+
+            request
             .then(res => {
                 toast.success("Added a new post")
                 this.setState({

@@ -9,7 +9,6 @@ import CompanyTest from './CompanyTest';
 import TypographyTest from './TypographyTest';
 import ProfileTest from './ProfileTest';
 import DetailsHeaderTest from './DetailsHeaderTest';
-import WallTest from './WallTest';
 import ConnectionsTest from './ConnectionsTest';
 import LoginContainerTest from './LoginContainerTest';
 import LoginTest from './LoginTest';
@@ -52,8 +51,6 @@ class Test extends Component {
         <Route path={`${match.url}/recommendedArticle`} component={RecommendedArticleTest} />
 
         <Route path={`${match.url}/chat`} component={ChatTest} />
-
-        <Route path={`${match.url}/wall`} component={WallTest} />
 
         <Route path={`${match.url}/connections`} component={ConnectionsTest} />
 

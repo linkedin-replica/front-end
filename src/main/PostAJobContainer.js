@@ -3,7 +3,8 @@ import Radium from 'radium';
 import PostAJob from '../components/company/PostAJob'
 import { withRouter } from 'react-router';
 import BlueButton from '../components/buttons/BlueButton';
-
+import api from '../api/api';
+import { toast } from 'react-toastify';
 
 class PostAJobContainer extends Component {
 
@@ -34,6 +35,13 @@ class PostAJobContainer extends Component {
     event.preventDefault()
 
     const { data } = this.state
+    api.postJobCompany()
+      .then(res => {
+
+      })
+      .catch(err => {
+        toast.error(err.response.data.error)
+      })
 
   }
 

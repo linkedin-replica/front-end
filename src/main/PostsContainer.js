@@ -7,6 +7,7 @@ import api from '../api/api';
 import { toast } from 'react-toastify';
 import { postsLimit } from '../resources/constants';
 
+
 class PostsContainer extends Component {
 
     state = {
@@ -14,11 +15,11 @@ class PostsContainer extends Component {
     }
 
     componentDidMount() {
-        const { loggedInUser, isCompany } = this.props
+        const { loggedInUser, companyId, isCompany } = this.props
 
         const request =
             isCompany ?
-                api.getCompanyPosts(loggedInUser.userId, postsLimit) :
+                api.getCompanyPosts(companyId, postsLimit) :
                 api.getNewsFeed(postsLimit)
 
         request
