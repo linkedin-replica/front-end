@@ -28,7 +28,8 @@ class SearchContainer extends Component {
         const { searchKey } = this.props
         const { type} = this.state
 
-        const request;
+        let request = null
+
         switch(name){
             case 'company' :
                  request = api.searchCompany(searchKey) 
@@ -43,6 +44,9 @@ class SearchContainer extends Component {
                  request = api.searchJob(searchKey) 
                  break        
         }
+
+        if(request == null)
+            return
 
         request
             .then(res => {
@@ -60,22 +64,22 @@ class SearchContainer extends Component {
         const { addPostContent } = this.state;
         return (
             <div>
-                <IconTextButtom 
+                <IconTextButton 
                     name = "Company"
                     type = "logo"
                     onClick = {this.handleSearchClick('company')}
                 />
-                <IconTextButtom 
+                <IconTextButton 
                     name = "user"
                     type = "profile"
                     onClick = {this.handleSearchClick('user')}
                 />
-                <IconTextButtom 
+                <IconTextButton 
                     name = "post"
                     type = "articles"
                     onClick = {this.handleSearchClick('post')}
                 />
-                <IconTextButtom 
+                <IconTextButton 
                     name = "job"
                     type = "jobs"
                     onClick = {this.handleSearchClick('job')}
@@ -89,3 +93,13 @@ class SearchContainer extends Component {
              
         );
     }
+ }
+
+
+PostsContainer.propTypes = {
+    userId: PropTypes.string,
+    isCompany: PropTypes.bool
+};
+
+
+export default PostsContainer;
