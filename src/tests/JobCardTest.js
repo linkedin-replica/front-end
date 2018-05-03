@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Jobs from '../components/jobs/Jobs'
+//import Jobs from '../components/jobs/Jobs'
+import JobCard from '../components/jobs/JobCard'
 import Radium from 'radium'
 class JobCardTest extends React.Component {
   render() {
     return (
-      <Jobs jobCardsData = {dummyJobCard}/>
+        <JobCard {...dummyJobCard[0]} />
+    //  <Jobs jobCardsData = {dummyJobCard}/>
     );
   }
 }
