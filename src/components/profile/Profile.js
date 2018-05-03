@@ -15,7 +15,7 @@ class Profile extends Component {
     render() {
         const { userId, imageUrl, firstName, lastName, headline, personalInfo, positions, educations, skills, friendsList, style, size } = this.props;
         return(
-        <div>   
+        <div style = {styles.main}>   
             <div style = {styles.header}>
                 <section>   
                 <ProfileHeader 
@@ -67,6 +67,10 @@ Profile.propTypes = {
 };
 
 const styles = {
+    main: {
+        maxWwidth: '100%',
+        maxHeight: '100%'
+    },
     header: {
         width: '100%',
         float: 'left',
