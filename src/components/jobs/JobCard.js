@@ -24,14 +24,13 @@ class JobCard extends React.Component {
       </div>
 
       <BoldLink
-      text={title}
-      type='job'
-      id={jobId}
-      size='md'/>
+        text={title}
+        type='job'
+        id={jobId}
+        size='md'/>
       <GrayText
       text= {companyName}
       size={'md'}
-    //  style = {styles.boldTextColor}
       />
       <GrayText
       text={location}
@@ -77,23 +76,6 @@ const styles = {
     left: '0',
     margin: '0 auto'
   }
-  // imgPading: {padding: '0px 3px'},
-  // base: {
-  //   padding: '20px 30px'
-  // },
-  // boldTextColor: {
-  //   color: colors.black
-  // },
-  // grayTextColor: {
-  //   color: colors.darkGray
-  // },
-  // mediumGrayTextColor: {
-  //   color: colors.mediumGray
-  // },
-  // hrLine: {
-  //   width: '15%',
-  //   margin: '0px'
-  // }
 }
 
 

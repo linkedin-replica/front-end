@@ -20,6 +20,7 @@ import ChatTest from './ChatTest';
 import RecommendedArticleTest from './RecommendedArticleTest'
 import RecommendedArticlesTest from './RecommendedArticlesTest'
 import JobCardTest from './JobCardTest'
+import JobsTest from './JobsTest'
 import ModalTest from './ModalTest';
 import TabBarTest from './TabBarTest';
 
@@ -58,6 +59,8 @@ class Test extends Component {
         <Route path={`${match.url}/modal`} component={ModalTest} />
         <Route path={`${match.url}/tabBar`} component={TabBarTest} />
         <Route path={`${match.url}/recommendedArticles`} component={RecommendedArticlesTest} />
+        <Route path={`${match.url}/Jobs`} component={JobsTest} />
+
         {/*
 
         Add a new route to test your component in this way
