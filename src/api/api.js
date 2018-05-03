@@ -219,16 +219,16 @@ export default {
   },
 
   // Search
-  searchUser: (user) => {
-    return axios.post(`search/user/`, user)
+  searchUser: (searchKey) => {
+    return axios.post(`search/user/`, {searchKey})
   },
-  searchCompany: (company) => {
-    return axios.post(`search/company/`, company)
+  searchCompany: (searchKey) => {
+    return axios.post(`search/company/`, {searchKey})
   },
-  searchPost: (post) => {
-    return axios.post(`search/post/`, post)
+  searchPost: (searchKey) => {
+    return axios.post(`search/post/`, {searchKey})
   },
-  searchJob: (job) => {
-    return axios.post(`search/job/`, job)
+  searchJob: (searchKey) => {
+    return axios.post(`search/job/`, {searchKey})
   },
 }
