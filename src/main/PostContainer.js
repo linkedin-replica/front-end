@@ -19,6 +19,7 @@ class PostContainer extends Component {
 
     }
     componentDidMount() {
+
         const { postId, loggedInUser } = this.props
         api.getPostComments(postId, loggedInUser.userId, commentsLimit)
             .then(res => {
