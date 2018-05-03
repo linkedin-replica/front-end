@@ -6,12 +6,25 @@ import Radium from 'radium'
 class JobCardTest extends React.Component {
   render() {
     return (
-        <JobCard {...dummyJobCard[0]} />
-    //  <Jobs jobCardsData = {dummyJobCard}/>
+    <div style={styles.base}>
+        <header>
+            <h1>Connections Testing</h1>
+         </header>
+        <section>
+            <h2>Job card test</h2>
+            <JobCard {...dummyJobCard[0]} />
+        </section>
+    </div>
     );
   }
 }
+const styles = {
+    base: {
+        width: '250px',
+        padding: '10px'
 
+    }
+}
 const dummyJobCard = [
 {
   title:'junior developer',
