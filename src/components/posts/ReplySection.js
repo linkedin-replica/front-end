@@ -3,25 +3,29 @@ import Radium from 'radium';
 import PropTypes from 'prop-types'
 import { colors, paddings } from '../../resources/constants';
 import WriteAComment from './WriteAComment';
+import Comment from './Comment';
 import ListAdapter from '../wrappers/ListAdapter';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
-import CommentContainer from '../../main/CommentContainer';
+import WriteAReply from './WriteAReply';
+import Reply from './Reply';
 
-class CommentsSection extends Component {
+class ReplySection extends Component {
 
     render() {
-        const { loggedInUser, postId, visibility, comments, ...rest } = this.props
-        const newComments = comments.map(comment => ({ ...comment, loggedInUser, postId }))
+        const { profilePictureUrl, rounded, visibility, replies, ...rest } = this.props
         return (
             <div style={[styles.base, visibility ? styles.clicked : styles.base]} >
-                <WriteAComment style={styles.addComment} loggedInUser={loggedInUser} {...rest} />
-                <ListAdapter data={newComments} listItemView={CommentContainer} style={styles.commentList} />
+                <WriteAReply img={profilePictureUrl} rounded={rounded} {...rest} />
+                <ListAdapter data={replies} listItemView={Reply} style={styles.commentList} />
             </div>
         )
     };
 }
 
-CommentsSection.propTypes = {
+ReplySection.propTypes = {
+    img: PropTypes.string,
+    header: PropTypes.string,
+    subHeader: PropTypes.string,
     type: PropTypes.string,
     id: PropTypes.string,
     visibility: PropTypes.bool,
@@ -33,9 +37,9 @@ const styles = {
         display: 'none',
         width: '100%',
         background: colors.lightBlue,
+        padding: paddings.wrapper,
     },
     addComment: {
-        padding: paddings.wrapper,
     },
     commentList: {
         width: '100%'
@@ -50,5 +54,5 @@ const styles = {
 
 
 
-CommentsSection = Radium(CommentsSection);
-export default CommentsSection;
+ReplySection = Radium(ReplySection);
+export default ReplySection;

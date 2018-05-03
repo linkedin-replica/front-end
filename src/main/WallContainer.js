@@ -2,58 +2,44 @@ import io from 'socket.io-client';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import api from '../api/api';
-import Wall from '../components/wall/Wall';
+import AddPostContainer from './AddPostContainer';
+import PostsContainer from './PostsContainer';
+import ArticlesContainer from './ArticleContainer';
+import { colors } from '../resources/constants';
 
 class WallContainer extends Component {
 
-    state = {
-        posts: [],
-        comments: [],
-        imageButton: false,
-        videoButton: false
-    }
-
-    constructor(props) {
-        super(props)
-
-        const { mockData } = this.props;
-        if (mockData)
-            this.state.posts = mockData
-
-    }
-    imageButtonHandler = () => {
-        this.setState({
-          imageButton: !this.state.imageButton
-        });
-        console.log("image button: ", this.state.imageButton);
-      };
-    
-      videoButtonHandler = () => {
-        this.setState({
-          videoButton: !this.state.videoButton
-        });
-        console.log("video button: ", this.state.videoButton);
-      };
-    componentDidMount() {
-
-    }
-
     render() {
-        const { posts, comments } = this.state;
+        const { loggedInUser, isCompany, isArticle } = this.props
         return (
-            <Wall posts={posts}
-                comments={comments}
-             />
+            <div style={styles.base}>
+                <AddPostContainer isCompany={isCompany} isArticle={isArticle} loggedInUser={loggedInUser} />
+                <section>
+                    {isArticle ?
+                        <ArticlesContainer /> :
+                        <PostsContainer loggedInUser={loggedInUser} />
+                    }
+                </section>
+            </div >
         );
     }
 }
 
+const styles = {
+    base: {
+        background: colors.whiteGray,
+        display: 'block',
+        padding: '10px'
+    },
+    header: {
+        textAlign: 'center'
+    }
+}
+
 WallContainer.propTypes = {
-    userID: propTypes.string,
-    firstName: propTypes.string,
-    lastName: propTypes.string,
-    headline: propTypes.string,
-    profilePictureUrl: propTypes.string
+    loggedInUser: PropTypes.object,
+    isCompany: PropTypes.bool,
+    isArticle: PropTypes.bool
 };
 
 

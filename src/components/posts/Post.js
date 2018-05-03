@@ -8,64 +8,84 @@ import WhiteWrapper from '../wrappers/WhiteWrapper';
 import PostContent from './PostContent';
 import CommentSection from './CommentSection';
 
-
 class Post extends Component {
-    constructor(props){
-        super(props)
-        this.likeButtonHandler = this.likeButtonHandler.bind(this);
-        this.commentButtonHandler = this.commentButtonHandler.bind(this);
-        this.shareButtonHandler = this.shareButtonHandler.bind(this);
-        this.state = {
-            likeCounter: 0,
-            isLiked:false,
-            visibility : false,
-            shareCounter: 0
-
-        };
-    }
 
     render() {
-        const { postContent, ...rest } = this.props;
+        const { type,
+            loggedInUser,
+            postId,
+            authorId,
+            authorName,
+            authorProfilePictureUrl,
+            headLine,
+            liked,
+            text,
+            postContent,
+            postType,
+            handleLikeButton,
+            handleCommentButton,
+            showComments,
+            comments,
+            style,
+            ...rest } = this.props;
+
         return (
-            <div style={styles.test}>
             <WhiteWrapper style={styles.base}>
-                <DetailsHeader {...rest} />
-                <PostContent postContent={postContent} />
-                <div style={styles.buttons} >
-                    <IconTextButton name="Like" type="like" onClick = {this.likeButtonHandler}  style={this.state.isLiked? styles.likedButton:''}/>
-                    <IconTextButton name="Comment" type="comment" onClick = {this.commentButtonHandler} />
+                <div style={styles.main}>
+                    <DetailsHeader
+                        img={authorProfilePictureUrl}
+                        header={authorName}
+                        subHeader={headLine}
+                        rounded
+                        type={type}
+                        id={authorId} />
+                    <PostContent text={text} postContent={postContent} type={postType} />
+                    <div style={styles.buttons} >
+                        <IconTextButton name="Like" type="like" onClick={handleLikeButton} style={liked ? styles.likedButton : ''} />
+                        <IconTextButton name="Comment" type="comment" onClick={handleCommentButton} />
+                    </div>
                 </div>
-                <div>
-                <CommentSection {...rest} visibility = {this.state.visibility} />
-                 </div>   
+                <CommentSection
+                    loggedInUser={loggedInUser}
+                    header={authorName}
+                    subHeader={headLine}
+                    rounded
+                    type={type}
+                    id={authorId}
+                    visibility={showComments}
+                    comments={comments}
+                    postId={postId}
+                    {...rest}
+                />
             </WhiteWrapper>
-            </div>
         )
     };
 }
 
 Post.propTypes = {
     style: PropTypes.object, // Content defined styles
-    size: PropTypes.oneOf(["sm", "md", "lg"]),
-    src: PropTypes.string,
-    rounded: PropTypes.bool,
-    header: PropTypes.string,
-    subHeader: PropTypes.string,
+    authorId: PropTypes.string,
+    authorProfilePictureUrl: PropTypes.string,
+    authorName: PropTypes.string,
+    headline: PropTypes.string,
     postContent: PropTypes.string,
     type: PropTypes.string,
-    id: PropTypes.string,
-    action: PropTypes.func
+    liked: PropTypes.bool,
+    showComments: PropTypes.bool,
+    comments: PropTypes.array,
+    handleLikeButton: PropTypes.func,
+    handleCommentButton: PropTypes.func,
+
 };
 
 const styles = {
-    test:{
-        align:'justify'
-    },
     base: {
-        padding: paddings.wrapper,
     },
     buttons: {
         paddingTop: '5px'
+    },
+    main: {
+        padding: paddings.wrapper,
     },
     likedButton: {
         color: colors.darkBlue

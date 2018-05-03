@@ -16,24 +16,26 @@ import AvatarImage from '../images/AvatarImage';
 
 class DetailsHeader extends Component {
     render() {
-        const { src, rounded, header, subHeader, type, id, style, size, } = this.props;
+        const { img, rounded, header, subHeader, type, id, style, size, imgSize, textSize } = this.props;
         return (
-            <div style={[style, styles.base]}>
-                <AvatarImage src={src}
-                    rounded={rounded}
-                    style={styles.img}
-                    size={size}
-                    type={type}
-                    id={id}
-                />
+            <div style={[styles.base, style]}>
+                <div>
+                    <AvatarImage src={img}
+                        rounded={rounded}
+                        style={styles.img}
+                        size={imgSize ? imgSize : size}
+                        type={type}
+                        id={id}
+                    />
+                </div>
                 <div style={styles.textDiv}>
                     <BoldLink text={header}
                         type={type}
                         id={id}
-                        size={size} />
+                        size={textSize ? textSize : size} />
                     <GrayText text={subHeader}
                         style={styles.text}
-                        size={size} />
+                        size={textSize ? textSize : size} />
                 </div>
             </div>
         )
@@ -41,7 +43,7 @@ class DetailsHeader extends Component {
 }
 
 DetailsHeader.propTypes = {
-    src: PropTypes.string,
+    img: PropTypes.string,
     header: PropTypes.string.isRequired,
     subHeader: PropTypes.string.isRequired,
     rounded: PropTypes.bool,
@@ -53,12 +55,13 @@ DetailsHeader.propTypes = {
 
 const styles = {
     base: {
-
+        display: 'flex',
     },
     textDiv: {
         display: 'inline-block',
         verticalAlign: 'top',
-        paddingLeft: '5%'
+        paddingLeft: '2%',
+        width: '100%'
     },
     text: {
         margin: '0px',

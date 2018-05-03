@@ -9,11 +9,23 @@ import ListAdapter from '../wrappers/ListAdapter';
 import ChatMessage from './ChatMessage';
 
 class ChatMessages extends Component {
+    componentDidMount() {
+        this.scrollToBottom();
+    }
+
+    componentDidUpdate() {
+        this.scrollToBottom();
+    }
+
+    scrollToBottom() {
+        this.messages.scrollIntoView({ behavior: 'smooth' });
+    }
+
     render() {
         // Directly get the passed parameters from the props
         const { data } = this.props;
         return (
-            <div style={styles.base}>
+            <div style={styles.base} ref={el => { this.messages = el; }}>
                 <ListAdapter data={data} listItemView={ChatMessage} />
             </div>
         );
@@ -27,7 +39,7 @@ ChatMessages.propTypes = {
 
 const styles = {
     base: {
-        height: '80%',
+        height: '70%',
         overflowY: 'auto',
         overflowX: 'hidden'
     }

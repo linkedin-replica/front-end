@@ -4,6 +4,7 @@ import BorderedButton from '../buttons/BorderedButton';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import PropTypes from 'prop-types'
 import { colors } from '../../resources/constants';
+import UnlabeledInput from '../forms/UnlabeledInput';
 
 class Login extends Component {
   render() {
@@ -11,18 +12,22 @@ class Login extends Component {
     return (
       <div styles={styles.darkContainer}>
         <form style={styles.base} onSubmit={handleSubmit}>
-          <input
+          <UnlabeledInput
             className='form-inline'
             type='email'
             placeholder='Email'
-            onChange={handleChange('email')}
+            size="sm"
+            handleChange={handleChange('email')}
+            isRequired
           />
-          <input
-            style={styles.password}
+          <UnlabeledInput
             className='form-inline'
             type='password'
             placeholder='Password'
-            onChange={handleChange('password')}
+            size="sm"
+            style={styles.password}
+            handleChange={handleChange('password')}
+            isRequired
           />
           <BorderedButton name='Sign in' color='white'> </BorderedButton>
           <a style={styles.forgotPassword} href='url'>Forgot password?</a>
@@ -32,17 +37,18 @@ class Login extends Component {
   }
 }
 
-Login.PropTypes = {
+Login.propTypes = {
   handleChange: PropTypes.func,
   handleSubmit: PropTypes.func
 }
 
 const styles = {
   base: {
-    padding: '10px',
-    paddingRight: '20px',
-    backgroundColor: colors.darkGray,
-    textAlign: 'right'
+    padding: '10px 20px 10px 10px',
+    marginLeft: '40%',
+    display: 'flex',
+    alignItems: 'baseline',
+    flexShrink: '0',
   },
   password: {
     marginLeft: '20px',
@@ -51,7 +57,8 @@ const styles = {
   forgotPassword: {
     paddingLeft: '20px',
     fontSize: '0.8em',
-    color: 'white'
+    color: 'white',
+    flexShrink: 0
   }
 }
 

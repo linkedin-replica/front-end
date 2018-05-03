@@ -24,11 +24,12 @@ class ListAdapter extends Component {
             verticalSplit
           } = this.props;
 
+        console.log(data)
         return (
             <ul style={[
                 styles.base,
                 style,
-                size ? styles[size] : styles['md']
+                size ? styles[size] : styles.noSize
             ]}>
                 {
                     data.map((item, index) => (
@@ -65,7 +66,6 @@ const styles = {
         margin: '10px auto',
         borderBottom: '1px solid',
         borderBottomColor: colors.lightGray,
-        marginLeft: '3%',
         maxWidth: '40em',
     },
     noSplit: {
@@ -79,6 +79,9 @@ const styles = {
     },
     lg: {
         width: '1500px'
+    },
+    noSize: {
+        width: '100%'
     }
 }
 

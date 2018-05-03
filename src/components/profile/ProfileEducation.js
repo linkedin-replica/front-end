@@ -11,34 +11,36 @@ import IconButton from '../buttons/IconButton';
 class ProfileEducation extends Component {
     render() {
         const { sectionTitle, data, style, size } = this.props;
-        return(
+        return (
             <WhiteWrapper style={styles.whiteWrapper} size="lg">
                 <div style={style}>
                     <h3 style={[styles.base, size ? styles[size] : styles['lg']]}> {sectionTitle} </h3>
                     <IconButton type="add" onClick={this.incrementCounter} />
-                    <ListAdapter data = {data} listItemView={ProfileEducationItem} verticalSplit />
+                    <ListAdapter data={data} listItemView={ProfileEducationItem} verticalSplit />
                 </div>
             </WhiteWrapper>
-        )};    
+        )
+    };
 }
 
 ProfileEducation.propTypes = {
-    sectionTitle: PropTypes.string.isRequired, 
-    data: PropTypes.array.isRequired, 
+    sectionTitle: PropTypes.string.isRequired,
+    data: PropTypes.array.isRequired,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"])
 };
 
 const styles = {
     base: {
-       display: 'inline-block',
-       paddingLeft: '2em',
-       paddingRight: '20em',
-       fontWeight: 'normal'
+        display: 'inline-block',
+        paddingLeft: '2em',
+        paddingRight: '20em',
+        fontWeight: 'normal'
     },
     whiteWrapper: {
         margin: '10px auto',
-        paddingTop: '0.5em'
+        paddingTop: '0.5em',
+        width: '100%'
     },
     sm: {
         fontSize: '0.5em'

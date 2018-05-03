@@ -10,6 +10,12 @@
 
 @font-face {
   font-family: 'Source Sans Pro';
+  font-weight: lighter;
+  src: url('./resources/fonts/Source Font Family/Source Sans Pro/SourceSansPro-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
   font-weight: bold;
   src: url('./resources/fonts/Source Font Family/Source Sans Pro/SourceSansPro-Semibold.ttf') format('truetype');
 }
@@ -29,6 +35,10 @@ body {
 html,body{
   height: 100%;
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+#root{
+  height: 100%;
 }
 
 input, select, textarea, button{font-family:inherit;}
