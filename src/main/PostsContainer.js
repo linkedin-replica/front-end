@@ -29,10 +29,18 @@ class PostsContainer extends Component {
             }).catch(err => toast.error(err.response.data.error))
     }
 
+    handleDeletePost = (postId) => (event) => {
+
+        api.deletePost(postId)
+            .then(res => {
+                toast.success("Post deleted successfully")
+            }).catch(err => toast.error(err.response.data.error))
+    }
+
     render() {
         const { posts } = this.state;
         const { loggedInUser } = this.props;
-        const newPosts = posts.map(post => ({ ...post, loggedInUser }))
+        const newPosts = posts.map(post => ({ ...post, loggedInUser, handleDeletePost: this.handleDeletePost(post.postId) }))
 
         return (
             <ListAdapter data={newPosts} listItemView={PostContainer} verticalSplit />

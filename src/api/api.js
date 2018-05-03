@@ -48,7 +48,7 @@ export default {
     return axios.post('connections/addFriend', { userId1 })
   },
   unfriend: (userId1) => {
-    return axios.delete(`connections/unfriend`, { userId1 })
+    return axios.post(`connections/unfriend`, { userId1 })
   },
   blockUser: (userId1) => {
     return axios.post('connections/block', { userId1 })
@@ -74,7 +74,7 @@ export default {
     return axios.post('editinfo/userCvAdd', cvURL)
   },
   deleteCV: (cvURL) => {
-    return axios.delete(`editinfo/userCvDelete`, cvURL)
+    return axios.post(`editinfo/userCvDelete`, cvURL)
   },
   addUserSkill: (skill) => {
     return axios.put('editinfo/userAddSkill', skill)
@@ -108,7 +108,7 @@ export default {
     return axios.put('jobs/respondToApplicant', job)
   },
   deleteJob: (jobId) => {
-    return axios.delete('jobs/deleteJobCompany', { jobId })
+    return axios.post('jobs/deleteJobCompany', { jobId })
   },
 
   // Articles
@@ -169,17 +169,17 @@ export default {
   addPost: (authorId, text, img, video, isCompanyPost) => {
     return axios.post('wall/addPost', { authorId, text, images: [img], videos: [video], isCompanyPost, isArticle: false })
   },
-  editPost: (postId, authorId, type, text, headLine, likesCount, img, video, commentsCount, isArticle) => {
-    return axios.put(`wall/editPost`, { postId, authorId, type, text, headLine, likesCount, images: [img], videos: [video], commentsCount, isArticle: true })
+  editPost: (postId, authorId, type, text, headline, likesCount, img, video, commentsCount, isArticle) => {
+    return axios.put(`wall/editPost`, { postId, authorId, type, text, headline, likesCount, images: [img], videos: [video], commentsCount, isArticle: true })
   },
   deletePost: (postId) => {
-    return axios.delete(`wall/deletePost`, { postId })
+    return axios.post(`wall/deletePost`, { postId })
   },
   addPostComment: (parentPostId, authorId, text) => {
     return axios.post('wall/addComment', { parentPostId, authorId, text })
   },
   deleteComment: (commentId) => {
-    return axios.delete(`wall/deleteComment`, { commentId })
+    return axios.post(`wall/deleteComment`, { commentId })
   },
   likePost: (likerId, postId) => {
     return axios.post('wall/addLikeToPost', { likerId, postId })
@@ -212,7 +212,7 @@ export default {
     return axios.put(`wall/editReply`, reply)
   },
   deleteReply: (replyId) => {
-    return axios.delete(`wall/deleteReply`, { replyId })
+    return axios.post(`wall/deleteReply`, { replyId })
   },
   editComment: (comment) => {
     return axios.put(`wall/editComment`, comment)

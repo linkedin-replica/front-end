@@ -28,13 +28,20 @@ class PostContainer extends Component {
             }).catch(err => toast.error(err.response.data.error))
     }
 
+    handleDeleteComment = (commentId) => (event) => {
+
+        api.deleteComment(commentId)
+            .then(res => {
+                toast.success("Comment deleted successfully")
+            }).catch(err => toast.error(err.response.data.error))
+    }
+
     constructor(props) {
         super(props)
 
-        let isLiked = props.likers.find(({ likerId }) => likerId === props.loggedInUser.userId)
         this.state = {
             ...this.state,
-            liked: isLiked,
+            liked: props.liked,
             likeCount: props.likers.length,
             commentsCount: props.commentsCount,
             likers: props.likers,
@@ -104,17 +111,22 @@ class PostContainer extends Component {
 
     handleSubmitComment
     render() {
-        const { addCommentText, liked } = this.state
-        const { images, videos } = this.props
+        const { addCommentText, liked, comments } = this.state
+        const { images, videos, handleDeletePost, loggedInUser } = this.props
         let postContent = images ? images[0] : (videos ? videos[0] : '')
         let postType = images.length > 0 ? 'img' : (videos.length > 0 ? 'video' : '')
+
+        const newComments = comments.map(comment => ({ ...comment, loggedInUser, handleDeleteComment: this.handleDeleteComment(comment.commentId) }))
+
 
         return (
             <Post
                 {...this.props}
                 {...this.state}
+                comments={newComments}
                 postContent={postContent}
                 postType={postType}
+                handleDeletePost={handleDeletePost}
                 handleLikeButton={this.handleLikeButton}
                 handleCommentButton={this.handleCommentButton}
                 addCommentText={addCommentText}
@@ -136,7 +148,8 @@ PostContainer.propTypes = {
     liked: PropTypes.bool,
     authorName: PropTypes.string,
     authorProfilePictureUrl: PropTypes.string,
-    headLine: PropTypes.string
+    headline: PropTypes.string,
+    handleDeletePost: PropTypes.func
 };
 
 

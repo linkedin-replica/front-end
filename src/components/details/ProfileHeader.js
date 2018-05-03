@@ -62,15 +62,15 @@ ProfileHeader.propTypes = {
 
 const styles = {
     base: {
-        marginBottom: '12em',  
+        marginBottom: '12em',
     },
     whiteWrapper: {
         margin: '10px auto',
         paddingTop: '6em',
-        paddingBottom: '2em',   
+        paddingBottom: '2em',
         backgroundImage: 'url(http://www.thepartnermarketinggroup.com/wp-content/uploads/2018/01/LinkedInDefaultBanner.png)',
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'top', 
+        backgroundPosition: 'top',
         height: '7em',
         width: '90%',
     },

@@ -8,6 +8,7 @@ import WhiteWrapper from '../wrappers/WhiteWrapper';
 import PostContent from './PostContent';
 import WriteAComment from './WriteAComment';
 import ReplySection from './ReplySection';
+import IconButton from '../buttons/IconButton';
 
 
 class Comment extends Component {
@@ -32,11 +33,13 @@ class Comment extends Component {
             authorId,
             authorName,
             authorProfilePictureUrl,
-            headLine,
+            headline,
             liked,
             text,
             handleLikeButton,
             handleReplyButton,
+            handleDeleteComment,
+            handleDeleteReply,
             showReplies,
             replies,
             style,
@@ -44,10 +47,11 @@ class Comment extends Component {
 
         return (
             <section style={styles.base}>
+                <IconButton type="close" style={styles.delete} size="sm" onClick={handleDeleteComment} />
                 <DetailsHeader
                     img={authorProfilePictureUrl}
                     header={authorName}
-                    subHeader={headLine}
+                    subHeader={headline}
                     rounded
                     type={type}
                     imgSize="sm"
@@ -55,13 +59,13 @@ class Comment extends Component {
                 <div style={styles.details}>
                     <p style={styles.text}>{text}</p>
                     <div style={styles.buttons} >
-                        <IconTextButton name="Like" type="like" onClick={handleLikeButton} style={liked ? styles.likedButton : ''} />
-                        <IconTextButton name="Reply" type="comment" onClick={handleReplyButton} />
+                        <IconTextButton name="Like" type="like" size="sm" onClick={handleLikeButton} style={liked ? styles.likedButton : ''} />
+                        <IconTextButton name="Reply" type="comment" size="sm" onClick={handleReplyButton} />
                     </div>
                     <ReplySection
                         {...loggedInUser}
                         header={authorName}
-                        subHeader={headLine}
+                        subHeader={headline}
                         rounded
                         type={type}
                         id={authorId}
@@ -93,7 +97,8 @@ const styles = {
         padding: paddings.wrapper,
         background: 'none',
         width: '100%',
-        borderBottom: `1px solid ${colors.lightGray}`
+        borderBottom: `1px solid ${colors.lightGray}`,
+        position: 'relative',
     },
     buttons: {
         paddingTop: '2px'
@@ -107,6 +112,11 @@ const styles = {
     text: {
         margin: 0,
         paddingTop: '3%'
+    },
+    delete: {
+        position: 'absolute',
+        top: '10px',
+        right: '10px',
     }
 }
 

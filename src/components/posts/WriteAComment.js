@@ -16,7 +16,7 @@ class WriteAComment extends Component {
                     <AvatarImage src={loggedInUser ? loggedInUser.profilePictureUrl : ''} rounded size='sm' />
                 </span>
                 <div style={styles.commentDiv}>
-                    <InputForm placeholder="Write a comment"
+                    <InputForm placeholder="Write a comment..."
                         value={addCommentText}
                         handleChange={handleChangeComment}
                         onKeyUp={handleSubmitComment}

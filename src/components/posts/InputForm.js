@@ -31,7 +31,8 @@ const styles = {
         paddingLeft: '2%',
         height: "25px",
         overflow: 'hidden',
-        borderRadius: '15px'
+        borderRadius: '15px',
+        border: 'none'
     },
     post: {
         width: '100%',
