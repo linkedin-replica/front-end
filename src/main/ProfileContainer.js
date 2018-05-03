@@ -46,9 +46,6 @@ class ProfileContainer extends Component {
 
     constructor(props) {
         super(props)
-        const { mockData } = this.props;
-        if (mockData)
-            this.state.chats = mockData
 
         this.setState({
             newPersonalInfo: this.initPersonalInfo,
@@ -66,7 +63,7 @@ class ProfileContainer extends Component {
         if (match.params.id) {
             api.getUserProfileById(match.params.id)
                 .then(res => {
-                    this.setState({ profileData: res.results })
+                    this.setState({ profileData: res.data.results })
                 })
                 .catch(err => {
                     toast.error(err.response.data.error)
@@ -74,7 +71,7 @@ class ProfileContainer extends Component {
         } else {
             api.getUserProfile()
                 .then(res => {
-                    this.setState({ profileData: res.results })
+                    this.setState({ profileData: res.data.results })
                 })
                 .catch(err => {
                     toast.error(err.response.data.error)
@@ -181,9 +178,8 @@ class ProfileContainer extends Component {
     }
 
     render() {
-        const { userId, imageUrl, firstName, lastName, headline, personalInfo, positions, educations, skills, friendsList } = this.props
         return (
-            <Profile {...this.props} />
+            <Profile {...this.state.profileData} />
         );
     }
 }

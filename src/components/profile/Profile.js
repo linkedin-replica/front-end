@@ -14,19 +14,11 @@ import GridView from '../wrappers/GridView';
 class Profile extends Component {
     render() {
         const { userId, imageUrl, firstName, lastName, headline, personalInfo, positions, educations, skills, friendsList, style, size } = this.props;
-<<<<<<< HEAD
         return(
         <div style = {styles.main}>   
             <div style = {styles.header}>
                 <section>   
                 <ProfileHeader 
-=======
-        return (
-            <div style={styles.base}>
-                <div style={styles.header}>
-                    <section>
-                        <ProfileHeader
->>>>>>> 0fd80ebd812ac570f03ecf88fd9a15e03e57ed59
                             imageUrl={imageUrl}
                             rounded
                             firstName={firstName}
@@ -76,13 +68,9 @@ Profile.propTypes = {
 };
 
 const styles = {
-<<<<<<< HEAD
     main: {
         maxWwidth: '100%',
         maxHeight: '100%'
-=======
-    base: {
->>>>>>> 0fd80ebd812ac570f03ecf88fd9a15e03e57ed59
     },
     header: {
         width: '100%',
