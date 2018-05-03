@@ -8,7 +8,7 @@ class JobsTest extends React.Component {
     return (
     <div style={styles.base}>
         <header>
-            <h1>Connections Testing</h1>
+            <h1>Jobs Testing</h1>
          </header>
         <section>
             <h2>Job card test</h2>
@@ -146,20 +146,6 @@ const dummyJobCard = [
   companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A",
   location:'cairo',
 
-},{
-  title:'junior developer',
-  jobId:'1',
-  companyName: 'mumm',
-  companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A",
-  location:'cairo',
-
-},{
-  title:'junior developer',
-  jobId:'1',
-  companyName: 'mumm',
-  companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A",
-  location:'cairo',
-
-},];
+}];
 JobsTest = Radium(JobsTest);
 export default JobsTest;

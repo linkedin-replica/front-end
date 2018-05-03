@@ -22,7 +22,7 @@ class Jobs extends React.Component {
                    />
                </div>
                <GridView
-                   data={this.props.jobCardsData} gridItemView={JobCard} />
+                   data={jobCardsData} gridItemView={JobCard} />
            </WhiteWrapper>
         );
     }

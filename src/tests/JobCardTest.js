@@ -8,7 +8,7 @@ class JobCardTest extends React.Component {
     return (
     <div style={styles.base}>
         <header>
-            <h1>Connections Testing</h1>
+            <h1>Jobs Testing</h1>
          </header>
         <section>
             <h2>Job card test</h2>
