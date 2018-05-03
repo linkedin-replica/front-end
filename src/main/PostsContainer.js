@@ -13,7 +13,15 @@ class PostsContainer extends Component {
         posts: []
     }
 
+    constructor(props) {
+        super(props)
+
+        if (props.data)
+            this.state.posts = props.data
+    }
+
     componentDidMount() {
+        if (this.props.data) return;
         const { loggedInUser, isCompany } = this.props
 
         const request =
@@ -37,10 +45,18 @@ class PostsContainer extends Component {
             }).catch(err => toast.error(err.response.data.error))
     }
 
+    handleEditPost = (postId) => (event) => {
+
+        api.editPost(postId)
+            .then(res => {
+                toast.success("Post edited successfully")
+            }).catch(err => toast.error(err.response.data.error))
+    }
+
     render() {
         const { posts } = this.state;
         const { loggedInUser } = this.props;
-        const newPosts = posts.map(post => ({ ...post, loggedInUser, handleDeletePost: this.handleDeletePost(post.postId) }))
+        const newPosts = posts.map(post => ({ ...post, loggedInUser, handleEditPost: this.handleEditPost(post.postId), handleDeletePost: this.handleDeletePost(post.postId) }))
 
         return (
             <ListAdapter data={newPosts} listItemView={PostContainer} verticalSplit />

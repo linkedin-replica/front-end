@@ -169,8 +169,8 @@ export default {
   addPost: (authorId, text, img, video, isCompanyPost) => {
     return axios.post('wall/addPost', { authorId, text, images: [img], videos: [video], isCompanyPost, isArticle: false })
   },
-  editPost: (postId, authorId, type, text, headline, likesCount, img, video, commentsCount, isArticle) => {
-    return axios.put(`wall/editPost`, { postId, authorId, type, text, headline, likesCount, images: [img], videos: [video], commentsCount, isArticle: true })
+  editPost: (postId, text) => {
+    return axios.put(`wall/editPost`, { postId, text })
   },
   deletePost: (postId) => {
     return axios.post(`wall/deletePost`, { postId })
@@ -208,14 +208,14 @@ export default {
   replyPost: (parentPostId, parentCommentId, authorId, text) => {
     return axios.post('wall/addReply', { parentPostId, parentCommentId, authorId, text })
   },
-  editReply: (reply) => {
-    return axios.put(`wall/editReply`, reply)
+  editReply: (replyId, text) => {
+    return axios.put(`wall/editReply`, { replyId, text })
   },
   deleteReply: (replyId) => {
     return axios.post(`wall/deleteReply`, { replyId })
   },
-  editComment: (comment) => {
-    return axios.put(`wall/editComment`, comment)
+  editComment: (commentId, text) => {
+    return axios.put(`wall/editComment`, { commentId, text })
   },
 
   // Search
