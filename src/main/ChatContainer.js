@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import api from '../api/api';
 import Chat from '../components/chat/Chat';
+import { toast } from 'react-toastify';
 
 class ChatContainer extends Component {
 
@@ -31,7 +32,7 @@ class ChatContainer extends Component {
                     chats: data.results
                 })
             })
-            .catch(err => console.log(err))
+            .catch(err => toast.error(err.response.data.error))
     }
 
     handleSelect = (receiverId, receiverName) => {
@@ -57,7 +58,7 @@ class ChatContainer extends Component {
 
         // Connection established
         this.socket.on('connect', () => {
-            console.log('Connected')
+            toast.success(`Connected with ${this.state.receiverName}`)
         })
 
         // Receive messages
@@ -70,6 +71,7 @@ class ChatContainer extends Component {
         // Disconnected from server
         this.socket.on('disconnect', () => {
             this.socket = null;
+            toast.error(`Ended connection with ${this.state.receiverName}`)
         })
     }
 

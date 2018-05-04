@@ -5,17 +5,17 @@ import ListAdapter from '../wrappers/ListAdapter';
 import DetailsHeader from '../details/DetailsHeader';
 import Post from '../posts/Post';
 import WallHeader from '../wall/WallHeader';
-import PostContainer from '../posts/PostContainer';
+import PropTypes from 'prop-types';
+import PostContainer from '../../main/PostContainer';
 
 class Wall extends Component {
     render() {
-        const { id, src, rounded, header, subHeader, type } = this.props.data.user
-        console.log(this.props.data.user)
+        const { posts } = this.props
         return (
             <div style={styles.base}>
                 <WallHeader id={id} src={src} rounded={rounded} header={header} subHeader={subHeader} type={type} />
                 <section>
-                    <ListAdapter data={this.props.posts} listItemView={PostContainer} verticalSplit />
+                    <ListAdapter data={posts} listItemView={PostContainer} verticalSplit />
                 </section>
             </div >
         );
@@ -34,6 +34,10 @@ const styles = {
         textAlign: 'center'
     }
 }
+
+WallContainer.propTypes = {
+    posts: PropTypes.array
+};
 
 
 Wall = Radium(Wall);

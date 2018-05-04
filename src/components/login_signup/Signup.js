@@ -3,47 +3,67 @@ import Radium from 'radium';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import BlueButton from '../buttons/BlueButton';
 import PropTypes from 'prop-types'
+import LabeledInput from '../forms/LabeledInput';
+import { colors } from '../../resources/constants';
 
 class Signup extends Component {
   render() {
-    const { handleChange, handleSubmit } = this.props
+    const { firstName, lastName, email, password, confirmPassword, handleChange, handleSubmit } = this.props
     return (
-      <WhiteWrapper style={styles.whiteWrapper} >
+      <WhiteWrapper style={styles.base}>
+        <header>
+          <h1 style={styles.header}>
+            Get started, it's free
+          </h1>
+        </header>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="firstName">First name</label>
-          <input
-            id="firstName"
-            className='form-inline'
-            type='text'
-            onChange={handleChange('firstName')}
-            style={styles.label}
+          <LabeledInput
+            id="first-name"
+            label="First Name"
+            type="text"
+            text={firstName}
+            handleChange={handleChange('firstName')}
+            isRequired
           />
-          <label htmlFor="lastName">Last name</label>
-          <input
-            id="lastName"
-            className='form-inline'
-            type='text'
-            onChange={handleChange('lastName')}
-            style={styles.label}
+
+          <LabeledInput
+            id="last-name"
+            label="Last Name"
+            type="text"
+            text={lastName}
+            handleChange={handleChange('lastName')}
+            isRequired
           />
-          <label htmlFor="email">Email</label>
-          <input
+
+          <LabeledInput
             id="email"
-            className='form-inline'
-            type='email'
-            onChange={handleChange('email')}
-            style={styles.label}
+            label="Email"
+            type="email"
+            text={email}
+            handleChange={handleChange('email')}
+            isRequired
           />
-          <label htmlFor="password">Password</label>
-          <input
+
+          <LabeledInput
             id="password"
-            className="form-inline"
+            label="Password"
             type="password"
-            onChange={handleChange('password')}
-            style={styles.label}
+            text={password}
+            handleChange={handleChange('password')}
+            isRequired
           />
-          <div style={styles.button}>
-            <BlueButton name="Join now" size="lg" color="blue"></BlueButton>
+
+          <LabeledInput
+            id="confirm-password"
+            label="Confirm Password"
+            type="password"
+            text={confirmPassword}
+            handleChange={handleChange('confirmPassword')}
+            isRequired
+          />
+
+          <div style={styles.buttonContainer}>
+            <BlueButton name="Join now" style={styles.button} size="sm" color="blue"></BlueButton>
           </div>
         </form>
       </WhiteWrapper>
@@ -58,17 +78,24 @@ Signup.PropTypes = {
 
 const styles = {
   base: {
-    padding: '10px'
-  },
-  whiteWrapper: {
+    padding: '10px',
+    background: '#edf0f3',
     margin: '10px auto',
     padding: '30px',
     textAlign: 'left',
-    fontSize: '1.5em'
+    fontSize: '1.5em',
+    width: '400px'
+  },
+  header: {
+    fontSize: '1em',
+    textAlign: 'center'
+  },
+  buttonContainer: {
+    paddingTop: '15px',
+    textAlign: 'center'
   },
   button: {
-    paddingTop: '10px',
-    textAlign: 'center'
+    width: '100%',
   },
   label: {
     width: '100%',

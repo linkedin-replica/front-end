@@ -16,7 +16,7 @@ class WrappersTest extends Component {
             <div style={styles.base}>
                 <header>
                     <h1>Wrappers Testing</h1>
-                </header>   
+                </header>
                 <section>
                     <h2>White Wrapper (sm, md, lg)</h2>
                     <WhiteWrapper style={styles.whiteWrapper} size="sm">

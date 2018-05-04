@@ -1,12 +1,12 @@
 import io from 'socket.io-client';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import ArticleContainer from './ArticleContainer';
+import PostContainer from './PostContainer';
 import ListAdapter from '../components/wrappers/ListAdapter';
 import api from '../api/api';
 import { toast } from 'react-toastify';
 
-class ArticlesContainer extends Component {
+class PostsContainer extends Component {
 
     state = {
         posts: []
@@ -21,7 +21,7 @@ class ArticlesContainer extends Component {
     }
 
     componentDidMount() {
-        api.getTrendingArticlesRecommendations()
+        api.getPosts()
             .then(res => {
                 this.setState({
                     posts: res.data.results
@@ -30,14 +30,14 @@ class ArticlesContainer extends Component {
     }
 
     render() {
-        const { articles } = this.state;
+        const { posts } = this.state;
         return (
-            <ListAdapter data={articles} listItemView={ArticleContainer} verticalSplit />
+            <ListAdapter data={posts} listItemView={PostContainer} verticalSplit />
         );
     }
 }
 
-ArticlesContainer.propTypes = {
+PostsContainer.propTypes = {
     text: PropTypes.string,
     images: PropTypes.string,
     videos: PropTypes.string,
@@ -51,4 +51,4 @@ ArticlesContainer.propTypes = {
 };
 
 
-export default ArticlesContainer;
+export default PostsContainer;

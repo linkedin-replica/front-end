@@ -8,9 +8,9 @@ axios.defaults.baseURL = 'http://localhost:8081/api/'
 // axios.defaults.headers.post['access-token'] = 'eyJhbGciOiJIUzUxMiJ9.eyJzY29wZSI6InNlbGYvZ3JvdXBzL2FkbWlucyIsImlzcyI6ImxpbmtlZGluLmxvZ2luIiwiZXhwIjoxNTI0NjY1MDUzLCJpYXQiOjE1MjQ2NjE0NTMsImVtYWlsIjoiaG16YWhyYW4yQGdtYWlsLmNvbSIsImp0aSI6IjgyMWNjMmQ0LWQ0OTctNDZjZi05NzM3LTNmM2NhNDg4ODY5ZiJ9.CegtM60SNP3g2GRKGDaSN-2BWe0B0xzU7JR81NWvSz7Kpbz_R09t_f16Efbk9MJUF3MVs-gnGe9lDm40h1P-Qg';
 
 axios.interceptors.request.use(config => {
-  config.headers['access-token'] = localStorage.getItem('access-token') || ''
+  if (localStorage.getItem('access-token'))
+    config.headers['access-token'] = localStorage.getItem('access-token')
   config.headers['Content-Type'] = 'application/json;charset=UTF-8';
-  console.log(config)
   return config
 })
 
@@ -148,8 +148,8 @@ export default {
   getPosts: () => {
     return axios.get(`wall/posts`)
   },
-  addPost: (authorId, type, text, headLine, img, video) => {
-    return axios.post('wall/addPost', { authorId, type, text, headLine, images: [img], videos: [video], isArticle: false })
+  addPost: (authorId, text, img, video) => {
+    return axios.post('wall/addPost', { authorId, text, images: [img], videos: [video], isCompanyPost: false, isArticle: false })
   },
   editPost: (postId, authorId, type, text, headLine, likesCount, img, video, commentsCount, isArticle) => {
     return axios.put(`wall/editPost`, { postId, authorId, type, text, headLine, likesCount, images: [img], videos: [video], commentsCount, isArticle: true })
