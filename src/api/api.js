@@ -107,6 +107,12 @@ export default {
   deleteJob: (jobId) => {
     return axios.delete('jobs/deleteJobCompany', { jobId })
   },
+  saveJob: (jobId) => {
+    return axios.delete('jobs/saveJob', { jobId })
+  },
+  applyJob: (jobId) => {
+    return axios.delete('jobs/applyJob', { jobId })
+  },
 
   // Articles
   addArticle: (article) => {

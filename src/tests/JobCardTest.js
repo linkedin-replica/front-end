@@ -1,15 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Jobs from '../components/jobs/Jobs'
+//import Jobs from '../components/jobs/Jobs'
+import JobCard from '../components/jobs/JobCard'
 import Radium from 'radium'
 class JobCardTest extends React.Component {
   render() {
     return (
-      <Jobs jobCardsData = {dummyJobCard}/>
+    <div style={styles.base}>
+        <header>
+            <h1>Jobs Testing</h1>
+         </header>
+        <section>
+            <h2>Job card test</h2>
+            <JobCard {...dummyJobCard[0]} />
+        </section>
+    </div>
     );
   }
 }
+const styles = {
+    base: {
+        width: '250px',
+        padding: '10px'
 
+    }
+}
 const dummyJobCard = [
 {
   title:'junior developer',
