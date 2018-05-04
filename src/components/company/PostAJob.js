@@ -71,7 +71,7 @@ class PostAJob extends Component{
           </div>
 
           <div style={styles.buttonContainer}>
-            <BlueButton name="Post Job" style={styles.button} size="sm" color="blue" onClick={onClose}></BlueButton>
+            <BlueButton name="Post Job" style={styles.button} size="sm" color="blue" onClick={handleSubmit}></BlueButton>
           </div>
         </form>
       </Modal>

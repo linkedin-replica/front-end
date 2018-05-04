@@ -18,13 +18,12 @@ class App extends Component {
 
     // If user is logged in, get his info
     if (loggedInToken) {
-      this.props.history.push('/')
-
+      // this.props.history.push('/')
       api.getLoggedInUserDetails()
         .then(({ data }) => {
           this.setState({
             loggedInUser: data.results
-          }, () => this.props.history.push('/home'))
+          }, () => this.props.history.push('/company/12'))
 
         })
         .catch(err => {

@@ -18,8 +18,15 @@ class PostAJobContainer extends Component {
     },
     isOpen: this.props.isOpen
   }
+  componentDidMount() {
+    this.props.onRef(this)
+  }
+  componentWillUnmount() {
+    this.props.onRef(undefined)
+  }
 
   toggleModal = () => {
+    console.log("in post container toggle model")
     this.setState({
       isOpen: !this.state.isOpen
     });
@@ -33,7 +40,6 @@ class PostAJobContainer extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-
     const { data } = this.state
     api.postJobCompany()
       .then(res => {
@@ -48,7 +54,6 @@ class PostAJobContainer extends Component {
   render() {
     return (
       <div className="App">
-        <BlueButton name="Open Form" onClick={this.toggleModal}/>
         <PostAJob handleChange={this.handleChange} handleSubmit={this.handleSubmit} show={this.state.isOpen}
           onClose={this.toggleModal}></PostAJob>
       </div>

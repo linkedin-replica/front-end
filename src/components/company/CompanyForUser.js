@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { colors, paddings } from '../../resources/constants';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import CompanyBasicInfo from './CompanyBasicInfo';
+import WallContainer from '../../main/WallContainer';
+
 
 class CompanyForUser extends Component {
   state = { viewJobs: false, follow: false};
@@ -22,16 +24,17 @@ class CompanyForUser extends Component {
   };
 
     render() {
-      const { img, companyName, industryType, companyLocation, id} = this.props;
+      const { companyId, companyProfilePicture, companyName, industryType, companyLocation, loggedInUser} = this.props;
+        console.log("companyId  " + companyId )
         return (
           <div>
             <WhiteWrapper style={styles.whiteWrapper} size="lg">
               <CompanyBasicInfo style={styles.info}
-                img={img}
+                img={companyProfilePicture}
                 companyName={companyName}
                 industryType={industryType}
                 companyLocation={companyLocation}
-                id={id}
+                companyId={companyId}
                 borderedText={this.state.follow ? "Following" : "Follow"}
                 borderedFunc={this.toggleFollow}
                 blueText={this.state.viewJobs ? "See Posts" : "See Jobs"}
@@ -39,7 +42,7 @@ class CompanyForUser extends Component {
               </WhiteWrapper>
               { this.state.viewJobs ?
                 <div><h1>JOBSSSSSSS</h1></div> :
-                <div><h1>POSTSSSSSS</h1></div>
+                <WallContainer loggedInUser={loggedInUser} isCompany companyId={companyId}/>
               }
 
 
@@ -59,8 +62,7 @@ const styles = {
       backgroundPosition: 'top',
       height: '15em',
       width: '100vw',
-      position: 'relative',
-      top: '-12%'
+      position: 'relative'
   },
   info:{
     top:'60%'

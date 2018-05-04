@@ -13,14 +13,14 @@ class CompanyBasicInfo extends Component {
   state = { isAdmin: false };
 
     render() {
-        const { img, companyName, industryType, companyLocation, id, style, isAdmin, borderedText ,borderedFunc ,blueText ,blueFunc} = this.props;
+        const { img, companyName, industryType, companyLocation, companyId, style, isAdmin, borderedText ,borderedFunc ,blueText ,blueFunc} = this.props;
 
         return (
           <WhiteWrapper style={[styles.whiteWrapper, style]} size="lg">
               <AvatarImage src={img}
                 size='lg'
                 style={styles.img}
-                id={id}
+                companyId={companyId}
               />
               <div style={styles.textDiv}>
                   <label>{companyName}</label>

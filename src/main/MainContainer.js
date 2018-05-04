@@ -25,7 +25,7 @@ class MainContainer extends Component {
         return (
             <div className="main-app" style={styles.base}>
                 <Header isLoggedIn />
-                <main className="main-details" style={styles.details}>
+                <main className="main-details">
                     <Route path='/home' render={() => <WallContainer loggedInUser={loggedInUser} />} />
                     <Route path='/connections' component={ConnectionsContainer} />
                     <Route path='/jobs' component={JobsContainer} />

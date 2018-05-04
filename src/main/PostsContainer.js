@@ -23,6 +23,7 @@ class PostsContainer extends Component {
 
     componentDidMount() {
         const { loggedInUser, companyId, isCompany } = this.props
+        console.log("companyId   " + companyId)
 
         const request =
             isCompany ?
@@ -54,6 +55,7 @@ class PostsContainer extends Component {
     }
 
     render() {
+
         const { posts } = this.state;
         const { loggedInUser } = this.props;
         const newPosts = posts.map(post => ({ ...post, loggedInUser, handleEditPost: this.handleEditPost(post.postId), handleDeletePost: this.handleDeletePost(post.postId) }))
@@ -66,6 +68,7 @@ class PostsContainer extends Component {
 
 PostsContainer.propTypes = {
     userId: PropTypes.string,
+    companyId: PropTypes.string,
     isCompany: PropTypes.bool
 };
 

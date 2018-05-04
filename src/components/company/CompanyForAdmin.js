@@ -5,35 +5,29 @@ import { colors, paddings } from '../../resources/constants';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import Header from '../wrappers/Header';
 import CompanyBasicInfo from './CompanyBasicInfo';
-
-
+import PostAJobContainer from '../../main/PostAJobContainer';
 
 class CompanyForAdmin extends Component {
-  state = {
-      isOpen: this.props.isOpen
-  }
 
-  openPostAJobForm = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
+  toggleModal = () => {
+    this.child.toggleModal()
   }
-
     render() {
-      const { img, companyName, industryType, companyLocation, id} = this.props;
+      const { companyProfilePicture, companyName, industryType, companyLocation, companyId, openPostAJobForm} = this.props;
         return (
           <div>
             <WhiteWrapper style={styles.whiteWrapper} size="lg">
               <CompanyBasicInfo style={styles.info}
-                img={img}
+                img={companyProfilePicture}
                 companyName={companyName}
                 industryType={industryType}
                 companyLocation={companyLocation}
                 isAdmin
-                id={id}
+                companyId={companyId}
                 blueText="Post A Job"
-                blueFunc={this.openPostAJobForm}/>
+                blueFunc={this.toggleModal}/>
               </WhiteWrapper>
+              <PostAJobContainer isOpen={false} onRef={ref => (this.child = ref)}/>
 
           </div>
 

@@ -85,7 +85,7 @@ export default {
 
   // Company
   getCompanyProfile: (companyId) => {
-    return axios.get(`editinfo/companyGet/${companyId}`)
+    return axios.get(`editinfo/companyGet/`, { params: { companyId } })
   },
   addCompanyProfile: (company) => {
     return axios.post(`editinfo/companyAdd`, company)
