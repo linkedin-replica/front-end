@@ -33,11 +33,11 @@ class JobContainer extends Component{
         }
 
     render(){
-      const {jobData} = this.state;
-        return <Job
-                  {...jobData,
+      const {jobData} = {...this.state.jobData,
                   handleSave: this.handleSave(),
-                  handleApply: this.handleApply()}>
+                  handleApply: this.handleApply()};
+        return <Job
+                  {...jobData}>
                </Job>
       }
   }
