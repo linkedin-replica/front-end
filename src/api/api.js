@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:8080/api/'
+axios.defaults.baseURL = 'http://localhost:8000/api/'
 // axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 // axios.defaults.headers.post['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS';
@@ -229,15 +229,15 @@ export default {
 
   // Search
   searchUser: (searchKey) => {
-    return axios.post(`search/user/`, {searchKey})
+    return axios.post(`search/user/`, { searchKey })
   },
   searchCompany: (searchKey) => {
-    return axios.post(`search/company/`, {searchKey})
+    return axios.post(`search/company/`, { searchKey })
   },
   searchPost: (searchKey) => {
-    return axios.post(`search/post/`, {searchKey})
+    return axios.post(`search/post/`, { searchKey })
   },
   searchJob: (searchKey) => {
-    return axios.post(`search/job/`, {searchKey})
+    return axios.post(`search/job/`, { searchKey })
   },
 }

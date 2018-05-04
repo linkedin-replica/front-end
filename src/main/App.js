@@ -22,7 +22,7 @@ class App extends Component {
         .then(({ data }) => {
           this.setState({
             loggedInUser: data.results
-          }, () => this.props.history.push('/home'))
+          })
 
         })
         .catch(err => {
@@ -37,7 +37,6 @@ class App extends Component {
   render() {
     const { match } = this.props
     const { loggedInUser } = this.state
-
 
     return (
       <div className="main-app" style={styles.base}>

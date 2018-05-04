@@ -13,44 +13,45 @@ class FriendRecommendationItem extends Component {
     render() {
         const {
             //  Select the needed props only
-            name,
-            description,
-            img,
-            id,
+            firstName,
+            lastName,
+            profilePictureUrl,
+            userId,
+            headline,
             handleConnect,
             ...rest } = this.props;
 
         return (
             <WhiteWrapper style={styles.whiteWrapper}>
                 <div>
-                <AvatarImage src={img}
-                    rounded
-                    style={styles.img}
-                    size="lg"
-                    type="profile"
-                    id={id}
-                />
+                    <AvatarImage src={profilePictureUrl}
+                        rounded
+                        style={styles.img}
+                        size="lg"
+                        type="profile"
+                        id={userId}
+                    />
                 </div>
-                <BoldLink 
-                    text = {name}
+                <BoldLink
+                    text={firstName + ' ' + lastName}
                     type="profile"
-                    id={id} 
-                    size = "md"
-                    
+                    id={userId}
+                    size="md"
+
                 />
-                <GrayText 
-                    text = {description}
-                    size = "md" 
+                <GrayText
+                    text={headline}
+                    size="md"
                 />
-                <div style = {styles.center}>
-                <BorderedButton 
-                    name="Connect" 
-                    color="blue" 
-                    size="md" 
-                    onClick={handleConnect}
-                    style = {styles.blueBorder}/>
+                <div style={styles.center}>
+                    <BorderedButton
+                        name="Connect"
+                        color="blue"
+                        size="md"
+                        onClick={handleConnect}
+                        style={styles.blueBorder} />
                 </div>
-            
+
             </WhiteWrapper>
         );
     }
@@ -75,27 +76,27 @@ const styles = {
         textOverflow: 'ellipsis'
     },
     whiteWrapper: {
-        width:'100%',
+        width: '100%',
         height: '280px',
         margin: '0px',
         padding: '20px',
         textAlign: 'center',
-        position:'relative',
+        position: 'relative',
         align: 'center'
     },
     blueBorder: {
         border: `${borders.button.width.normal} solid ${colors.darkBlue}`,
         color: colors.darkBlue,
         ":hover": {
-          background: colors.darkBlue,
-          color: colors.white
+            background: colors.darkBlue,
+            color: colors.white
         },
-        
+
     },
-    center : {
+    center: {
         position: 'absolute',
-        bottom : '20px',
-        right : '0',
+        bottom: '20px',
+        right: '0',
         left: '0',
         margin: '0 auto'
     }

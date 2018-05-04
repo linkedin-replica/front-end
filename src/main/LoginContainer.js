@@ -29,7 +29,10 @@ class LoginContainer extends Component {
         this.props.history.push('/home')
       })
       .catch(err => {
-        toast.error(err.response.data.error)
+        if (err.response)
+          toast.error(err.response.data.error)
+        else
+          console.log(err)
       })
   }
 
