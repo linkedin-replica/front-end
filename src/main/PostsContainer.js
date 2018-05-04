@@ -5,6 +5,7 @@ import PostContainer from './PostContainer';
 import ListAdapter from '../components/wrappers/ListAdapter';
 import api from '../api/api';
 import { toast } from 'react-toastify';
+import { postsLimit } from '../resources/constants';
 
 class PostsContainer extends Component {
 
@@ -15,13 +16,20 @@ class PostsContainer extends Component {
     constructor(props) {
         super(props)
 
-        const { mockData } = this.props;
-        if (mockData)
-            this.state.posts = mockData
+        if (props.data)
+            this.state.posts = props.data
     }
 
     componentDidMount() {
-        api.getPosts()
+        if (this.props.data) return;
+        const { loggedInUser, isCompany } = this.props
+
+        const request =
+            isCompany ?
+                api.getCompanyPosts(loggedInUser.userId, postsLimit) :
+                api.getNewsFeed(postsLimit)
+
+        request
             .then(res => {
                 this.setState({
                     posts: res.data.results
@@ -29,25 +37,36 @@ class PostsContainer extends Component {
             }).catch(err => toast.error(err.response.data.error))
     }
 
+    handleDeletePost = (postId) => (event) => {
+
+        api.deletePost(postId)
+            .then(res => {
+                toast.success("Post deleted successfully")
+            }).catch(err => toast.error(err.response.data.error))
+    }
+
+    handleEditPost = (postId) => (event) => {
+
+        api.editPost(postId)
+            .then(res => {
+                toast.success("Post edited successfully")
+            }).catch(err => toast.error(err.response.data.error))
+    }
+
     render() {
         const { posts } = this.state;
+        const { loggedInUser } = this.props;
+        const newPosts = posts.map(post => ({ ...post, loggedInUser, handleEditPost: this.handleEditPost(post.postId), handleDeletePost: this.handleDeletePost(post.postId) }))
+
         return (
-            <ListAdapter data={posts} listItemView={PostContainer} verticalSplit />
+            <ListAdapter data={newPosts} listItemView={PostContainer} verticalSplit />
         );
     }
 }
 
 PostsContainer.propTypes = {
-    text: PropTypes.string,
-    images: PropTypes.string,
-    videos: PropTypes.string,
-    commentsCount: PropTypes.string,
-    timestamp: PropTypes.number,
-    likers: PropTypes.object,
-    liked: PropTypes.bool,
-    authorName: PropTypes.string,
-    authorProfilePictureUrl: PropTypes.string,
-    headline: PropTypes.string
+    userId: PropTypes.string,
+    isCompany: PropTypes.bool
 };
 
 
