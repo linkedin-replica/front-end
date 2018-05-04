@@ -6,6 +6,7 @@ import WhiteWrapper from '../wrappers/WhiteWrapper';
 import Header from '../wrappers/Header';
 import CompanyBasicInfo from './CompanyBasicInfo';
 import PostAJobContainer from '../../main/PostAJobContainer';
+import WallContainer from '../../main/WallContainer';
 
 class CompanyForAdmin extends Component {
 
@@ -13,7 +14,7 @@ class CompanyForAdmin extends Component {
     this.child.toggleModal()
   }
     render() {
-      const { companyProfilePicture, companyName, industryType, companyLocation, companyId, openPostAJobForm} = this.props;
+      const { companyProfilePicture, loggedInUser, companyName, industryType, companyLocation, companyId, openPostAJobForm} = this.props;
         return (
           <div>
             <WhiteWrapper style={styles.whiteWrapper} size="lg">
@@ -28,7 +29,7 @@ class CompanyForAdmin extends Component {
                 blueFunc={this.toggleModal}/>
               </WhiteWrapper>
               <PostAJobContainer isOpen={false} onRef={ref => (this.child = ref)}/>
-
+              <WallContainer loggedInUser={loggedInUser} isCompany companyId={companyId}/>
           </div>
 
 
