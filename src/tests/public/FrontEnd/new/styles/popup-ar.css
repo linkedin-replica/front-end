@@ -1,0 +1,35 @@
+
+.ItemsPane {
+    float: right;
+}
+.itemsHolder
+{
+	float: right;
+	padding:0px 0 0 30px;
+}
+.itemImg, .itemDetails {
+    float: right;
+}
+.itemDetails
+{
+	margin-left:0;
+	margin-right:15px;
+}
+.new-rating
+{
+	float:right;
+	direction:ltr;
+}
+.new-rating > label
+{
+	direction:ltr;
+	float: left;
+}
+.new-rating > label:before
+{
+	position:relative;
+}
+.popup h1
+{
+	direction:ltr;
+}

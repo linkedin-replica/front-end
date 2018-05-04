@@ -13,7 +13,7 @@ class RecommendedArticles extends React.Component {
 }
 
 RecommendedArticles.propTypes = {
-    recommendedArticlesData: PropTypes.array.isRequired
+    recommenjodedArticlesData: PropTypes.array.isRequired
 }
 
 export default RecommendedArticles;
