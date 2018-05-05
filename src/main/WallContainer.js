@@ -10,11 +10,14 @@ import { colors } from '../resources/constants';
 class WallContainer extends Component {
 
     render() {
-        const { loggedInUser, isCompany, isArticle, companyId } = this.props
+        const { loggedInUser, isCompany, isArticle, companyId, isAdmin } = this.props
         console.log("companyId   " + companyId)
         return (
             <div style={styles.base}>
+              { !isCompany || isAdmin ?
                 <AddPostContainer isCompany={isCompany} isArticle={isArticle} loggedInUser={loggedInUser} companyId={companyId} />
+                : <div />
+              }
                 <section>
                     {isArticle ?
                         <ArticlesContainer /> :

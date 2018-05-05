@@ -31,7 +31,7 @@ class CompanyBasicInfo extends Component {
                 <div style={styles.btnDiv}>
                 <BlueButton name={blueText} onClick={() => blueFunc()} />   </div> :
                   <div style={styles.btnDiv}>
-                    <BorderedButton name={borderedText} color="blue" onClick={() => borderedFunc()} size="md" />
+                    <BorderedButton name={borderedText} color="blue" onClick={() => borderedFunc()} size="md"/>
                     <BlueButton name={blueText} onClick={() => blueFunc()} />
                   </div>
               }
@@ -57,8 +57,6 @@ const styles = {
     base: {
 
     },
-    img:{
-    },
     whiteWrapper: {
         margin: '10px auto',
         padding: '20px',
@@ -70,7 +68,7 @@ const styles = {
       position: 'absolute',
       right: '2%',
       bottom: 0,
-      paddingBottom: '25px'
+      paddingBottom: '25px',
     },
     textDiv: {
         display: 'inline-block',

@@ -7,7 +7,6 @@ import api from '../api/api';
 import { toast } from 'react-toastify';
 
 class PostAJobContainer extends Component {
-
   state = {
     data: {
       companyName: '',
@@ -18,6 +17,7 @@ class PostAJobContainer extends Component {
     },
     isOpen: this.props.isOpen
   }
+
   componentDidMount() {
     this.props.onRef(this)
   }
@@ -26,7 +26,6 @@ class PostAJobContainer extends Component {
   }
 
   toggleModal = () => {
-    console.log("in post container toggle model")
     this.setState({
       isOpen: !this.state.isOpen
     });
@@ -40,15 +39,16 @@ class PostAJobContainer extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const { data } = this.state
-    api.postJobCompany()
+    const { companyName, jobTitle, companyLocation, industryType, jobBrief } = this.state
+    const { companyId } = this.props
+    api.postJobCompany({ companyName, jobTitle, companyLocation, industryType, jobBrief, companyId})
       .then(res => {
-
+        toast.success("Job is successfully posted")
       })
       .catch(err => {
-        toast.error(err.response.data.error)
+        toast.error(err.response.data.err)
       })
-
+    this.toggleModal()
   }
 
   render() {
