@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import CreateCompany from '../components/company/CreateCompany'
+import { withRouter } from 'react-router';
 import BlueButton from '../components/buttons/BlueButton';
+import api from '../api/api';
+import { toast } from 'react-toastify';
 
 class CreateCompanyContainer extends Component {
   state = {
@@ -36,7 +39,7 @@ class CreateCompanyContainer extends Component {
     event.preventDefault()
     const { companyName, companyUrl } = this.state
     const { loggedInUser } = this.props
-    api.addCompanyProfile({ companyName, companyUrl, loggedInUser.userId})
+    api.addCompanyProfile({ companyName, companyUrl, loggedInUser})
       .then(res => {
         toast.success("Company is successfully created")
       })
