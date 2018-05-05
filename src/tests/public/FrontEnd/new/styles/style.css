@@ -1,0 +1,206 @@
+/******** PopUp **********/
+
+/******** Remove this style when you implement **********/
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+/******** Remove this style when you implement **********/
+
+.text-center {
+
+    text-align: center
+}
+
+.popup {
+    border-radius: 8px;
+    position: fixed;
+    padding: 15px 15px 20px 15px;
+    max-width: 575px;
+    left: 0;
+    top: 15%;
+    background: #FFF;
+    z-index: 999999;
+    margin: auto;
+    right: 0;
+    -webkit-box-shadow: 0px 0px 0px 9999px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 0px 9999px rgba(0, 0, 0, 0.75);
+}
+
+.itemsHolder {
+    float: left;
+    margin: 10px 0 0 0;
+    padding: 0px 30px;
+    width: 100%;
+}
+
+.ItemsPane {
+    float: left;
+}
+
+.ItemsPaneHolder {
+    height: 300px;
+    overflow-y: scroll;
+    width: 100%;
+    overflow-x: hidden;
+    border: 1px solid #FF6008;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.itemImg, .itemDetails {
+    float: left;
+}
+
+.itemImg {
+    width: 29%;
+}
+
+.itemDetails {
+    width: 65%;
+    margin-left: 15px;
+}
+
+.itemDetails h2 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.itemDetails span {
+    font-size: 13px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.popup img {
+    width: 100%;
+}
+
+.popup h1 {
+
+    font-size: 22px;
+}
+
+.popup p {
+
+    font-size: 14px;
+}
+
+.popup button {
+    background: #ff6008;
+    color: #fff;
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 20px;
+    min-width: 215px;
+    margin-top: 10px;
+    border: 0;
+    line-height: 1;
+}
+
+.popup textarea {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 99%;
+    padding: 10px;
+    font-size: 14px;
+    min-height: 120px;
+}
+
+/******** new-rating **********/
+.popup fieldset, .popup label {
+    margin: 0;
+    padding: 0;
+}
+
+.new-rating {
+    border: none;
+    float: left;
+}
+
+.new-rating > input {
+    display: none;
+}
+
+.new-rating > label:before {
+    margin: 5px;
+    font-size: 24px;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+}
+
+.new-rating > .half:before {
+    content: "\f089";
+    position: absolute;
+}
+
+.new-rating > label {
+    color: #cbcbcb;
+    float: right;
+}
+
+.warning-div {
+    background: #ff8039;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.warning-div p {
+    font-size: 20px;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.new-rating > input:checked ~ label, /* show gold star when clicked */
+.new-rating:not(:checked) > label:hover, /* hover current star */
+.new-rating:not(:checked) > label:hover ~ label {
+    color: #f8c500;
+}
+
+/* hover previous stars in list */
+
+.new-rating > input:checked + label:hover, /* hover current star when changing new-rating */
+.new-rating > input:checked ~ label:hover,
+.new-rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.new-rating > input:checked ~ label:hover ~ label {
+    color: #FFED85;
+}
+
+/******** End new-rating **********/
+
+@media (max-width: 600px) {
+    .popup h1 {
+        margin-top: 0;
+    }
+
+    .itemImg, .itemDetails {
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .itemsHolder {
+        padding: 0 10px;
+        margin: 0;
+    }
+
+    .ItemsPaneHolder {
+        height: 220px;
+    }
+
+    .popup {
+        top: 5%;
+    }
+    .popup img
+    {
+        width: 50%;
+    }
+}
+
+/******** End PopUp **********/

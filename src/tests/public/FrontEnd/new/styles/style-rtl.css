@@ -1,0 +1,505 @@
+html {
+  direction: rtl;
+}
+body > header nav {
+  right: 0;
+  left: auto;
+}
+body > header nav ul li + li {
+  margin-left: 0;
+  margin-right: 25px;
+}
+body > header .cart-user {
+  right: auto;
+  left: 0;
+}
+body > header .container.with-menu {
+  border-right: 0
+}
+.pull-start {
+  float: right !important;
+}
+.pull-end {
+  float: left !important;
+}
+.settings-wrapper .language-switch {
+  border-right: 0;
+  border-left: 1px solid #dcdfe6;
+}
+.settings-wrapper .settings {
+  border-right: 1px solid #dcdfe6;
+  border-left: 0;
+}
+.settings-wrapper .custom-select + .custom-select {
+  border-right: 0;
+  border-left: 1px solid #dcdfe6
+}
+body > header .cart-user > li .submenu {
+  right: auto;
+  left: -4px;
+}
+body > header .cart-user > li .submenu::before {
+  left: 32px;
+  right: auto;
+}
+body > header .cart-user > li .submenu::after {
+  left: 32px;
+  right: auto;
+
+}
+.cart-item__image {
+  float: right;
+  margin-left: 15px;
+  margin-right: 0;
+}
+header .cart-items {
+  text-align: right;
+}
+body > header .cart-user > li.user-menu .submenu {
+  right: auto;
+  left: -2px;
+}
+body > header .cart-user > li.user-menu .submenu::before {
+  right: auto;
+  left: 28px;
+}
+body > header .cart-user > li.user-menu .submenu::after {
+  right: auto;
+  left: 28px;
+}
+body > header .cart-user > li.user-menu .submenu {
+  text-align: right;
+}
+.slick-slider {
+  direction: ltr;
+}
+.cols > .col {
+  float: right;
+}
+.cols.cols-4 > .col:nth-child(4n + 5) {
+  clear: right;
+}
+.card__avatar {
+  float: right;
+  margin-left: 15px;
+  margin-right: 0;
+}
+.card__information .card__title {
+  padding-right: 0;
+  padding-left: 30px;
+}
+.cards-container .card .add-meal {
+  right: auto;
+  left: 0;
+}
+.splash--style-4 .select-wrapper::after, .splash--style-5 .select-wrapper::after {
+  right: auto;
+  left: 22px;
+}
+.cheff img {
+  float: right;
+  margin-left: 20px;
+  margin-right: 0;
+}
+.rating {
+  margin-left: 0;
+  margin-right: 15px;
+}
+body > header .sign {
+  right: auto;
+  left: 0;
+}
+body > header .sign li + li {
+  margin-left: 0;
+  margin-right: 25px;
+}
+.custom-pick input:checked + label::before {
+  left: auto;
+  right: 10px;
+}
+.grouped-picks > :first-child label {
+  border-radius: 0 35px 35px 0
+}
+.grouped-picks > :last-child label {
+  border-radius: 35px 0 0 35px;
+}
+#cc-number {
+  background-position: 15px 50%;
+}
+.plan + .plan {
+  border-left: 0;
+  border-right: 1px solid #f2f2f2;
+}
+.plan__price .price::before {
+  content: "ج م";
+}
+.plan__price .price::after {
+  content: "/شهر";
+}
+.card--side-image img {
+  float: right;
+  margin-left: 20px;
+  margin-right: 0;
+}
+.meal-actions .clear {
+  float: left;
+  text-align: left;
+}
+.meal-actions .meals-counter {
+  float: right;
+}
+body > header .dashboard {
+  left: auto;
+  right: 0;
+  border-right: 0;
+  border-left: 1px solid #dcdfe6;
+}
+body > header .cart-user > li {
+  border-left: 0;
+  border-right: 1px solid #dcdfe6;
+}
+.steps-3 ol li + li::after {
+  left: 50px;
+  right: -420px;
+}
+.steps ol li:first-child {
+  text-align: right;
+}
+.steps ol li:first-child svg {
+  margin-left: auto;
+  margin-right: 10px;
+}
+.steps ol li:last-child {
+  text-align: left;
+}
+.steps ol li:last-child svg {
+  margin-left: 10px;
+  margin-right: auto;
+}
+.button + .button {
+  margin-left: 0;
+  margin-right: 10px;
+}
+.meal-actions .meals-counter input[readonly] {
+  text-align: left;
+}
+.align-end {
+  text-align: left;
+}
+.align-start {
+  text-align: right;
+}
+.form input.custom-checkbox + label {
+  padding-left: 0;
+  padding-right: 33px;
+}
+.form input.custom-checkbox + label::before {
+  right: 0;
+  left: auto;
+}
+.has-lines::before {
+  margin-right: 0;
+  margin-left: 20px;
+}
+.has-lines::after {
+  margin-left: 0;
+  margin-right: 20px;
+}
+.code-wrapper.code-correct::before {
+  right: auto;
+  left:10px;
+}
+.settings-wrapper .settings .submenu {
+  left: -1px;
+  right: auto;
+}
+.settings-wrapper .settings .submenu {
+  text-align: right;
+}
+body>.sticky-wrapper header nav, body header nav {
+  right: 0;
+  left: auto;
+}
+body>.sticky-wrapper header .cart-user,
+body header .cart-user,
+body>.sticky-wrapper header .sign, body header .sign {
+  left: 0;
+  right: auto;
+}
+body>.sticky-wrapper header .sign li+li,
+body>.sticky-wrapper header nav ul li+li,
+body header .sign li+li,
+body header nav ul li+li {
+  margin-left: 0;
+  margin-right: 25px;
+}
+.settings-wrapper .settings .submenu::before {
+  left: 28px;
+  right: auto;
+  margin-right: -8px;
+  margin-left: 0;
+}
+body>.sticky-wrapper header .cart-user>li.user-menu .submenu, body header .cart-user>li.user-menu .submenu {
+  left: -1px;
+  right: auto;
+}
+body>.sticky-wrapper header .cart-user>li.user-menu .submenu::before, body header .cart-user>li.user-menu .submenu::before,
+body>.sticky-wrapper header .cart-user>li.user-menu .submenu::after, body header .cart-user>li.user-menu .submenu::after {
+  left: 28px;
+  right: auto;
+}
+body>.sticky-wrapper header .cart-user>li .submenu, body header .cart-user>li .submenu {
+  left: -1px;
+  right: auto;
+}
+body>.sticky-wrapper header .cart-user>li .submenu::after, body header .cart-user>li .submenu::after,
+body>.sticky-wrapper header .cart-user>li .submenu::before, body header .cart-user>li .submenu::before {
+  left: 32px;
+  right: auto;
+}
+body>.sticky-wrapper header .cart-user>li.user-menu .submenu, body header .cart-user>li.user-menu .submenu {
+  text-align: right;
+}
+body>.sticky-wrapper header .sign>li .counter,
+body header .sign>li .counter {
+  right: auto;
+  left: 10px;
+}
+body>.sticky-wrapper header .sign .cart-menu,
+body header .sign .cart-menu {
+  border-left: 0;
+  border-right: 1px solid #dcdfe6;
+}
+body>.sticky-wrapper header .sign>li .submenu,
+body header .sign>li .submenu {
+  left: -4px;
+  right: auto;
+}
+body>.sticky-wrapper header .sign>li .submenu::before,
+body header .sign>li .submenu::before {
+  left: 32px;
+  right: auto;
+}
+body>.sticky-wrapper header .sign>li .submenu::after,
+body header .sign>li .submenu::after {
+  right: auto;
+  left: 32px;
+}
+@media(max-width: 767px) {
+  body>.sticky-wrapper header nav, body header nav {
+    position: static;
+  }
+  body>.sticky-wrapper header .cart-user, body header .cart-user, body>.sticky-wrapper header .sign, body header .sign {
+    position: static;
+  }
+  body>.sticky-wrapper header .cart-user>li, body>header .cart-user>li {
+      display: list-item;
+      line-height: 2.5;
+      width: auto;
+      text-align: left;
+      border-left: 0;
+      border-right: 0;
+  }
+  body>.sticky-wrapper header .cart-user>li .submenu, body>header .cart-user>li .submenu {
+      display: block;
+      border: 0;
+      box-shadow: none;
+      position: static;
+      border-top: 1px solid #ccc;
+      margin-left: 30px;
+  }
+  body>.sticky-wrapper header .cart-user>li .submenu, body>header .cart-user>li .submenu,
+  body>.sticky-wrapper header .cart-user>li:hover .submenu, body>header .cart-user>li:hover .submenu {
+    margin: 0;
+    border: 0;
+  }
+  body>.sticky-wrapper header .cart-user>li .submenu::after, body header .cart-user>li .submenu::after, body>.sticky-wrapper header .cart-user>li .submenu::before, body header .cart-user>li .submenu::before {
+    content: none;
+  }
+  body header .sign li, body header nav ul li, body header .cart-user li {
+    text-align: right;
+  }
+  .menu-wrapper {
+    line-height: 1.5;
+  }
+  header .cart-total p span {
+    float: left;
+  }
+  #cart-checkout-header a {
+    color: #fff;
+    text-align: center;
+  }
+  .user-menu > a {
+    display: none !important;
+  }
+  body header .sign li+li, body header nav ul li+li, body header .cart-user li + li {
+    border-top: 0;
+  }
+  .table.meals .meal__thumbnail {
+    float: right;
+  }
+  .table.meals .meal-actions {
+    padding-left: 0;
+    padding-right: 120px;
+  }
+  .steps-3 ol li + li::after {
+    left: 50px;
+    right: -70px;
+  }
+  .cols.cols-m-2>.cols {
+    clear: right;
+  }
+  .cols.cols-m-2>.cols:nth-child(odd) {
+    clear: left;
+  }
+}
+.table.meals .meal__thumbnail {
+  margin-left: 10px;
+}
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
+}
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff;
+  margin: 0.5em
+}
+.resp-sharing-button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.5em 0.75em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif
+}
+.resp-sharing-button__icon svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.4em;
+  vertical-align: top
+}
+.resp-sharing-button--small svg {
+  margin: 0;
+  vertical-align: middle
+}
+/* Non solid icons get a stroke */
+.resp-sharing-button__icon {
+  stroke: #fff;
+  fill: none
+}
+/* Solid icons get a fill */
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+.resp-sharing-button--twitter {
+  background-color: #55acee
+}
+.resp-sharing-button--twitter:hover {
+  background-color: #2795e9
+}
+.resp-sharing-button--pinterest {
+  background-color: #bd081c
+}
+.resp-sharing-button--pinterest:hover {
+  background-color: #8c0615
+}
+.resp-sharing-button--facebook {
+  background-color: #3b5998
+}
+.resp-sharing-button--facebook:hover {
+  background-color: #2d4373
+}
+.resp-sharing-button--tumblr {
+  background-color: #35465C
+}
+.resp-sharing-button--tumblr:hover {
+  background-color: #222d3c
+}
+.resp-sharing-button--reddit {
+  background-color: #5f99cf
+}
+.resp-sharing-button--reddit:hover {
+  background-color: #3a80c1
+}
+.resp-sharing-button--google {
+  background-color: #dd4b39
+}
+.resp-sharing-button--google:hover {
+  background-color: #c23321
+}
+.resp-sharing-button--linkedin {
+  background-color: #0077b5
+}
+.resp-sharing-button--linkedin:hover {
+  background-color: #046293
+}
+.resp-sharing-button--email {
+  background-color: #777
+}
+.resp-sharing-button--email:hover {
+  background-color: #5e5e5e
+}
+.resp-sharing-button--xing {
+  background-color: #1a7576
+}
+.resp-sharing-button--xing:hover {
+  background-color: #114c4c
+}
+.resp-sharing-button--whatsapp {
+  background-color: #25D366
+}
+.resp-sharing-button--whatsapp:hover {
+  background-color: #1da851
+}
+.resp-sharing-button--hackernews {
+  background-color: #FF6600
+}
+.resp-sharing-button--hackernews:hover,
+.resp-sharing-button--hackernews:focus {
+  background-color: #FB6200
+}
+.resp-sharing-button--vk {
+  background-color: #507299
+}
+.resp-sharing-button--vk:hover {
+  background-color: #43648c
+}
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+.resp-sharing-button--facebook:hover,
+.resp-sharing-button--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+#cart-body-sticky-wrapper {
+  float: right;
+}
+.meal span {
+  float: left;
+}
+header .cart-total p {
+  text-align: right;
+}
+@media (max-width: 767px) {
+  #cart-body-sticky-wrapper h1 {
+    text-align: right;
+    padding: 0 10px 0 40px;
+  }
+  body #cart-body-sticky-wrapper h1 {
+    background-position: 2% 50% !important;
+  }
+  .cols.cols-m-2>.col {
+    float: right;
+  }
+  .cols.cols-m-2>.col:nth-child(odd) {
+    clear: right;
+  }
+  #cart-body-sticky-wrapper h1 span {
+    float: left;
+    margin-right: 0;
+    margin-left: 20px;
+  }
+}

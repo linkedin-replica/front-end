@@ -10,6 +10,7 @@ import TypographyTest from './TypographyTest';
 import ProfileTest from './ProfileTest';
 import DetailsHeaderTest from './DetailsHeaderTest';
 import ConnectionsTest from './ConnectionsTest';
+import NotificationsTest from './NotificationsTest';
 import LoginContainerTest from './LoginContainerTest';
 import LoginTest from './LoginTest';
 import RegistrationContainerTest from './RegistrationContainerTest';
@@ -23,6 +24,8 @@ import TabBarTest from './TabBarTest';
 import CompanyForUserTest from './CompanyForUserTest';
 import CompanyForAdminTest from './CompanyForAdminTest.js';
 
+import JobsTest from './JobsTest'
+import JobTest from './JobTest'
 
 
 class Test extends Component {
@@ -46,20 +49,32 @@ class Test extends Component {
         <Route path={`${match.url}/details`} component={DetailsHeaderTest} />
 
         <Route path={`${match.url}/applicant`} component={CompanyTest} />
+
+
+        <Route path={`${match.url}/connections`} component={ConnectionsTest} />
+
         <Route path={`${match.url}/chat`} component={ChatTest} />
 
         <Route path={`${match.url}/recommendedArticle`} component={RecommendedArticleTest} />
 
         <Route path={`${match.url}/chat`} component={ChatTest} />
+        <Route path={`${match.url}/recommendedArticles`} component={RecommendedArticlesTest} />
+
+
+
+        {/* <Route path={`${match.url}/wall`} component={WallTest} /> */}
 
         <Route path={`${match.url}/connections`} component={ConnectionsTest} />
-
+        <Route path={`${match.url}/notifications`} component={NotificationsTest} />
         <Route path={`${match.url}/JobCard`} component={JobCardTest} />
         <Route path={`${match.url}/login`} component={LoginContainerTest} />
         <Route path={`${match.url}/signup`} component={RegistrationContainerTest} />
         <Route path={`${match.url}/modal`} component={ModalTest} />
         <Route path={`${match.url}/tabBar`} component={TabBarTest} />
         <Route path={`${match.url}/recommendedArticles`} component={RecommendedArticlesTest} />
+        <Route path={`${match.url}/Jobs`} component={JobsTest} />
+        <Route path={`${match.url}/Job`} component={JobTest} />
+
 
         {/*
 

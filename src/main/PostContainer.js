@@ -110,7 +110,7 @@ class PostContainer extends Component {
         }
     }
 
-    handleSubmitComment
+    
     render() {
         const { addCommentText, liked, comments } = this.state
         const { images, videos, handleDeletePost, loggedInUser } = this.props

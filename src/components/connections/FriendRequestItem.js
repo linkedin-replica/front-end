@@ -17,29 +17,32 @@ class FriendRequestItem extends Component {
     render() {
         const {
             //  Select the needed props only
-            name,
-            description,
-            img,
-            id,
+            firstName,
+            lastName,
+            profilePictureUrl,
+            userId,
+            headline,
             handleAccept,
             handleIgnore,
             ...rest } = this.props;
 
         return (
             <WhiteWrapper style={styles.whiteWrapper} size="lg">
-                <DetailsHeader img={img}
+                <DetailsHeader img={profilePictureUrl}
                     rounded
-                    header={name}
-                    subHeader={description}
+                    header={firstName + ' ' + lastName}
+                    subHeader={headline}
                     type="profile"
-                    id="1"
-                    size = "md" />
+                    id={userId}
+                    size="md" />
                 <div style={styles.btnDiv}>
-                <GreyAndBorder 
-                    greyText="Ignore" 
-                    blueText="Accept" 
-                    size="md">
-                </GreyAndBorder>
+                    <GreyAndBorder
+                        greyText="Ignore"
+                        blueText="Accept"
+                        greyOnClick={handleIgnore}
+                        blueOnClick={handleAccept}
+                        size="md">
+                    </GreyAndBorder>
                 </div>
             </WhiteWrapper>
         );
@@ -66,14 +69,14 @@ const styles = {
         padding: '20px',
         textAlign: 'left',
         fontSize: '1.5em',
-        position:'relative'
+        position: 'relative'
     },
     btnDiv: {
-      position: 'absolute',
-      right: 0,
-      bottom: 0,
-      width: '30%',
-      paddingBottom: '25px'
+        position: 'absolute',
+        right: 0,
+        bottom: 0,
+        width: '30%',
+        paddingBottom: '25px'
     },
 }
 

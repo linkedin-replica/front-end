@@ -39,7 +39,6 @@ class App extends Component {
     const { match } = this.props
     const { loggedInUser } = this.state
 
-
     return (
       <div className="main-app" style={styles.base}>
         <Switch>
