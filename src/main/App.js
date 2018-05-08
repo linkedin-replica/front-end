@@ -23,7 +23,7 @@ class App extends Component {
         .then(({ data }) => {
           this.setState({
             loggedInUser: data.results
-          }, () => this.props.history.push('/company/12'))
+          }, () => this.props.history.push('/home'))
 
         })
         .catch(err => {

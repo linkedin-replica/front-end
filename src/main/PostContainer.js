@@ -119,7 +119,6 @@ class PostContainer extends Component {
 
         const newComments = comments.map(comment => ({ ...comment, loggedInUser, handleDeleteComment: this.handleDeleteComment(comment.commentId) }))
 
-
         return (
             <Post
                 {...this.props}
