@@ -8,7 +8,8 @@ import Radium from 'radium'
 
 class RecommendedArticle extends React.Component {
     render () {
-        const {title, postId, miniText, authorName, peopleTalking} = this.props;
+        const {postId, miniText, authorName, peopleTalking} = this.props;
+        const title = 'Article Title';
         const peopleTalkingText = peopleTalking + ' people are talking about this';
         return (
             <WhiteWrapper style={styles.base}>
