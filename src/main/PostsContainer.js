@@ -23,7 +23,6 @@ class PostsContainer extends Component {
 
     componentDidMount() {
         const { loggedInUser, companyId, isCompany } = this.props
-        console.log("companyId   " + companyId)
 
         const request =
             isCompany ?

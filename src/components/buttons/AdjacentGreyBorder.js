@@ -11,8 +11,8 @@ class AdjacentGreyBorder extends Component {
         const { greyText, blueText, size, greyOnClick, blueOnClick } = this.props;
         return (
             <div style={[styles.base, styles.btnDiv]}>
-                <GrayTextButton name={greyText} size={size} type="Button" onClick={greyOnClick} />
-                <BorderedButton name={blueText} color="blue" size={size} onClick={blueOnClick} />
+                <GrayTextButton style={styles.button} name={greyText} size={size} type="Button" onClick={greyOnClick} />
+                <BorderedButton style={styles.button} name={blueText} color="blue" size={size} onClick={blueOnClick} />
             </div>
         )
     };
@@ -32,6 +32,9 @@ const styles = {
     },
     btnDiv: {
         paddingTop: '5px'
+    },
+    button: {
+        margin: '0 5px'
     }
 }
 

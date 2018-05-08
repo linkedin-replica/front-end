@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Radium from 'radium';
 import api from '../api/api';
 import CompanyForUser from '../components/company/CompanyForUser';
@@ -8,33 +8,34 @@ import { withRouter } from 'react-router';
 import CompanyForAdmin from '../components/company/CompanyForAdmin';
 
 
-class CompanyContainer extends Component{
+class CompanyContainer extends Component {
   state = {
-      data: {},
-      isAdmin: false
+    data: {},
+    isAdmin: false
   }
 
   componentDidMount() {
-      const { match, loggedInUser } = this.props
-      api.getCompanyProfile(match.params.id)
-          .then(({ data }) => {
-            this.setState({
-                isAdmin:  data.results.userId === "2" ? true:false,
-                data: data.results
-            })
-          })
-          .catch(err => console.log(err))
+    const { match, loggedInUser } = this.props
+    api.getCompanyProfile(match.params.id)
+      .then(({ data }) => {
+        this.setState({
+          isAdmin: data.results.userId === "2" ? true : false,
+          data: data.results
+        })
+      })
+      .catch(err => console.log(err))
   }
-  render(){
-    const { loggedInUser } = this.props
+  render() {
+    const { match, loggedInUser } = this.props
     return (
       <div>
-        {this.state.isAdmin?
-          <CompanyForAdmin {...this.state.data}/> :
-          <CompanyForUser {...this.state.data}/>
+        {this.state.isAdmin ?
+          <CompanyForAdmin {...this.state.data} companyId={match.params.id} /> :
+          <CompanyForUser {...this.state.data} companyId={match.params.id} />
         }
       </div>
-  )}
+    )
+  }
 }
 
 CompanyContainer = Radium(CompanyContainer)

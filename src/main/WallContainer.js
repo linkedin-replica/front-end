@@ -11,17 +11,16 @@ class WallContainer extends Component {
 
     render() {
         const { loggedInUser, isCompany, isArticle, companyId, isAdmin } = this.props
-        console.log("companyId   " + companyId)
         return (
             <div style={styles.base}>
-              { !isCompany || isAdmin ?
-                <AddPostContainer isCompany={isCompany} isArticle={isArticle} loggedInUser={loggedInUser} companyId={companyId} />
-                : <div />
-              }
+                {!isCompany || isAdmin ?
+                    <AddPostContainer isCompany={isCompany} isArticle={isArticle} loggedInUser={loggedInUser} companyId={companyId} />
+                    : <div />
+                }
                 <section>
                     {isArticle ?
                         <ArticlesContainer /> :
-                        <PostsContainer loggedInUser={loggedInUser} isCompany={isCompany} companyId={companyId}/>
+                        <PostsContainer loggedInUser={loggedInUser} isCompany={isCompany} companyId={companyId} />
                     }
                 </section>
             </div >

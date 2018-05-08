@@ -32,8 +32,8 @@ class CompanyBasicInfo extends Component {
                         <BlueButton name={blueText} onClick={() => blueFunc()} />
                     </div> :
                     <div style={styles.btnDiv}>
-                        <BorderedButton name={borderedText} color="blue" onClick={() => borderedFunc()} size="md" />
-                        <BlueButton name={blueText} onClick={() => blueFunc()} />
+                        <BorderedButton style={styles.button} name={borderedText} color="blue" onClick={() => borderedFunc()} size="md" />
+                        <BlueButton style={styles.button} name={blueText} onClick={() => blueFunc()} />
                     </div>
                 }
             </WhiteWrapper>
@@ -83,6 +83,9 @@ const styles = {
         overflow: 'hidden',
         textOverflow: 'ellipsis'
     },
+    button: {
+        margin: '0px 5px'
+    }
 }
 
 CompanyBasicInfo = Radium(CompanyBasicInfo);
