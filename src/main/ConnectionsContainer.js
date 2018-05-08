@@ -10,7 +10,16 @@ class ConnectionsContainer extends Component {
         friendRecommendationsData: []
     }
 
+    constructor(props){
+        super(props)
+
+        if(props.searchData){
+            this.state.friendRecommendationsData = props.searchData
+        }
+    }
     componentDidMount() {
+        if(this.props.searchData) return
+
         api.getFriendRequests()
             .then(({ data }) => {
                 this.setState({
@@ -33,7 +42,7 @@ class ConnectionsContainer extends Component {
             .then(res => {
                 toast.success('Added Friend Successfully')
             })
-            .catch(err => toast.error(err.response.data.error))
+            .catch(err => toast.error("YOu are already friends!!"))
 
         api.getFriendRecommendations()
             .then(({ data }) => {
@@ -46,7 +55,7 @@ class ConnectionsContainer extends Component {
     }
 
     handleIgnore = (userId) => (event) => {
-        api.acceptFriendRequest(userId)
+        api.ignoreFriendRequest(userId)
             .then()
             .catch(err => toast.error(err.response.data.error))
 
@@ -101,13 +110,15 @@ class ConnectionsContainer extends Component {
         </Connections>
     }
 }
-const mockData = [
-    { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", name: "Yara Yehia", description: "A Computer Science Student at the German University in Cairo", id: "1" },
-    { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", name: "Hisham Zahran", description: "A Computer Science Student at the German University in Cairo", id: "2" },
-    { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", name: "Esraa Salah", description: "A Computer Science Student at the German University in Cairo", id: "3" },
-    { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", name: "Rana Saeed", description: "A Computer Science Student at the German University in Cairo", id: "5" },
-    { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", name: "Hagar Yasser", description: "A Computer Science Student at the German University in Cairo", id: "6" },
-    { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", name: "Baher Abdelmalek", description: "A Computer Science Student at the German University in Cairo", id: "7" },
 
-]
+
+// const mockData = [
+//     { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", name: "Yara Yehia", description: "A Computer Science Student at the German University in Cairo", id: "1" },
+//     { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", name: "Hisham Zahran", description: "A Computer Science Student at the German University in Cairo", id: "2" },
+//     { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", name: "Esraa Salah", description: "A Computer Science Student at the German University in Cairo", id: "3" },
+//     { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", name: "Rana Saeed", description: "A Computer Science Student at the German University in Cairo", id: "5" },
+//     { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", name: "Hagar Yasser", description: "A Computer Science Student at the German University in Cairo", id: "6" },
+//     { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcydiwgknIwVFh6Ltea5yDFzOGU_pP1b9DmuaBrh3TVoo2dAA6A", name: "Baher Abdelmalek", description: "A Computer Science Student at the German University in Cairo", id: "7" },
+
+// ]
 export default Radium(ConnectionsContainer)

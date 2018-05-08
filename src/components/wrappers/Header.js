@@ -22,9 +22,11 @@ class Header extends Component {
     }
 
     handleSubmitSearch = (event) => {
-        event.preventDefault();
-        console.log("In Submit handler");
-        this.props.history.push('/search-results/'+ this.state.searchKey)
+        if(event.key === "Enter"){
+            event.preventDefault();
+            console.log("In Submit handler");
+            this.props.history.push('/search-results/'+ this.state.searchKey)
+        }
     }
 
     handleSignOut = (event) => {

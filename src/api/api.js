@@ -44,6 +44,9 @@ export default {
   acceptFriendRequest: (userId1) => {
     return axios.post('connections/acceptFriendRequest', { userId1 })
   },
+  ignoreFriendRequest: (userId1) => {
+    return axios.post('connections/ignoreFriendRequest', { userId1 })
+  },
   addFriend: (userId1) => {
     return axios.post('connections/addFriend', { userId1 })
   },
