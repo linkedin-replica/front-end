@@ -36,7 +36,7 @@ class MainContainer extends Component {
                     <Route path='/company/:id' component={CompanyContainer} />
                     <Route path='/job/:id' component={JobContainer} />
                     <Route path='/article/:id' component={ArticleContainer} />
-                    <Route path='/search-results' component={SearchResultsContainer} />
+                    <Route path='/search-results/:searchKey' component={SearchResultsContainer} />
                 </main>
                 <ToastContainer position='bottom-left' style={styles.toast} autoClose={4000} />
             </div>);
