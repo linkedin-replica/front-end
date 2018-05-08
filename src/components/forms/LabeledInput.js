@@ -29,7 +29,7 @@ LabeledInput.propTypes = {
     label: PropTypes.string,
     text: PropTypes.string,
     type: PropTypes.string,
-    placeholder: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
     handleChange: PropTypes.func,
     handleSubmit: PropTypes.func,
     size: PropTypes.oneOf(["sm", "md", "lg"]),

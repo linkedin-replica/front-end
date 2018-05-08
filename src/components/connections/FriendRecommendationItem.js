@@ -3,65 +3,71 @@ import Radium from 'radium';
 import PropTypes from 'prop-types'
 import AvatarImage from '../images/AvatarImage';
 import BoldLink from '../typography/BoldLink';
-import DetailsHeader from '../details/DetailsHeader';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import BorderedButton from '../buttons/BorderedButton';
-import GreyAndBorder from '../buttons/AdjacentGreyBorder';
 import GrayText from '../typography/GrayText';
-
+import { colors, borders } from '../../resources/constants.js'
 
 class FriendRecommendationItem extends Component {
 
     render() {
         const {
             //  Select the needed props only
-            name,
-            description,
-            img,
-            id,
+            firstName,
+            lastName,
+            profilePictureUrl,
+            userId,
+            headline,
+            handleConnect,
             ...rest } = this.props;
 
         return (
-            <WhiteWrapper style={styles.whiteWrapper} size="sm">
-            <section align = "center">
-                <AvatarImage src={img}
-                    rounded
-                    style={styles.img}
-                    size="lg"
+            <WhiteWrapper style={styles.whiteWrapper}>
+                <div>
+                    <AvatarImage src={profilePictureUrl}
+                        rounded
+                        style={styles.img}
+                        size="lg"
+                        type="profile"
+                        id={userId}
+                    />
+                </div>
+                <BoldLink
+                    text={firstName + ' ' + lastName}
                     type="profile"
-                    id={id}
+                    id={userId}
+                    size="md"
+
                 />
-            </section>
-            <section>
-                <BoldLink 
-                    text = {name}
-                    type="profile"
-                    id={id}
-                    style={styles.text} 
-                    size = "md"
+                <GrayText
+                    text={headline}
+                    size="md"
                 />
-                <GrayText 
-                    text = {description}
-                    size = "md"
-                    style={styles.text} 
-                />
-            </section>
-            <BorderedButton name="Connect" color="blue" size="md" />
+                <div style={styles.center}>
+                    <BorderedButton
+                        name="Connect"
+                        color="blue"
+                        size="md"
+                        onClick={handleConnect}
+                        style={styles.blueBorder} />
+                </div>
+
             </WhiteWrapper>
         );
     }
 }
 
 FriendRecommendationItem.propTypes = {
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    img: PropTypes.string,
     id: PropTypes.string,
+    handleConnect: PropTypes.func,
 };
+
 
 const styles = {
     base: {
-
     },
     text: {
         margin: '0px',
@@ -70,20 +76,30 @@ const styles = {
         textOverflow: 'ellipsis'
     },
     whiteWrapper: {
-        margin: '10px auto',
+        width: '100%',
+        height: '280px',
+        margin: '0px',
         padding: '20px',
-        textAlign: 'left',
-        fontSize: '1.5em',
-        position:'relative',
+        textAlign: 'center',
+        position: 'relative',
         align: 'center'
     },
-    btnDiv: {
-      position: 'absolute',
-      right: 0,
-      bottom: 0,
-      width: '30%',
-      paddingBottom: '25px'
+    blueBorder: {
+        border: `${borders.button.width.normal} solid ${colors.darkBlue}`,
+        color: colors.darkBlue,
+        ":hover": {
+            background: colors.darkBlue,
+            color: colors.white
+        },
+
     },
+    center: {
+        position: 'absolute',
+        bottom: '20px',
+        right: '0',
+        left: '0',
+        margin: '0 auto'
+    }
 }
 
 

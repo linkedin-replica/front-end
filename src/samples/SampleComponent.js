@@ -84,7 +84,7 @@ SampleComponent.propTypes = {
   objectProp: PropTypes.object,
   stringProp: PropTypes.string,
   enumProp: PropTypes.oneOf(['type1', 'type2']),
-  requiredProp: PropTypes.'add here any type'.isRequired,
+  requiredProp: PropTypes.'add here any type',
   */
 };
 

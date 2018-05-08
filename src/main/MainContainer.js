@@ -17,26 +17,29 @@ import Header from '../components/wrappers/Header';
 import ProfileTest from '../tests/ProfileTest';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+import CreateCompanyContainer from './CreateCompanyContainer';
 
 class MainContainer extends Component {
 
     render() {
-        const { userId, match } = this.props
+        const { loggedInUser, match } = this.props
+        console.log("In MainContainer ---> " + loggedInUser.userId)
         return (
             <div className="main-app" style={styles.base}>
                 <Header isLoggedIn />
                 <main className="main-details" style={styles.details}>
-                    <Route path='/home' render={() => <WallContainer userId={userId} />} />
+                    <Route path='/home' render={() => <WallContainer loggedInUser={loggedInUser} />} />
                     <Route path='/connections' component={ConnectionsContainer} />
                     <Route path='/jobs' component={JobsContainer} />
                     <Route path='/notifications' component={NotificationsContainer} />
-                    <Route path='/articles' component={ArticlesContainer} />
-                    <Route path='/chat' render={() => <ChatContainer userId={userId} />} />
+                    <Route path='/articles' render={() => <WallContainer loggedInUser={loggedInUser} isArticle isCompany={false} />} />
+                    <Route path='/chat' render={() => <ChatContainer loggedInUser={loggedInUser} />} />
                     <Route path='/profile/:id' component={ProfileContainer} />
-                    <Route path='/company/:id' component={CompanyContainer} />
+                    <Route path='/company/:id' render={() => <CompanyContainer loggedInUser={loggedInUser} />} />
+                    <Route path='/create-company/' component={CreateCompanyContainer} />
                     <Route path='/job/:id' component={JobContainer} />
-                    <Route path='/article/:id' component={ArticleContainer} />
-                    <Route path='/search-results' component={SearchResultsContainer} />
+                    <Route path='/article/:id' render={() => <ArticleContainer loggedInUser={loggedInUser} />} />
+                    <Route path='/search-results/:searchKey' render={() => <SearchResultsContainer loggedInUser={loggedInUser} />} />
                 </main>
                 <ToastContainer position='bottom-left' style={styles.toast} autoClose={4000} />
             </div>);

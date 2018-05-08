@@ -25,14 +25,14 @@ class GrayText extends Component {
 
 // Define the passed input types for this component
 GrayText.propTypes = {
-    text: PropTypes.string.isRequired,
+    text: PropTypes.string,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"]),
 };
 
 const styles = {
     base: {
-        color: colors.darkGray,
+        color: colors.mediumGray,
     },
     sm: {
         fontSize: '0.8em'

@@ -3,49 +3,52 @@ import Radium from 'radium';
 import PropTypes from 'prop-types'
 import { colors, paddings } from '../../resources/constants';
 import WriteAComment from './WriteAComment';
-import Comment from './Comment';
 import ListAdapter from '../wrappers/ListAdapter';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
+import CommentContainer from '../../main/CommentContainer';
 
-class InputForm extends Component {
-
+class CommentsSection extends Component {
 
     render() {
-        const {src, rounded, visibility, comments} = this.props
-        // const commentData = {...rest}
-        return (    
-        <div style={[styles.base, visibility ? styles.clicked: styles.base]} >
-        
-            <WriteAComment src = {src} rounded = {rounded}/>
-            <ListAdapter data={comments} listItemView = {Comment} style={styles.commentList}  />
-            
-        </div>
-        
+        const { loggedInUser, postId, visibility, comments, ...rest } = this.props
+        const newComments = comments.map(comment => ({ ...comment, loggedInUser, postId }))
+        return (
+            <div style={[styles.base, visibility ? styles.clicked : styles.base]} >
+                <WriteAComment style={styles.addComment} loggedInUser={loggedInUser} {...rest} />
+                <ListAdapter data={newComments} listItemView={CommentContainer} style={styles.commentList} />
+            </div>
         )
     };
 }
 
+CommentsSection.propTypes = {
+    type: PropTypes.string,
+    id: PropTypes.string,
+    visibility: PropTypes.bool,
+    comments: PropTypes.array,
+}
 
 const styles = {
     base: {
-        display:'none',
-        
+        display: 'none',
+        width: '100%',
+        background: colors.lightBlue,
     },
-    commentList:{
-        background:colors.lightBlue,
-        marginLeft:'-0.9em',
-        padding:paddings.wrapper
+    addComment: {
+        padding: paddings.wrapper,
+    },
+    commentList: {
+        width: '100%'
     },
     clicked: {
-        display:'block'
+        display: 'block'
     },
-    wrapper:{
-        padding:paddings.wrapper,
-        
+    wrapper: {
+        padding: paddings.wrapper,
     }
 }
 
 
 
-InputForm = Radium(InputForm);
-export default InputForm;
+CommentsSection = Radium(CommentsSection);
+export default CommentsSection;

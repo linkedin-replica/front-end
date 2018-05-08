@@ -10,34 +10,33 @@ import GrayText from '../typography/GrayText';
 import BoldLink from '../typography/BoldLink';
 
 class CompanyBasicInfo extends Component {
-  state = { follow: "Follow" };
-
-  toggleFollow = () => {
-    this.setState(prevstate => ({
-      follow: prevstate.follow === "Follow" ? "Following": "Follow"
-    }));
-  };
+    state = { isAdmin: false };
 
     render() {
-        const { img, companyName, industryType, companyLocation, id} = this.props;
+        const { img, companyName, industryType, companyLocation, companyId, style, isAdmin, borderedText, borderedFunc, blueText, blueFunc } = this.props;
 
         return (
-          <WhiteWrapper style={styles.whiteWrapper} size="lg">
-              <AvatarImage src={img}
-                size='xl'
-                styel={styles.img}
-                id={id}
-              />
-              <div style={styles.textDiv}>
-                  <label>{companyName}</label>
-                  <GrayText text={industryType + " - " + companyLocation}style={styles.text} size="sm" />
-              </div>
+            <WhiteWrapper style={[styles.whiteWrapper, style]} size="lg">
+                <AvatarImage src={img}
+                    size='lg'
+                    style={styles.img}
+                    companyId={companyId}
+                />
+                <div style={styles.textDiv}>
+                    <label>{companyName}</label>
+                    <GrayText text={industryType + " - " + companyLocation} style={styles.text} size="sm" />
+                </div>
 
-            <div style={styles.btnDiv}>
-              <BorderedButton name={this.state.follow} color="blue" onClick={this.toggleFollow} size="md" />
-              <BlueButton name="See Jobs" onClick={this.incrementCounter} />
-            </div>
-          </WhiteWrapper>
+                {isAdmin ?
+                    <div style={styles.btnDiv}>
+                        <BlueButton name={blueText} onClick={() => blueFunc()} />
+                    </div> :
+                    <div style={styles.btnDiv}>
+                        <BorderedButton style={styles.button} name={borderedText} color="blue" onClick={() => borderedFunc()} size="md" />
+                        <BlueButton style={styles.button} name={blueText} onClick={() => blueFunc()} />
+                    </div>
+                }
+            </WhiteWrapper>
 
         )
     };
@@ -46,32 +45,31 @@ class CompanyBasicInfo extends Component {
 
 
 CompanyBasicInfo.propTypes = {
-    img: PropTypes.string.isRequired,
-    header: PropTypes.string.isRequired,
-    subHeader: PropTypes.string.isRequired,
+    img: PropTypes.string,
+    header: PropTypes.string,
+    subHeader: PropTypes.string,
     type: PropTypes.string,
     id: PropTypes.string,
+    style: PropTypes.object
+
 };
 
 const styles = {
     base: {
 
     },
-    img:{
-    },
     whiteWrapper: {
         margin: '10px auto',
         padding: '20px',
         textAlign: 'left',
         fontSize: '1.5em',
-        position:'relative',
+        position: 'relative',
     },
     btnDiv: {
-      position: 'absolute',
-      right: 0,
-      bottom: 0,
-      width: '30%',
-      paddingBottom: '25px'
+        position: 'absolute',
+        right: '2%',
+        bottom: 0,
+        paddingBottom: '25px',
     },
     textDiv: {
         display: 'inline-block',
@@ -85,6 +83,9 @@ const styles = {
         overflow: 'hidden',
         textOverflow: 'ellipsis'
     },
+    button: {
+        margin: '0px 5px'
+    }
 }
 
 CompanyBasicInfo = Radium(CompanyBasicInfo);

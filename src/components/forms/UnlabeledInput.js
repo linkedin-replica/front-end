@@ -6,11 +6,12 @@ import { colors, borders } from '../../resources/constants.js'
 class UnlabeledInput extends Component {
     render() {
         // Directly get the needed props
-        const { placeholder, type, handleChange, handleSubmit, size, style, isRequired } = this.props;
+        const { placeholder, type, text, handleChange, handleSubmit, size, style, isRequired } = this.props;
         return (
             <input
                 style={[styles.base, size ? styles[size] : styles['md'], style]}
                 type={type}
+                value={text}
                 className='form-inline'
                 placeholder={placeholder}
                 onChange={handleChange}
@@ -22,7 +23,7 @@ class UnlabeledInput extends Component {
 }
 
 UnlabeledInput.propTypes = {
-    placeholder: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
     handleChange: PropTypes.func,
     handleSubmit: PropTypes.func,
     size: PropTypes.oneOf(["sm", "md", "lg"]),

@@ -14,10 +14,11 @@ import GrayText from '../typography/GrayText';
 import BlackText from '../typography/BlackText';
 import AvatarImage from '../images/AvatarImage';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
+import BlueButton from '../buttons/BlueButton';
 
 class ProfileHeader extends Component {
     render() {
-        const { imageUrl, rounded, firstName, lastName, headline, location, type, userId, style, size } = this.props;
+        const { imageUrl, rounded, firstName, lastName, headline, location, type, userId, style, size, createCompany } = this.props;
         return (
             <div style={[style, styles.base]}>
                 <WhiteWrapper style={styles.whiteWrapper} size="lg">
@@ -37,10 +38,12 @@ class ProfileHeader extends Component {
                         <GrayText text={headline}
                             style={styles.text}
                             size={size} />
-                        <GrayText text={location.country}
+                        <GrayText text={location}
                             style={styles.text}
                             size={size} />
+                        <BlueButton name="Create Company" onClick={createCompany} />
                     </div>
+
                 </WhiteWrapper>
             </div>
         )
@@ -48,31 +51,31 @@ class ProfileHeader extends Component {
 }
 
 ProfileHeader.propTypes = {
-    imageUrl: PropTypes.string.isRequired,
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-    headline: PropTypes.string.isRequired,
-    location: PropTypes.object.isRequired,
+    imageUrl: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    headline: PropTypes.string,
+    location: PropTypes.object,
     rounded: PropTypes.bool,
     type: PropTypes.string,
-    userId: PropTypes.string.isRequired,
+    userId: PropTypes.string,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"]),
 };
 
 const styles = {
     base: {
-        marginBottom: '12em',  
+        height: '250px',
+        width: '100%'
     },
     whiteWrapper: {
-        margin: '10px auto',
         paddingTop: '6em',
-        paddingBottom: '2em',   
+        paddingBottom: '2em',
         backgroundImage: 'url(http://www.thepartnermarketinggroup.com/wp-content/uploads/2018/01/LinkedInDefaultBanner.png)',
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'top', 
+        backgroundPosition: 'top',
         height: '7em',
-        width: '90%',
+        width: '100vw',
     },
     imgDiv: {
         textAlign: 'center',
@@ -83,13 +86,12 @@ const styles = {
         borderRadius: '500px',
     },
     textDiv: {
-        marginLeft: '3em',
         verticalAlign: 'top',
         textAlign: 'center',
         width: 'inherit',
     },
     text: {
-        margin: '0px',
+        margin: '10px 0px',
         maxWidth: 'inherit',
         wordWrap: 'break-word',
         textAlign: 'center',

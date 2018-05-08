@@ -5,6 +5,8 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import PropTypes from 'prop-types'
+import FriendRequests from '../connections/FriendRequests';
+import FriendRecommendations from '../connections/FriendRecommendations';
 // import { object from constants } from '../../resources/constants.js'
 
 class Connections extends Component {
@@ -17,7 +19,6 @@ class Connections extends Component {
             //  Select the needed props only
             friendRequestsData,
             friendRecommendationsData,
-            friendsData,
             ...rest } = this.props;
 
         return (
@@ -27,7 +28,6 @@ class Connections extends Component {
                 ]}>
                 <FriendRequests data={friendRequestsData} />
                 <FriendRecommendations data={friendRecommendationsData} />
-                <MyFriends data={friendsData} />
             </div>
         );
     }
@@ -37,6 +37,8 @@ class Connections extends Component {
  * Define here what does this component take as props
  */
 Connections.propTypes = {
+    friendRequestsData: PropTypes.array,
+    friendRecommendationsData: PropTypes.array,
 
 };
 

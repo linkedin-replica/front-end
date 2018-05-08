@@ -27,11 +27,11 @@ class TabButton extends Component {
 
 // Define the passed input types for this component
 TabButton.propTypes = {
-  name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['home', 'connections', 'jobs', 'notifications', 'chat', 'profile', 'articles']).isRequired,
+  name: PropTypes.string,
+  type: PropTypes.oneOf(['home', 'connections', 'jobs', 'notifications', 'chat', 'profile', 'articles']),
   isActive: PropTypes.bool,
   size: PropTypes.oneOf(["sm", "md", "lg"]),
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 const styles = {
@@ -49,7 +49,7 @@ const styles = {
   name: {
     display: 'block',
     fontSize: '0.9em',
-    marginTop: '6px',
+    marginTop: '7.5px',
   },
   active: {
     color: colors.white,

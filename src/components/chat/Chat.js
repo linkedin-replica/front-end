@@ -36,13 +36,13 @@ class Chat extends Component {
 
 // Define the passed input types for this component
 Chat.propTypes = {
-    chats: PropTypes.array.isRequired,
-    chatDetails: PropTypes.array.isRequired,
+    chats: PropTypes.array,
+    chatDetails: PropTypes.array,
     receiverName: PropTypes.string,
-    inputMessageVal: PropTypes.string.isRequired,
-    handleSendMessage: PropTypes.func.isRequired,
-    handleSelectChat: PropTypes.func.isRequired,
-    handleChange: PropTypes.func.isRequired
+    inputMessageVal: PropTypes.string,
+    handleSendMessage: PropTypes.func,
+    handleSelectChat: PropTypes.func,
+    handleChange: PropTypes.func
 };
 
 const styles = {

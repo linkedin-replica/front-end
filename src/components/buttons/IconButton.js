@@ -10,10 +10,10 @@ import ResponsiveButtonWrapper from './ResponsiveButtonWrapper';
 class IconButton extends Component {
   render() {
     // Directly get the needed props
-    const { type, hasBorder, ...rest } = this.props;
+    const { type, style, hasBorder, ...rest } = this.props;
     return (
       <ResponsiveButtonWrapper
-        style={[styles.base, hasBorder ? styles.bordered : styles.borderless]}
+        style={[styles.base, hasBorder ? styles.bordered : styles.borderless, style]}
         // Passes on the rest of the props to apply the size and onClick functions on the button
         {...rest}>
         <i style={styles.icon} className={icons[type]}></i>
@@ -24,10 +24,10 @@ class IconButton extends Component {
 
 // Define the passed input types for this component
 IconButton.propTypes = {
-  type: PropTypes.oneOf(['edit', 'add']).isRequired,
+  type: PropTypes.oneOf(['edit', 'add']),
   hasBorder: PropTypes.bool,
   size: PropTypes.oneOf(["sm", "md", "lg"]),
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 const styles = {

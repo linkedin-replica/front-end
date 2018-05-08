@@ -22,9 +22,9 @@ class GrayTextButton extends Component {
 }
 
 GrayTextButton.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   size: PropTypes.oneOf(["sm", "md", "lg"]),
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 const styles = {

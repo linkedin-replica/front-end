@@ -114,11 +114,11 @@ class ChatContainer extends Component {
     }
 
     render() {
-        const { userId } = this.props
+        const { loggedInUser } = this.props
         const { chats, receiverId, receiverName, history, inputMessage } = this.state;
 
         const newChats = chats.map(chat => ({ ...chat, handleSelectChat: this.handleSelect, isSelected: receiverId === chat.userId }))
-        const chatDetails = history.map(message => ({ ...message, isSender: message.senderId === userId }))
+        const chatDetails = history.map(message => ({ ...message, isSender: message.senderId === loggedInUser.userId }))
         return (
             <Chat chats={newChats}
                 receiverName={receiverName}
@@ -131,7 +131,7 @@ class ChatContainer extends Component {
 }
 
 ChatContainer.propTypes = {
-    userId: PropTypes.string.isRequired
+    loggedInUser: PropTypes.object
 };
 
 export default ChatContainer;

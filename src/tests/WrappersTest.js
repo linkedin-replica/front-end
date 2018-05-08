@@ -41,8 +41,8 @@ class WrappersTest extends Component {
                     <h2>Grid View</h2>
                     {/* <GridView data={mockData} gridItemView={BorderedButton} /> */}
                     <h2>Grid View</h2>
-                    <WhiteWrapper style={styles.gridWrapper}>
-                        <GridView data={mockData2} gridItemView={WhiteWrapper} horizontalSplit verticalSplit size="md" />
+                    <WhiteWrapper>
+                        <GridView data={mockData2} gridItemView={WhiteWrapper} />
                     </WhiteWrapper>
                 </section>
             </div>

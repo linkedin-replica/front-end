@@ -19,26 +19,27 @@ import WhiteWrapper from '../wrappers/WhiteWrapper';
 class ProfileFriend extends Component {
     render() {
         const { userId, firstName, lastName, headline, imageUrl, style, size } = this.props;
-        return(
-        <div style={[style, styles.base]}>
-            <AvatarImage src={imageUrl} 
-                rounded
-                type="profile" id={userId} size="md" style={styles.imgDiv}/>
+        return (
+            <div style={[style, styles.base]}>
+                <AvatarImage src={imageUrl}
+                    rounded
+                    type="profile" id={userId} size="md" style={styles.imgDiv} />
                 <span style={styles.textDiv}>
                     <BoldLink text={firstName + " " + lastName} type="profile" id={userId}
-                    size="md" style={styles.text}/>
-                    <GrayText text={headline} size="md" style={styles.text}/>
+                        size="md" style={styles.text} />
+                    <GrayText text={headline} size="md" style={styles.text} />
                 </span>
-        </div>        
-    )};    
+            </div>
+        )
+    };
 }
 
 ProfileFriend.propTypes = {
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired, 
-    headline: PropTypes.string.isRequired,  
-    userId: PropTypes.string.isRequired, 
-    imageUrl: PropTypes.string.isRequired, 
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    headline: PropTypes.string,
+    userId: PropTypes.string,
+    imageUrl: PropTypes.string,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"])
 };
@@ -46,31 +47,31 @@ ProfileFriend.propTypes = {
 const styles = {
     base: {
         display: 'inline-block',
-        marginLeft:'20px',
-        width:'100%',
+        marginLeft: '20px',
+        width: '100%',
         paddingBottom: '2%',
     },
     imgDiv: {
         display: 'inline-block',
-      
+
         float: 'left'
     },
     textDiv: {
         display: 'inline-block',
-        verticalAlign:'top',
+        verticalAlign: 'top',
         float: 'left',
     },
 
     title: {
-       fontWeight:'bold'
+        fontWeight: 'bold'
     },
     text: {
-        margin:'5px',
+        margin: '5px',
     },
     description: {
-        margin:'5px',
+        margin: '5px',
         wordWrap: 'break-word',
-        maxWidth:'500px',
+        maxWidth: '500px',
     },
     sm: {
         fontSize: '0.5em'

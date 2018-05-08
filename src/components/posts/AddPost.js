@@ -7,6 +7,7 @@ import AvatarImage from "../images/AvatarImage";
 import IconTextButton from "../buttons/IconTextButton";
 import DetailsHeader from "../details/DetailsHeader";
 import WhiteWrapper from "../wrappers/WhiteWrapper";
+import BlueButton from '../buttons/BlueButton';
 
 class AddPost extends Component {
   constructor(props) {
@@ -15,73 +16,60 @@ class AddPost extends Component {
 
 
   render() {
-    const { addPostContent, handleChange, imageButtonHandler, videoButtonHandler } = this.props;
+    const { addPostContent, handleChange, handleMediaClick, handleSubmit } = this.props;
     return (
-      <div style={styles.base}>
-        <WhiteWrapper style={styles.wrapper}>
-          <span style={styles.commentDiv}>
-            <InputForm placeholder="Share an article, photo, video or idea"
-              commentBool={false}
-              value={addPostContent}
-              handleChange={handleChange} />
-          </span>
-          <hr style={styles.seperator} />
-          <div style={styles.tabDiv}>
-            <IconTextButton
-              name="Image"
-              type="image"
-              style={styles.postButton}
-              hasBorder
-            />
-            <IconTextButton
-              name="Video"
-              type="video"
-              style={styles.postButton}
-              hasBorder
-            />
-          </div>
-        </WhiteWrapper>
-      </div>
+      <WhiteWrapper style={styles.base}>
+        <InputForm placeholder="Share an article, photo, video or idea"
+          commentBool={false}
+          value={addPostContent}
+          handleChange={handleChange('addPostContent')} />
+        <div style={styles.tabDiv}>
+          <IconTextButton
+            name="Image"
+            type="image"
+            onClick={handleMediaClick}
+            style={styles.postButton}
+            hasBorder
+          />
+          <IconTextButton
+            name="Video"
+            type="video"
+            onClick={handleMediaClick}
+            style={styles.postButton}
+            hasBorder
+          />
+          <BlueButton
+            name="Post"
+            style={styles.postButton}
+            onClick={handleSubmit}
+          />
+        </div>
+      </WhiteWrapper>
     );
   }
 }
 
 AddPost.propTypes = {
-
+  addPostContent: PropTypes.string,
+  handleChange: PropTypes.func,
+  handleMediaClick: PropTypes.func,
+  handleSubmit: PropTypes.func,
 };
 
 const styles = {
   base: {
-    display: 'block',
-
-  },
-  wrapper: {
     padding: paddings.wrapper,
-    height: "10.0em",
     display: 'block',
   },
   postButton: {
-    color: colors.darkGray,
-    margin: '0.1em',
-
-
-  },
-  seperator: {
-    color: colors.lightGray,
-    border: 'solid 0.02em',
-    width: '90%'
+    margin: '0 0.2em 0 0.2em',
+    padding: '0.2em 0.8em 0.2em 0.8em'
   },
   imgDiv: {},
-  commentDiv: {
-    display: "inline-block",
-    marginRight: '4em',
-    width: "80%",
-  },
   tabDiv: {
-    paddingTop: "5px",
-    display: 'block',
-    marginLeft: '5.7em',
-    marginTop: '0.9em'
+    padding: "5px",
+    display: 'flex',
+    justifyContent: 'flex-end',
   }
 };
 

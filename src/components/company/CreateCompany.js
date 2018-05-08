@@ -1,47 +1,54 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router'
 import Radium from 'radium';
-import WhiteWrapper from '../wrappers/WhiteWrapper';
 import BlueButton from '../buttons/BlueButton';
+import Modal from '../wrappers/Modal';
+import PropTypes from 'prop-types';
+import LabeledInput from '../forms/LabeledInput';
+import { colors, borders } from '../../resources/constants.js';
 import GrayTextButton from '../buttons/GrayTextButton';
 
-import PropTypes from 'prop-types'
-
-class CreateCompany extends Component{
-  render(){
-    const {handleChange, handleSubmit, history} = this.props
+class CreateCompany extends Component {
+  render() {
+    const { handleChange, handleSubmit, show, onClose, toggleModal } = this.props
     return (
-
-      <WhiteWrapper style={styles.whiteWrapper} size="lg">
-        <form onSubmit={handleSubmit}>
-
-          <h2  style={[styles.text]}>
+      <Modal style={styles.base}
+        show={show}
+        onClose={toggleModal}
+        btnText="Submit Form">
+        <header>
+          <h1 style={styles.header}>
             Let{"'"}s set up your Company Page
-          </h2>
+          </h1>
+        </header>
+        <form onSubmit={handleSubmit}>
+          <LabeledInput
+            id="company-name"
+            label="Company Name"
+            type="text"
+            handleChange={handleChange('companyName')}
+            isRequired
+          />
 
           <div>
-            <label style={[styles.label]}> Company Name </label>
-            <input type="text" name="companyName" style={styles.input} onChange={handleChange('companyName')}/>
-          </div>
-
-          <div>
-            <label style={[styles.label]}> LinkedIn public Url </label>
+            <label style={[styles.textLabel]}> LinkedIn public Url </label>
             <label style={[styles.greyLabel]}>linkedin.com/company/</label>
-            <input type="text" name="companyUrl" style={styles.input2} onChange={handleChange('companyUrl')}/>
+            <input type="text" name="companyUrl" style={styles.input2} onChange={handleChange('companyUrl')} />
           </div>
 
+          <hr />
+
           <div>
-            <input type="checkbox" name="verify" onChange={handleChange('verify')}/>
+            <input type="checkbox" name="verify" onChange={handleChange('verify')} />
             <label style={[styles.greyLabel]}> I verify that I am the official representative of this company and have the right to act on behalf of the company in the creation of this page. </label>
           </div>
 
-          <div style={[styles.btnDiv]}>
-            <GrayTextButton name="Cancel" type="Button" onClick={this.props.history.goBack}/>
-            <BlueButton name="Create page" size="md" color="blue" onClick={handleSubmit}></BlueButton>
+          <div style={styles.buttonContainer}>
+            <BlueButton name="Create Company" style={styles.button} size="sm" onClick={handleSubmit}></BlueButton>
+            <GrayTextButton name="Cancel" style={styles.button} size="sm" onClick={onClose}></GrayTextButton>
           </div>
 
-          </form>
-      </WhiteWrapper>
+        </form>
+      </Modal>
     )
   }
 }
@@ -54,48 +61,44 @@ CreateCompany.PropTypes = {
 
 const styles = {
 
-    whiteWrapper: {
-        margin: '10px auto',
-        padding: '20px',
-        textAlign: 'left',
-        fontSize: '1.5em'
-    },
-    button: {
-      textAlign: 'center',
-      paddingTop: '10px',
-      alignSelf:'center',
-    },
-    btnDiv: {
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
-
-
-    input: {
-      margin: '10px auto',
-      padding: '20px',
-      width: '100%',
-      height: '30px',
-    },
-    input2: {
-      margin: '10px auto',
-      padding: '20px',
-      width: '50%',
-      height: '30px',
-    },
-    text: {
-      textAlign:'center',
-      alignSelf:'center',
-    },
-    label: {
-      display: 'block'
-    },
-    greyLabel: {
-      width: '50%',
-      color: 'grey',
-      fontSize: 15
-
-    }
+  base: {
+    padding: '10px',
+    background: '#edf0f3',
+    margin: '10px auto',
+    padding: '30px',
+    textAlign: 'left',
+    fontSize: '1.5em',
+    width: '400px'
+  },
+  buttonContainer: {
+    paddingTop: '15px',
+    textAlign: 'center'
+  },
+  textLabel: {
+    fontSize: '0.7em',
+    display: 'block'
+  },
+  header: {
+    fontSize: '1em',
+    textAlign: 'center'
+  },
+  button: {
+    width: '100%',
+  },
+  input2: {
+    height: '25px',
+    padding: '5px',
+    borderRadius: borders.button.radius.normal,
+    border: 'none',
+    width: '62%',
+    display: 'inlineBlock'
+  },
+  greyLabel: {
+    width: '50%',
+    color: 'grey',
+    fontSize: '0.5em',
+    paddingRight: '2%'
+  }
 }
 
-export default withRouter(Radium(CreateCompany))
+export default Radium(CreateCompany)

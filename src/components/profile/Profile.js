@@ -10,12 +10,22 @@ import ProfileSkillsSection from '../profile/ProfileSkillsSection';
 import ProfileFriendList from '../profile/ProfileFriendList';
 import ListAdapter from '../wrappers/ListAdapter';
 import GridView from '../wrappers/GridView';
+import CreateCompanyContainer from '../../main/CreateCompanyContainer';
 
 class Profile extends Component {
+    toggleModal = () => {
+        this.child.toggleModal()
+    }
+
     render() {
-        const { userId, imageUrl, firstName, lastName, headline, personalInfo, positions, educations, skills, friendsList, style, size } = this.props;
+        const { userId,
+            imageUrl,
+            firstName,
+            lastName,
+            headline,
+            personalInfo, positions, educations, skills, friendsList, style, size, addExperience, addEducation } = this.props;
         return (
-            <div style={styles.base}>
+            <div style={styles.main}>
                 <div style={styles.header}>
                     <section>
                         <ProfileHeader
@@ -27,15 +37,16 @@ class Profile extends Component {
                             {...personalInfo}
                             type="profile"
                             size="lg"
-                            id={userId} />
+                            id={userId}
+                            createCompany={this.toggleModal} />
                     </section>
                 </div>
                 <div style={styles.left}>
                     <section>
-                        <ProfileExperience sectionTitle="Experience" data={positions} />
+                        <ProfileExperience sectionTitle="Experience" data={positions} addExperience={addExperience} />
                     </section>
                     <section>
-                        <ProfileEducation sectionTitle="Education" data={educations} />
+                        <ProfileEducation sectionTitle="Education" data={educations} addEducation={addEducation} />
                     </section>
                     <section>
                         <ProfileSkillsSection sectionTitle="Skills" data={skills} />
@@ -46,6 +57,8 @@ class Profile extends Component {
                         <ProfileFriendList sectionTitle="Connections" data={friendsList} />
                     </section>
                 </div>
+                <CreateCompanyContainer isOpen={false} onRef={ref => (this.child = ref)} />
+
             </div>
         )
     };
@@ -53,22 +66,24 @@ class Profile extends Component {
 
 
 Profile.propTypes = {
-    userId: PropTypes.string.isRequired,
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
-    headline: PropTypes.string.isRequired,
-    personalInfo: PropTypes.object.isRequired,
-    positions: PropTypes.object.isRequired,
-    educations: PropTypes.object.isRequired,
-    skills: PropTypes.object.isRequired,
-    friendsList: PropTypes.object.isRequired,
+    userId: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    imageUrl: PropTypes.string,
+    headline: PropTypes.string,
+    personalInfo: PropTypes.object,
+    positions: PropTypes.object,
+    educations: PropTypes.object,
+    skills: PropTypes.object,
+    friendsList: PropTypes.object,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"])
 };
 
 const styles = {
-    base: {
+    main: {
+        maxWwidth: '100%',
+        maxHeight: '100%'
     },
     header: {
         width: '100%',
@@ -77,7 +92,7 @@ const styles = {
     left: {
         width: '65%',
         float: 'left',
-        padding: '5%'
+        margin: '5% 2%',
     },
     right: {
         width: '30%',

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:8081/api/'
+axios.defaults.baseURL = 'http://localhost:8000/api/'
 // axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 // axios.defaults.headers.post['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS';
@@ -28,6 +28,9 @@ export default {
   saveLoginToken: (newToken) => {
     localStorage.setItem('access-token', newToken)
   },
+  removeLoginToken: () => {
+    localStorage.removeItem('access-token')
+  },
   getLoggedInUserDetails: () => {
     return axios.get('/signing/getLoggedInUserInfo')
   },
@@ -41,11 +44,14 @@ export default {
   acceptFriendRequest: (userId1) => {
     return axios.post('connections/acceptFriendRequest', { userId1 })
   },
+  ignoreFriendRequest: (userId1) => {
+    return axios.post('connections/ignoreFriendRequest', { userId1 })
+  },
   addFriend: (userId1) => {
     return axios.post('connections/addFriend', { userId1 })
   },
   unfriend: (userId1) => {
-    return axios.delete(`connections/unfriend`, { userId1 })
+    return axios.post(`connections/unfriend`, { userId1 })
   },
   blockUser: (userId1) => {
     return axios.post('connections/block', { userId1 })
@@ -56,13 +62,16 @@ export default {
   getFriendsList: () => {
     return axios.get('connections/getFriendsList')
   },
+  getFriendRequests: () => {
+    return axios.get('connections/getFriendRequests')
+  },
 
   // Edit Info
   getUserProfile: () => {
     return axios.get(`editinfo/userGet`)
   },
   getUserProfileById: (profileId) => {
-    return axios.get(`editinfo/userGet`, { query: { profileId } })
+    return axios.get(`editinfo/userGet`, { params: { profileId } })
   },
   updateUserProfile: (updatedProfile) => {
     return axios.put(`editinfo/userUpdate`, updatedProfile)
@@ -71,7 +80,7 @@ export default {
     return axios.post('editinfo/userCvAdd', cvURL)
   },
   deleteCV: (cvURL) => {
-    return axios.delete(`editinfo/userCvDelete`, cvURL)
+    return axios.post(`editinfo/userCvDelete`, cvURL)
   },
   addUserSkill: (skill) => {
     return axios.put('editinfo/userAddSkill', skill)
@@ -82,7 +91,7 @@ export default {
 
   // Company
   getCompanyProfile: (companyId) => {
-    return axios.get(`editinfo/companyGet/${companyId}`)
+    return axios.get(`editinfo/companyGet/`, { params: { companyId } })
   },
   addCompanyProfile: (company) => {
     return axios.post(`editinfo/companyAdd`, company)
@@ -93,7 +102,7 @@ export default {
 
   // Jobs
   postJobCompany: (job) => {
-    return axios.post('jobs/postJobCompany', job)
+    return axios.post('jobs/createJob', job)
   },
   getJobListing: (jobId) => {
     return axios.get(`jobs/jobListing/${jobId}`)
@@ -105,12 +114,26 @@ export default {
     return axios.put('jobs/respondToApplicant', job)
   },
   deleteJob: (jobId) => {
-    return axios.delete('jobs/deleteJobCompany', { jobId })
+    return axios.post('jobs/deleteJobCompany', { jobId })
+  },
+  saveJob: (jobId) => {
+    return axios.delete('jobs/saveJob', { jobId })
+  },
+  applyJob: (jobId) => {
+    return axios.delete('jobs/applyJob', { jobId })
   },
 
   // Articles
-  addArticle: (article) => {
-    return axios.post('article', article)
+  getArticle: (postId) => {
+    return axios.get(`wall/getPost`, { params: { postId } })
+  },
+  addArticle: (authorId, text, img, video, isCompanyPost) => {
+    console.log("IN Articles route")
+    console.log(authorId +" " + isCompanyPost)
+    return axios.post('wall/addPost', { authorId, text, images: [img], videos: [video], isCompanyPost, isArticle: true })
+  },
+  editArticle: (article) => {
+    return axios.put(`wall/editArticle`, article)
   },
 
   // Notifications
@@ -126,7 +149,7 @@ export default {
     return axios.get(`recommendations/users/`)
   },
   getTrendingArticlesRecommendations: () => {
-    return axios.get(`recommendations/trending.articles/`)
+    return axios.get(`recommendations/articles/`)
   },
   getJobRecommendations: () => {
     return axios.get(`recommendations/jobs`)
@@ -142,57 +165,84 @@ export default {
   deleteBookmarkedPost: (postId) => {
     return axios.post('wall/deleteBookmark', { postId })
   },
-  getPosts: () => {
-    return axios.get(`wall/posts`)
+  getCompanyPosts: (companyId, limit) => {
+    return axios.get(`wall/getPosts`, { params: { companyId, limit } })
   },
-  addPost: (authorId, text, img, video) => {
-    return axios.post('wall/addPost', { authorId, text, images: [img], videos: [video], isCompanyPost: false, isArticle: false })
+  getNewsFeed: (limit) => {
+    return axios.get(`wall/getNewsfeed`, { params: { limit } })
   },
-  editPost: (postId, authorId, type, text, headLine, likesCount, img, video, commentsCount, isArticle) => {
-    return axios.put(`wall/editPost`, { postId, authorId, type, text, headLine, likesCount, images: [img], videos: [video], commentsCount, isArticle: true })
+  getPostComments: (parentPostId, authorId, limit) => {
+    return axios.get(`wall/getComments`, { params: { parentPostId, authorId, limit } })
+  },
+  getPostLikes: (postId) => {
+    return axios.get(`wall/getPostLikes`)
+  },
+  getCommentLikes: (postId) => {
+    return axios.get(`wall/getCommentLikes`)
+  },
+  addPost: (authorId, text, img, video, isCompanyPost) => {
+    return axios.post('wall/addPost', { authorId, text, images: [img], videos: [video], isCompanyPost, isArticle: false })
+  },
+  editPost: (postId, text) => {
+    return axios.put(`wall/editPost`, { postId, text })
   },
   deletePost: (postId) => {
-    return axios.delete(`wall/deletePost`, { postId })
+    return axios.post(`wall/deletePost`, { postId })
   },
-  addPostComment: (postComment) => {
-    return axios.post('wall/addComment', postComment)
+  addPostComment: (parentPostId, authorId, text) => {
+    return axios.post('wall/addComment', { parentPostId, authorId, text })
   },
   deleteComment: (commentId) => {
-    return axios.delete(`wall/deleteComment`, { commentId })
+    return axios.post(`wall/deleteComment`, { commentId })
   },
-  likePost: (postLike) => {
-    return axios.post('wall/addLike', postLike)
+  likePost: (likerId, postId) => {
+    return axios.post('wall/addLikeToPost', { likerId, postId })
   },
-  deleteLike: (likeId) => {
-    return axios.delete(`wall/deleteLike`, { likeId })
+  likeComment: (likerId, commentId) => {
+    return axios.post('wall/addLikeToComment', { likerId, commentId })
   },
-  replyPost: (reply) => {
-    return axios.post('wall/addReply', reply)
+  likePost: (likerId, postId) => {
+    return axios.post('wall/addLikeToPost', { likerId, postId })
   },
-  editReply: (reply) => {
-    return axios.put(`wall/editReply`, reply)
+  likeReply: (likerId, replyId) => {
+    return axios.post('wall/addLikeToReply', { likerId, replyId })
+  },
+  deletePostLike: (likerId, postId) => {
+    return axios.post(`wall/deleteLikeFromPost`, { likerId, postId })
+  },
+  deleteCommentLike: (likerId, commentId) => {
+    return axios.post(`wall/deleteLikeFromComment`, { likerId, commentId })
+  },
+  deleteReplyLike: (likerId, replyId) => {
+    return axios.post(`wall/deleteLikeFromPost`, { likerId, replyId })
+  },
+  getReplies: (parentCommentId, authorId, limit) => {
+    return axios.get('wall/getReplies', { params: { parentCommentId, authorId, limit } })
+  },
+  replyPost: (parentPostId, parentCommentId, authorId, text) => {
+    return axios.post('wall/addReply', { parentPostId, parentCommentId, authorId, text })
+  },
+  editReply: (replyId, text) => {
+    return axios.put(`wall/editReply`, { replyId, text })
   },
   deleteReply: (replyId) => {
-    return axios.delete(`wall/deleteReply`, { replyId })
+    return axios.post(`wall/deleteReply`, { replyId })
   },
-  editArticle: (article) => {
-    return axios.put(`wall/editArticle`, article)
-  },
-  editComment: (comment) => {
-    return axios.put(`wall/editComment`, comment)
+  editComment: (commentId, text) => {
+    return axios.put(`wall/editComment`, { commentId, text })
   },
 
   // Search
-  searchUser: (user) => {
-    return axios.post(`search/user/`, user)
+  searchUser: (searchKey) => {
+    return axios.post(`search/user/`, { searchKey })
   },
-  searchCompany: (company) => {
-    return axios.post(`search/company/`, company)
+  searchCompany: (searchKey) => {
+    return axios.post(`search/company/`, { searchKey })
   },
-  searchPost: (post) => {
-    return axios.post(`search/post/`, post)
+  searchPost: (searchKey) => {
+    return axios.post(`search/post/`, { searchKey })
   },
-  searchJob: (job) => {
-    return axios.post(`search/job/`, job)
+  searchJob: (searchKey) => {
+    return axios.post(`search/job/`, { searchKey })
   },
 }

@@ -30,7 +30,8 @@ export const icons = {
   edit: 'fa fa-edit',
   add: 'fa fa-plus',
   skill: 'fa fa-wrench',
-  logo: 'fa fa-linkedin'
+  logo: 'fa fa-linkedin',
+  close: 'fa fa-times'
 }
 
 export const paddings = {
@@ -54,6 +55,10 @@ export const borders = {
   }
 }
 
+export const companyPostsLimit = 20
 export const toastPosition = {
   position: toast.POSITION.BOTTOM_LEFT
 }
+
+export const postsLimit = 50
+export const commentsLimit = 20

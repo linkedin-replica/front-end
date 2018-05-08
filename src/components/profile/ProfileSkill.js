@@ -22,7 +22,7 @@ class ProfileSkill extends Component {
 }
 
 ProfileSkill.propTypes = {
-    skill: PropTypes.string.isRequired,
+    skill: PropTypes.string,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"]),
 };
@@ -40,7 +40,7 @@ const styles = {
         height: '100%',
     },
     textDiv: {
-        textAlign: 'center',  
+        textAlign: 'center',
         fontSize: '18px',
         paddingLeft: '20%',
     }

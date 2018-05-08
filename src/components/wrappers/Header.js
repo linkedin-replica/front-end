@@ -7,20 +7,31 @@ import TabBar from './TabBar';
 import LoginContainer from '../../main/LoginContainer';
 import Logo from '../../resources/logo.png';
 import UnlabeledInput from '../forms/UnlabeledInput';
+import api from '../../api/api';
+import { withRouter } from 'react-router-dom';
+import BorderedButton from '../buttons/BorderedButton';
 class Header extends Component {
     state = {
-        searchText: ''
+        searchKey: ''
     }
 
     handleSearchChange = (event) => {
         this.setState({
-            searchText: event.target.value
+            searchKey: event.target.value
         })
     }
 
     handleSubmitSearch = (event) => {
-        event.preventDefault();
+        if(event.key === "Enter"){
+            event.preventDefault();
+            console.log("In Submit handler");
+            this.props.history.push('/search-results/'+ this.state.searchKey)
+        }
+    }
 
+    handleSignOut = (event) => {
+        api.removeLoginToken()
+        this.props.history.push('/login')
     }
     componentDidMount() {
 
@@ -55,6 +66,9 @@ class Header extends Component {
                             <LoginContainer />
                         }
                     </nav>
+                    {isLoggedIn &&
+                        <BorderedButton name='Sign Out' color='white' onClick={this.handleSignOut}> </BorderedButton>
+                    }
                 </div>
             </header>
         );
@@ -102,10 +116,11 @@ const styles = {
 }
 
 Header.propTypes = {
-    isLoggedIn: PropTypes.bool.isRequired
+    isLoggedIn: PropTypes.bool
 }
 
 // Wrap it with Radium
 Header = Radium(Header);
+Header = withRouter(Header);
 
 export default Header;

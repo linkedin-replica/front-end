@@ -27,11 +27,11 @@ class ChatSidebarItem extends Component {
 
 // Define the passed input types for this component
 ChatSidebarItem.propTypes = {
-    userId: PropTypes.string.isRequired,
-    profilePictureUrl: PropTypes.string.isRequired,
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-    handleSelectChat: PropTypes.func.isRequired,
+    userId: PropTypes.string,
+    profilePictureUrl: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    handleSelectChat: PropTypes.func,
     isSelected: PropTypes.bool
 };
 

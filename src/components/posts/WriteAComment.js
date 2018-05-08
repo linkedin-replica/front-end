@@ -9,17 +9,21 @@ import AvatarImage from '../images/AvatarImage';
 class WriteAComment extends Component {
 
     render() {
-        const {src, rounded, visibility} = this.props
+        const { loggedInUser, addCommentText, handleChangeComment, handleSubmitComment, style } = this.props
         return (
-            <div>
-            <span style={styles.imgDiv}>
-                <AvatarImage src={src} rounded={rounded} size = 'sm' />
-            </span>
-            <span style={styles.commentDiv}>
-                 <InputForm placeholder="Write a comment" commentBool={true} />
-            </span>
-        </div>
-           
+            <div style={[styles.base, style]}>
+                <span style={styles.imgDiv}>
+                    <AvatarImage src={loggedInUser ? loggedInUser.profilePictureUrl : ''} rounded size='sm' />
+                </span>
+                <div style={styles.commentDiv}>
+                    <InputForm placeholder="Write a comment..."
+                        value={addCommentText}
+                        handleChange={handleChangeComment}
+                        onKeyUp={handleSubmitComment}
+                        commentBool />
+                </div>
+            </div>
+
         )
     };
 }
@@ -30,17 +34,16 @@ WriteAComment.propTypes = {
 };
 
 const styles = {
-  
+    base: {
+        display: 'flex',
+        width: '100%',
+    },
     imgDiv: {
-       
+
     },
     commentDiv: {
-        display: 'inline-block',
         marginLeft: '0.3em',
-        position: 'relative',
-        bottom: '0.7em',
-        width: '400px'
-        
+        width: '100%'
     },
 }
 

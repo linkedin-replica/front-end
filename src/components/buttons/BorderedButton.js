@@ -7,10 +7,10 @@ import ResponsiveButtonWrapper from './ResponsiveButtonWrapper';
 class BorderedButton extends Component {
   render() {
     //  Directly get the needed props
-    const { name, color, ...rest } = this.props;
+    const { style, name, color, ...rest } = this.props;
     return (
       <ResponsiveButtonWrapper
-        style={[styles.base, color === 'white' ? styles.whiteBorder : styles.blueBorder]}
+        style={[style, styles.base, color === 'white' ? styles.whiteBorder : styles.blueBorder]}
         // Passes on the rest of the props to apply the size and onClick functions on the button
         {...rest}>
         <span>
@@ -21,10 +21,10 @@ class BorderedButton extends Component {
   }
 }
 BorderedButton.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   color: PropTypes.oneOf(['white', 'blue']),
   size: PropTypes.oneOf(["sm", "md", "lg"]),
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 const styles = {

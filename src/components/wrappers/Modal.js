@@ -2,24 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
 import BlueButton from '../buttons/BlueButton.js';
+import GrayTextButton from '../buttons/GrayTextButton';
 
 
 
 class Modal extends React.Component {
   render() {
+    const { show, onCancelEdit, onSubmitEdit, cancelText, submitText } = this.props
     // Render nothing if the "show" prop is false
-    if(!this.props.show) {
+    if (!this.props.show) {
       return null;
     }
 
     return (
       <div className="backdrop" style={styles.backdropStyle}>
-        <div className="modal" style={styles.modalStyle}>
+        <div className="modal" style={[this.props.style]}>
           {this.props.children}
-
-          <div style={styles.submitButton}>
-            <BlueButton name={this.props.btnText} onClick={this.props.onClose} />
-          </div>
         </div>
       </div>
     );
@@ -27,9 +25,9 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
-  onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
   show: PropTypes.bool,
-  btnText: PropTypes.string.isRequired,
+  btnText: PropTypes.string,
   children: PropTypes.node
 };
 
@@ -57,6 +55,7 @@ const styles = {
     alignItems: 'center',
     flexDirection: 'column'
   },
+
 
 }
 Modal = Radium(Modal);

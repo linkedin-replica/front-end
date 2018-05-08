@@ -4,29 +4,23 @@ import PropTypes from 'prop-types'
 import api from '../api/api';
 import AddPostContainer from './AddPostContainer';
 import PostsContainer from './PostsContainer';
-import ArticlesContainer from './ArticleContainer';
+import ArticlesContainer from './ArticlesContainer';
 import { colors } from '../resources/constants';
 
 class WallContainer extends Component {
 
-    constructor(props) {
-        super(props)
-
-        const { mockData } = this.props;
-        if (mockData)
-            this.state.posts = mockData
-
-    }
-
     render() {
-        const { userId, isCompany, isArticle } = this.props
+        const { loggedInUser, isCompany, isArticle, companyId, isAdmin } = this.props
         return (
             <div style={styles.base}>
-                <AddPostContainer isCompany={isCompany} isArticle={isArticle} userId={userId} />
+                {!isCompany || isAdmin ?
+                    <AddPostContainer isCompany={isCompany} isArticle={isArticle} loggedInUser={loggedInUser} companyId={companyId} />
+                    : <div />
+                }
                 <section>
                     {isArticle ?
                         <ArticlesContainer /> :
-                        <PostsContainer />
+                        <PostsContainer loggedInUser={loggedInUser} isCompany={isCompany} companyId={companyId} />
                     }
                 </section>
             </div >
@@ -38,9 +32,7 @@ const styles = {
     base: {
         background: colors.whiteGray,
         display: 'block',
-        width: '100%',
         padding: '10px'
-
     },
     header: {
         textAlign: 'center'
@@ -48,8 +40,9 @@ const styles = {
 }
 
 WallContainer.propTypes = {
-    userID: PropTypes.string.isRequired,
-    isCompany: PropTypes.bool
+    loggedInUser: PropTypes.object,
+    isCompany: PropTypes.bool,
+    isArticle: PropTypes.bool
 };
 
 

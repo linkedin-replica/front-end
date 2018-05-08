@@ -5,11 +5,12 @@ import ArticleContainer from './ArticleContainer';
 import ListAdapter from '../components/wrappers/ListAdapter';
 import api from '../api/api';
 import { toast } from 'react-toastify';
+import RecommendedArticles from '../components/articles/RecommendedArticles'
 
 class ArticlesContainer extends Component {
 
     state = {
-        posts: []
+        articles: []
     }
 
     constructor(props) {
@@ -17,14 +18,14 @@ class ArticlesContainer extends Component {
 
         const { mockData } = this.props;
         if (mockData)
-            this.state.posts = mockData
+            this.state.articles = mockData
     }
 
     componentDidMount() {
         api.getTrendingArticlesRecommendations()
             .then(res => {
                 this.setState({
-                    posts: res.data.results
+                    articles: res.data.results
                 })
             }).catch(err => toast.error(err.response.data.error))
     }
@@ -32,23 +33,13 @@ class ArticlesContainer extends Component {
     render() {
         const { articles } = this.state;
         return (
-            <ListAdapter data={articles} listItemView={ArticleContainer} verticalSplit />
+            <RecommendedArticles recommendedArticlesData = {articles}/>
         );
     }
 }
 
 ArticlesContainer.propTypes = {
-    text: PropTypes.string,
-    images: PropTypes.string,
-    videos: PropTypes.string,
-    commentsCount: PropTypes.string,
-    timestamp: PropTypes.number,
-    likers: PropTypes.object,
-    liked: PropTypes.bool,
-    authorName: PropTypes.string,
-    authorProfilePictureUrl: PropTypes.string,
-    headline: PropTypes.string
+    mockData: PropTypes.array
 };
-
 
 export default ArticlesContainer;

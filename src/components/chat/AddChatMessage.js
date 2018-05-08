@@ -28,9 +28,9 @@ class AddChatMessage extends Component {
 
 // Define the passed input types for this component
 AddChatMessage.propTypes = {
-    inputMessageVal: PropTypes.string.isRequired,
-    handleSendMessage: PropTypes.func.isRequired,
-    handleChange: PropTypes.func.isRequired
+    inputMessageVal: PropTypes.string,
+    handleSendMessage: PropTypes.func,
+    handleChange: PropTypes.func
 };
 
 const styles = {

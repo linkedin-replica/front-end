@@ -22,9 +22,9 @@ class BlueButton extends Component {
 }
 
 BlueButton.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   size: PropTypes.oneOf(["sm", "md", "lg"]),
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 const styles = {

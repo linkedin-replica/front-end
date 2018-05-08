@@ -10,37 +10,41 @@ import IconButton from '../buttons/IconButton';
 
 class ProfileEducation extends Component {
     render() {
-        const { sectionTitle, data, style, size } = this.props;
+        const { sectionTitle, data, style, size, addEducation } = this.props;
         return (
-            <WhiteWrapper style={styles.whiteWrapper} size="lg">
-                <div style={style}>
-                    <h3 style={[styles.base, size ? styles[size] : styles['lg']]}> {sectionTitle} </h3>
-                    <IconButton type="add" onClick={this.incrementCounter} />
-                    <ListAdapter data={data} listItemView={ProfileEducationItem} verticalSplit />
-                </div>
+            <WhiteWrapper style={styles.base} size="lg">
+                <h3 style={[styles.text, size ? styles[size] : styles['lg']]}> {sectionTitle} </h3>
+                <IconButton style={styles.addButton} type="add" onClick={addEducation} />
+                <ListAdapter data={data} listItemView={ProfileEducationItem} verticalSplit />
             </WhiteWrapper>
         )
     };
 }
 
 ProfileEducation.propTypes = {
-    sectionTitle: PropTypes.string.isRequired,
-    data: PropTypes.array.isRequired,
+    sectionTitle: PropTypes.string,
+    data: PropTypes.array,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"])
 };
 
 const styles = {
     base: {
+        margin: '10px auto',
+        paddingTop: '0.5em',
+        width: '100%',
+        position: 'relative',
+    },
+    text: {
         display: 'inline-block',
         paddingLeft: '2em',
         paddingRight: '20em',
         fontWeight: 'normal'
     },
-    whiteWrapper: {
-        margin: '10px auto',
-        paddingTop: '0.5em',
-        width: '100%'
+    addButton: {
+        position: 'absolute',
+        right: '20px',
+        top: '20px'
     },
     sm: {
         fontSize: '0.5em'

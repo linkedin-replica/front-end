@@ -33,8 +33,8 @@ class AvatarImage extends Component {
 AvatarImage.propTypes = {
     src: PropTypes.string,
     rounded: PropTypes.bool,
-    type: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    type: PropTypes.string,
+    id: PropTypes.string,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg", "xl"]),
 };
@@ -48,8 +48,8 @@ const styles = {
         borderRadius: '0%',
     },
     sm: {
-        height: '1.5em',
-        width: '1.5em'
+        height: '2em',
+        width: '2em'
     },
     md: {
 
