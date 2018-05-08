@@ -20,13 +20,7 @@ class PostContainer extends Component {
     }
     componentDidMount() {
 
-        const { postId, loggedInUser } = this.props
-        api.getPostComments(postId, loggedInUser.userId, commentsLimit)
-            .then(res => {
-                this.setState({
-                    comments: res.data.results
-                })
-            }).catch(err => toast.error(err.response.data.error))
+
     }
 
     handleDeleteComment = (commentId) => (event) => {
@@ -43,7 +37,7 @@ class PostContainer extends Component {
         this.state = {
             ...this.state,
             liked: props.liked,
-            likeCount: props.likers.length,
+            likeCount: props.likers ? props.likers.length : 0,
             commentsCount: props.commentsCount,
             likers: props.likers,
         }
@@ -73,6 +67,14 @@ class PostContainer extends Component {
         this.setState({
             showComments: !showComments
         });
+
+        const { postId, loggedInUser } = this.props
+        api.getPostComments(postId, loggedInUser.userId, commentsLimit)
+            .then(res => {
+                this.setState({
+                    comments: res.data.results
+                })
+            }).catch(err => toast.error(err.response.data.error))
     }
 
     handleSubmitComment = (event) => {
@@ -110,12 +112,12 @@ class PostContainer extends Component {
         }
     }
 
-    
+
     render() {
         const { addCommentText, liked, comments } = this.state
         const { images, videos, handleDeletePost, loggedInUser } = this.props
         let postContent = images ? images[0] : (videos ? videos[0] : '')
-        let postType = images.length > 0 ? 'img' : (videos.length > 0 ? 'video' : '')
+        let postType = images ? 'img' : (videos ? 'video' : '')
 
         const newComments = comments.map(comment => ({ ...comment, loggedInUser, handleDeleteComment: this.handleDeleteComment(comment.commentId) }))
 

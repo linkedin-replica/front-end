@@ -6,6 +6,7 @@ import ListAdapter from '../components/wrappers/ListAdapter';
 import api from '../api/api';
 import { toast } from 'react-toastify';
 import { postsLimit } from '../resources/constants';
+import { withRouter } from 'react-router'
 
 class ArticleContainer extends Component {
 
@@ -56,7 +57,7 @@ class ArticleContainer extends Component {
         const newPost = { ...post, loggedInUser, handleEditPost: this.handleEditPost(post.postId), handleDeletePost: this.handleDeletePost(post.postId) }
 
         return (
-            <PostContainer {newPost}/>
+            <PostContainer {...newPost} loggedInUser={loggedInUser} />
         );
     }
 }
@@ -66,4 +67,4 @@ ArticleContainer.propTypes = {
 };
 
 
-export default ArticleContainer;
+export default withRouter(ArticleContainer);

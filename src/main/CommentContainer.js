@@ -19,13 +19,7 @@ class CommentContainer extends Component {
         addReplyText: '',
     }
     componentDidMount() {
-        const { commentId, loggedInUser } = this.props
-        api.getReplies(commentId, loggedInUser.userId, commentsLimit)
-            .then(res => {
-                this.setState({
-                    replies: res.data.results
-                })
-            }).catch(err => toast.error(err.response.data.error))
+
     }
 
     constructor(props) {
@@ -78,6 +72,14 @@ class CommentContainer extends Component {
         this.setState({
             showReplies: !showReplies
         });
+
+        const { commentId, loggedInUser } = this.props
+        api.getReplies(commentId, loggedInUser.userId, commentsLimit)
+            .then(res => {
+                this.setState({
+                    replies: res.data.results
+                })
+            }).catch(err => toast.error(err.response.data.error))
     }
 
     handleSubmitComment = (event) => {
