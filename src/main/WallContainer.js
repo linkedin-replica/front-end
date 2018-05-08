@@ -4,13 +4,15 @@ import PropTypes from 'prop-types'
 import api from '../api/api';
 import AddPostContainer from './AddPostContainer';
 import PostsContainer from './PostsContainer';
-import ArticlesContainer from './ArticleContainer';
+import ArticlesContainer from './ArticlesContainer';
 import { colors } from '../resources/constants';
 
 class WallContainer extends Component {
 
     render() {
         const { loggedInUser, isCompany, isArticle } = this.props
+        console.log("In wall container")
+        console.log("===>" + loggedInUser.userId + " " + isCompany)
         return (
             <div style={styles.base}>
                 <AddPostContainer isCompanyPost={isCompany} isArticle={isArticle} loggedInUser={loggedInUser} />

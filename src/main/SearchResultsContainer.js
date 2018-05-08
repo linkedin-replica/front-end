@@ -63,7 +63,6 @@ class SearchResultsContainer extends Component {
     }
 
     render() {
-        console.log("IN SearchResult render function")
         const { addPostContent } = this.state;
         const { loggedInUser } = this.props;
         return (

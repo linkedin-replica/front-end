@@ -5,6 +5,7 @@ import ArticleContainer from './ArticleContainer';
 import ListAdapter from '../components/wrappers/ListAdapter';
 import api from '../api/api';
 import { toast } from 'react-toastify';
+import RecommendedArticles from '../components/articles/RecommendedArticles'
 
 class ArticlesContainer extends Component {
 
@@ -17,7 +18,7 @@ class ArticlesContainer extends Component {
 
         const { mockData } = this.props;
         if (mockData)
-            this.state.posts = mockData
+            this.state.articles = mockData
     }
 
     componentDidMount() {
@@ -32,14 +33,13 @@ class ArticlesContainer extends Component {
     render() {
         const { articles } = this.state;
         return (
-            <RecommendedArticles recommendedArticlesData = {articles}>
+            <RecommendedArticles recommendedArticlesData = {articles}/>
         );
     }
 }
 
 ArticlesContainer.propTypes = {
-    mockData: PropTypes.array  
+    mockData: PropTypes.array
 };
-
 
 export default ArticlesContainer;

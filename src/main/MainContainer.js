@@ -22,6 +22,7 @@ class MainContainer extends Component {
 
     render() {
         const { loggedInUser, match } = this.props
+        console.log("In MainContainer ---> " + loggedInUser.userId)
         return (
             <div className="main-app" style={styles.base}>
                 <Header isLoggedIn />
@@ -30,7 +31,7 @@ class MainContainer extends Component {
                     <Route path='/connections' component={ConnectionsContainer} />
                     <Route path='/jobs' component={JobsContainer} />
                     <Route path='/notifications' component={NotificationsContainer} />
-                    <Route path='/articles' render={() => <WallContainer loggedInUser={loggedInUser} isArticle/>} />
+                    <Route path='/articles' render={() => <WallContainer loggedInUser={loggedInUser} isArticle isCompany={false}/>} />
                     <Route path='/chat' render={() => <ChatContainer loggedInUser={loggedInUser} />} />
                     <Route path='/profile/:id' component={ProfileContainer} />
                     <Route path='/company/:id' component={CompanyContainer} />
