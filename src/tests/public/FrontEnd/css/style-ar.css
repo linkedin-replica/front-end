@@ -1,0 +1,164 @@
+/*fonts*/
+@font-face {
+    font-family:'DINNextLTArabic-Black';
+	src: url('../fonts/arabic/DINNextLTArabic-Black.ttf')  format('truetype'); /* Safari, Android, iOS */
+    /*src: url('../fonts/arabic/DINNextLTArabic-Black.ttf'); /* IE9 Compat Modes 
+    src: url('../fonts/lato/regular/Lato-Reg.woff') format('woff'),  Pretty Modern Browsers 
+   
+    url('../fonts/lato/regular/Lato-Regular.svg') format('svg'); /* Legacy iOS */
+}
+@font-face {
+    font-family:'DINNextLTArabic-Light';
+    src: url('../fonts/arabic/DINNextLTArabic-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family:'DINNextLTArabic-bold';
+    src: url('../fonts/arabic/DINNextLTArabic-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family:'DINNextLTArabic-medium';
+    src: url('../fonts/arabic/DINNextLTArabic-Medium.ttf') format('truetype');
+}
+body {
+    font-family: 'DINNextLTArabic-Light';
+}
+.form-signUp .btn-social-icon.btn-google-plus{float: none}
+.form-signUp .btn-social-icon {padding: 10px 10px}
+.main-area .signUp .titles, .explore h2, .contact-us h2, .how-to-use .explore-list .title, .contact-us form .form-group label,.tabs-explore li.active a, .tabs-explore li.active a:hover, .tabs-explore li.active a:focus, .tabs-explore li.active a:visited, .top-kitchens .title, .trending-meals .title, .srch-result-title, .filter-title, .cart-empty-item-title, .checkbox.forzen{font-family:'DINNextLTArabic-bold' !important}
+.tab-content .panel-footer .number-items, .tab-content .panel-footer{font-family:'DINNextLTArabic-Black'}
+.media-heading{font-family:'DINNextLTArabic-medium';padding-bottom: 4px}
+.btn-social-icon.btn-facebook, .main-area .signUp .btn-social-icon.btn-google-plus{font-size:13px}
+.control-group .control-label {padding-right: 20px;font-family: 'DINNextLTArabic-bold' !important;text-align: right;float: right}
+.login .modal-dialog .btns-social-media a{display:block}
+.login .btn-social-icon.btn-facebook, .login .btn-social-icon.btn-google-plus{float:none !important}
+.login .btn-social-icon.btn-facebook{margin-left:0}
+/*General*/
+.pull-right{float:left !important}
+.pull-left{float:right !important}
+.navbar-right{float:left !important}
+.navbar-left{float:right !important}
+/*Home-page*/
+.sortBy select{padding: 2px 0px 2px 14px}
+.btn-get-started{padding: 12px 54px}
+.btn-social-icon{padding: 10px 15px}
+.main-area .signUp input[type="text"], .main-area .signUp input[type="password"], .main-area .signUp input[type="email"]{padding-right: 20px;padding-left: 10px}
+.btn-social-icon.btn-facebook{margin-left: 10px;margin-right:0;float:right}
+.main-area .signUp .btn-social-icon.btn-google-plus{float:left}
+.btn-social-icon i {margin-left: 5px;margin-right: 0}
+.main-area .signUp .control-group .radio{text-align:right}
+.checkbox label, .radio label{padding-right: 0}
+input[type=radio] + label:before{margin-left: 20px;margin-right:0}
+.control-group .radio i.fa{margin-left: 10px;margin-right:0}
+.main-footer .footer-list{text-align: right}
+/*Main-header*/
+.btn-signIn{margin-left: 10px;margin-right:0}
+.header .navbar-right .drop-header .dropdown-menu.drop-location {right: 0;left: auto}
+.header .main-logo.navbar-brand{margin-left: 32px}
+.profile{margin-left: 10px;margin-right: 0}
+.drop-header a.dropdown-toggle i.fa-map-marker{padding-left: 8px;padding-right: 0px}
+.navbar-form .input-group{padding-right: 20px;padding-left: 0}
+.navbar-form .input-group-btn{border-top-right-radius: 5px;border-bottom-right-radius: 5px;border-top-left-radius: 0;border-bottom-left-radius: 0}
+.sortBy{right: auto;left:0}
+.sortBy span{margin-left: 4px;margin-right: 0}
+.keywords-results-list {margin-left: 137px;margin-right: 0}
+.size input[type=radio] + label:before {margin-left: 0;margin-right: auto}
+/*landing-page*/
+.btn-show{left:0;right:auto}
+.top-kitchens .media .media-body .pull-left{margin-left: 72px;margin-right: auto}
+.tab-content .panel-footer .number-items span{margin: 0}
+.like i {padding-left: 4px;padding-right: 0}
+.tab-content .panel-footer .number-items{text-align:right}
+.trending-meals-details .meal-title {font-weight: 700}
+.sortBy span, .filter-clear a, .filter-clear a:hover, .filter-clear a:focus, .filter-clear a:active, .filter-clear a:visited{font-weight:700}
+.carousel-indicators{padding-right:0}
+/*search-results*/
+.alert-min-order{text-align:right}
+.filter-list{padding-right: 0}
+.filter-list-item input[type=checkbox]+label:before{right: 0;left: auto}
+.filter-list li a{padding: 6px 24px 6px 8px}
+.meal-image {position: relative;right: 0;float: right;left: auto}
+.meals .meal-details {margin-right: 207px;margin-left: 65px}
+.meals .meal-price {position: absolute;top: 0;left: 0;right: auto}
+.meals .meal-Plove .Plove-number{margin-right: 8px;margin-left: auto}
+.trending-meals-price{left: 9px;right:auto}
+.pagination {float: left}
+.meal-image .delivery-time{right: 10px;left: auto}
+.meals .meal-price .unit{margin-right: 5px;margin-left:0}
+/*menu-kitchen*/
+.list-btns li{float:left;margin-left: auto;margin-right: 9px}
+.list-btns li a i {padding-left: 8px;padding-right: 0}
+.kitchen-details{margin-right: 20px;margin-left: 0}
+.area i, .food-kind i {padding-left: 5px;padding-right: 0}
+.meal-inner.menu .meal-details {margin-right: 239px;margin-left: 0}
+.size {margin-left: 20px;margin-right: 0}
+.btn-add{right: auto;left:0}
+.cart-info .cart-empty-item {margin-right: 8px;margin-left: auto}
+.header-info .item{padding-right: 19px;padding-left: 0}
+/*full-cart*/
+ul.cart-full-item {padding-right: 10px;padding-left: 0}
+li.cart-full-item-order .qty{right: 0;left:auto}
+.item-txt {margin-right: 45px;padding-left: 59px;margin-left: 0;padding-right: 0}
+.item-txt .price{left: 0;right: auto}
+.cart-setting {margin-right: 46px;margin-left: 0}
+.add-comment, .cart-manage {margin-left: 10px;margin-right: 0}
+.price {float: left}
+.cart-info{padding-right: 26px;padding-left: 0}
+/*Review*/
+.state-list{margin-right: 15px;margin-left:0}
+.state-footer .btn-upload i {margin-right: 0px;margin-left: 7px}
+/*Order-status*/
+.check-card .card-number{right: 9px;left:auto}
+.text-left {text-align: right}
+/*confirm*/
+.block-head ul {padding: 15px 15px 0 0px}
+.block-left {padding-left: 0}
+.block-right {padding-right: 0}
+.block {border-top-left-radius: 5px;border-top-right-radius: 0}
+.block-left .block-head{border-top-right-radius: 5px;border-top-left-radius: 0}
+.cart-footer-txt p.info{padding-right: 26px;padding-left: 20px}
+.btns-confirm a {margin-right: 10px;margin-left: 0;display:inline-block}
+.check-card .radio input[type=radio] + label:before{margin-left: 7px}
+.check-card .radio p{padding-right: 19px;margin-left:0}
+.btn-confirm-order.active:before{margin-left: 5px;margin-right:0;right: 0}
+/*Notification*/
+.ns-close{left:5px;right:auto}
+/*Footer*/
+.main-footer .footer-info {text-align: left}
+.sideBar .footer {text-align: right;}
+.meal-Plove-profile.menu {padding-left: 0;}
+.meals .meal-details{text-align: right}
+/*Media--Quires*/
+@media all and (max-width: 480px)
+{
+    .header .main-logo.navbar-brand {margin-left: 0;}
+    .trending-meals-inner {margin-bottom: 15px;display: block !important;width: 100% !important;}
+    .meals.item-gutter.meals_menu .meal-inner.menu .meal-details{margin-right: 0 !important;clear: both;}
+    .meals.item-gutter.meals_menu .meals .meal-inner .meal-image{margin-bottom: 5%;}
+    .meals.item-gutter.meals_menu .meal-title{position: inherit !important;}
+    .meals.item-gutter.meals_menu .meal-title .brand-color-txt{margin-left: 0;}
+    .meals.item-gutter.meals_menu .item-sizes{clear: both !important;margin-top: 0;}
+    .meals.item-gutter.meals_menu .meal-Plove-profile.menu{position: inherit !important;padding-left: 0 !important;}
+    .meals.item-gutter.meals_menu .meal-image .delivery-time{left: 0 !important;font-size: 16px !important;}
+
+    .meals .meal-inner .meal-image{width:100%;height: inherit;margin-bottom: 10%;}
+    .meal-image{position: inherit}
+    .meals .meal-details{margin: 0;position: inherit;}
+    .meal-title{margin-left: 0 !important;margin-top: 0;position: inherit;top: inherit;font-size: 14px !important;}
+    .meals .meal-price {position: inherit;top: inherit;right: inherit;margin-top: 10%;text-align: right}
+    .meals .meal-Plove{position: inherit;}
+    .meal-get-offer {text-align: right;top: inherit;position: inherit;display: inline-block;float: left;margin-top: 30px;}
+}
+@media all and (max-width: 768px){
+    .meals.item-gutter.meals_menu .meal-Plove-profile.menu{padding-left: 0;padding-right: 0;}
+}
+@media (min-width: 992px){
+.explore .item-explore {float: right}
+}
+@media all and (max-width: 992px){
+    .filter-title.visible-sm.visible-xs {display: inline-block !important;float: left;}
+    .navbar-header{float: none;}
+    .navbar-nav{float: none;}
+    .navbar-right{float: none !important;}
+    .navbar-nav > li{float: none;}
+    .tablet-navbar{float: left !important;margin: 0 0 0 10px;display: inline-block}
+}

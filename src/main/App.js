@@ -18,12 +18,11 @@ class App extends Component {
 
     // If user is logged in, get his info
     if (loggedInToken) {
-      // this.props.history.push('/')
       api.getLoggedInUserDetails()
         .then(({ data }) => {
           this.setState({
             loggedInUser: data.results
-          }, () => this.props.history.push('/home'))
+          })
 
         })
         .catch(err => {
@@ -39,7 +38,6 @@ class App extends Component {
     const { match } = this.props
     const { loggedInUser } = this.state
 
-
     return (
       <div className="main-app" style={styles.base}>
         <Switch>
@@ -50,7 +48,6 @@ class App extends Component {
               <div>Please Login First</div>
           )}
           />
-          }
         </Switch>
       </div>);
   }

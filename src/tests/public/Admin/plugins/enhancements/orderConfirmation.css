@@ -1,0 +1,114 @@
+#extend{
+  width: 100%;
+}
+
+.centerlize{
+  margin: 20px auto;
+  max-width: 700px;
+  text-align: center;
+}
+
+.back{
+  margin-bottom: 40px;
+}
+
+.after-date{
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+.weekend-msg{
+  margin: 0 auto;
+}
+
+.msg1{
+  font-size: 14px;
+  margin: 0;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.back-ques{
+  color: #a1a8bd;
+  font-size: 16px;
+  margin: 0;
+}
+
+.back-link{
+  color: #ff6008;
+  font-size: 16px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.homepage:hover{
+  text-decoration: none;
+  font-weight: normal;
+  color: #ff6008;
+}
+
+#center{
+  margin: 0;
+}
+
+.bold{
+  color: black;
+}
+
+.tomo-msg{
+  font-size: 14px;
+  color: #6b707b;
+  margin: 0;
+}
+
+#payment-options{
+  max-width: 360px;
+}
+
+#submit_code{
+  margin: 0;
+  float: right;
+}
+
+#code-sign{
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+.extend-wrapper{
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+#not-extended{
+  margin: 0;
+}
+
+.form label{
+  color: #616673;
+}
+
+.custom-pick input:disabled+label{
+  background: #D0D0D0;
+  color: #A5A5A5;
+  border-color: #D0D0D0;
+  cursor: default;
+}
+
+@media (max-width: 767px){
+
+  .after-date{
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .cols.cols-2>.col{
+    width: 50%;
+    float: left;
+  }
+
+  .form input[type=text]{
+    margin-bottom: 0;
+  }
+
+}

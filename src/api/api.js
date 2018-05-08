@@ -59,6 +59,9 @@ export default {
   getFriendsList: () => {
     return axios.get('connections/getFriendsList')
   },
+  getFriendRequests: () => {
+    return axios.get('connections/getFriendRequests')
+  },
 
   // Edit Info
   getUserProfile: () => {
@@ -109,6 +112,12 @@ export default {
   },
   deleteJob: (jobId) => {
     return axios.post('jobs/deleteJobCompany', { jobId })
+  },
+  saveJob: (jobId) => {
+    return axios.delete('jobs/saveJob', { jobId })
+  },
+  applyJob: (jobId) => {
+    return axios.delete('jobs/applyJob', { jobId })
   },
 
   // Articles
@@ -219,16 +228,16 @@ export default {
   },
 
   // Search
-  searchUser: (user) => {
-    return axios.post(`search/user/`, user)
+  searchUser: (searchKey) => {
+    return axios.post(`search/user/`, { searchKey })
   },
-  searchCompany: (company) => {
-    return axios.post(`search/company/`, company)
+  searchCompany: (searchKey) => {
+    return axios.post(`search/company/`, { searchKey })
   },
-  searchPost: (post) => {
-    return axios.post(`search/post/`, post)
+  searchPost: (searchKey) => {
+    return axios.post(`search/post/`, { searchKey })
   },
-  searchJob: (job) => {
-    return axios.post(`search/job/`, job)
+  searchJob: (searchKey) => {
+    return axios.post(`search/job/`, { searchKey })
   },
 }

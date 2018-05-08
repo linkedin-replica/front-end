@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import PropTypes from 'prop-types'
-import { colors } from '../../resources/constants';
 import ListAdapter from '../wrappers/ListAdapter';
-import WhiteWrapper from '../wrappers/WhiteWrapper';
 import FriendRequestItem from '../connections/FriendRequestItem';
 
 class FriendRequests extends Component {
     render() {
-        const { data } = this.props;
+        const { data,
+                style,
+                size,
+                verticalSplit } = this.props;
         return (
-            <ListAdapter data={mockData} listItemView={FriendRequestItem}  />
+            <ListAdapter 
+                data = {data}
+                style = {style}
+                size = {size}
+                verticalSplit = {verticalSplit}
+                listItemView={FriendRequestItem}  />
         )
     };
 }
@@ -24,11 +30,10 @@ const mockData = [
 
 
 FriendRequests.propTypes = {
-    img: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    type: PropTypes.string,
-    id: PropTypes.string,
+    data: PropTypes.array.isRequired,
+    style: PropTypes.object, // Content style
+    size: PropTypes.oneOf(["sm", "md", "lg"]),
+    verticalSplit: PropTypes.bool
 };
 
 const styles = {

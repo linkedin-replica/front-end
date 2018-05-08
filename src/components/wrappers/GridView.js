@@ -36,7 +36,7 @@ class GridView extends Component {
                     data.map((item, index) => (
                         <li key={`${gridItemView.displayName}${index}`}
                             style={[styles.listItem,
-                            size ? styles[size] : styles['md']]}>
+                                size ? styles[size] : styles['md']]}>
                             {React.createElement(gridItemView, { ...item, style: [styles.item] })}
                         </li>
                     ))

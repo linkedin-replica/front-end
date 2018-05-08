@@ -1,0 +1,40 @@
+/*fonts*/
+@font-face {
+    font-family:'DINNextLTArabic-Black';
+	src: url('../../fonts/arabic/DINNextLTArabic-Black.ttf')  format('truetype'); /* Safari, Android, iOS */
+    /*src: url('../fonts/arabic/DINNextLTArabic-Black.ttf'); /* IE9 Compat Modes 
+    src: url('../fonts/lato/regular/Lato-Reg.woff') format('woff'),  Pretty Modern Browsers 
+   
+    url('../fonts/lato/regular/Lato-Regular.svg') format('svg'); /* Legacy iOS */
+}
+@font-face {
+    font-family:'DINNextLTArabic-Regular';
+    src: url('../../fonts/arabic/DINNextLTArabic-Regular.ttf') format('truetype');
+}
+@font-face {
+    /*font-family:'montserrat-regular';
+    src: url('../fonts/montserrat/regular/Montserrat-Regular.ttf') format('truetype');*/
+}
+body {
+    font-family: DINNextLTArabic-Regular;
+}
+/*General*/
+.pull-right{float:left !important}
+.pull-left{float:right !important}
+/*Home-page*/
+.btn-social-icon.btn-facebook{margin-left: 10px;margin-right:0}
+.main-area .signUp .control-group .radio{text-align:right}
+.checkbox label, .radio label{padding-right: 0}
+input[type=radio] + label:before{margin-left: 20px;margin-right:0}
+.control-group .radio i.fa{margin-left: 10px;margin-right:0}
+.main-footer .footer-list{text-align: right}
+/*Main-header*/
+.header .main-logo.navbar-brand{margin-left: 32px}
+.profile{margin-left: 10px;margin-right: 0}
+.drop-header a.dropdown-toggle i.fa-map-marker{padding-left: 8px;padding-right: 0px}
+.navbar-form .input-group{padding-right: 20px;padding-left: 0}
+.navbar-form .input-group-btn{border-top-right-radius: 5px;border-bottom-right-radius: 5px;border-top-left-radius: 0;border-bottom-left-radius: 0}
+.sortBy{right: auto;left:0}
+.sortBy span{margin-left: 4px;margin-right: 0}
+.sortBy span {margin-right: 4px;margin-left: 0}
+.keywords-results-list {margin-left: 137px;margin-right: 0}
