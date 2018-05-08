@@ -32,13 +32,13 @@ class MainContainer extends Component {
                     <Route path='/connections' component={ConnectionsContainer} />
                     <Route path='/jobs' component={JobsContainer} />
                     <Route path='/notifications' component={NotificationsContainer} />
-                    <Route path='/articles' render={() => <WallContainer loggedInUser={loggedInUser} isArticle isCompany={false}/>} />
+                    <Route path='/articles' render={() => <WallContainer loggedInUser={loggedInUser} isArticle isCompany={false} />} />
                     <Route path='/chat' render={() => <ChatContainer loggedInUser={loggedInUser} />} />
                     <Route path='/profile/:id' component={ProfileContainer} />
                     <Route path='/company/:id' render={() => <CompanyContainer loggedInUser={loggedInUser} />} />
                     <Route path='/create-company/' component={CreateCompanyContainer} />
                     <Route path='/job/:id' component={JobContainer} />
-                    <Route path='/article/:id' component={ArticleContainer} />
+                    <Route path='/article/:id' render={() => <ArticleContainer loggedInUser={loggedInUser} />} />
                     <Route path='/search-results/:searchKey' render={() => <SearchResultsContainer loggedInUser={loggedInUser} />} />
                 </main>
                 <ToastContainer position='bottom-left' style={styles.toast} autoClose={4000} />
