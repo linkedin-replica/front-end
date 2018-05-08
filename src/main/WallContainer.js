@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import api from '../api/api';
 import AddPostContainer from './AddPostContainer';
 import PostsContainer from './PostsContainer';
-import ArticlesContainer from './ArticleContainer';
+import ArticlesContainer from './ArticlesContainer';
 import { colors } from '../resources/constants';
 
 class WallContainer extends Component {

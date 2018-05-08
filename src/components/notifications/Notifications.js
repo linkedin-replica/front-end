@@ -14,7 +14,7 @@ class Notifications extends Component {
             verticalSplit } = this.props;
         return (
             <ListAdapter
-                data={mockData}
+                data={data}
                 style={style}
                 size={size}
                 verticalSplit={verticalSplit}
@@ -23,12 +23,12 @@ class Notifications extends Component {
     };
 }
 
-const mockData = [
-    { link: "test/1", text: "Esraa Salah liked your post", read: true, timestamp: "123" },
-    { link: "profile/2", text: "Hagar Yasser shared an update", read: true, timestamp: "456" },
-    { link: "test/3", text: "Hisham Zahran viewed your profile", read: false, timestamp: "789" },
-    { link: "profile/4", text: "Mostafa Abdullah viewed your profile", read: false, timestamp: "1011" },
-]
+// const mockData = [
+//     { link: "test/1", text:"Esraa Salah liked your post", read: true, timestamp:"123" },
+//     { link: "profile/2", text:"Hagar Yasser shared an update", read: true, timestamp:"456" },
+//     { link: "test/3", text:"Hisham Zahran viewed your profile", read: false, timestamp:"789" },
+//     { link: "profile/4", text:"Mostafa Abdullah viewed your profile", read:false, timestamp:"1011" },
+// ]
 
 
 Notifications.propTypes = {

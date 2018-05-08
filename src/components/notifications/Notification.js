@@ -27,7 +27,7 @@ class Notification extends Component {
                         {text}
                     </span>
                 </Link >
-                <GrayText text={timestamp}
+                <GrayText text={new Date(timestamp) + ""}
                     style={styles.text}
                     size="md" />
             </WhiteWrapper>

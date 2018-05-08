@@ -10,49 +10,51 @@ import PostsContainer from './PostsContainer'
 // import CompaniesContainer from './CompaniesContainer'
 import JobsContainer from './JobsContainer'
 import ProfileContainer from './ProfileContainer'
+import { withRouter } from 'react-router'
+import ConnectionsContainer from './ConnectionsContainer.js'
 
-   
-class SearchContainer extends Component {
+
+class SearchResultsContainer extends Component {
 
     state = {
         type: '',
-        results : []
+        results: []
     }
 
     componentDidMount() {
 
     }
 
-    handleSearchClick = (name)=> (event) => {
-
-        const { searchKey } = this.props
+    handleSearchClick = (name) => (event) => {
+        const { match } = this.props
         const { type} = this.state
 
+        let searchKey = match.params.searchKey
         let request = null
 
-        switch(name){
-            case 'company' :
-                 request = api.searchCompany(searchKey) 
-                 break
-            case 'user' :
-                 request = api.searchUser(searchKey) 
-                 break
-            case 'post' :
-                 request = api.searchPost(searchKey) 
-                 break
-            case 'job' :
-                 request = api.searchJob(searchKey) 
-                 break        
+        switch (name) {
+            case 'company':
+                request = api.searchCompany(searchKey)
+                break
+            case 'user':
+                request = api.searchUser(searchKey)
+                break
+            case 'post':
+                request = api.searchPost(searchKey)
+                break
+            case 'job':
+                request = api.searchJob(searchKey)
+                break
         }
 
-        if(request == null)
+        if (request == null)
             return
 
         request
             .then(res => {
                 this.setState({
-                    type : name,
-                    results : res.data.results
+                    type: name,
+                    results: res.data.results
                 })
             })
             .catch(err =>
@@ -62,44 +64,44 @@ class SearchContainer extends Component {
 
     render() {
         const { addPostContent } = this.state;
+        const { loggedInUser } = this.props;
         return (
             <div>
-                <IconTextButton 
-                    name = "Company"
-                    type = "logo"
-                    onClick = {this.handleSearchClick('company')}
-                />
-                <IconTextButton 
-                    name = "user"
-                    type = "profile"
-                    onClick = {this.handleSearchClick('user')}
-                />
-                <IconTextButton 
-                    name = "post"
-                    type = "articles"
-                    onClick = {this.handleSearchClick('post')}
-                />
-                <IconTextButton 
-                    name = "job"
-                    type = "jobs"
-                    onClick = {this.handleSearchClick('job')}
-                />   
+                <IconTextButton
+                    name="Company"
+                    type="logo"
+                    onClick={this.handleSearchClick('company')}
+                    />
+                <IconTextButton
+                    name="user"
+                    type="profile"
+                    onClick={this.handleSearchClick('user')}
+                    />
+                <IconTextButton
+                    name="post"
+                    type="articles"
+                    onClick={this.handleSearchClick('post')}
+                    />
+                <IconTextButton
+                    name="job"
+                    type="jobs"
+                    onClick={this.handleSearchClick('job')}
+                    />
                 {
-                    this.state.type == 'post' && <PostsContainer data={this.state.results}/> 
-                    || this.state.type == 'job' && <JobsContainer data={this.state.results}/>
-                    || this.state.type == 'user' && <ProfileContainer data={this.state.results}/>
-                }             
+                    this.state.type == 'post' && <PostsContainer data={this.state.results} loggedInUser={loggedInUser} />
+                    || this.state.type == 'job' && <JobsContainer data={this.state.results} />
+                    || this.state.type == 'user' && <ConnectionsContainer searchData={this.state.results}  />
+                }
             </div>
-             
+
         );
     }
- }
+}
 
 
-PostsContainer.propTypes = {
-    userId: PropTypes.string,
-    isCompany: PropTypes.bool
+SearchResultsContainer.propTypes = {
+    loggedInUser: PropTypes.object
 };
 
 
-export default PostsContainer;
+export default withRouter(SearchResultsContainer);

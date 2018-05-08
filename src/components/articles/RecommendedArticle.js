@@ -8,8 +8,7 @@ import Radium from 'radium'
 
 class RecommendedArticle extends React.Component {
     render () {
-        const {title, postId, miniText, authorFirstName, authorLastName, peopleTalking} = this.props;
-        const author = authorFirstName + ' ' + authorLastName;
+        const {title, postId, miniText, authorName, peopleTalking} = this.props;
         const peopleTalkingText = peopleTalking + ' people are talking about this';
         return (
             <WhiteWrapper style={styles.base}>
@@ -19,7 +18,7 @@ class RecommendedArticle extends React.Component {
                     id={postId}
                     style={styles.boldTextColor}
                     size='lg'/>
-                <GrayText text={author}/>
+                <GrayText text={authorName}/>
             <GrayText
                 text={miniText}
                 style={styles.grayTextColor}
@@ -35,9 +34,8 @@ class RecommendedArticle extends React.Component {
 RecommendedArticle.propTypes = {
     authorId: PropTypes.string,
     postId: PropTypes.string,
-    tistle: PropTypes.string,
-    authorFirstName: PropTypes.string,
-    authorLastName: PropTypes.string,
+    title: PropTypes.string,
+    authorName: PropTypes.string,
     miniText: PropTypes.string,
     peopleTalking: PropTypes.number
 }

@@ -26,12 +26,12 @@ class AddPostContainer extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
 
-        const { loggedInUser, companyId, isCompany } = this.props
+        const { loggedInUser, isArticle, companyId, isCompany } = this.props
         const { addPostContent, img, video } = this.state
 
-        let request = isCompany ?
-            api.addPost(companyId, addPostContent, img, video, isCompany) :
-            api.addPost(loggedInUser.userId, addPostContent, img, video, isCompany)
+        let request = isArticle ?
+            api.addArticle(isCompany ? companyId : loggedInUser.userId, addPostContent, img, video, isCompany) :
+            api.addPost(isCompany ? companyId : loggedInUser.userId, addPostContent, img, video, isCompany)
 
         request
             .then(res => {

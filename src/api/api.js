@@ -44,6 +44,9 @@ export default {
   acceptFriendRequest: (userId1) => {
     return axios.post('connections/acceptFriendRequest', { userId1 })
   },
+  ignoreFriendRequest: (userId1) => {
+    return axios.post('connections/ignoreFriendRequest', { userId1 })
+  },
   addFriend: (userId1) => {
     return axios.post('connections/addFriend', { userId1 })
   },
@@ -125,6 +128,8 @@ export default {
     return axios.get(`wall/getPost`, { params: { postId } })
   },
   addArticle: (authorId, text, img, video, isCompanyPost) => {
+    console.log("IN Articles route")
+    console.log(authorId +" " + isCompanyPost)
     return axios.post('wall/addPost', { authorId, text, images: [img], videos: [video], isCompanyPost, isArticle: true })
   },
   editArticle: (article) => {
@@ -144,7 +149,7 @@ export default {
     return axios.get(`recommendations/users/`)
   },
   getTrendingArticlesRecommendations: () => {
-    return axios.get(`recommendations/trending.articles/`)
+    return axios.get(`recommendations/articles/`)
   },
   getJobRecommendations: () => {
     return axios.get(`recommendations/jobs`)

@@ -12,18 +12,21 @@ import { withRouter } from 'react-router-dom';
 import BorderedButton from '../buttons/BorderedButton';
 class Header extends Component {
     state = {
-        searchText: ''
+        searchKey: ''
     }
 
     handleSearchChange = (event) => {
         this.setState({
-            searchText: event.target.value
+            searchKey: event.target.value
         })
     }
 
     handleSubmitSearch = (event) => {
-        event.preventDefault();
-
+        if(event.key === "Enter"){
+            event.preventDefault();
+            console.log("In Submit handler");
+            this.props.history.push('/search-results/'+ this.state.searchKey)
+        }
     }
 
     handleSignOut = (event) => {
