@@ -18,7 +18,12 @@ class Profile extends Component {
     }
 
     render() {
-        const { userId, imageUrl, firstName, lastName, headline, personalInfo, positions, educations, skills, friendsList, style, size } = this.props;
+        const { userId,
+            imageUrl,
+            firstName,
+            lastName,
+            headline,
+            personalInfo, positions, educations, skills, friendsList, style, size, addExperience, addEducation } = this.props;
         return (
             <div style={styles.main}>
                 <div style={styles.header}>
@@ -33,15 +38,15 @@ class Profile extends Component {
                             type="profile"
                             size="lg"
                             id={userId}
-                            blueFunc={this.toggleModal} />
+                            createCompany={this.toggleModal} />
                     </section>
                 </div>
                 <div style={styles.left}>
                     <section>
-                        <ProfileExperience sectionTitle="Experience" data={positions} />
+                        <ProfileExperience sectionTitle="Experience" data={positions} addExperience={addExperience} />
                     </section>
                     <section>
-                        <ProfileEducation sectionTitle="Education" data={educations} />
+                        <ProfileEducation sectionTitle="Education" data={educations} addEducation={addEducation} />
                     </section>
                     <section>
                         <ProfileSkillsSection sectionTitle="Skills" data={skills} />
@@ -87,7 +92,7 @@ const styles = {
     left: {
         width: '65%',
         float: 'left',
-        padding: '5%'
+        margin: '5% 2%',
     },
     right: {
         width: '30%',

@@ -5,10 +5,11 @@ import Modal from '../wrappers/Modal';
 import PropTypes from 'prop-types';
 import LabeledInput from '../forms/LabeledInput';
 import { colors, borders } from '../../resources/constants.js';
+import GrayTextButton from '../buttons/GrayTextButton';
 
-class CreateCompany extends Component{
-  render(){
-    const {handleChange, handleSubmit, show, onClose, toggleModal} = this.props
+class CreateCompany extends Component {
+  render() {
+    const { handleChange, handleSubmit, show, onClose, toggleModal } = this.props
     return (
       <Modal style={styles.base}
         show={show}
@@ -31,21 +32,22 @@ class CreateCompany extends Component{
           <div>
             <label style={[styles.textLabel]}> LinkedIn public Url </label>
             <label style={[styles.greyLabel]}>linkedin.com/company/</label>
-            <input type="text" name="companyUrl" style={styles.input2} onChange={handleChange('companyUrl')}/>
+            <input type="text" name="companyUrl" style={styles.input2} onChange={handleChange('companyUrl')} />
           </div>
 
           <hr />
 
           <div>
-            <input type="checkbox" name="verify" onChange={handleChange('verify')}/>
+            <input type="checkbox" name="verify" onChange={handleChange('verify')} />
             <label style={[styles.greyLabel]}> I verify that I am the official representative of this company and have the right to act on behalf of the company in the creation of this page. </label>
           </div>
 
           <div style={styles.buttonContainer}>
-            <BlueButton name="Create Company" style={styles.button} size="sm" color="blue" onClick={onClose}></BlueButton>
+            <BlueButton name="Create Company" style={styles.button} size="sm" onClick={handleSubmit}></BlueButton>
+            <GrayTextButton name="Cancel" style={styles.button} size="sm" onClick={onClose}></GrayTextButton>
           </div>
 
-          </form>
+        </form>
       </Modal>
     )
   }
@@ -73,8 +75,8 @@ const styles = {
     textAlign: 'center'
   },
   textLabel: {
-      fontSize: '0.7em',
-      display: 'block'
+    fontSize: '0.7em',
+    display: 'block'
   },
   header: {
     fontSize: '1em',
@@ -84,12 +86,12 @@ const styles = {
     width: '100%',
   },
   input2: {
-      height: '25px',
-      padding: '5px',
-      borderRadius: borders.button.radius.normal,
-      border: 'none',
-      width: '62%',
-      display: 'inlineBlock'
+    height: '25px',
+    padding: '5px',
+    borderRadius: borders.button.radius.normal,
+    border: 'none',
+    width: '62%',
+    display: 'inlineBlock'
   },
   greyLabel: {
     width: '50%',

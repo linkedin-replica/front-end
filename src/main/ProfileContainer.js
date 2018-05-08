@@ -57,7 +57,6 @@ class ProfileContainer extends Component {
     }
 
     componentDidMount() {
-        console.log('Tesh tesh')
         const { match } = this.props;
 
         if (match.params.id) {
@@ -179,7 +178,8 @@ class ProfileContainer extends Component {
 
     render() {
         return (
-            <Profile {...this.state.profileData} />
+            <Profile {...this.state.profileData}
+            />
         );
     }
 }

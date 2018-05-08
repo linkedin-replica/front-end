@@ -10,11 +10,11 @@ import IconButton from '../buttons/IconButton';
 
 class ProfileExperience extends Component {
     render() {
-        const { sectionTitle, data, style, size } = this.props;
+        const { sectionTitle, data, style, size, addExperience } = this.props;
         return (
             <WhiteWrapper style={styles.base} size="lg">
                 <h3 style={[styles.text, size ? styles[size] : styles['lg']]}> {sectionTitle} </h3>
-                <IconButton style={styles.addButton} type="add" onClick={this.incrementCounter} />
+                <IconButton style={styles.addButton} type="add" onClick={addExperience} />
                 <ListAdapter data={data} listItemView={ProfileExperienceItem} verticalSplit />
             </WhiteWrapper>
         )

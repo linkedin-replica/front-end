@@ -10,11 +10,11 @@ import IconButton from '../buttons/IconButton';
 
 class ProfileEducation extends Component {
     render() {
-        const { sectionTitle, data, style, size } = this.props;
+        const { sectionTitle, data, style, size, addEducation } = this.props;
         return (
             <WhiteWrapper style={styles.base} size="lg">
                 <h3 style={[styles.text, size ? styles[size] : styles['lg']]}> {sectionTitle} </h3>
-                <IconButton style={styles.addButton} type="add" onClick={this.incrementCounter} />
+                <IconButton style={styles.addButton} type="add" onClick={addEducation} />
                 <ListAdapter data={data} listItemView={ProfileEducationItem} verticalSplit />
             </WhiteWrapper>
         )

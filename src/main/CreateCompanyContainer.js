@@ -41,10 +41,10 @@ class CreateCompanyContainer extends Component {
     const { loggedInUser } = this.props
     api.addCompanyProfile({ companyName, companyUrl, loggedInUser })
       .then(res => {
-        toast.success("Company is successfully created")
+        console.log("Company is successfully created")
       })
       .catch(err => {
-        toast.error(err.response.data.err)
+        console.log(err.response.data.err)
       })
     this.toggleModal()
   }
