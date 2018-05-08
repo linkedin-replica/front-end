@@ -13,10 +13,10 @@ class WallContainer extends Component {
         const { loggedInUser, isCompany, isArticle } = this.props
         return (
             <div style={styles.base}>
-                <AddPostContainer isCompany={isCompany} isArticle={isArticle} loggedInUser={loggedInUser} />
+                <AddPostContainer isCompanyPost={isCompany} isArticle={isArticle} loggedInUser={loggedInUser} />
                 <section>
                     {isArticle ?
-                        <ArticlesContainer /> :
+                        <ArticlesContainer/> :
                         <PostsContainer loggedInUser={loggedInUser} />
                     }
                 </section>
