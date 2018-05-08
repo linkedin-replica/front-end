@@ -99,7 +99,7 @@ export default {
 
   // Jobs
   postJobCompany: (job) => {
-    return axios.post('jobs/postJobCompany', job)
+    return axios.post('jobs/createJob', job)
   },
   getJobListing: (jobId) => {
     return axios.get(`jobs/jobListing/${jobId}`)

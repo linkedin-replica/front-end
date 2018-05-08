@@ -21,10 +21,10 @@ class BorderedButton extends Component {
   }
 }
 BorderedButton.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   color: PropTypes.oneOf(['white', 'blue']),
   size: PropTypes.oneOf(["sm", "md", "lg"]),
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 const styles = {

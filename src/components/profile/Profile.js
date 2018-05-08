@@ -10,15 +10,20 @@ import ProfileSkillsSection from '../profile/ProfileSkillsSection';
 import ProfileFriendList from '../profile/ProfileFriendList';
 import ListAdapter from '../wrappers/ListAdapter';
 import GridView from '../wrappers/GridView';
+import CreateCompanyContainer from '../../main/CreateCompanyContainer';
 
 class Profile extends Component {
+    toggleModal = () => {
+        this.child.toggleModal()
+    }
+
     render() {
         const { userId, imageUrl, firstName, lastName, headline, personalInfo, positions, educations, skills, friendsList, style, size } = this.props;
-        return(
-        <div style = {styles.main}>   
-            <div style = {styles.header}>
-                <section>   
-                <ProfileHeader 
+        return (
+            <div style={styles.main}>
+                <div style={styles.header}>
+                    <section>
+                        <ProfileHeader
                             imageUrl={imageUrl}
                             rounded
                             firstName={firstName}
@@ -27,7 +32,8 @@ class Profile extends Component {
                             {...personalInfo}
                             type="profile"
                             size="lg"
-                            id={userId} />
+                            id={userId}
+                            blueFunc={this.toggleModal} />
                     </section>
                 </div>
                 <div style={styles.left}>
@@ -46,6 +52,8 @@ class Profile extends Component {
                         <ProfileFriendList sectionTitle="Connections" data={friendsList} />
                     </section>
                 </div>
+                <CreateCompanyContainer isOpen={false} onRef={ref => (this.child = ref)} />
+
             </div>
         )
     };
@@ -53,16 +61,16 @@ class Profile extends Component {
 
 
 Profile.propTypes = {
-    userId: PropTypes.string.isRequired,
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
-    headline: PropTypes.string.isRequired,
-    personalInfo: PropTypes.object.isRequired,
-    positions: PropTypes.object.isRequired,
-    educations: PropTypes.object.isRequired,
-    skills: PropTypes.object.isRequired,
-    friendsList: PropTypes.object.isRequired,
+    userId: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    imageUrl: PropTypes.string,
+    headline: PropTypes.string,
+    personalInfo: PropTypes.object,
+    positions: PropTypes.object,
+    educations: PropTypes.object,
+    skills: PropTypes.object,
+    friendsList: PropTypes.object,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"])
 };

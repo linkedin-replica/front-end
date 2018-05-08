@@ -19,32 +19,33 @@ import IconButton from '../buttons/IconButton';
 class ProfileExperienceItem extends Component {
     render() {
         const { title, companyName, companyId, startDate, endDate, summary, imgSrc, style, size } = this.props;
-        return(
-        <div style={[style, styles.base]}>
-            <Link to={`/company/${companyId}`}>
-                    <AvatarImage src={imgSrc} type="company" id={companyId} size="lg" style={styles.imgDiv}/>
+        return (
+            <div style={[style, styles.base]}>
+                <Link to={`/company/${companyId}`}>
+                    <AvatarImage src={imgSrc} type="company" id={companyId} size="lg" style={styles.imgDiv} />
                     <span style={styles.textDiv}>
-                        <BlackText text={title} size="md" style={[styles.text, styles.title]}/>
-                        <BlackText text={companyName} size="md" style={styles.text}/>
-                        <GrayText text={startDate + " - " + endDate} size="sm" style={styles.text}/>
-                        <GrayText text={summary} size="sm" style={styles.description}/>
+                        <BlackText text={title} size="md" style={[styles.text, styles.title]} />
+                        <BlackText text={companyName} size="md" style={styles.text} />
+                        <GrayText text={startDate + " - " + endDate} size="sm" style={styles.text} />
+                        <GrayText text={summary} size="sm" style={styles.description} />
                     </span>
-            </Link>
-            <div style={styles.btnDiv}>
-                <IconButton type="edit" onClick={this.incrementCounter} />
+                </Link>
+                <div style={styles.btnDiv}>
+                    <IconButton type="edit" onClick={this.incrementCounter} />
+                </div>
             </div>
-        </div>        
-    )};    
+        )
+    };
 }
 
 ProfileExperienceItem.propTypes = {
-    title: PropTypes.string.isRequired, 
-    companyName: PropTypes.string.isRequired, 
-    companyId: PropTypes.string.isRequired, 
-    startDate: PropTypes.string.isRequired, 
-    endDate: PropTypes.string.isRequired,  
-    summary: PropTypes.string, 
-    imgSrc: PropTypes.string, 
+    title: PropTypes.string,
+    companyName: PropTypes.string,
+    companyId: PropTypes.string,
+    startDate: PropTypes.string,
+    endDate: PropTypes.string,
+    summary: PropTypes.string,
+    imgSrc: PropTypes.string,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"])
 };
@@ -52,8 +53,8 @@ ProfileExperienceItem.propTypes = {
 const styles = {
     base: {
         display: 'inline-block',
-        marginLeft:'20px',
-        width:'100%'
+        marginLeft: '20px',
+        width: '100%'
     },
     imgDiv: {
         display: 'inline-block',
@@ -63,7 +64,7 @@ const styles = {
     },
     textDiv: {
         display: 'inline-block',
-        verticalAlign:'top',
+        verticalAlign: 'top',
         float: 'left',
     },
     btnDiv: {
@@ -74,15 +75,15 @@ const styles = {
         //   }
     },
     title: {
-       fontWeight:'bold'
+        fontWeight: 'bold'
     },
     text: {
-        margin:'5px',
+        margin: '5px',
     },
     description: {
-        margin:'5px',
+        margin: '5px',
         wordWrap: 'break-word',
-        maxWidth:'500px',
+        maxWidth: '500px',
     },
     sm: {
         fontSize: '0.5em'

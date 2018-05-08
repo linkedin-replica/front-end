@@ -37,7 +37,7 @@ class ProfileHeader extends Component {
                         <GrayText text={headline}
                             style={styles.text}
                             size={size} />
-                        <GrayText text={location.country}
+                        <GrayText text={location}
                             style={styles.text}
                             size={size} />
                     </div>
@@ -48,14 +48,14 @@ class ProfileHeader extends Component {
 }
 
 ProfileHeader.propTypes = {
-    imageUrl: PropTypes.string.isRequired,
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-    headline: PropTypes.string.isRequired,
-    location: PropTypes.object.isRequired,
+    imageUrl: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    headline: PropTypes.string,
+    location: PropTypes.object,
     rounded: PropTypes.bool,
     type: PropTypes.string,
-    userId: PropTypes.string.isRequired,
+    userId: PropTypes.string,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"]),
 };

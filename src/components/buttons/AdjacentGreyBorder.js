@@ -10,17 +10,17 @@ class AdjacentGreyBorder extends Component {
     render() {
         const { greyText, blueText, size, greyOnClick, blueOnClick } = this.props;
         return (
-          <div  style={[styles.base, styles.btnDiv]}>
-            <GrayTextButton name={greyText} size={size} type="Button" onClick = {greyOnClick}/>
-            <BorderedButton name={blueText} color="blue" size={size} onClick = {blueOnClick} />
-          </div>
+            <div style={[styles.base, styles.btnDiv]}>
+                <GrayTextButton name={greyText} size={size} type="Button" onClick={greyOnClick} />
+                <BorderedButton name={blueText} color="blue" size={size} onClick={blueOnClick} />
+            </div>
         )
     };
 }
 
 AdjacentGreyBorder.propTypes = {
-    greyText: PropTypes.string.isRequired,
-    blueText: PropTypes.string.isRequired,
+    greyText: PropTypes.string,
+    blueText: PropTypes.string,
     size: PropTypes.oneOf(["sm", "md", "lg"]),
     greyOnClick: PropTypes.func,
     blueOnClick: PropTypes.func,

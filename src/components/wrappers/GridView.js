@@ -32,11 +32,11 @@ class GridView extends Component {
                 horizontalSplit ? styles.horizontalSplit : styles.noSplit,
                 verticalSplit ? styles.verticalSplit : styles.noSplit
             ]}>
-                {
+                {data &&
                     data.map((item, index) => (
                         <li key={`${gridItemView.displayName}${index}`}
                             style={[styles.listItem,
-                                size ? styles[size] : styles['md']]}>
+                            size ? styles[size] : styles['md']]}>
                             {React.createElement(gridItemView, { ...item, style: [styles.item] })}
                         </li>
                     ))
@@ -50,8 +50,8 @@ class GridView extends Component {
  * Define here what does this component take as props
  */
 GridView.propTypes = {
-    data: PropTypes.array.isRequired,
-    gridItemView: PropTypes.node.isRequired,
+    data: PropTypes.array,
+    gridItemView: PropTypes.node,
     style: PropTypes.object, // Content style
     size: PropTypes.oneOf(["sm", "md", "lg"]),
     horizontalSplit: PropTypes.bool,

@@ -35,11 +35,11 @@ class ProfileFriend extends Component {
 }
 
 ProfileFriend.propTypes = {
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-    headline: PropTypes.string.isRequired,
-    userId: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    headline: PropTypes.string,
+    userId: PropTypes.string,
+    imageUrl: PropTypes.string,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"])
 };

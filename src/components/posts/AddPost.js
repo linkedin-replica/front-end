@@ -50,7 +50,7 @@ class AddPost extends Component {
 }
 
 AddPost.propTypes = {
-  addPostContent: PropTypes.string.isRequired,
+  addPostContent: PropTypes.string,
   handleChange: PropTypes.func,
   handleMediaClick: PropTypes.func,
   handleSubmit: PropTypes.func,

@@ -58,11 +58,11 @@ class FriendRecommendationItem extends Component {
 }
 
 FriendRecommendationItem.propTypes = {
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    img: PropTypes.string,
     id: PropTypes.string,
-    handleConnect: PropTypes.func.isRequired,
+    handleConnect: PropTypes.func,
 };
 
 

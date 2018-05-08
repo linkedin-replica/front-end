@@ -30,10 +30,10 @@ class AddPostContainer extends Component {
         const { addPostContent, img, video } = this.state
 
         let request = isCompany ?
-           api.addPost(companyId, addPostContent, img, video, isCompany) :
-           api.addPost(loggedInUser.userId, addPostContent, img, video, isCompany)
+            api.addPost(companyId, addPostContent, img, video, isCompany) :
+            api.addPost(loggedInUser.userId, addPostContent, img, video, isCompany)
 
-            request
+        request
             .then(res => {
                 toast.success("Added a new post")
                 this.setState({
@@ -74,7 +74,7 @@ const styles = {
     }
 }
 AddPostContainer.propTypes = {
-    loggedInUser: PropTypes.object.isRequired,
+    loggedInUser: PropTypes.object,
     isCompany: PropTypes.bool,
     isArticle: PropTypes.bool,
 };

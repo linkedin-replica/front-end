@@ -24,10 +24,10 @@ class IconButton extends Component {
 
 // Define the passed input types for this component
 IconButton.propTypes = {
-  type: PropTypes.oneOf(['edit', 'add']).isRequired,
+  type: PropTypes.oneOf(['edit', 'add']),
   hasBorder: PropTypes.bool,
   size: PropTypes.oneOf(["sm", "md", "lg"]),
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 const styles = {

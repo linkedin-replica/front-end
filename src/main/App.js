@@ -23,11 +23,10 @@ class App extends Component {
           this.setState({
             loggedInUser: data.results
           })
-
         })
         .catch(err => {
-          api.removeLoginToken()
-          this.props.history.push('/login')
+          // api.removeLoginToken()
+          // this.props.history.push('/login')
         })
     } else {
       this.props.history.push('/login')

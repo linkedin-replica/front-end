@@ -43,12 +43,14 @@ class Test extends Component {
                                 <Route path={`${match.url}/typography`} component={TypographyTest} />
 
                                 <Route path={`${match.url}/profile`} component={ProfileTest} />
+                                <Route path={`${match.url}/applicant`} component={CompanyTest} />
 
                                 <Route path={`${match.url}/details`} component={DetailsHeaderTest} />
                                 <Route path={`${match.url}/applicant`} component={CompanyTest} />
 
 
                                 <Route path={`${match.url}/connections`} component={ConnectionsTest} />
+                                <Route path={`${match.url}/chat`} component={ChatTest} />
 
                                 <Route path={`${match.url}/chat`} component={ChatTest} />
 

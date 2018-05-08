@@ -33,11 +33,11 @@ class ChatDetails extends Component {
 
 // Define the passed input types for this component
 ChatDetails.propTypes = {
-    data: PropTypes.array.isRequired,
+    data: PropTypes.array,
     receiverName: PropTypes.string,
-    inputMessageVal: PropTypes.string.isRequired,
-    handleSendMessage: PropTypes.func.isRequired,
-    handleChange: PropTypes.func.isRequired,
+    inputMessageVal: PropTypes.string,
+    handleSendMessage: PropTypes.func,
+    handleChange: PropTypes.func,
     style: PropTypes.object
 };
 

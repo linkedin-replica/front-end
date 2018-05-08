@@ -44,8 +44,8 @@ class DetailsHeader extends Component {
 
 DetailsHeader.propTypes = {
     img: PropTypes.string,
-    header: PropTypes.string.isRequired,
-    subHeader: PropTypes.string.isRequired,
+    header: PropTypes.string,
+    subHeader: PropTypes.string,
     rounded: PropTypes.bool,
     type: PropTypes.string,
     id: PropTypes.string,

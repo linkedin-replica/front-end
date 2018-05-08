@@ -10,32 +10,33 @@ import GrayText from '../typography/GrayText';
 import BoldLink from '../typography/BoldLink';
 
 class CompanyBasicInfo extends Component {
-  state = { isAdmin: false };
+    state = { isAdmin: false };
 
     render() {
-        const { img, companyName, industryType, companyLocation, companyId, style, isAdmin, borderedText ,borderedFunc ,blueText ,blueFunc} = this.props;
+        const { img, companyName, industryType, companyLocation, companyId, style, isAdmin, borderedText, borderedFunc, blueText, blueFunc } = this.props;
 
         return (
-          <WhiteWrapper style={[styles.whiteWrapper, style]} size="lg">
-              <AvatarImage src={img}
-                size='lg'
-                style={styles.img}
-                companyId={companyId}
-              />
-              <div style={styles.textDiv}>
-                  <label>{companyName}</label>
-                  <GrayText text={industryType + " - " + companyLocation}style={styles.text} size="sm" />
-              </div>
+            <WhiteWrapper style={[styles.whiteWrapper, style]} size="lg">
+                <AvatarImage src={img}
+                    size='lg'
+                    style={styles.img}
+                    companyId={companyId}
+                />
+                <div style={styles.textDiv}>
+                    <label>{companyName}</label>
+                    <GrayText text={industryType + " - " + companyLocation} style={styles.text} size="sm" />
+                </div>
 
-              {isAdmin ?
-                <div style={styles.btnDiv}>
-                <BlueButton name={blueText} onClick={() => blueFunc()} />   </div> :
-                  <div style={styles.btnDiv}>
-                    <BorderedButton name={borderedText} color="blue" onClick={() => borderedFunc()} size="md" />
-                    <BlueButton name={blueText} onClick={() => blueFunc()} />
-                  </div>
-              }
-          </WhiteWrapper>
+                {isAdmin ?
+                    <div style={styles.btnDiv}>
+                        <BlueButton name={blueText} onClick={() => blueFunc()} />
+                    </div> :
+                    <div style={styles.btnDiv}>
+                        <BorderedButton name={borderedText} color="blue" onClick={() => borderedFunc()} size="md" />
+                        <BlueButton name={blueText} onClick={() => blueFunc()} />
+                    </div>
+                }
+            </WhiteWrapper>
 
         )
     };
@@ -44,9 +45,9 @@ class CompanyBasicInfo extends Component {
 
 
 CompanyBasicInfo.propTypes = {
-    img: PropTypes.string.isRequired,
-    header: PropTypes.string.isRequired,
-    subHeader: PropTypes.string.isRequired,
+    img: PropTypes.string,
+    header: PropTypes.string,
+    subHeader: PropTypes.string,
     type: PropTypes.string,
     id: PropTypes.string,
     style: PropTypes.object
@@ -57,20 +58,18 @@ const styles = {
     base: {
 
     },
-    img:{
-    },
     whiteWrapper: {
         margin: '10px auto',
         padding: '20px',
         textAlign: 'left',
         fontSize: '1.5em',
-        position:'relative',
+        position: 'relative',
     },
     btnDiv: {
-      position: 'absolute',
-      right: '2%',
-      bottom: 0,
-      paddingBottom: '25px'
+        position: 'absolute',
+        right: '2%',
+        bottom: 0,
+        paddingBottom: '25px',
     },
     textDiv: {
         display: 'inline-block',

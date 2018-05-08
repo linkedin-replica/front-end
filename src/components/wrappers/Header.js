@@ -113,7 +113,7 @@ const styles = {
 }
 
 Header.propTypes = {
-    isLoggedIn: PropTypes.bool.isRequired
+    isLoggedIn: PropTypes.bool
 }
 
 // Wrap it with Radium

@@ -4,16 +4,16 @@ import RecommendedArticle from './RecommendedArticle'
 import ListAdapter from '../wrappers/ListAdapter'
 
 class RecommendedArticles extends React.Component {
-    render () {
-        const {recommendedArticlesData }= this.props;
+    render() {
+        const { recommendedArticlesData } = this.props;
         return (
-            <ListAdapter listItemView={RecommendedArticle} data={recommendedArticlesData} verticalSplit/>
+            <ListAdapter listItemView={RecommendedArticle} data={recommendedArticlesData} verticalSplit />
         );
     }
 }
 
 RecommendedArticles.propTypes = {
-    recommenjodedArticlesData: PropTypes.array.isRequired
+    recommenjodedArticlesData: PropTypes.array
 }
 
 export default RecommendedArticles;

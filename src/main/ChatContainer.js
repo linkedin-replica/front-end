@@ -131,7 +131,7 @@ class ChatContainer extends Component {
 }
 
 ChatContainer.propTypes = {
-    loggedInUser: PropTypes.object.isRequired
+    loggedInUser: PropTypes.object
 };
 
 export default ChatContainer;

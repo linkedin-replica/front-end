@@ -25,7 +25,7 @@ class BlackText extends Component {
 
 // Define the passed input types for this component
 BlackText.propTypes = {
-    text: PropTypes.string.isRequired,
+    text: PropTypes.string,
     style: PropTypes.object, // Content defined styles
     size: PropTypes.oneOf(["sm", "md", "lg"]),
 };

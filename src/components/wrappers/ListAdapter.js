@@ -31,7 +31,7 @@ class ListAdapter extends Component {
                 style,
                 size ? styles[size] : styles.noSize
             ]}>
-                {
+                {data &&
                     data.map((item, index) => (
                         <li key={`${listItemView.displayName}${index}`}
                             style={verticalSplit ? styles.split : styles.noSplit}>
@@ -48,8 +48,8 @@ class ListAdapter extends Component {
  * Define here what does this component take as props
  */
 ListAdapter.propTypes = {
-    data: PropTypes.array.isRequired,
-    listItemView: PropTypes.node.isRequired,
+    data: PropTypes.array,
+    listItemView: PropTypes.node,
     style: PropTypes.object, // Content style
     size: PropTypes.oneOf(["sm", "md", "lg"]),
     verticalSplit: PropTypes.bool

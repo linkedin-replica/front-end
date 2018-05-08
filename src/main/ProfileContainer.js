@@ -47,17 +47,17 @@ class ProfileContainer extends Component {
     constructor(props) {
         super(props)
 
-        this.setState({
+        this.state = {
             newPersonalInfo: this.initPersonalInfo,
             newLocation: this.initLocation,
             newExperience: this.initExperience,
             newEducation: this.initEducation,
             newSkill: this.initSkill
-        })
+        }
     }
 
     componentDidMount() {
-
+        console.log('Tesh tesh')
         const { match } = this.props;
 
         if (match.params.id) {

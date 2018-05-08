@@ -6,16 +6,16 @@ import { colors, borders } from '../../resources/constants.js'
 class TextComponent extends Component {
   render() {
     return (
-        <div size={this.props.size}> 
-            {this.props.text}
-        </div>
+      <div size={this.props.size}>
+        {this.props.text}
+      </div>
     );
   }
 }
 
 TextComponent.propTypes = {
-  text: PropTypes.string.isRequired,
-  size: PropTypes.number.isRequired,
+  text: PropTypes.string,
+  size: PropTypes.number,
   bold: PropTypes.bool,
   color: PropTypes.string
 };

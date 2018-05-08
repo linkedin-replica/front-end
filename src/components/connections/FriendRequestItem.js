@@ -50,9 +50,9 @@ class FriendRequestItem extends Component {
 }
 
 FriendRequestItem.propTypes = {
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    img: PropTypes.string,
     id: PropTypes.string,
     handleAccept: PropTypes.func,
     handleIgnore: PropTypes.func,

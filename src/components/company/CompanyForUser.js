@@ -24,13 +24,13 @@ class CompanyForUser extends Component {
   };
 
     render() {
-      const { companyId, companyProfilePicture, companyName, industryType, companyLocation, loggedInUser} = this.props;
+      const { companyId, profilePictureUrl, companyName, industryType, companyLocation, loggedInUser} = this.props;
         console.log("companyId  " + companyId )
         return (
           <div>
             <WhiteWrapper style={styles.whiteWrapper} size="lg">
               <CompanyBasicInfo style={styles.info}
-                img={companyProfilePicture}
+                img={profilePictureUrl}
                 companyName={companyName}
                 industryType={industryType}
                 companyLocation={companyLocation}
@@ -40,10 +40,12 @@ class CompanyForUser extends Component {
                 blueText={this.state.viewJobs ? "See Posts" : "See Jobs"}
                 blueFunc={this.togglePostsAndJobs}/>
               </WhiteWrapper>
+              <div style={styles.content}>
               { this.state.viewJobs ?
                 <div><h1>JOBSSSSSSS</h1></div> :
                 <WallContainer loggedInUser={loggedInUser} isCompany companyId={companyId}/>
               }
+              </div>
 
 
           </div>
@@ -63,6 +65,9 @@ const styles = {
       height: '15em',
       width: '100vw',
       position: 'relative'
+  },
+  content:{
+    paddingTop: '10%'
   },
   info:{
     top:'60%'

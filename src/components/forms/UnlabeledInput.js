@@ -23,7 +23,7 @@ class UnlabeledInput extends Component {
 }
 
 UnlabeledInput.propTypes = {
-    placeholder: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
     handleChange: PropTypes.func,
     handleSubmit: PropTypes.func,
     size: PropTypes.oneOf(["sm", "md", "lg"]),

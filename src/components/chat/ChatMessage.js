@@ -22,8 +22,8 @@ class ChatMessage extends Component {
 
 // Define the passed input types for this component
 ChatMessage.propTypes = {
-    message: PropTypes.object.isRequired,
-    isSender: PropTypes.bool.isRequired
+    message: PropTypes.object,
+    isSender: PropTypes.bool
 };
 
 const styles = {

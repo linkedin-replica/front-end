@@ -25,9 +25,9 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
-  onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
   show: PropTypes.bool,
-  btnText: PropTypes.string.isRequired,
+  btnText: PropTypes.string,
   children: PropTypes.node
 };
 

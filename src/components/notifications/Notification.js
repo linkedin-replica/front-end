@@ -20,25 +20,25 @@ class Notification extends Component {
             ...rest } = this.props;
 
         return (
-            <WhiteWrapper style={[styles.whiteWrapper, read? styles.read:""]} size="lg">
-            <Link to={`/${link}`}
-                style={styles.link}>
-                <span style={[styles.base, style, "md"]}>
-                    {text}
-                </span>
-            </Link >
-            <GrayText text={timestamp}
-                        style={styles.text}
-                        size="md" />
+            <WhiteWrapper style={[styles.whiteWrapper, read ? styles.read : ""]} size="lg">
+                <Link to={`/${link}`}
+                    style={styles.link}>
+                    <span style={[styles.base, style, "md"]}>
+                        {text}
+                    </span>
+                </Link >
+                <GrayText text={timestamp}
+                    style={styles.text}
+                    size="md" />
             </WhiteWrapper>
         );
     }
 }
 
 Notification.propTypes = {
-    text: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-    timestamp: PropTypes.number.isRequired,
+    text: PropTypes.string,
+    link: PropTypes.string,
+    timestamp: PropTypes.number,
     style: PropTypes.object, // Content defined styles
     read: PropTypes.bool,
 };
@@ -69,11 +69,11 @@ const styles = {
         padding: '20px',
         textAlign: 'left',
         fontSize: '1.5em',
-        position:'relative',
+        position: 'relative',
         align: 'center'
     },
-    read:{
-        background:colors.lightBlue
+    read: {
+        background: colors.lightBlue
     }
 }
 

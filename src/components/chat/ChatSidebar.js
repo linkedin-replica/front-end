@@ -24,8 +24,8 @@ class ChatSidebar extends Component {
 
 // Define the passed input types for this component
 ChatSidebar.propTypes = {
-    chats: PropTypes.array.isRequired,
-    handleSelectChat: PropTypes.func.isRequired,
+    chats: PropTypes.array,
+    handleSelectChat: PropTypes.func,
     selectedChat: PropTypes.node,
     style: PropTypes.object
 };

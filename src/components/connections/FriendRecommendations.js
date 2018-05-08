@@ -10,21 +10,21 @@ import FriendRecommendationItem from '../connections/FriendRecommendationItem';
 class FriendRecommendations extends Component {
     render() {
         const { data,
-                style,
-                size,
-                horizontalSplit,
-                verticalSplit } = this.props;
+            style,
+            size,
+            horizontalSplit,
+            verticalSplit } = this.props;
         return (
             <WhiteWrapper>
-                <div style = {styles.center}>
-                    <GrayText 
-                        text = "People You May Know"
-                        size = "lg"
+                <div style={styles.center}>
+                    <GrayText
+                        text="People You May Know"
+                        size="lg"
                     />
                 </div>
-                <GridView 
-                    data = {this.props.data}
-                    gridItemView = {FriendRecommendationItem}/>
+                <GridView
+                    data={this.props.data}
+                    gridItemView={FriendRecommendationItem} />
             </WhiteWrapper>
         )
     };
@@ -33,12 +33,12 @@ class FriendRecommendations extends Component {
 
 
 FriendRecommendations.propTypes = {
-    data: PropTypes.array.isRequired,
+    data: PropTypes.array,
     style: PropTypes.object, // Content style
     size: PropTypes.oneOf(["sm", "md", "lg"]),
     horizontalSplit: PropTypes.bool,
     verticalSplit: PropTypes.bool,
-    
+
 };
 
 const styles = {
@@ -49,9 +49,9 @@ const styles = {
 
     },
     title: {
-        size : "md"
+        size: "md"
     },
-    center : {   
+    center: {
         paddingLeft: '20px',
         paddingTop: '2px'
     }

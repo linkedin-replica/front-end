@@ -14,12 +14,12 @@ class CompanyForAdmin extends Component {
     this.child.toggleModal()
   }
     render() {
-      const { companyProfilePicture, loggedInUser, companyName, industryType, companyLocation, companyId, openPostAJobForm} = this.props;
+      const { profilePictureUrl, loggedInUser, companyName, industryType, companyLocation, companyId, openPostAJobForm} = this.props;
         return (
           <div>
             <WhiteWrapper style={styles.whiteWrapper} size="lg">
               <CompanyBasicInfo style={styles.info}
-                img={companyProfilePicture}
+                img={profilePictureUrl}
                 companyName={companyName}
                 industryType={industryType}
                 companyLocation={companyLocation}
@@ -28,8 +28,10 @@ class CompanyForAdmin extends Component {
                 blueText="Post A Job"
                 blueFunc={this.toggleModal}/>
               </WhiteWrapper>
-              <PostAJobContainer isOpen={false} onRef={ref => (this.child = ref)}/>
-              <WallContainer loggedInUser={loggedInUser} isCompany companyId={companyId}/>
+              <PostAJobContainer companyId={companyId} isOpen={false} onRef={ref => (this.child = ref)}/>
+              <div style={styles.content}>
+                <WallContainer loggedInUser={loggedInUser} isCompany companyId={companyId} isAdmin/>
+              </div>
           </div>
 
 
@@ -45,6 +47,9 @@ const styles = {
       height: '15em',
       width: '100%',
       position: 'relative'
+  },
+  content:{
+    paddingTop: '10%'
   },
   info:{
     top:'60%'
