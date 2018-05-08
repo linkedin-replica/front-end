@@ -117,7 +117,9 @@ class PostContainer extends Component {
         const { addCommentText, liked, comments } = this.state
         const { images, videos, handleDeletePost, loggedInUser } = this.props
         let postContent = images ? images[0] : (videos ? videos[0] : '')
-        let postType = images ? 'img' : (videos ? 'video' : '')
+        let postType = '';
+        if (postContent)
+            postType = images.length > 0 ? 'img' : (videos.length > 0 ? 'video' : '')
 
         const newComments = comments.map(comment => ({ ...comment, loggedInUser, handleDeleteComment: this.handleDeleteComment(comment.commentId) }))
 
