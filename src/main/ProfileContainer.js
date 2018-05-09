@@ -14,7 +14,7 @@ class ProfileContainer extends Component {
             skills: [],
             followedCompanies: [],
             friendsList: [],
-            bookmarkedPosts: []
+            bookmarkedPosts: [],
         },
         isCreateCompanyForm: false,
         isEducationForm: false,
@@ -22,20 +22,6 @@ class ProfileContainer extends Component {
         isSkillsForm: false,
         selectedId: -1
     };
-
-    initLocation = {
-        country: '',
-        address: '',
-        code: '',
-    }
-
-    initPersonalInfo = {
-        phone: '',
-        email: '',
-        location: null,
-        dob: '',
-        website: '',
-    }
 
     initEducation = {
         schoolName: '',
@@ -55,7 +41,9 @@ class ProfileContainer extends Component {
         isCurrent: false,
     }
 
-    initSkill = ''
+    initSkill = {
+        text: ''
+    }
 
     constructor(props) {
         super(props)
@@ -129,7 +117,7 @@ class ProfileContainer extends Component {
         }));
     };
 
-    toggleSkills = () => {
+    toggleSkills = (event) => {
         this.setState(prevState => ({
             isSkillsForm: !prevState.isSkillsForm,
             newSkill: this.initSkill
@@ -215,14 +203,14 @@ class ProfileContainer extends Component {
     handleSubmitSkill = (event) => {
         event.preventDefault()
 
-        api.updateUserProfile({ skills: [...this.state.profileData.skills, this.state.newSkill] })
+        api.addUserSkill(this.state.newSkill.text)
             .then(res => {
-                toast.success(res.data.results)
+                toast.success("Added skill successfully")
                 this.setState(prevState => ({
                     ...prevState,
                     profileData: {
                         ...prevState.profileData,
-                        skills: [...prevState.profileData.skills, this.state.newSkill],
+                        skills: [...prevState.profileData.skills, this.state.newSkill.text],
                         newSkill: this.initSkill
                     },
                 }))

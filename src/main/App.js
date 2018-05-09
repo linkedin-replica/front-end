@@ -25,8 +25,8 @@ class App extends Component {
           })
         })
         .catch(err => {
-          // api.removeLoginToken()
-          // this.props.history.push('/login')
+          api.removeLoginToken()
+          this.props.history.push('/login')
         })
     } else {
       this.props.history.push('/login')
@@ -44,7 +44,7 @@ class App extends Component {
           <Route path="/" render={() => (
             loggedInUser ?
               <MainContainer loggedInUser={loggedInUser} /> :
-              <div>Please Login First</div>
+              <div>Loading...</div>
           )}
           />
         </Switch>

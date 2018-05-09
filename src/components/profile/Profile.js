@@ -13,15 +13,17 @@ import GridView from '../wrappers/GridView';
 import CreateCompanyContainer from '../../main/CreateCompanyContainer';
 import ProfileExperienceForm from './ProfileExperienceForm';
 import ProfileEducationForm from './ProfileEducationForm';
+import ProfileSkillForm from './ProfileSkillForm';
 
 class Profile extends Component {
 
     render() {
         const { userId,
-            imageUrl,
+            profilePictureUrl,
             firstName,
             lastName,
             headline,
+            industry,
             personalInfo,
             positions,
             educations,
@@ -45,6 +47,7 @@ class Profile extends Component {
             handleChange,
             newEducation,
             newExperience,
+            newSkill,
              } = this.props;
 
         let newPositions = []
@@ -66,11 +69,12 @@ class Profile extends Component {
                 <div style={styles.header}>
                     <section>
                         <ProfileHeader
-                            imageUrl={imageUrl}
+                            imageUrl={profilePictureUrl}
                             rounded
                             firstName={firstName}
                             lastName={lastName}
                             headline={headline}
+                            industry={industry}
                             {...personalInfo}
                             type="profile"
                             size="lg"
@@ -91,7 +95,9 @@ class Profile extends Component {
                             addEducation={toggleEducation(-1)} />
                     </section>
                     <section>
-                        <ProfileSkillsSection sectionTitle="Skills" data={skills} />
+                        <ProfileSkillsSection sectionTitle="Skills"
+                            data={skills}
+                            addSkill={toggleSkills} />
                     </section>
                 </div>
                 <div style={styles.right}>
@@ -114,6 +120,12 @@ class Profile extends Component {
                     isOpen={isEducationForm}
                     toggleModal={toggleEducation(-1)} />
 
+                <ProfileSkillForm
+                    {...newSkill}
+                    handleChange={handleChange('newSkill')}
+                    handleSubmit={handleSubmitSkill}
+                    isOpen={isSkillsForm}
+                    toggleModal={toggleSkills} />
             </div>
         )
     };
