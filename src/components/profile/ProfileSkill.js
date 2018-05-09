@@ -29,8 +29,9 @@ const styles = {
     whiteWrapper: {
         margin: '10px auto',
         textAlign: 'left',
-        maxWidth: '10%',
-        height: '30px'
+        width: '50%',
+        height: '30px',
+        display: 'inline-block',
     },
     textDiv: {
         textAlign: 'center',

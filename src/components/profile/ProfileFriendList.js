@@ -33,8 +33,8 @@ const styles = {
     base: {
         display: 'inline-block',
         paddingLeft: '2em',
-        paddingRight: '20em',
         fontWeight: 'normal',
+        width: '100%'
     },
     whiteWrapper: {
         margin: '10px auto',
