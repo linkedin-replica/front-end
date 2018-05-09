@@ -6,7 +6,7 @@ import BlueButton from '../components/buttons/BlueButton';
 import api from '../api/api';
 import { toast } from 'react-toastify';
 
-class CreateCompanyContainer extends Component {
+class ProfileEducationFormContainer extends Component {
   state = {
     data: {
       companyName: '',
@@ -46,7 +46,7 @@ class CreateCompanyContainer extends Component {
   }
 }
 
-CreateCompanyContainer = Radium(CreateCompanyContainer)
-CreateCompanyContainer = withRouter(CreateCompanyContainer)
+ProfileEducationFormContainer = Radium(ProfileEducationFormContainer)
+ProfileEducationFormContainer = withRouter(ProfileEducationFormContainer)
 
-export default CreateCompanyContainer
+export default ProfileEducationFormContainer

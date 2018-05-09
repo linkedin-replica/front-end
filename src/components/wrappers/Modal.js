@@ -40,7 +40,8 @@ const styles = {
     left: 0,
     right: 0,
     backgroundColor: 'rgba(0,0,0,0.3)',
-    padding: 50
+    padding: 50,
+    overflow: 'auto'
   },
 
   // The modal "window"
@@ -53,7 +54,7 @@ const styles = {
     margin: '0 auto',
     padding: 30,
     alignItems: 'center',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
 
 

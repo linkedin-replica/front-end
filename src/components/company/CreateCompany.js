@@ -5,7 +5,8 @@ import Modal from '../wrappers/Modal';
 import PropTypes from 'prop-types';
 import LabeledInput from '../forms/LabeledInput';
 import { colors, borders } from '../../resources/constants.js';
-import GrayTextButton from '../buttons/GrayTextButton';
+import BorderedButton from '../buttons/BorderedButton';
+import GrayText from '../typography/GrayText';
 
 class CreateCompany extends Component {
   render() {
@@ -44,7 +45,7 @@ class CreateCompany extends Component {
 
           <div style={styles.buttonContainer}>
             <BlueButton name="Create Company" style={styles.button} size="sm" onClick={handleSubmit}></BlueButton>
-            <GrayTextButton name="Cancel" style={styles.button} size="sm" onClick={onClose}></GrayTextButton>
+            <GrayText text="Cancel" style={styles.button} size="sm" onClick={onClose}></GrayText>
           </div>
 
         </form>
@@ -84,6 +85,7 @@ const styles = {
   },
   button: {
     width: '100%',
+    cursor: 'pointer',
   },
   input2: {
     height: '25px',

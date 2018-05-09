@@ -3,11 +3,24 @@ import PropTypes from 'prop-types'
 import api from '../api/api';
 import Profile from '../components/profile/Profile';
 import { toast } from 'react-toastify';
+import { withRouter } from 'react-router-dom';
 
 class ProfileContainer extends Component {
 
     state = {
-        profileData: {},
+        profileData: {
+            positions: [],
+            educations: [],
+            skills: [],
+            followedCompanies: [],
+            friendsList: [],
+            bookmarkedPosts: []
+        },
+        isCreateCompanyForm: false,
+        isEducationForm: false,
+        isExperienceForm: false,
+        isSkillsForm: false,
+        selectedId: -1
     };
 
     initLocation = {
@@ -48,6 +61,7 @@ class ProfileContainer extends Component {
         super(props)
 
         this.state = {
+            ...this.state,
             newPersonalInfo: this.initPersonalInfo,
             newLocation: this.initLocation,
             newExperience: this.initExperience,
@@ -57,12 +71,13 @@ class ProfileContainer extends Component {
     }
 
     componentDidMount() {
+
         const { match } = this.props;
 
         if (match.params.id) {
             api.getUserProfileById(match.params.id)
                 .then(res => {
-                    this.setState({ profileData: res.data.results })
+                    this.setState(prevState => ({ profileData: { ...prevState.profileData, ...res.data.results } }))
                 })
                 .catch(err => {
                     toast.error(err.response.data.error)
@@ -70,7 +85,7 @@ class ProfileContainer extends Component {
         } else {
             api.getUserProfile()
                 .then(res => {
-                    this.setState({ profileData: res.data.results })
+                    this.setState(prevState => ({ profileData: { ...prevState.profileData, ...res.data.results } }))
                 })
                 .catch(err => {
                     toast.error(err.response.data.error)
@@ -79,29 +94,65 @@ class ProfileContainer extends Component {
     }
 
     handleChange = (form) => (key) => (event) => {
+        event.persist();
         this.setState(prevState => ({
             ...prevState,
             [form]: {
                 ...prevState[form],
-                [key]: event.target.value
+                [key]: event.target.type === 'checkbox' ? event.target.checked :
+                    event.target.type === 'date' ? Date.parse(event.target.value) : event.target.value
             }
         }))
     }
+    toggleCreateCompany = () => {
+        this.setState(prevState => ({
+            isCreateCompanyForm: !prevState.isCreateCompanyForm
+        }));
+    };
 
-    handleSubmitExperience = (id) => (event) => {
+
+    toggleExperience = (id) => (event) => {
+        this.setState(prevState => ({
+            isExperienceForm: !prevState.isExperienceForm,
+            newExperience: prevState.isExperienceForm ? this.initExperience :
+                (id === -1 ? this.initExperience : prevState.profileData.positions[id]),
+            selectedId: prevState.isExperienceForm ? -1 : id
+        }));
+    };
+    toggleEducation = (id) => (event) => {
+        console.log('====================================');
+        console.log('Selected ' + id);
+        console.log('====================================');
+        this.setState(prevState => ({
+            isEducationForm: !prevState.isEducationForm,
+            newEducation: prevState.isEducationForm ? this.initEducation :
+                (id === -1 ? this.initEducation : prevState.profileData.educations[id]),
+            selectedId: prevState.isEducationForm ? -1 : id
+        }));
+    };
+
+    toggleSkills = () => {
+        this.setState(prevState => ({
+            isSkillsForm: !prevState.isSkillsForm,
+            newSkill: this.initSkill
+        }));
+    };
+
+
+    handleSubmitExperience = (event) => {
         event.preventDefault()
 
         let newList = []
 
-        const { profileData, newExperience } = this.state;
+        const { profileData, newExperience, selectedId } = this.state;
 
         // Creating new item
-        if (id === -1) {
+        if (selectedId === -1) {
             // Add the new entry to the  list
             newList = [...profileData.positions, newExperience]
         } else {
             newList = profileData.positions.slice() // Copy positions
-            newList[id] = newExperience // Update it with the new experience
+            newList[selectedId] = newExperience // Update it with the new experience
         }
 
         // Update the backend + state with the new list
@@ -115,27 +166,32 @@ class ProfileContainer extends Component {
                         positions: newList,
                         newExperience: this.initExperience
                     },
+                    selectedId: -1
+
                 }))
             })
             .catch(err => {
                 toast.error(err.response.data.error)
             })
+        this.toggleExperience(-1)
+
     }
 
-    handleSubmitEducation = (id) => (event) => {
+    handleSubmitEducation = (event) => {
         event.preventDefault()
 
         let newList = []
 
-        const { profileData, newEducation } = this.state;
+        const { profileData, newEducation, selectedId } = this.state;
 
         // Creating new item
-        if (id === -1) {
+        if (selectedId === -1) {
             // Add the new entry to the  list
-            newList = [...profileData.educations, newEducation]
+            newList = [...profileData.educations,
+                newEducation]
         } else {
             newList = profileData.educations.slice() // Copy positions
-            newList[id] = newEducation // Update it with the new Education
+            newList[selectedId] = newEducation // Update it with the new Education
         }
 
         // Update the backend + state with the new list
@@ -149,11 +205,13 @@ class ProfileContainer extends Component {
                         educations: newList,
                         newEducation: this.initEducation
                     },
+                    selectedId: -1
                 }))
             })
             .catch(err => {
                 toast.error(err.response.data.error)
             })
+        this.toggleEducation(-1)
     }
 
     handleSubmitSkill = (event) => {
@@ -174,11 +232,22 @@ class ProfileContainer extends Component {
             .catch(err => {
                 toast.error(err.response.data.error)
             })
+        this.toggleSkills()
     }
 
     render() {
         return (
-            <Profile {...this.state.profileData}
+            <Profile
+                {...this.state}
+                {...this.state.profileData}
+                toggleCreateCompany={this.toggleCreateCompany}
+                toggleEducation={this.toggleEducation}
+                toggleExperience={this.toggleExperience}
+                toggleSkills={this.toggleSkills}
+                handleSubmitExperience={this.handleSubmitExperience}
+                handleSubmitEducation={this.handleSubmitEducation}
+                handleSubmitSkill={this.handleSubmitSkill}
+                handleChange={this.handleChange}
             />
         );
     }
@@ -188,4 +257,4 @@ ProfileContainer.propTypes = {
 
 };
 
-export default ProfileContainer;
+export default withRouter(ProfileContainer);

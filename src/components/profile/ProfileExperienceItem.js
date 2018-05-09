@@ -18,7 +18,7 @@ import IconButton from '../buttons/IconButton';
 
 class ProfileExperienceItem extends Component {
     render() {
-        const { title, companyName, companyId, startDate, endDate, summary, imgSrc, style, size } = this.props;
+        const { title, companyName, companyId, startDate, endDate, summary, imgSrc, style, size, toggleModal } = this.props;
         return (
             <div style={[style, styles.base]}>
                 <Link to={`/company/${companyId}`}>
@@ -31,7 +31,7 @@ class ProfileExperienceItem extends Component {
                     </span>
                 </Link>
                 <div style={styles.btnDiv}>
-                    <IconButton type="edit" onClick={this.incrementCounter} />
+                    <IconButton type="edit" onClick={toggleModal} />
                 </div>
             </div>
         )

@@ -15,7 +15,7 @@ class LabeledInput extends Component {
                     type={type}
                     value={text}
                     placeholder={placeholder}
-                    onChange={handleChange}
+                    onChangeCapture={handleChange}
                     onKeyUp={handleSubmit ? handleSubmit : () => { }}
                     required={isRequired}
                 />
