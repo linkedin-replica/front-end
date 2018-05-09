@@ -18,7 +18,7 @@ import BlueButton from '../buttons/BlueButton';
 
 class ProfileHeader extends Component {
     render() {
-        const { imageUrl, rounded, firstName, lastName, headline, location, type, userId, style, size, createCompany } = this.props;
+        const { imageUrl, rounded, firstName, lastName, headline, industry, type, userId, style, size, createCompany } = this.props;
         return (
             <div style={[style, styles.base]}>
                 <WhiteWrapper style={styles.whiteWrapper} size="lg">
@@ -38,7 +38,7 @@ class ProfileHeader extends Component {
                         <GrayText text={headline}
                             style={styles.text}
                             size={size} />
-                        <GrayText text={location}
+                        <GrayText text={industry}
                             style={styles.text}
                             size={size} />
                         <BlueButton name="Create Company" onClick={createCompany} />
@@ -55,7 +55,7 @@ ProfileHeader.propTypes = {
     firstName: PropTypes.string,
     lastName: PropTypes.string,
     headline: PropTypes.string,
-    location: PropTypes.object,
+    industry: PropTypes.object,
     rounded: PropTypes.bool,
     type: PropTypes.string,
     userId: PropTypes.string,

@@ -14,9 +14,9 @@ import { colors } from '../../resources/constants';
 class GrayText extends Component {
     render() {
         // Directly get the passed parameters from the props
-        const { text, type, id, style, size } = this.props;
+        const { text, type, id, style, size, onClick } = this.props;
         return (
-            <p style={[styles.base, style, size ? styles[size] : styles['sm']]}>
+            <p style={[styles.base, style, size ? styles[size] : styles['sm']]} onClick={onClick}>
                 {text}
             </p>
         );

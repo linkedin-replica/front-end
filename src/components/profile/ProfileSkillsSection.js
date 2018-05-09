@@ -7,16 +7,20 @@ import ListAdapter from '../wrappers/ListAdapter';
 import WhiteWrapper from '../wrappers/WhiteWrapper';
 import GridView from '../wrappers/GridView';
 import IconButton from '../buttons/IconButton';
+import ProfileSkill from './ProfileSkill';
 
 class ProfileSkillsSection extends Component {
     render() {
-        const { sectionTitle, data, style, size } = this.props;
+        const { sectionTitle, data, style, size, addSkill } = this.props;
+
+        let newList = []
+        if (data)
+            newList = data.map(skill => ({ skill }))
         return (
             <WhiteWrapper style={styles.base} size="lg">
                 <h3 style={[styles.text, size ? styles[size] : styles['lg']]}> {sectionTitle} </h3>
-                <IconButton style={styles.editButton} type="edit" onClick={this.incrementCounter} />
-                <IconButton style={styles.addButton} type="add" onClick={this.incrementCounter} />
-                <GridView data={data} gridItemView={WhiteWrapper} horizontalSplit verticalSplit size="lg" />
+                <IconButton style={styles.addButton} type="add" onClick={addSkill} />
+                <GridView data={newList} gridItemView={ProfileSkill} horizontalSplit verticalSplit size="sm" />
             </WhiteWrapper>
         )
     };

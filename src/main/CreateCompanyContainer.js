@@ -13,20 +13,6 @@ class CreateCompanyContainer extends Component {
       companyUrl: '',
       verify: ''
     },
-    isOpen: this.props.isOpen
-  }
-
-  componentDidMount() {
-    this.props.onRef(this)
-  }
-  omponentWillUnmount() {
-    this.props.onRef(undefined)
-  }
-
-  toggleModal = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
   }
 
   handleChange = (key) => (event) => {
@@ -38,7 +24,7 @@ class CreateCompanyContainer extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     const { companyName, companyUrl } = this.state
-    const { loggedInUser } = this.props
+    const { loggedInUser, toggleModal } = this.props
     api.addCompanyProfile({ companyName, companyUrl, loggedInUser })
       .then(res => {
         console.log("Company is successfully created")
@@ -46,14 +32,15 @@ class CreateCompanyContainer extends Component {
       .catch(err => {
         console.log(err.response.data.err)
       })
-    this.toggleModal()
+    toggleModal()
   }
 
   render() {
+    const { isOpen, toggleModal } = this.props
     return (
       <div className="App">
-        <CreateCompany handleChange={this.handleChange} handleSubmit={this.handleSubmit} show={this.state.isOpen}
-          onClose={this.toggleModal}></CreateCompany>
+        <CreateCompany handleChange={this.handleChange} handleSubmit={this.handleSubmit} show={isOpen}
+          onClose={toggleModal}></CreateCompany>
       </div>
     )
   }

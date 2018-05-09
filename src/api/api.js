@@ -83,10 +83,10 @@ export default {
     return axios.post(`editinfo/userCvDelete`, cvURL)
   },
   addUserSkill: (skill) => {
-    return axios.put('editinfo/userAddSkill', skill)
+    return axios.put('editinfo/userAddSkill', { skill })
   },
   deleteUserSkill: (skill) => {
-    return axios.post('editinfo/userDeleteSkill', skill)
+    return axios.post('editinfo/userDeleteSkill', { skill })
   },
 
   // Company
@@ -129,7 +129,7 @@ export default {
   },
   addArticle: (authorId, text, img, video, isCompanyPost) => {
     console.log("IN Articles route")
-    console.log(authorId +" " + isCompanyPost)
+    console.log(authorId + " " + isCompanyPost)
     return axios.post('wall/addPost', { authorId, text, images: [img], videos: [video], isCompanyPost, isArticle: true })
   },
   editArticle: (article) => {
@@ -181,6 +181,7 @@ export default {
     return axios.get(`wall/getCommentLikes`)
   },
   addPost: (authorId, text, img, video, isCompanyPost) => {
+    if (!isCompanyPost) isCompanyPost = false;
     return axios.post('wall/addPost', { authorId, text, images: [img], videos: [video], isCompanyPost, isArticle: false })
   },
   editPost: (postId, text) => {

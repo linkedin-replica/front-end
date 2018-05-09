@@ -65,7 +65,7 @@ const styles = {
     base: {
         width: '100%',
         display: 'flex',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
     },
     listItem: {
         textAlign: 'center'

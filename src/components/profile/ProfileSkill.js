@@ -10,10 +10,8 @@ class ProfileSkill extends Component {
     render() {
         const { skill, style, size } = this.props;
         return (
-            <WhiteWrapper style={styles.whiteWrapper} size="lg">
-                <div style={styles.blueDiv}>
-                </div>
-                <div style={[styles.blueDiv, styles.textDiv]}>
+            <WhiteWrapper style={styles.whiteWrapper}>
+                <div style={styles.textDiv}>
                     {skill}
                 </div>
             </WhiteWrapper>
@@ -31,18 +29,13 @@ const styles = {
     whiteWrapper: {
         margin: '10px auto',
         textAlign: 'left',
-        maxWidth: '10%',
-        height: '15%',
-    },
-    blueDiv: {
-        backgroundColor: colors.mediumBlue,
-        maxWidth: '20px',
-        height: '100%',
+        width: '50%',
+        height: '30px',
+        display: 'inline-block',
     },
     textDiv: {
         textAlign: 'center',
         fontSize: '18px',
-        paddingLeft: '20%',
     }
 }
 

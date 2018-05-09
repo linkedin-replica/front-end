@@ -11,45 +11,93 @@ import ProfileFriendList from '../profile/ProfileFriendList';
 import ListAdapter from '../wrappers/ListAdapter';
 import GridView from '../wrappers/GridView';
 import CreateCompanyContainer from '../../main/CreateCompanyContainer';
+import ProfileExperienceForm from './ProfileExperienceForm';
+import ProfileEducationForm from './ProfileEducationForm';
+import ProfileSkillForm from './ProfileSkillForm';
 
 class Profile extends Component {
-    toggleModal = () => {
-        this.child.toggleModal()
-    }
 
     render() {
         const { userId,
-            imageUrl,
+            profilePictureUrl,
             firstName,
             lastName,
             headline,
-            personalInfo, positions, educations, skills, friendsList, style, size, addExperience, addEducation } = this.props;
+            industry,
+            personalInfo,
+            positions,
+            educations,
+            skills,
+            friendsList,
+            style,
+            size,
+            addExperience,
+            addEducation,
+            isCreateCompanyForm,
+            toggleCreateCompany,
+            isExperienceForm,
+            toggleExperience,
+            isEducationForm,
+            toggleEducation,
+            isSkillsForm,
+            toggleSkills,
+            handleSubmitExperience,
+            handleSubmitEducation,
+            handleSubmitSkill,
+            handleChange,
+            newEducation,
+            newExperience,
+            newSkill,
+             } = this.props;
+
+        let newPositions = []
+        if (positions)
+            newPositions = positions
+                .map((position, indx) => ({
+                    ...position,
+                    toggleModal: toggleExperience(indx)
+                }))
+        let newEducations = []
+        if (educations)
+            newEducations = educations
+                .map((education, indx) => ({
+                    ...education,
+                    toggleModal: toggleEducation(indx)
+                }))
         return (
             <div style={styles.main}>
                 <div style={styles.header}>
                     <section>
                         <ProfileHeader
-                            imageUrl={imageUrl}
+                            imageUrl={profilePictureUrl}
                             rounded
                             firstName={firstName}
                             lastName={lastName}
                             headline={headline}
+                            industry={industry}
                             {...personalInfo}
                             type="profile"
                             size="lg"
                             id={userId}
-                            createCompany={this.toggleModal} />
+                            createCompany={toggleCreateCompany} />
                     </section>
                 </div>
                 <div style={styles.left}>
                     <section>
-                        <ProfileExperience sectionTitle="Experience" data={positions} addExperience={addExperience} />
+                        <ProfileExperience sectionTitle="Experience"
+                            data={newPositions}
+                            addExperience={toggleExperience(-1)}
+                        />
                     </section>
                     <section>
-                        <ProfileEducation sectionTitle="Education" data={educations} addEducation={addEducation} />
+                        <ProfileEducation sectionTitle="Education"
+                            data={newEducations}
+                            addEducation={toggleEducation(-1)} />
                     </section>
                     <section>
-                        <ProfileSkillsSection sectionTitle="Skills" data={skills} />
+                        <ProfileSkillsSection sectionTitle="Skills"
+                            data={skills}
+                            addSkill={toggleSkills} />
                     </section>
                 </div>
                 <div style={styles.right}>
@@ -57,8 +105,27 @@ class Profile extends Component {
                         <ProfileFriendList sectionTitle="Connections" data={friendsList} />
                     </section>
                 </div>
-                <CreateCompanyContainer isOpen={false} onRef={ref => (this.child = ref)} />
+                <CreateCompanyContainer isOpen={isCreateCompanyForm} toggleModal={toggleCreateCompany} />
+                <ProfileExperienceForm
+                    {...newExperience}
+                    handleChange={handleChange('newExperience')}
+                    handleSubmit={handleSubmitExperience}
+                    isOpen={isExperienceForm}
+                    toggleModal={toggleExperience(-1)} />
 
+                <ProfileEducationForm
+                    {...newEducation}
+                    handleChange={handleChange('newEducation')}
+                    handleSubmit={handleSubmitEducation}
+                    isOpen={isEducationForm}
+                    toggleModal={toggleEducation(-1)} />
+
+                <ProfileSkillForm
+                    {...newSkill}
+                    handleChange={handleChange('newSkill')}
+                    handleSubmit={handleSubmitSkill}
+                    isOpen={isSkillsForm}
+                    toggleModal={toggleSkills} />
             </div>
         )
     };

@@ -18,20 +18,20 @@ import IconButton from '../buttons/IconButton';
 
 class ProfileExperienceItem extends Component {
     render() {
-        const { title, companyName, companyId, startDate, endDate, summary, imgSrc, style, size } = this.props;
+        const { title, companyName, companyId, startDate, endDate, summary, imgSrc, style, size, toggleModal } = this.props;
         return (
             <div style={[style, styles.base]}>
                 <Link to={`/company/${companyId}`}>
-                    <AvatarImage src={imgSrc} type="company" id={companyId} size="lg" style={styles.imgDiv} />
+                    <IconButton type="jobs" id={companyId} style={styles.imgDiv} />
                     <span style={styles.textDiv}>
                         <BlackText text={title} size="md" style={[styles.text, styles.title]} />
                         <BlackText text={companyName} size="md" style={styles.text} />
-                        <GrayText text={startDate + " - " + endDate} size="sm" style={styles.text} />
+                        <GrayText text={new Date(startDate).toLocaleDateString() + " - " + new Date(endDate).toLocaleDateString()} size="sm" style={styles.text} />
                         <GrayText text={summary} size="sm" style={styles.description} />
                     </span>
                 </Link>
                 <div style={styles.btnDiv}>
-                    <IconButton type="edit" onClick={this.incrementCounter} />
+                    <IconButton type="edit" onClick={toggleModal} />
                 </div>
             </div>
         )
@@ -54,11 +54,12 @@ const styles = {
     base: {
         display: 'inline-block',
         marginLeft: '20px',
-        width: '100%'
+        width: '100%',
+        padding: '3%'
     },
     imgDiv: {
         display: 'inline-block',
-        paddingRight: '2%',
+        paddingRight: '5%',
         paddingTop: '2%',
         float: 'left'
     },

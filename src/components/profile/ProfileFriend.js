@@ -18,10 +18,10 @@ import WhiteWrapper from '../wrappers/WhiteWrapper';
 
 class ProfileFriend extends Component {
     render() {
-        const { userId, firstName, lastName, headline, imageUrl, style, size } = this.props;
+        const { userId, firstName, lastName, headline, profilePictureUrl, style, size } = this.props;
         return (
             <div style={[style, styles.base]}>
-                <AvatarImage src={imageUrl}
+                <AvatarImage src={profilePictureUrl}
                     rounded
                     type="profile" id={userId} size="md" style={styles.imgDiv} />
                 <span style={styles.textDiv}>
