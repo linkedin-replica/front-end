@@ -181,6 +181,7 @@ export default {
     return axios.get(`wall/getCommentLikes`)
   },
   addPost: (authorId, text, img, video, isCompanyPost) => {
+    if (!isCompanyPost) isCompanyPost = false;
     return axios.post('wall/addPost', { authorId, text, images: [img], videos: [video], isCompanyPost, isArticle: false })
   },
   editPost: (postId, text) => {
