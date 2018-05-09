@@ -120,9 +120,7 @@ class ProfileContainer extends Component {
         }));
     };
     toggleEducation = (id) => (event) => {
-        console.log('====================================');
-        console.log('Selected ' + id);
-        console.log('====================================');
+
         this.setState(prevState => ({
             isEducationForm: !prevState.isEducationForm,
             newEducation: prevState.isEducationForm ? this.initEducation :
@@ -158,7 +156,7 @@ class ProfileContainer extends Component {
         // Update the backend + state with the new list
         api.updateUserProfile({ positions: newList })
             .then(res => {
-                toast.success(res.data.results)
+                toast.success("Updated Experiences Successfully")
                 this.setState(prevState => ({
                     ...prevState,
                     profileData: {
@@ -173,7 +171,7 @@ class ProfileContainer extends Component {
             .catch(err => {
                 toast.error(err.response.data.error)
             })
-        this.toggleExperience(-1)
+        this.toggleExperience(-1)()
 
     }
 
@@ -197,7 +195,7 @@ class ProfileContainer extends Component {
         // Update the backend + state with the new list
         api.updateUserProfile({ educations: newList })
             .then(res => {
-                toast.success(res.data.results)
+                toast.success("Updated Educations Successfully")
                 this.setState(prevState => ({
                     ...prevState,
                     profileData: {
@@ -211,7 +209,7 @@ class ProfileContainer extends Component {
             .catch(err => {
                 toast.error(err.response.data.error)
             })
-        this.toggleEducation(-1)
+        this.toggleEducation(-1)()
     }
 
     handleSubmitSkill = (event) => {

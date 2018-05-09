@@ -26,7 +26,7 @@ class ProfileEducationItem extends Component {
                 <span style={styles.textDiv}>
                     <BlackText text={schoolName} size="md" style={[styles.text, styles.title]} />
                     <BlackText text={degree + ", " + fieldOfStudy} size="md" style={styles.text} />
-                    <GrayText text={startDate + " - " + endDate} size="sm" style={styles.text} />
+                    <GrayText text={new Date(startDate).toLocaleDateString() + " - " + new Date(endDate).toLocaleDateString()} size="sm" style={styles.text} />
                 </span>
                 <div style={styles.btnDiv}>
                     <IconButton type="edit" onClick={toggleModal} />
@@ -50,7 +50,9 @@ const styles = {
     base: {
         display: 'inline-block',
         marginLeft: '20px',
-        width: '100%'
+        width: '100%',
+        padding: '3%'
+
     },
     imgDiv: {
         display: 'inline-block',

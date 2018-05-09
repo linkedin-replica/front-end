@@ -8,9 +8,9 @@ import { colors, borders } from '../../resources/constants.js';
 import BorderedButton from '../buttons/BorderedButton';
 import GrayText from '../typography/GrayText';
 
-class ProfileExperienceForm extends Component {
+class ProfileEducationForm extends Component {
     render() {
-        const { handleChange, handleSubmit, isOpen, toggleModal, title, summary, startDate, endDate, companyId, companyName, isCurrent } = this.props
+        const { handleChange, handleSubmit, isOpen, toggleModal, schoolName, fieldOfStudy, startDate, endDate, degree } = this.props
         return (
             <Modal style={styles.base}
                 show={isOpen}
@@ -18,23 +18,23 @@ class ProfileExperienceForm extends Component {
                 btnText="Submit Form">
                 <header>
                     <h1 style={styles.header}>
-                        Profile Experience
+                        Profile Education
                    </h1>
                 </header>
                 <form onSubmit={handleSubmit}>
                     <LabeledInput
-                        id="title"
-                        label="Title"
+                        id="schoolName"
+                        label="School Name"
                         type="text"
-                        text={title}
-                        handleChange={handleChange('title')}
+                        text={schoolName}
+                        handleChange={handleChange('schoolName')}
                     />
                     <LabeledInput
-                        id="summary"
-                        label="Summary"
+                        id="fieldOfStudy"
+                        label="Field Of Study"
                         type="text"
-                        text={summary}
-                        handleChange={handleChange('summary')}
+                        text={fieldOfStudy}
+                        handleChange={handleChange('fieldOfStudy')}
                     />
                     <LabeledInput
                         id="startDate"
@@ -50,25 +50,13 @@ class ProfileExperienceForm extends Component {
                         handleChange={handleChange('endDate')}
                     />
                     <LabeledInput
-                        id="companyId"
-                        label="Company Id"
+                        id="degree"
+                        label="Degree"
                         type="text"
-                        text={companyId}
-                        handleChange={handleChange('companyId')}
+                        text={degree}
+                        handleChange={handleChange('degree')}
                         isRequired
                     />
-                    <LabeledInput
-                        id="companyName"
-                        label="Company Name"
-                        type="text"
-                        text={companyName}
-                        handleChange={handleChange('companyName')}
-                        isRequired
-                    />
-                    <div>
-                        <input type="checkbox" name="isCurrent" checked={isCurrent} onChange={handleChange('isCurrent')} />
-                        <label style={styles.greyLabel}>Is Current</label>
-                    </div>
                     <div style={styles.buttonContainer}>
                         <BlueButton name="Submit" style={styles.button} size="sm" onClick={handleSubmit}></BlueButton>
                         <GrayText text="Cancel" style={styles.button} size="sm" onClick={toggleModal}></GrayText>
@@ -80,7 +68,7 @@ class ProfileExperienceForm extends Component {
     }
 }
 
-ProfileExperienceForm.PropTypes = {
+ProfileEducationForm.PropTypes = {
     handleChange: PropTypes.func,
     handleSubmit: PropTypes.func,
     history: PropTypes.object
@@ -129,4 +117,4 @@ const styles = {
     }
 }
 
-export default Radium(ProfileExperienceForm)
+export default Radium(ProfileEducationForm)

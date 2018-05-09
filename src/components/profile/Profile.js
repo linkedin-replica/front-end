@@ -12,6 +12,7 @@ import ListAdapter from '../wrappers/ListAdapter';
 import GridView from '../wrappers/GridView';
 import CreateCompanyContainer from '../../main/CreateCompanyContainer';
 import ProfileExperienceForm from './ProfileExperienceForm';
+import ProfileEducationForm from './ProfileEducationForm';
 
 class Profile extends Component {
 
@@ -42,6 +43,8 @@ class Profile extends Component {
             handleSubmitEducation,
             handleSubmitSkill,
             handleChange,
+            newEducation,
+            newExperience,
              } = this.props;
 
         let newPositions = []
@@ -98,10 +101,18 @@ class Profile extends Component {
                 </div>
                 <CreateCompanyContainer isOpen={isCreateCompanyForm} toggleModal={toggleCreateCompany} />
                 <ProfileExperienceForm
+                    {...newExperience}
                     handleChange={handleChange('newExperience')}
                     handleSubmit={handleSubmitExperience}
                     isOpen={isExperienceForm}
                     toggleModal={toggleExperience(-1)} />
+
+                <ProfileEducationForm
+                    {...newEducation}
+                    handleChange={handleChange('newEducation')}
+                    handleSubmit={handleSubmitEducation}
+                    isOpen={isEducationForm}
+                    toggleModal={toggleEducation(-1)} />
 
             </div>
         )

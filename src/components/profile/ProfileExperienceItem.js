@@ -22,11 +22,11 @@ class ProfileExperienceItem extends Component {
         return (
             <div style={[style, styles.base]}>
                 <Link to={`/company/${companyId}`}>
-                    <AvatarImage src={imgSrc} type="company" id={companyId} size="lg" style={styles.imgDiv} />
+                    <IconButton type="jobs" id={companyId} style={styles.imgDiv} />
                     <span style={styles.textDiv}>
                         <BlackText text={title} size="md" style={[styles.text, styles.title]} />
                         <BlackText text={companyName} size="md" style={styles.text} />
-                        <GrayText text={startDate + " - " + endDate} size="sm" style={styles.text} />
+                        <GrayText text={new Date(startDate).toLocaleDateString() + " - " + new Date(endDate).toLocaleDateString()} size="sm" style={styles.text} />
                         <GrayText text={summary} size="sm" style={styles.description} />
                     </span>
                 </Link>
@@ -54,11 +54,12 @@ const styles = {
     base: {
         display: 'inline-block',
         marginLeft: '20px',
-        width: '100%'
+        width: '100%',
+        padding: '3%'
     },
     imgDiv: {
         display: 'inline-block',
-        paddingRight: '2%',
+        paddingRight: '5%',
         paddingTop: '2%',
         float: 'left'
     },
